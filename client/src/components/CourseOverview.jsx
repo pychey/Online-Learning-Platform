@@ -8,14 +8,14 @@ import 'swiper/css/grid';
 const CourseOverview = ({ data }) => {
 
   return (
-    <div className="flex flex-col items-center gap-5 py-10 bg-white">
+    <div className="flex flex-col items-center gap-5 py-10 bg-white mt-20">
       <div className='flex flex-col items-center gap-5 text-xs tablet:text-sm laptop:text-lg px-10 tablet:px-20 text-center'>
         <h1>{data.title}</h1>
         <h2>{data.description}</h2>
       </div>
       <div className="w-full px-10 tablet:px-20 mt-5">
         <Swiper
-          modules={[Pagination, Navigation, Autoplay, Grid]}
+          modules={[Pagination, Navigation, Autoplay, Grid]}  
           spaceBetween={40}
           loop={true}
           breakpoints={{

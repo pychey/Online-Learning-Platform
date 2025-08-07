@@ -52,7 +52,7 @@ const NavBar = () => {
             <div key={index} className="relative group">
               <div className="text-gray-800 font-[600] hover:text-primary-color cursor-pointer py-2 px-1 select-none group-hover:text-gray-400">
                 <span className="inline-flex items-center gap-1">
-                  {n.title}
+                  <a href={n.link}>{n.title}</a>
                   {n.submenu && <IoIosArrowDown />}
                 </span>
               </div>
