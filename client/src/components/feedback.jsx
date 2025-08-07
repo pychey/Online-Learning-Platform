@@ -5,13 +5,13 @@ const Feedback = () => {
           
       <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-black font-['Lato'] mb-9">
         ចាប់ផ្តើមទទួលយកនូវបទពិសោធន៍ការរៀនអនឡាញថ្ងៃនេះ
-      </h2>
+      </h2>                         
     
       <div className="flex flex-wrap justify-evenly flex-row">
        
         <div className="w-full sm:w-1/3 flex flex-col items-center mb-7">
           <p className="text-5xl text-blue-500 font-bold pb-3">១០០%</p>
-          <p className="text-xl text-black">រៀនអនឡានដោយខ្លួនឯង។</p>
+          <p className="text-xl text-black">រៀនអនឡានដោយខ្លួនឯង</p>
         </div>
 
        
