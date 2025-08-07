@@ -10,7 +10,7 @@ import CertificateOverview from "../components/CertificateOverview.jsx";
 function HomePage() {
 
   return (
-   <>
+    <>
       <NavBar />
       <CourseOverview data={COURSE_OVERVIEW_CONTENT}/>
       <CourseBenefits />

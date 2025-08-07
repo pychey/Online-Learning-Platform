@@ -20,7 +20,7 @@ const benefits = [
 
 const CourseBenefits = () => {
   return (
-    <section className="mt-40 px-2 py-10 w-full bg-[#F2F2F2]">
+    <section className="px-2 py-10 w-full bg-[#F2F2F2]">
       <div className="flex flex-col tablet:flex-row gap-8 mx-auto px-4 max-w-[1320px]">
         <div className="flex justify-center items-center flex-1">
           <div className="flex justify-center items-center aspect-[960/584] w-full max-w-[495px] bg-slate-500">
