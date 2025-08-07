@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+body {
+  font-family: 'Hanuman' ,'Noto Sans Khmer', sans-serif;
+}
+
 @theme {
     --breakpoint-tablet: 548px;
     --breakpoint-laptop: 849px;
