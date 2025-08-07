@@ -4,8 +4,6 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const NavBar = () => {
 
-  const [openMenu,setOpenMenu]=useState(false)
-
   const page={
     image : "/",
     login : "/",
@@ -31,14 +29,22 @@ const NavBar = () => {
     },
   ];
 
+  const [openMenu,setOpenMenu]=useState(false)
+
+  const [activeSubmenuIndex, setActiveSubmenuIndex] = useState(null)
+
+  const toggleSubmenu = (index) => {
+    setActiveSubmenuIndex(prev => prev === index ? null : index)
+  }
+
   const handleMenuClick=()=>{
     setOpenMenu(prev=>!prev)
   }
 
   return (
-    <nav className='w-full'>
+    <nav className='w-full border-gray shadow-md fixed top-0 left-0 right-0 bg-white z-50 transition-transform duration-300 ease-in-out '>
       <div className='flex items-center justify-between max-w-[1100px] mx-auto px-2'>
-        <div className="w-[45%] ipad:w-60 h-full ">
+        <div className="w-[45%] tablet:w-60 h-full ">
           <a className="w-full h-full" href={page.image}><img src="/Logo-AA-Horizontal.png" alt="logo" className="h-full w-full object-cover"/></a>
         </div>
         <div className="hidden laptop:flex items-center justify-end gap-2.5 lg:gap-4 xl:gap-6 py-5 ">
@@ -78,10 +84,10 @@ const NavBar = () => {
           <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>ចូលរៀន/ចូលរៀន</a>
           <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href=""><FaBasketShopping className='h-5 w-5 text-white'/></a>
         </div>
-        <div className="flex laptop:hidden items-center justify-end ipad:gap-6 gap-2 py-5 ">
+        <div className="flex laptop:hidden items-center justify-end tablet:gap-6 gap-2 py-5 ">
           <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href=""><FaBasketShopping className='h-5 w-5 text-white'/></a>
           <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href=""><FaUser className='h-5 w-5 text-white'/></a>
-          <button className={`h-10 ipad:w-auto w-10 bg-primary flex items-center justify-center rounded-lg`} onClick={handleMenuClick}><span className='flex px-4 items-center justify-center gap-4'><FaBars className='h-5 w-5 text-white'/><p className='text-white ipad:block hidden'>មីនុយ</p></span></button>
+          <button className={`h-10 tablet:w-auto w-10 bg-primary flex items-center justify-center rounded-lg`} onClick={handleMenuClick}><span className='flex px-4 items-center justify-center gap-4'><FaBars className='h-5 w-5 text-white'/><p className='text-white tablet:block hidden'>មីនុយ</p></span></button>
         </div>
         {openMenu && (
           <div className="fixed inset-0 bg-white/40 backdrop-blur-[2px] z-40" onClick={handleMenuClick}></div>
@@ -92,6 +98,40 @@ const NavBar = () => {
               <button onClick={handleMenuClick} className="text-gray-400 hover:text-primary text-5xl font-bold">
                 &times;
               </button>
+            </div>
+            <div className="flex flex-col ">
+              {nav.map((n, index) => (
+                <div key={index} className="border-b border-gray-300">
+                  <div className="w-full text-left py-4 pl-4 pr-4 font-semibold text-gray-800 flex items-center justify-between">
+                  <a href={n.link}>
+                    {n.title}
+                  </a>
+                  <button
+                    className=""
+                    onClick={() => toggleSubmenu(index)}
+                  >
+                    {n.submenu && (
+                      <IoIosArrowDown className={`transition-transform duration-300 text-primary ${activeSubmenuIndex === index ? 'rotate-180' : ''}`} />
+                    )}
+                  </button>
+
+                  </div>
+                  {n.submenu && (
+                    <div className={`bg-gray-50 overflow-hidden transform transition-transform duration-1000 ease-out ${activeSubmenuIndex === index?"max-h-40":"max-h-0"}`}>
+                      {n.submenu.map((sub, subIndex) => (
+                        <a
+                          key={subIndex}
+                          href={sub.link}
+                          className="block py-2 pl-8 text-sm text-gray-600 hover:bg-gray-100"
+                        >
+                          {sub.title}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <a href={page.login} className='bg-primary text-white py-2 px-2 '>ចូលរៀន/ចុះឈ្មោះ</a>
             </div>
         </div>
     </div>
