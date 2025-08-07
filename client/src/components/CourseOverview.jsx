@@ -15,7 +15,7 @@ const CourseOverview = ({ data }) => {
       </div>
       <div className="w-full px-10 tablet:px-20 mt-5">
         <Swiper
-          modules={[Pagination, Navigation, Autoplay, Grid]}
+          modules={[Pagination, Navigation, Autoplay, Grid]}  
           spaceBetween={40}
           loop={true}
           breakpoints={{
