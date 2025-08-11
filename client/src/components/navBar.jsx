@@ -5,6 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 const NavBar = () => {
 
   const page={
+    home:"/",
     cart : "/cart",
     login : "/",
   }
@@ -44,7 +45,7 @@ const NavBar = () => {
     <nav className='w-full h-20 border-gray shadow-md fixed top-0 left-0 right-0 bg-white z-50 transition-transform duration-300 ease-in-out'>
       <div className='flex items-center justify-between max-w-[1100px] mx-auto px-2'>
         <div className="w-[45%] tablet:w-60 h-full ">
-          <a className="w-full h-full" href={page.image}><img src="/Logo-AA-Horizontal.png" alt="logo" className="h-full w-full object-cover"/></a>
+          <a className="w-full h-full" href={page.home}><img src="/Logo-AA-Horizontal.png" alt="logo" className="h-full w-full object-cover"/></a>
         </div>
         <div className="hidden laptop:flex items-center justify-end gap-2.5 lg:gap-4 xl:gap-6 py-5 ">
             {nav.map((n, index) => (
