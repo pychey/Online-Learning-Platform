@@ -2,7 +2,7 @@ import React from 'react'
 import { MdKeyboardArrowRight,MdKeyboardArrowLeft } from "react-icons/md";
 
 
-const AddToCart = () => {
+const Cart = () => {
   const nav=[
     {name:"កន្ត្រកអីវ៉ាន់",url:"/"},
     {name:"ព័ត៌មានការទិញ",url:"/"},
@@ -11,7 +11,7 @@ const AddToCart = () => {
     {name:"ទៅកន្លែងបង់ប្រាក់",url:"/"}
   ]
   return (
-    <main className='w-screen mt-25'>
+    <main className='w-screen my-25'>
         <div className="block tablet:hidden text-3xl m-auto h-10 w-fit">កន្រ្តកអីវ៉ាន់</div>
         <div className="w-full text-4xl justify-center items-center gap-4 px-2 tablet:flex hidden">
             <a href={nav[0].url} className="flex justify-center items-center gap-4 py-10">
@@ -50,4 +50,4 @@ const AddToCart = () => {
   )
 }
 
-export default AddToCart
+export default Cart

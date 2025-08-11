@@ -8,6 +8,7 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
+import Cart from "./pages/Cart";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/courselist" element={<CourseListPage />} />
+        <Route path="/cart"element={<Cart/>}/>
       </Routes>
 
       <Footer/>

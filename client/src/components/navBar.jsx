@@ -5,7 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 const NavBar = () => {
 
   const page={
-    cart : "/",
+    cart : "/cart",
     login : "/",
   }
 
