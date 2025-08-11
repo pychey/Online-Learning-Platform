@@ -5,13 +5,12 @@ import { IoIosArrowDown } from "react-icons/io";
 const NavBar = () => {
 
   const page={
-    image : "/",
+    cart : "/",
     login : "/",
   }
 
   const nav = [
     { title: "គេហទំព័រ", link: "/" },
-    { title: "ស្ថាបនិក", link: "/" },
     {
       title: "វគ្គបណ្តុះបណ្តាល",link:"/",
       submenu: [
@@ -81,12 +80,12 @@ const NavBar = () => {
             )}
           </div>
           ))}
-          <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>ចូលរៀន/ចូលរៀន</a>
-          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href=""><FaBasketShopping className='h-5 w-5 text-white'/></a>
+          <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>ចូលរៀន/ចុះឈ្មោះ</a>
+          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.cart}><FaBasketShopping className='h-5 w-5 text-white'/></a>
         </div>
         <div className="flex laptop:hidden items-center justify-end tablet:gap-6 gap-2 py-5 ">
-          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href=""><FaBasketShopping className='h-5 w-5 text-white'/></a>
-          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href=""><FaUser className='h-5 w-5 text-white'/></a>
+          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.cart}><FaBasketShopping className='h-5 w-5 text-white'/></a>
+          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.login}><FaUser className='h-5 w-5 text-white'/></a>
           <button className={`h-10 tablet:w-auto w-10 bg-primary flex items-center justify-center rounded-lg`} onClick={handleMenuClick}><span className='flex px-4 items-center justify-center gap-4'><FaBars className='h-5 w-5 text-white'/><p className='text-white tablet:block hidden'>មីនុយ</p></span></button>
         </div>
         {openMenu && (
