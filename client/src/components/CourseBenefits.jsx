@@ -1,56 +1,90 @@
-import PlayIcon from "./icons/PlayIcon";
+import placeholderImage1 from "/Merged-Scheme-laptop-course-view.png"
+import placeholderImage2 from "/SN_Laptop_Front_1000.jpg";
+import Certificate_Template from "/Certificate_Template.jpg";
+import DesktopIcon from "./icons/DesktopIcon"
+import ClockIcon from "./icons/ClockIcon"
+import StarIcon from "./icons/StarIcon"
+import CertificateIcon from "./icons/CertificateIcon"
 
-const benefits = [
-  {
-    title: "កសាងសម្ថភាពជំនាញការវិភាគទិន្នន័យ​​​ និងការស្រាវជ្រាវ",
-    description:
-      "វគ្គបណ្តុះបណ្តាលរបស់យើង​ ត្រូវបានរៀបចំឡើង ដោយគ្រូជំនាញជាច្រើនរូបដូច្នេះ ជំនាញដែលទទួលបាន​ នឹងជាតម្រូវការខ្ពស់របស់ស្ថាប័នការងារផ្សេងៗ។",
-  },
-  {
-    title: "ទទួលបានចំណេះជំនាញលឿន ទាន់ចិត្ត",
-    description:
-      "មាតិកាបង្រៀន មានលក្ខណះប្រមូលផ្តុំចំណុចសំខាន់ៗ ដែលអាចឲ្យអ្នកសិក្សាទទួលបាននូវចំណេះជំនាញឆាប់រហ័ស និងមានប្រសិទ្ធភាព។",
-  },
-  {
-    title: "កាលវិភាគសិក្សា ស្ថិតលើដៃរបស់លោកអ្នក",
-    description:
-      "លោកអ្នកនឹងទទួលបាននូវសិទ្ធិក្នុងការចូលរៀនក្នុងគេហទំព័រយើង អស់មួយជីវិត ដូច្នេះ អ្នកអាចកំណត់ពេលវេលា និងទីកន្លែងសិក្សា ដោយខ្លួនឯងបាន។",
-  },
-];
+const COURSE_BENEFITS = {
+  top: [
+    {
+      title: "១០០% តាមអនឡាញ", 
+      description: "មាតិកាបង្រៀនដែលគួរឱ្យចាប់អារម្មណ៍ និងមានគុណភាពខ្ពស់។", 
+      icon: DesktopIcon,
+    },
+    {
+      title: "១០០% សិក្សាតាមចិត្តអ្នក",
+      description: "ចាប់ផ្តើមភ្លាមៗ៖ សិក្សាពេលណា កន្លែងណា និងល្បឿនបែបណាក៏បាន។",
+      icon: ClockIcon,
+    },
+  ],
+  topImage: placeholderImage1,
+      
+  bottom: [
+    {
+      title: "រៀនជំនាញថ្មី",
+      description: "ជាមួយវគ្គសិក្សាខ្លីៗ អ្នកនឹងរៀនជំនាញថ្មីបានយ៉ាងលឿនរហ័ស។",
+      icon: StarIcon,
+    },
+    {
+      title: "ទទួលវិញ្ញាបនបត្រ",
+      description: "ទាញយកវិញ្ញាបនបត្រផ្ទាល់ខ្លួនរបស់អ្នកបន្ទាប់ពីបញ្ចប់វគ្គសិក្សា។",
+      icon: CertificateIcon,
+    }
+  ],
+  bottomImage: placeholderImage2
+}
 
 const CourseBenefits = () => {
-  return (
-    <section className="px-2 py-10 w-full bg-[#F2F2F2]">
-      <div className="flex flex-col tablet:flex-row gap-8 mx-auto px-4 max-w-[1320px]">
-        <div className="flex justify-center items-center flex-1">
-          <div className="flex justify-center items-center aspect-[960/584] w-full max-w-[495px] bg-slate-500">
-            <button
-              className="flex items-center justify-center aspect-[75/75] min-h-[75px] border-2 
-                      border-white rounded-full bg-transparent hover:border-transparent 
-                      hover:bg-primary transition-colors duration-300 cursor-pointer"
-            >
-              <PlayIcon size={50} color={"#FFFFFF"} />
-            </button>
-          </div>
-        </div>
 
-        <div className="flex flex-col justify-between gap-6 flex-1">
-          {benefits.map((benefit, index) => (
-            <div key={index} className="flex gap-4">
-              <div
-                className="min-w-[84px] h-[84px] border-2 border-primary rounded-full 
-                          hover:bg-primary transition-colors duration-300"
-              />
-              <div>
-                <h2 className="text-xl font-bold">{benefit.title}</h2>
-                <p className="mt-0.5">{benefit.description}</p>
+  return(
+    <section className="my-48 mx-auto px-4 max-w-[1112px] w-full">
+			<div className="tablet:grid tablet:grid-cols-3 laptop:gap-2 gap-[14px] w-full h-full">
+				<div className="col-span-1 flex flex-col justify-center gap-6 px-4 py-10">
+          {COURSE_BENEFITS.top.map((benefit) => (
+            <div className="flex flex-col items-center gap-6 py-1 w-full">
+              <benefit.icon size={64} />
+              <div className="flex flex-col items-center gap-2">						
+                <h1 className="text-center font-semibold text-2xl">{benefit.title}</h1>
+                <span className="text-center font-normal text-base">{benefit.description}</span>
               </div>
             </div>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+				</div>
+				
+  			<div className="col-span-2 p-4">
+					<img 
+						className="aspect-[1.37] max-w-[690px] w-full"
+						src={COURSE_BENEFITS.topImage} 
+						alt="" 
+					/>
+				</div>
+			</div>
 
-export default CourseBenefits;
+      <div className="tablet:grid tablet:grid-cols-3 mt-4 w-full h-full">
+				<div className="col-span-1 laptop:order-2 flex flex-col justify-center gap-6 px-4 py-10">
+					{COURSE_BENEFITS.bottom.map((benefit) => (
+            <div className="flex flex-col items-center gap-6 py-1 w-full">
+              <benefit.icon size={64} />
+              <div className="flex flex-col items-center gap-2">						
+                <h1 className="text-center font-semibold text-2xl">{benefit.title}</h1>
+						    <span className="text-center font-normal text-base">{benefit.description}</span>
+              </div>
+            </div>
+          ))}
+				</div>
+				
+  			<div className="col-span-2 p-4">
+					<img 
+						className="aspect-[1.37] max-w-[690px] w-full"
+						src={COURSE_BENEFITS.bottomImage} 
+						alt="" 
+					/>
+				</div>
+			</div>
+    </section>
+  )
+}
+
+export default CourseBenefits

@@ -32,6 +32,7 @@ const Feedback = () => {
 
       <div className="mt-5">
         <button className="bg-primary text-white font-semibold px-6 py-3  hover:bg-primary-hover rounded-full transition cursor-pointer ">
+        <button className="bg-primary text-white font-semibold px-6 py-3  hover:bg-primary-hover rounded-full transition cursor-pointer ">
           ចូលរៀនឥឡូវនេះ
         </button>
       </div>
