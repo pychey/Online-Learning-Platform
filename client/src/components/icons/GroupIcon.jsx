@@ -2,14 +2,14 @@ const GroupIcon = ({ size = '24', color = 'currentColor', style = {} }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
     >
       <circle cx="12" cy="9" r="4" fill="#001bfc" />
       <circle cx="17" cy="9" r="3" fill="#001bfc" />
       <circle cx="7" cy="9" r="3" fill="#001bfc" />
-      <path 
+      <path
         fill="#001bfc"
         fill-rule="evenodd"
         d="M17.569 18h2.326c.592 0 1.045-.51.902-1.084C20.428 15.446 19.448 13 17 13c-.886 0-1.58.32-2.122.8c1.508.977 2.287 2.69 2.69 4.2m-8.446-4.2A3.1 3.1 0 0 0 7 13c-2.448 0-3.428 2.446-3.797 3.916c-.143.574.31 1.084.902 1.084h2.327c.403-1.51 1.182-3.223 2.69-4.2"

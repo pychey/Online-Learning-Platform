@@ -1,11 +1,10 @@
-import COURSE_MANAGEMENT_CONTENT from "../data/course_management_content.js";
 import { englishToKhmerNumber } from "../utils/englishToKhmerNumber.js";
 import CheckCorrect from "./icons/CheckCorrect.jsx";
 import Clock from "./icons/Clock.jsx";
 import RightArrow from "./icons/RightArrow.jsx";
 import StarRating from "./icons/StarRating.jsx";
 
-const CourseManagement = () => {
+const CourseManagement = ({ COURSE_MANAGEMENT_CONTENT }) => {
 
     return (
         <div className="flex flex-col items-center p-4">
@@ -24,7 +23,7 @@ const CourseManagement = () => {
                     <div className={'row-span-1 grid gap-6 grid-cols-2 tablet:grid-cols-4'}>
                         {content.courses.map((course, index) => (
                             <div key={index} className="relative flex flex-col border border-gray-300 text-xs laptop:text-[13px] w-full">
-                                <img src={course.thumbnail} alt={course.title} />
+                                <a href="/product/sample"><img src={course.thumbnail} alt={course.title} /></a>
                                 <div className="flex flex-col gap-2 p-2 laptop:p-4">
                                     <h2 className="text-base tablet:text-lg laptop:text-xl font-semibold">{index} {course.title}</h2>
                                     <StarRating rating={course.rating} className='flex text-sm laptop:text-base select-none' />
