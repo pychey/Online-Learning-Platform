@@ -68,7 +68,7 @@ bottomLink =[
 
   // Payment methods
   paymentMethods = [
-    { name: 'KHQR', logo: 'KHQR_Logo.png' }
+    { name: 'KHQR', logo: '/KHQR_Logo.png' }
   ],
 
   // Layout Configuration
