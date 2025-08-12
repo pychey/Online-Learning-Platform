@@ -7,7 +7,7 @@ const NavBar = () => {
   const page={
     home:"/",
     cart : "/cart",
-    login : "/",
+    login : "/my-account-settings",
   }
 
   const nav = [
@@ -159,4 +159,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default NavBar;

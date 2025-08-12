@@ -1,11 +1,16 @@
+import CourseListHeader from "../components/CourseListHeader"
+import CourseManagement from "../components/CourseManagement"
+
+import COURSE_LIST_CONTENT from "../data/courseList-content"
 
 const CourseListPage = () => {
 
   return(
-    <section className="mt-20 w-full bg-amber-300 ">
-      
-    </section>
+    <>
+      <CourseListHeader data={COURSE_LIST_CONTENT.HEADER}/>
+      <CourseManagement />
+    </>
   )
 }
 
-export default CourseListPage
+export default CourseListPage;
