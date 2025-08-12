@@ -6,7 +6,7 @@ const NavBar = () => {
 
   const page={
     image : "/",
-    login : "/",
+    login : "/my-account-settings",
   }
 
   const nav = [
