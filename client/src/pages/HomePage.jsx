@@ -14,8 +14,8 @@ function HomePage() {
       <NavBar />
       <CourseOverview data={COURSE_OVERVIEW_CONTENT}/>
       <CourseBenefits />
-      <CertificateOverview />
-      <Footer />
+      <CertificateOverview /> 
+       <Footer />
     </>
   )
 }
