@@ -9,6 +9,7 @@ import {
     Route,
 } from "react-router-dom";
 import Cart from "./pages/Cart";
+import InstituteOverview from "./components/InstituteOverview";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/courselist" element={<CourseListPage />} />
         <Route path="/cart"element={<Cart/>}/>
+        <Route path="/test" element={<InstituteOverview/>}/>
       </Routes>
 
       <Footer/>

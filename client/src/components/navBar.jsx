@@ -53,7 +53,7 @@ const NavBar = () => {
               <div className="text-gray-800 font-[600] hover:text-primary-color cursor-pointer py-2 px-1 select-none group-hover:text-gray-400">
                 <span className="inline-flex items-center gap-1">
                   <a href={n.link}>{n.title}</a>
-                  {n.submenu && <IoIosArrowDown />}
+                  {n.submenu && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z"/></svg>}
                 </span>
               </div>
 
@@ -82,12 +82,32 @@ const NavBar = () => {
           </div>
           ))}
           <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>ចូលរៀន/ចុះឈ្មោះ</a>
-          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.cart}><FaBasketShopping className='h-5 w-5 text-white'/></a>
+          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.cart}>
+              <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      className="h-8 w-8 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="0.9">
+              <path d="M6.616 21q-.691 0-1.153-.462T5 19.385V8.615q0-.69.463-1.152T6.616 7H8.5v-.5q0-1.458 1.021-2.479T12 3t2.479 1.021T15.5 6.5V7h1.885q.69 0 1.152.463T19 8.616v10.769q0 .69-.463 1.153T17.385 21zm0-1h10.769q.23 0 .423-.192t.192-.424V8.616q0-.231-.192-.424T17.384 8H15.5v2.5q0 .214-.143.357T15 11t-.357-.143t-.143-.357V8h-5v2.5q0 .214-.143.357T9 11t-.357-.143T8.5 10.5V8H6.616q-.231 0-.424.192T6 8.616v10.769q0 .23.192.423t.423.192M9.5 7h5v-.5q0-1.056-.722-1.778T12 4t-1.778.722T9.5 6.5zM6 20V8z" />
+            </svg>
+          </a>
         </div>
         <div className="flex laptop:hidden items-center justify-end tablet:gap-6 gap-2 py-5 ">
-          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.cart}><FaBasketShopping className='h-5 w-5 text-white'/></a>
-          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.login}><FaUser className='h-5 w-5 text-white'/></a>
-          <button className={`h-10 tablet:w-auto w-10 bg-primary flex items-center justify-center rounded-lg`} onClick={handleMenuClick}><span className='flex px-4 items-center justify-center gap-4'><FaBars className='h-5 w-5 text-white'/><p className='text-white tablet:block hidden'>មីនុយ</p></span></button>
+          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.cart}>
+            <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      className="h-8 w-8 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="0.9">
+              <path d="M6.616 21q-.691 0-1.153-.462T5 19.385V8.615q0-.69.463-1.152T6.616 7H8.5v-.5q0-1.458 1.021-2.479T12 3t2.479 1.021T15.5 6.5V7h1.885q.69 0 1.152.463T19 8.616v10.769q0 .69-.463 1.153T17.385 21zm0-1h10.769q.23 0 .423-.192t.192-.424V8.616q0-.231-.192-.424T17.384 8H15.5v2.5q0 .214-.143.357T15 11t-.357-.143t-.143-.357V8h-5v2.5q0 .214-.143.357T9 11t-.357-.143T8.5 10.5V8H6.616q-.231 0-.424.192T6 8.616v10.769q0 .23.192.423t.423.192M9.5 7h5v-.5q0-1.056-.722-1.778T12 4t-1.778.722T9.5 6.5zM6 20V8z" />
+            </svg>
+          </a>
+          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.login}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className='h-8 w-8 text-white'><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4" /></svg></a>
+          <button className={`h-10 tablet:w-auto w-10 bg-primary flex items-center justify-center rounded-lg`} onClick={handleMenuClick}><span className='flex px-4 items-center justify-center gap-4'><svg xmlns="http://www.w3.org/2000/svg" className='h-7 w-7 text-white' viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"/></svg><p className='text-white tablet:block hidden'>មីនុយ</p></span></button>
         </div>
         {openMenu && (
           <div className="fixed inset-0 bg-white/40 backdrop-blur-[2px] z-40" onClick={handleMenuClick}></div>
@@ -111,7 +131,7 @@ const NavBar = () => {
                     onClick={() => toggleSubmenu(index)}
                   >
                     {n.submenu && (
-                      <IoIosArrowDown className={`transition-transform duration-300 text-primary ${activeSubmenuIndex === index ? 'rotate-180' : ''}`} />
+                      <span className={` text-primary `} > <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className={`transition-transform duration-300 ${activeSubmenuIndex === index ? 'rotate-180' : ''}`}><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z"/></svg></span>
                     )}
                   </button>
 
