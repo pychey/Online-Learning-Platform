@@ -1,6 +1,4 @@
 import {useState} from 'react'
-import { FaBasketShopping,FaUser,FaBars } from "react-icons/fa6";
-import { IoIosArrowDown } from "react-icons/io";
 
 const NavBar = () => {
 
