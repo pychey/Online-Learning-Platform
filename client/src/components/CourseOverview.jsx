@@ -41,7 +41,7 @@ const CourseOverview = ({ data }) => {
           {data.courses.map((course, index) => (
             <SwiperSlide key={index}>
               <div className="flex flex-col border border-gray-300 text-xs laptop:text-[13px] w-full">
-                <img src={course.thumbnail} alt={course.title} />
+                <a href='/product/sample'><img src={course.thumbnail} alt={course.title} /></a>
                 <div className="flex flex-col gap-2 p-2">
                   <h2 className='font-bold'>{index} {course.title}</h2>
                   <h4>| <span className="ml-1 tablet:ml-3">{course.benefit}</span></h4>

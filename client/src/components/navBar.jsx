@@ -18,10 +18,10 @@ const NavBar = () => {
         { title: "អត់3", link: "/" }
       ]
     },
-    { title: "ស្ថាប័ន", link: "/" ,
+    { title: "ស្ថាប័ន", link: "/institute" ,
       submenu: [
-        { title: "អត់4", link: "/" },
-        { title: "អត់5", link: "/" },
+        { title: "អំពីយើង", link: "/institute" },
+        { title: "បញ្ជាក់សញ្ញាបត្រ", link: "/verify" },
         { title: "អត់6", link: "/" }
       ]
     },
