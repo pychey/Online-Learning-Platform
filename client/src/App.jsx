@@ -1,4 +1,5 @@
 import HomePage from "./pages/HomePage";
+import Course from "./pages/Course";
 import CourseListPage from "./pages/CourseListPage";
 import NavBar from "./components/navBar";
 import Footer from "./components/Footer";

@@ -42,7 +42,7 @@ const Cart = () => {
             </a>
         </div>
         <div className="flex justify-center items-center pt-8">កន្ត្រករបស់អ្នកគឺទទេរ</div>
-        <div className="flex justify-center items-center  gap-4 tablet:gap-10 laptop:gap-60  tablet:text-xl pt-20">
+        <div className="flex justify-center items-center  gap-4 tablet:gap-10 laptop:gap-60  tablet:text-xl pt-20 px-2">
           <a href={nav[3].url} className='flex justify-center items-center border-2 py-2  w-60 text-primary border-primary hover:text-white hover:bg-primary transition-colors duration-300 ease-in-out '><MdKeyboardArrowLeft/> {nav[3].name}</a>
           <a href={nav[4].url} className='flex justify-center items-center border-2 py-2 w-60 text-white bg-primary hover:bg-purple-950 transition-colors duration-300 ease-in-out '> {nav[4].name} <MdKeyboardArrowRight/></a>
         </div>
