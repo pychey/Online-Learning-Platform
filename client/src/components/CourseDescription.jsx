@@ -109,7 +109,7 @@ const CourseCard = ({
       </div>
 
       <div className="flex items-start gap-3">
-        <ClockIcon size={20}  />
+        <ClockIcon size={20} color="#001bfc"  />
         <div>
           <span className="font-semibold text-gray-900">រយៈពេលសិក្សា: </span>
           <span className="text-gray-700">{courseDetails.duration}</span>

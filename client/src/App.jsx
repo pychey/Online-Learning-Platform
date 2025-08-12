@@ -1,6 +1,7 @@
 import HomePage from "./pages/HomePage";
-import Course from "./pages/Course";
 import CourseListPage from "./pages/CourseListPage";
+import CourseDetailPage from "./pages/CourseDetailPage";
+import VerifyPage from "./pages/VerifyPage";
 import NavBar from "./components/navBar";
 import Footer from "./components/Footer";
 
@@ -20,7 +21,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/courselist" element={<CourseListPage />} />
+        <Route path="/product/:id" element={<CourseDetailPage />} />
         <Route path="/cart"element={<Cart/>}/>
+        <Route path="/verify" element={<VerifyPage />} />
+        
       </Routes>
 
       <Footer/>
