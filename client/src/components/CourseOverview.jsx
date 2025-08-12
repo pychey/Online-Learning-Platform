@@ -8,15 +8,15 @@ import 'swiper/css/grid';
 const CourseOverview = ({ data }) => {
 
   return (
-    <div className="flex flex-col items-center gap-5 py-10 bg-white">
+    <div className="flex flex-col items-center gap-5 py-10 bg-white mt-20">
       <div className='flex flex-col items-center gap-5 text-xs tablet:text-sm laptop:text-lg px-10 tablet:px-20 text-center'>
-        <h1>{data.title}</h1>
-        <h2>{data.description}</h2>
+        <h1 className='font-bold text-base tablet:text-xl laptop:text-2xl'>{data.title}</h1>
+        <h2 className='font-normal tracking-[0.3px]'>{data.description}</h2>
       </div>
       <div className="w-full px-10 tablet:px-20 mt-5">
         <Swiper
-          modules={[Pagination, Navigation, Autoplay, Grid]}
-          spaceBetween={40}
+          modules={[Pagination, Navigation, Autoplay, Grid]}  
+          spaceBetween={30}
           loop={true}
           breakpoints={{
             0: {
@@ -40,10 +40,10 @@ const CourseOverview = ({ data }) => {
         >
           {data.courses.map((course, index) => (
             <SwiperSlide key={index}>
-              <div className="flex flex-col outline text-xs laptop:text-[13px] w-full">
+              <div className="flex flex-col border border-gray-300 text-xs laptop:text-[13px] w-full">
                 <img src={course.thumbnail} alt={course.title} />
                 <div className="flex flex-col gap-2 p-2">
-                  <h2>{index} {course.title}</h2>
+                  <h2 className='font-bold'>{index} {course.title}</h2>
                   <h4>| <span className="ml-1 tablet:ml-3">{course.benefit}</span></h4>
                   <h4>| <span className="ml-1 tablet:ml-3">រៀនរយៈពេល {course.duration} ម៉ោង</span></h4>
                   <h4>| <span className="ml-1 tablet:ml-3">អនឡាញ {course.onlinePercent}</span></h4>

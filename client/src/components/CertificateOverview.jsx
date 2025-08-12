@@ -20,7 +20,7 @@ const benefits = [
 
 const CertificateOverview = () => {
   return (
-    <section className="px-2 py-10 mt-10 mb-40 w-full bg-[#F2F2F2]">
+    <section className="px-2 py-10 mb-40 w-full bg-[#F2F2F2]">
       <div className=" flex tablet:flex-row flex-col gap-8 mx-auto px-4 max-w-[1320px]">
         <div className="flex flex-1 items-center justify-center">
           <img
