@@ -1,5 +1,5 @@
 
-const ClockIcon = ({ size = "24", color = "currentColor" }) => {
+const ClockIcon = ({ size = "24", color = "currentColor", className }) => {
   
   return(
     <svg 
@@ -7,6 +7,7 @@ const ClockIcon = ({ size = "24", color = "currentColor" }) => {
       width={size}
       height={size}
       viewBox="0 0 16 16"
+      className={className}
     >
       <path 
         fill={color}

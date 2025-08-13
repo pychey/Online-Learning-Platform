@@ -1,13 +1,14 @@
-const LevelIcon = ( ) => {
+const LevelIcon = ({ size = "24", color = "currentColor", className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 32 32"
+      className={className}
     >
       <path
-        fill="#001bfc"
+        fill={color}
         d="M30 30h-8V4h8zm-6-2h4V6h-4zm-4 2h-8V12h8zm-6-2h4V14h-4zm-4 2H2V18h8zm-6-2h4v-8H4z"
       />
     </svg>
