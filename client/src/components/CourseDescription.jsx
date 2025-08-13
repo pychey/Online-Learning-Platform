@@ -106,6 +106,8 @@ const CourseDescription = ({ data }) => {
           </div>
         </div>
       </div>
+
+      <hr className='col-span-full h-[1px] border-none bg-gray-300 mt-12 w-[90%] mx-auto'></hr>
     </div>
   );
 };
