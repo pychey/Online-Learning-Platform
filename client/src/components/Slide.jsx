@@ -13,15 +13,15 @@ const Slide = () => {
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 548);
     checkMobile();
-
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+
   const mobileBackgroundImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Zgt6APVNjNw3eMGwz7cIyUmgGefsi9ZclQ&s"; 
 
   return (
-   <div className="w-full relative text-white  ">
+   <div className="w-full relative text-white mt-20">
         {isMobile ? (
           <div
             className="w-full h-[390px] xs:h-[410px] sm:h-[340px] md:[390px]   bg-center bg-cover relative flex flex-col justify-center items-center text-center px-4 "
