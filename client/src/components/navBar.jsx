@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {React,useState} from 'react'
 
 const NavBar = () => {
 
@@ -152,8 +152,8 @@ const NavBar = () => {
               <a href={page.login} className='bg-primary text-white py-2 px-2 '>ចូលរៀន/ចុះឈ្មោះ</a>
             </div>
         </div>
-    </div>
-  </nav>
+      </div>
+    </nav>
   )
 }
 
