@@ -2,12 +2,12 @@ import React from "react";
 
 const Connnectedtocommunity = () => {
   return (
-    <section className="py-2 h-auto lg:h-[460px] flex justify-center items-center">
+    <section className="py-2 h-auto lg:h-[460px] flex justify-center items-center ">
       <div className="max-w-6xl mx-auto grid [@media(min-width:548px)]:grid-cols-2 gap-6 sm:gap-8 items-start lg:item-center  px-4 sm:px-10">
         
         {/* Left Image */}
-        <div className="bg-pink-500 h-auto w-full">
-          <img decoding="async" width="1000" height="655"
+        <div className=" h-auto w-full">
+          <img decoding="async" width="100" height="655"
             src="https://www.ibm-institute.com/wp-content/uploads/2022/05/team.jpg"
             alt="Community"
             className="shadow-md object-fit-contain h-full w-full"
