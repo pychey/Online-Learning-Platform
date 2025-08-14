@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CourseListPage from "./pages/CourseListPage";
@@ -8,7 +9,7 @@ import Footer from "./components/Footer";
 import RegisterLoginPage from "./pages/RegisterLoginPage";
 import Cart from "./pages/Cart";
 import Institute from "./pages/Institute";
-import React from "react";
+import ProgramDetail from "./pages/ProgramDetail";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/courselist" element={<CourseListPage />} />
         <Route path="/product/:id" element={<CourseDetailPage />} />
+        <Route path="/program/:id" element={<ProgramDetail />} />
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/institute" element={<Institute />} />
         <Route path="/verify" element={<VerifyPage />} />
