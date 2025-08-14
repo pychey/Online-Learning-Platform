@@ -5,6 +5,7 @@ import VerifyPage from "./pages/VerifyPage";
 import NavBar from "./components/navBar";
 import Footer from "./components/Footer";
 import RegisterLoginPage from "./pages/RegisterLoginPage";
+import Help from "./pages/Help"
 
 import {
     BrowserRouter,
@@ -27,6 +28,8 @@ function App() {
         <Route path="/verify" element={<VerifyPage />} />
         
         <Route path="/my-account-settings" element={<RegisterLoginPage/>} />
+        <Route path="/help" element={<Help/>}/>
+        <Route path="/test" element={<InstituteOverview/>}/>
       </Routes>
 
       <Footer/>

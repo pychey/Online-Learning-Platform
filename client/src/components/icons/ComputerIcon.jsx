@@ -1,10 +1,11 @@
-const ComputerIcon = () => {
+const ComputerIcon = ({className = {}, size = "24"}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
+      className={className}
     >
       <path
         fill="#2c15ff"
