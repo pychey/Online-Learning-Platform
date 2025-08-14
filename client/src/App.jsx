@@ -10,7 +10,9 @@ import Help from "./pages/Help"
 
 import Cart from "./pages/Cart";
 import Institute from "./pages/Institute";
-import React from "react";
+import LostPasswordPage from "./pages/LostPasswordPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
 
@@ -25,9 +27,10 @@ function App() {
         <Route path="/institute" element={<Institute />} />
         <Route path="/verify" element={<VerifyPage />} />
         <Route path="/my-account-settings" element={<RegisterLoginPage/>} />
-        <Route path="/help" element={<Help/>}/>
+        <Route path="/lost-password"element={<LostPasswordPage />} />
+        <Route path="/login"element={<LoginPage />} />
+        <Route path="/register"element={<RegisterPage />} />
       </Routes>
-
       <Footer/>
     </BrowserRouter>
   )
