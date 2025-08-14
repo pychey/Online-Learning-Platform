@@ -12,7 +12,7 @@ const CourseRecommend = () => {
             <div className={'grid gap-10 grid-cols-1 laptop:grid-cols-3 max-w-[500px] laptop:max-w-[1000px] w-full'}>
                 {COURSES_RECOMMEND.map((course, index) => (
                     <div key={index} className="relative flex flex-col border border-gray-300 text-base w-full">
-                        <img src={course.thumbnail} alt={course.title} />
+                        <a href='/product/sample'><img src={course.thumbnail} alt={course.title} /></a>
                         <div className="flex flex-col gap-2 p-4">
                             <h2 className="text-xl font-semibold">{index} {course.title}</h2>
                             <StarRating ratingNumber={false} rating={course.rating} className='flex text-lg select-none' />

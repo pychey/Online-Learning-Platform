@@ -8,7 +8,7 @@ import 'swiper/css/grid';
 const CourseOverview = ({ data }) => {
 
   return (
-    <div className="flex flex-col items-center gap-5 py-10 bg-white mt-20">
+    <div className="flex flex-col items-center gap-5 py-10 bg-white mt-4">
       <div className='flex flex-col items-center gap-5 text-xs tablet:text-sm laptop:text-lg px-10 tablet:px-20 text-center'>
         <h1 className='font-bold text-base tablet:text-xl laptop:text-2xl'>{data.title}</h1>
         <h2 className='font-normal tracking-[0.3px]'>{data.description}</h2>
@@ -41,7 +41,7 @@ const CourseOverview = ({ data }) => {
           {data.courses.map((course, index) => (
             <SwiperSlide key={index}>
               <div className="flex flex-col border border-gray-300 text-xs laptop:text-[13px] w-full">
-                <img src={course.thumbnail} alt={course.title} />
+                <a href='/product/sample'><img src={course.thumbnail} alt={course.title} /></a>
                 <div className="flex flex-col gap-2 p-2">
                   <h2 className='font-bold'>{index} {course.title}</h2>
                   <h4>| <span className="ml-1 tablet:ml-3">{course.benefit}</span></h4>
