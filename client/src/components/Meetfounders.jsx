@@ -53,14 +53,14 @@ export default function MeetFounders() {
                   {f.name}, {f.role} |{" "}
                   <a
                     href={f.cvLink}
-                    className="text-blue-500 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     Full CV
                   </a>{" "}
                   |{" "}
                   <a
                     href={f.linkedin}
-                    className="text-blue-500 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     LinkedIn
                   </a>
