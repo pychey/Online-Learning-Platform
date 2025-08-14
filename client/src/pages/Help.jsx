@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import ComputerIcon from '../components/icons/ComputerIcon'
 import FAQ from '../components/FAQ'
 

@@ -1,4 +1,4 @@
-const ComputerIcon = ({className = {}, size = "24"}) => {
+const ComputerIcon = ({className = {}, size = "24",color = "#652d91"}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
