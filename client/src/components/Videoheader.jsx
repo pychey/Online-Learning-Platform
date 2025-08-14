@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PlayIcon from "./icons/PlayIcon";
 
-const Videoheader = () => {
+const VideoHeader = () => {
   const [showVideo, setShowVideo] = useState(false);
 
   return (
     <>
-      <div className="relative w-full h-[381px] bg-gray-300 flex flex-col items-center justify-center overflow-hidden pb-[30px]">
+      <div className="relative w-full h-[381px] bg-gray-300 flex flex-col items-center justify-center overflow-hidden pb-[30px] mt-20">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -60,4 +60,4 @@ const Videoheader = () => {
   );
 };
 
-export default Videoheader;
+export default VideoHeader;
