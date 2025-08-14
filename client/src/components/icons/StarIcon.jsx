@@ -9,7 +9,7 @@ const StarIcon = ({ size = 24, color = "currentColor", className }) => {
       className={className}
     >
       <path 
-        fill="none" 
+        fill={color} 
         stroke={color} 
         strokeLinejoin="round" 
         strokeWidth="28" 

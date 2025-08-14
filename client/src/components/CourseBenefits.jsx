@@ -42,8 +42,8 @@ const CourseBenefits = () => {
     <section className="my-48 mx-auto px-4 max-w-[1112px] w-full">
 			<div className="tablet:grid tablet:grid-cols-3 laptop:gap-2 gap-[14px] w-full h-full">
 				<div className="col-span-1 flex flex-col justify-center gap-6 px-4 py-10">
-          {COURSE_BENEFITS.top.map((benefit) => (
-            <div className="flex flex-col items-center gap-6 py-1 w-full">
+          {COURSE_BENEFITS.top.map((benefit, index) => (
+            <div key={index} className="flex flex-col items-center gap-6 py-1 w-full">
               <benefit.icon size={64} />
               <div className="flex flex-col items-center gap-2">						
                 <h1 className="text-center font-semibold text-2xl">{benefit.title}</h1>
@@ -64,8 +64,8 @@ const CourseBenefits = () => {
 
       <div className="tablet:grid tablet:grid-cols-3 mt-4 w-full h-full">
 				<div className="col-span-1 laptop:order-2 flex flex-col justify-center gap-6 px-4 py-10">
-					{COURSE_BENEFITS.bottom.map((benefit) => (
-            <div className="flex flex-col items-center gap-6 py-1 w-full">
+					{COURSE_BENEFITS.bottom.map((benefit,index) => (
+            <div key={index} className="flex flex-col items-center gap-6 py-1 w-full">
               <benefit.icon size={64} />
               <div className="flex flex-col items-center gap-2">						
                 <h1 className="text-center font-semibold text-2xl">{benefit.title}</h1>

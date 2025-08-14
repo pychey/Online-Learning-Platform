@@ -6,6 +6,8 @@ import VerifyPage from "./pages/VerifyPage";
 import NavBar from "./components/navBar";
 import Footer from "./components/Footer";
 import RegisterLoginPage from "./pages/RegisterLoginPage";
+import Help from "./pages/Help"
+
 import Cart from "./pages/Cart";
 import Institute from "./pages/Institute";
 import LostPasswordPage from "./pages/LostPasswordPage";
