@@ -1,8 +1,13 @@
 @import "tailwindcss";
+
+body {
+  font-family: "Kantumruy Pro", sans-serif;
+}
+
 @theme {
     --breakpoint-tablet: 548px;
     --breakpoint-laptop: 849px;
 
     --color-primary: #652d91;
-    --color-primary-hover: #7d41aa;
+    --color-primary-hover: #4e2170;
 }
