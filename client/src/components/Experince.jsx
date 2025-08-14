@@ -8,13 +8,13 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 
-export default function App() {
+const Experience = () => {
   const swiperRef = useRef(null);
 
   return (
     <div className="w-full min-h-[490px] px-6 flex flex-col items-center justify-center mt-8 ">
       <h1 className='font-semibold text-lg md:text-xl lg:text-4xl leading-[2rem] text-center'>
-        បទពិសេាធន៍ដែលបានរៀនជាមួយ <span className='text-purple-600'>អាសេត អាខាដាមី</span>
+        បទពិសោធន៍ដែលបានរៀនជាមួយ <span className='text-purple-600'>អាសេត អាខាដាមី</span>
       </h1>
 
       <Swiper
@@ -152,3 +152,5 @@ export default function App() {
     </div>
   );
 }
+
+export default Experience;
