@@ -6,6 +6,8 @@ import VerifyPage from "./pages/VerifyPage";
 import NavBar from "./components/navBar";
 import Footer from "./components/Footer";
 import RegisterLoginPage from "./pages/RegisterLoginPage";
+import Help from "./pages/Help"
+
 import Cart from "./pages/Cart";
 import Institute from "./pages/Institute";
 import React from "react";
@@ -23,6 +25,7 @@ function App() {
         <Route path="/institute" element={<Institute />} />
         <Route path="/verify" element={<VerifyPage />} />
         <Route path="/my-account-settings" element={<RegisterLoginPage/>} />
+        <Route path="/help" element={<Help/>}/>
       </Routes>
 
       <Footer/>

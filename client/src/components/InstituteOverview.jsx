@@ -1,8 +1,6 @@
-import React from 'react'
-
 const InstituteOverview = () => {
   return (
-    <section className='mt-20 w-full flex items-start justify-center flex-col laptop:flex-row py-10 px-5 sm:px-10 xl:px-60 gap-10'>
+    <section className='mt-20 w-full flex items-center justify-center flex-col laptop:flex-row py-10 px-5 sm:px-10 xl:px-60 gap-10'>
         <div className="h-[50%] w-full laptop:h-[50%] laptop:w-[50%] shrink-0"><img src="InstituteImage.png" alt="Institue Image" className='h-full w-full object-cover'/></div>
         <div className=" flex flex-col  gap-10">
             <h1 className='font-semibold text-xl lg:text-3xl'>វិទ្យាស្ថានដែលគួរឱ្យទុកចិត្តនៃការអប់រំបន្ត</h1>
