@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { React, useState } from "react";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 
 const RegisterLogin = () => {
@@ -87,12 +87,15 @@ const RegisterLogin = () => {
               className="bg-[#0088cc] text-white font-semibold px-6 py-3 rounded-sm hover:bg-[#005d87] transition w-28 cursor-pointer"
             >
               ចូល
-            </button>
+            </button><br/>
 
             {/* Forgot Password */}
-            <p className="text-sm text-[#0073aa] hover:underline cursor-pointer">
+            <a 
+              href="/lost-password"
+              className="text-sm text-[#0073aa] hover:underline cursor-pointer"
+            >
               ភ្លេចពាក្យសម្ងាត់របស់អ្នក?
-            </p>
+            </a>
           </form>
         </div>
 
