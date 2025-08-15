@@ -23,13 +23,13 @@ const founders = [
 
 export default function MeetFounders() {
   return (
-    <section className="bg-[#f2f2f2] min-h-[358px]  w-full sm:w-193 md:w-full  ">
-      <div className="max-w-6xl mx-auto text-center ">
+    <section className="bg-[#f2f2f2] min-h-[358px]  w-full   ">
+      <div className="max-w-1xl mx-auto text-center ">
         {/* Title */}
         <h2 className="text-2xl font-semibold pt-12">Meet the founders</h2>
 
         {/* Cards */}
-        <div className="flex flex-wrap justify-center  gap-8 mt-13 sm:w-[750px] md:w-full md:flex-nowrap   ">
+        <div className="flex flex-wrap justify-center  gap-8 mt-13 sm:w-full md:w-full md:flex-nowrap ml-2 mr-2 md:ml-0 md:mr-0   ">
           {founders.map((f, idx) => (
             <div
               key={idx}
@@ -53,14 +53,14 @@ export default function MeetFounders() {
                   {f.name}, {f.role} |{" "}
                   <a
                     href={f.cvLink}
-                    className="text-blue-500 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     Full CV
                   </a>{" "}
                   |{" "}
                   <a
                     href={f.linkedin}
-                    className="text-blue-500 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     LinkedIn
                   </a>

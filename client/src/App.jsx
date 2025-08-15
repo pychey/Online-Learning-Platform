@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CourseListPage from "./pages/CourseListPage";
@@ -10,7 +11,10 @@ import Help from "./pages/Help"
 
 import Cart from "./pages/Cart";
 import Institute from "./pages/Institute";
-import React from "react";
+import ProgramDetail from "./pages/ProgramDetail";
+import LostPasswordPage from "./pages/LostPasswordPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
 
@@ -21,13 +25,16 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/courselist" element={<CourseListPage />} />
         <Route path="/product/:id" element={<CourseDetailPage />} />
+        <Route path="/program/:id" element={<ProgramDetail />} />
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/institute" element={<Institute />} />
         <Route path="/verify" element={<VerifyPage />} />
         <Route path="/my-account-settings" element={<RegisterLoginPage/>} />
+        <Route path="/lost-password"element={<LostPasswordPage />} />
+        <Route path="/login"element={<LoginPage />} />
+        <Route path="/register"element={<RegisterPage />} />
         <Route path="/help" element={<Help/>}/>
       </Routes>
-
       <Footer/>
     </BrowserRouter>
   )
