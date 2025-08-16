@@ -19,9 +19,9 @@ const CourseListHeader = ({ data }) => {
 
           <div className="tablet:w-[420px] w-full flex flex-col">
             <button
-              onClick={() => setIsActive((prev) => !prev)}
+              onClick={() => setIsActive(prev => !prev)}
               className={`flex items-center px-1.5 w-full h-14 border border-b-0 border-[#E2E2E2] 
-                        ${isActive ? 'bg-[rgba(255,255,255,0.03)] text-purple-950 font-bold' : "bg-white"}  
+                        ${isActive ? 'bg-[rgba(255,255,255,0.03)] text-purple-950 font-semibold' : "bg-white"}  
                         transition-transform duration-300 cursor-pointer`}
             >
               <ArrowUpIcon
@@ -46,7 +46,7 @@ const CourseListHeader = ({ data }) => {
               <div
                 key={category.id}
                 className={`flex flex-col items-center justify-center gap-3 text-center max-w-[130px] w-full 
-                          h-[100px] text-sm ${selected === category.id ? "font-bold" : "text-[#707070]"} 
+                          h-[100px] text-sm ${selected === category.id ? "font-semibold" : "text-[#707070]"} 
                           cursor-pointer transition-shadow duration-300
                           hover:[box-shadow:rgba(0,0,0,0.15)_0px_2.75px_5.5px_-3.75px,_rgba(0,0,0,0.200)_0px_2.5px_5.5px_0px]`}
               >

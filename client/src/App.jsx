@@ -15,6 +15,8 @@ import ProgramDetail from "./pages/ProgramDetail";
 import LostPasswordPage from "./pages/LostPasswordPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import MyCoursePage from "./pages/MyCoursePage";
+import MyCertificatePage from "./pages/MyCertificatePage";
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/institute" element={<Institute />} />
         <Route path="/verify" element={<VerifyPage />} />
+        <Route path="/my-courses" element={<MyCoursePage />} />
+        <Route path="/my-certificates" element={<MyCertificatePage />} />
         <Route path="/my-account-settings" element={<RegisterLoginPage/>} />
         <Route path="/lost-password"element={<LostPasswordPage />} />
         <Route path="/login"element={<LoginPage />} />

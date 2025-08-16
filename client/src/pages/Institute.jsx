@@ -2,6 +2,8 @@ import Connnectedtocommunity from "../components/Connnectedtocommunity";
 import Overview from "../components/Overview";
 import MeetFounders from "../components/Meetfounders";
 import VideoHeader from "../components/Videoheader";
+import FourPillars from "../components/FourPillars";
+import EducationForGood from "../components/EducationForGood";
 
 const Institute = () => {
 
@@ -41,10 +43,12 @@ const Institute = () => {
     <>
       <VideoHeader />
       <Overview item={InstituteOverview}/>
+      <FourPillars />
       <Overview item={education} />
       <Overview item={location} />
       <MeetFounders />
       <Connnectedtocommunity />
+      <EducationForGood />
     </>
   )
 }
