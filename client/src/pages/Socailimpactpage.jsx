@@ -10,8 +10,8 @@ import HeaderInsocialimpact from '../components/socailimpactpageComponent/Header
 const Socailimpactpage = () => {
   return (
     <>
-      <HeaderInsocialimpact/>
-      <Contentmap/>
+    <HeaderInsocialimpact/>
+    <Contentmap/>
      <LeabfrogToAfrica/>
      <Lutttokenya/>
      <ArtmeetsEducation/>
