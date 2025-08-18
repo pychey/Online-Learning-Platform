@@ -2,7 +2,7 @@ import React from "react";
 
 const certificates = [
   {
-    img: "https://www.ibm-institute.com/wp-content/uploads/2021/06/coursecertexample.png", // replace with real certificate image
+    img: "https://www.ibm-institute.com/wp-content/uploads/2021/06/coursecertexample.png", 
     title: "Course Certificates",
     description:
       "You will be able to download your personal course certificate for every course you complete.",
