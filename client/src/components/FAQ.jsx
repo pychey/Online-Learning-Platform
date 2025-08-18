@@ -20,7 +20,7 @@ const FAQ = ({ items }) => {
             <div className="p-4 text-lg border-b border-gray-300">
               {item.describition}
               {item.img &&
-                <div className="w-full h-[50%]">
+                <div className="w-full h-full">
                   <img className="w-full h-full object-contain"src={item.img.src} alt={item.img.alt} />
                 </div>
               }

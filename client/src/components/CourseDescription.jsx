@@ -81,7 +81,7 @@ const CourseDescription = ({ data }) => {
 
           <div className="flex flex-col laptop:flex-row items-center gap-6 mt-2">
             <img src='https://www.ibm-institute.com/wp-content/uploads/2019/05/career-150x150.png' alt='icon' className='w-[100px] laptop:w-[60px]'/>
-            <p>{data.programInfo.text}<a href="#" className="mx-1 text-primary underline">{data.programInfo.programName}</a>កម្មវិធីសិក្សា</p>
+            <p>{data.programInfo.text}<a href="/program/sample" className="mx-1 text-primary underline">{data.programInfo.programName}</a>កម្មវិធីសិក្សា</p>
           </div>
         </div>
       </div>
