@@ -50,15 +50,15 @@ const DashboardHeader = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full">
-      <nav className="mt-20 w-full bg-[#898989]">
-        <div className="flex items-center justify-center mx-auto w-full max-w-[1110px]">
-          <div className="max-w-2/5 laptop:px-8 px-6 py-4 m w-full tablet:block hidden">
+    <div className="w-full mt-20">
+      <nav className="w-full bg-[#898989]">
+        <div className="flex items-center justify-center tablet:justify-between gap-4 mx-auto w-full max-w-[1080px]">
+          <div className="w-[19px] laptop:px-8 px-6 py-4 tablet:block hidden">
             <UserIcon />
           </div>
 
-          <div className="flex flex-1 tablet:justify-end gap-2.5 laptop:gap-10 tablet:gap-7 px-4 py-4 
-                          laptop:px-8 w-full tablet:min-w-[480px] laptop:min-w-[540px] font-normal 
+          <div className="flex w-[500px] laptop:w-[600px] gap-2 laptop:gap-4 px-4 py-4 
+                          laptop:px-8 font-normal 
                           text-white tablet:font-medium text-sm tablet:text-base"
           >
             {NAV_ITEMS.map(({ title, mobileHidden, url, icon: Icon }, index) => (
@@ -76,12 +76,12 @@ const DashboardHeader = () => {
         </div>
       </nav>
 
-      <div className="mb-0.5 px-2.5 pt-4 tablet:pt-6 w-full border-b border-b-[#CCCCCC] bg-[#F5F5F5]">
-        <div className="flex justify-center mx-auto mb-4 w-full tablet:hidden">
+      <div className="mb-0.5 px-4 tablet:px-20 pt-6 w-full border-b border-b-[#CCCCCC] bg-[#F5F5F5]">
+        <div className="flex justify-center pb-4 tablet:hidden">
           <UserIcon color="#808080" />
         </div>
 
-        <div className="flex justify-center gap-8 tablet:gap-12 max-w-[1080px] w-full h-full tablet:mx-auto">
+        <div className="flex gap-8 laptop:gap-16 max-w-[800px] w-full h-full mx-auto">
           {TABS.map(({ title, url, icon: Icon }, index) => {
             const isActive = pathname === url;
             return (
@@ -90,7 +90,7 @@ const DashboardHeader = () => {
                 onClick={() => navigate(url)}
                 className={
                   `flex flex-col laptop:flex-row items-center justify-center gap-1 laptop:gap-1.5 
-                  px-2 py-4 w-full tablet:w-[240px] laptop:w-1/3 ${isActive ? "border-t-primary -mb-0.5" 
+                  px-2 py-4 w-full ${isActive ? "border-t-primary -mb-0.5" 
                   : "border-t-[#CBCBCB] hover:[box-shadow:rgba(0,0,0,0.16)_0px_3px_6px_-4px,_rgba(0,0,0,0.23)_0px_3px_6px_0px]"} 
                 bg-white border-t-4 rounded-t-sm hover:rounded-b-sm cursor-pointer transition-shadow duration-300`}
               >
