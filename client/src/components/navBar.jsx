@@ -22,7 +22,7 @@ const NavBar = () => {
       submenu: [
         { title: "អំពីយើង", link: "/institute" },
         { title: "បញ្ជាក់សញ្ញាបត្រ", link: "/verify" },
-        { title: "អត់6", link: "/" }
+        { title: "អត់6", link: "/Socailimpactpage" }
       ]
     },
   ];

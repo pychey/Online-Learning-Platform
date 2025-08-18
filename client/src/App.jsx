@@ -7,7 +7,7 @@ import NavBar from "./components/navBar";
 import Footer from "./components/Footer";
 import RegisterLoginPage from "./pages/RegisterLoginPage";
 import Help from "./pages/Help"
-
+import Socailimpactpage from "./pages/Socailimpactpage";
 import Cart from "./pages/Cart";
 import Institute from "./pages/Institute";
 import LostPasswordPage from "./pages/LostPasswordPage";
@@ -30,6 +30,7 @@ function App() {
         <Route path="/lost-password"element={<LostPasswordPage />} />
         <Route path="/login"element={<LoginPage />} />
         <Route path="/register"element={<RegisterPage />} />
+        <Route path="/socailimpactpage"element={<Socailimpactpage />} />
       </Routes>
       <Footer/>
     </BrowserRouter>

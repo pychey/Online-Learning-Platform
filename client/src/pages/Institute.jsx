@@ -10,6 +10,7 @@ const Institute = () => {
       <InstituteOverview />
       <MeetFounders />
       <Connnectedtocommunity />
+      
     </>
   )
 }
