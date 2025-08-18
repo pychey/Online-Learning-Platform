@@ -36,7 +36,7 @@ const CourseManagement = ({ COURSE_MANAGEMENT_CONTENT }) => {
                                         <h4>{course.duration} ម៉ោង</h4>
                                     </div>
                                 </div>
-                                <div className="absolute bottom-0 right-0 flex flex-col p-1 laptop:p-3">
+                                <div className="absolute bottom-0 right-0 flex flex-col p-1 items-end laptop:p-3">
                                     <h4 className="line-through text-gray-400">{course.originalPrice}</h4>
                                     <h2 className="font-medium text-lg">{course.discountedPrice}</h2>
                                 </div>

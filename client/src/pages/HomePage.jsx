@@ -7,6 +7,8 @@ import Partners from "../components/partners.jsx";
 import Slide from "../components/Slide.jsx";
 import Experience from "../components/Experince.jsx";
 
+import OtherProgramCertificate from "../components/OtherProgramCertificate.jsx";
+
 
 
 function HomePage() {

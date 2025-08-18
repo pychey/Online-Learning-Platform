@@ -131,14 +131,14 @@ bottomLink =[
                 </span>
               </div>
               {/* Divider */}
-              <hr className="mx-auto max-w-100 border-gray-400 mb-3" />
-              <p className="text-sm text-gray-200 leading-relaxed max-w-2xl">
+              <hr className="mx-auto w-full max-w-100 border-gray-400 mb-3" />
+              <p className="text-sm text-gray-200 leading-relaxed max-w-2xl text-wrap overflow-hidden">
                 {bottomInfo.right}
               </p>
-              <p className="text-sm text-gray-200 leading-relaxed max-w-2xl">
+              <p className="text-sm text-gray-200 leading-relaxed max-w-2xl text-wrap overflow-hidden">
                 {bottomInfo.name}
               </p>
-              <p className="text-sm text-gray-200 leading-relaxed max-w-4xl">
+              <p className="text-sm text-gray-200 leading-relaxed max-w-3xl text-wrap overflow-hidden">
                 {bottomInfo.description}
               </p>
             </div>
