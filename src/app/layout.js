@@ -3,7 +3,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "My App",
+  title: "Online Learning Platform",
   description: "This is a Next.js App Router project",
 };
 
