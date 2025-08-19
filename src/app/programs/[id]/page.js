@@ -1,6 +1,6 @@
-import ProgramOverview from "@/components/ProgramDetailPage/ProgramOverview"
-import ProgramCourses from "@/components/ProgramDetailPage/ProgramCourses"
-import KeyBenefits from "@/components/ProgramDetailPage/KeyBenefits"
+import ProgramOverview from "@/app/programs/[id]/_components/ProgramOverview"
+import ProgramCourses from "@/app/programs/[id]/_components/ProgramCourses"
+import KeyBenefits from "@/app/programs/[id]/_components/KeyBenefits"
 
 import PROGRAM_OVERVIEW from "@/data/program_overview"
 import PROGRAM_COURSES_CONTENT from "@/data/program_courses"

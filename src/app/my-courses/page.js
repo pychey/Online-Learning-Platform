@@ -1,5 +1,5 @@
-import DashboardHeader from "@/components/Dashboard/DashboardHeader"
-import MyCourses from "@/components/Dashboard/MyCourses"
+import DashboardHeader from "@/components/DashboardHeader"
+import MyCourses from "./_components/MyCourses"
 
 const MyCoursesPage = () => {
 

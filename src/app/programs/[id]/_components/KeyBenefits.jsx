@@ -1,4 +1,4 @@
-import MenuIcon from "../icons/MenuIcon"
+import MenuIcon from "../../../../components/icons/MenuIcon"
 
 const BENEFITS = [
   {

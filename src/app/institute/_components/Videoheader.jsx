@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import PlayIcon from '../icons/Playicon';
+import PlayIcon from '@/components/icons/Playicon';
 
 const VideoHeader = () => {
   const [showVideo, setShowVideo] = useState(false);

@@ -1,10 +1,10 @@
-import HeaderInsocialimpact from "@/components/SocialImpactPage/HeaderInsocialimpact"
-import Contentmap from "@/components/SocialImpactPage/Contentmap"
-import LeabfrogToAfrica from "@/components/SocialImpactPage/LeabfrogToAfrica"
-import Lutttokenya from "@/components/SocialImpactPage/Lutttokenya"
-import ArtmeetsEducation from "@/components/SocialImpactPage/ArtmeetsEducation"
-import ReadingElephantLaos from "@/components/SocialImpactPage/ReadingElephantLaos"
-import United24toUkraine from "@/components/SocialImpactPage/United24toUkraine"
+import HeaderInsocialimpact from "@/app/social-impact/_components/HeaderInsocialimpact"
+import Contentmap from "@/app/social-impact/_components/Contentmap"
+import LeabfrogToAfrica from "@/app/social-impact/_components/LeabfrogToAfrica"
+import Lutttokenya from "@/app/social-impact/_components/Lutttokenya"
+import ArtmeetsEducation from "@/app/social-impact/_components/ArtmeetsEducation"
+import ReadingElephantLaos from "@/app/social-impact/_components/ReadingElephantLaos"
+import United24toUkraine from "@/app/social-impact/_components/United24toUkraine"
 
 const SocialImpactPage = () => {
 

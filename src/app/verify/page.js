@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from "react";
-import VerifyHeader from "@/components/VerifyPage/VerifyHeader";
-import VerifyInstruction from "@/components/VerifyPage/VerifyInstruction";
+import VerifyHeader from "@/app/verify/_components/VerifyHeader";
+import VerifyInstruction from "@/app/verify/_components/VerifyInstruction";
 
 const CERTIFICATE = {
   code: "097-6001-889",

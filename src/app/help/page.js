@@ -1,5 +1,5 @@
 import ComputerIcon from '@/components/icons/ComputerIcon'
-import FAQ from '@/components/Help/FAQ'
+import FAQ from './_components/FAQ'
 
 const Help = () => {
 

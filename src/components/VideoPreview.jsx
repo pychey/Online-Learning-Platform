@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react";
-import PlayIcon from "../icons/Playicon";
+import PlayIcon from "./icons/Playicon";
 
 const VideoPreview = ({ thumbnail, youtubeLink }) => {
   const [isPlaying, setIsPlaying] = useState(false);

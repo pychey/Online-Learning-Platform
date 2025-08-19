@@ -1,14 +1,14 @@
-import ClockIcon from '../icons/ClockIcon';
-import GroupIcon from '../icons/GroupIcon';
-import LevelIcon from '../icons/LevelIcon';
-import StarIcon from '../icons/StarIcon';
-import GlobalIcon from '../icons/GlobalIcon';
-import ComputerIcon from '../icons/ComputerIcon';
+import ClockIcon from '@/components/icons/ClockIcon';
+import GroupIcon from '@/components/icons/GroupIcon';
+import LevelIcon from '@/components/icons/LevelIcon';
+import StarIcon from '@/components/icons/StarIcon';
+import GlobalIcon from '@/components/icons/GlobalIcon';
+import ComputerIcon from '@/components/icons/ComputerIcon';
 import { englishToKhmerNumber } from '@/utils/englishToKhmerNumber';
-import StarRating from '../icons/StarRating';
-import RightArrow from '../icons/RightArrow';
-import Tick from '../icons/Tick';
-import VideoPreview from './VideoPreview';
+import StarRating from '@/components/icons/StarRating';
+import RightArrow from '@/components/icons/RightArrow';
+import Tick from '@/components/icons/Tick';
+import VideoPreview from '@/components/VideoPreview';
 
 const CourseDescription = ({ data }) => {
 

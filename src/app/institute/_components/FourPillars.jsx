@@ -1,7 +1,7 @@
-import LaptopIcon from "../icons/Laptop"
-import DoorIcon from "../icons/DoorIcon"
-import ManIcon from "../icons/ManIcon"
-import ArrowShrinkIcon from "../icons/ArrowShrinkIcon"
+import LaptopIcon from "@/components/icons/Laptop"
+import DoorIcon from "@/components/icons/DoorIcon"
+import ManIcon from "@/components/icons/ManIcon"
+import ArrowShrinkIcon from "@/components/icons/ArrowShrinkIcon"
 
 const PILLARS = [
 	{
