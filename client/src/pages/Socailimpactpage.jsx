@@ -18,8 +18,6 @@ const Socailimpactpage = () => {
      <ReadingElephantLaos/>
      <United24toUkraine/>
     </>
-   
-
   )
 }
 

@@ -1,4 +1,3 @@
-import CertificateIcon from "./icons/CertificateIcon"
 import LaptopIcon from "./icons/Laptop"
 import DoorIcon from "./icons/DoorIcon"
 import ManIcon from "./icons/ManIcon"

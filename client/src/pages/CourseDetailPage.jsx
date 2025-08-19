@@ -5,7 +5,7 @@ import COURSE_DESCRIPTION from "../data/course_description";
 const CourseDetailPage = () => {
 
   return(
-    <main className="mt-20">
+    <main className="mt-20"> 
       <CourseDescription data={COURSE_DESCRIPTION} />
 			<CourseBenefits />
     </main>

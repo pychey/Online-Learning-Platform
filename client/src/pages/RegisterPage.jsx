@@ -3,7 +3,7 @@ import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 
 
 const RegisterPage = () => {
-    const [showPassword, setShowPassword] = useState({
+  const [showPassword, setShowPassword] = useState({
     login: true,
     register: true,
   });
