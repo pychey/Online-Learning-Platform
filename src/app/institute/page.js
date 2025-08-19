@@ -1,9 +1,9 @@
-import VideoHeader from "@/components/InstitutePage/Videoheader"
-import Overview from "@/components/InstitutePage/Overview"
-import FourPillars from "@/components/InstitutePage/FourPillars"
-import MeetFounders from "@/components/InstitutePage/Meetfounders"
-import Connnectedtocommunity from "@/components/InstitutePage/Connnectedtocommunity"
-import EducationForGood from "@/components/InstitutePage/EducationForGood"
+import VideoHeader from "./_components/Videoheader"
+import Overview from "./_components/Overview"
+import FourPillars from "./_components/FourPillars"
+import MeetFounders from "./_components/Meetfounders"
+import Connnectedtocommunity from "./_components/Connnectedtocommunity"
+import EducationForGood from "./_components/EducationForGood"
 
 const Institute = () => {
 

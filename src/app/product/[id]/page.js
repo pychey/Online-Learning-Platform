@@ -1,5 +1,5 @@
-import CourseBenefits from "@/components/CourseDetailPage/CourseBenefits"
-import CourseDescription from "@/components/CourseDetailPage/CourseDescription"
+import CourseBenefits from "./_components/CourseBenefits"
+import CourseDescription from "./_components/CourseDescription"
 
 import COURSE_DESCRIPTION from "@/data/course_description"
 

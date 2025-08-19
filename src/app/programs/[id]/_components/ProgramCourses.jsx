@@ -1,9 +1,9 @@
 import { englishToKhmerNumber } from "@/utils/englishToKhmerNumber.js";
-import Cart from "../icons/Cart.jsx";
-import CheckCorrect from "../icons/CheckCorrect.jsx";
-import Clock from "../icons/Clock.jsx";
-import Laptop from "../icons/Laptop.jsx";
-import StarRating from "../icons/StarRating.jsx";
+import Cart from "../../../../components/icons/Cart.jsx";
+import CheckCorrect from "../../../../components/icons/CheckCorrect.jsx";
+import Clock from "../../../../components/icons/Clock.jsx";
+import Laptop from "../../../../components/icons/Laptop.jsx";
+import StarRating from "../../../../components/icons/StarRating.jsx";
 
 const ProgramCourses = ({ courses }) => {
 

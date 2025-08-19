@@ -1,9 +1,9 @@
 import { englishToKhmerNumber } from "@/utils/englishToKhmerNumber.js";
 
-import CheckCorrect from "../icons/CheckCorrect.jsx";
-import Clock from "../icons/Clock.jsx";
-import RightArrow from "../icons/RightArrow.jsx";
-import StarRating from "../icons/StarRating.jsx";
+import CheckCorrect from "@/components/icons/CheckCorrect.jsx";
+import Clock from "@/components/icons/Clock.jsx";
+import RightArrow from "@/components/icons/RightArrow.jsx";
+import StarRating from "@/components/icons/StarRating.jsx";
 
 const CourseManagement = ({ COURSE_MANAGEMENT_CONTENT }) => {
 

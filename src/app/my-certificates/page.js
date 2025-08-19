@@ -1,6 +1,6 @@
-import DashboardHeader from "@/components/Dashboard/DashboardHeader"
-import DownloadCertificate from "@/components/Dashboard/DownloadCertificate"
-import CertificateInformation from "@/components/Dashboard/CertificateInformation"
+import DashboardHeader from "@/components/DashboardHeader"
+import DownloadCertificate from "./_components/DownloadCertificate"
+import CertificateInformation from "./_components/CertificateInformation"
 
 const MyCertificatesPage = () => {
 

@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from "react";
-import ArrowUpIcon from "../icons/ArrowUpIcon";
-import MenuIcon from "../icons/MenuIcon";
+import MenuIcon from "@/components/icons/MenuIcon";
+import ArrowUpIcon from "@/components/icons/ArrowUpIcon";
 
 const CourseListHeader = ({ data }) => {
   const [ isActive, setIsActive ] = useState(false);

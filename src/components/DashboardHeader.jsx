@@ -1,11 +1,11 @@
 'use client'
 
-import ProfileIcon from "../icons/ProfileIcon";
-import TagIcon from "../icons/TagIcon";
-import HelpIcon from "../icons/HelpIcon";
-import PowerIcon from "../icons/PowerIcon";
-import StarIcon from "../icons/StarIcon";
-import BookIcon from "../icons/Book";
+import ProfileIcon from "./icons/ProfileIcon";
+import TagIcon from "./icons/TagIcon";
+import HelpIcon from "./icons/HelpIcon";
+import PowerIcon from "./icons/PowerIcon";
+import StarIcon from "./icons/StarIcon";
+import BookIcon from "./icons/Book";
 
 import { usePathname, useRouter } from 'next/navigation';
 

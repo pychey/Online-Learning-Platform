@@ -1,5 +1,5 @@
-import CourseListHeader from "@/components/CourseListPage/CourseListHeader"
-import CourseManagement from "@/components/CourseListPage/CourseManagement"
+import CourseListHeader from "./_components/CourseListHeader"
+import CourseManagement from "./_components/CourseManagement"
 
 import COURSE_LIST_CONTENT from "@/data/courseList-content"
 import COURSE_MANAGEMENT_CONTENT from "@/data/course_management_content"

@@ -1,4 +1,4 @@
-import GlobeIcon from "../icons/GlobeIcon"
+import GlobeIcon from "@/components/icons/GlobeIcon"
 
 const EDUCATION_FOR_GOOD = {
   title: "ការអប់រំសម្រាប់អត្ថប្រយោជន៍សាធារណៈ",

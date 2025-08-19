@@ -1,4 +1,4 @@
-import RegisterLogin from "@/components/Authentication/RegisterLogin"
+import RegisterLogin from "@/app/my-account-settings/_components/RegisterLogin"
 
 const AccountSettings = () => {
 

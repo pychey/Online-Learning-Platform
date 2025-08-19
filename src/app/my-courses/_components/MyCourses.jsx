@@ -1,4 +1,4 @@
-import PlusIcon from "../icons/PlusIcon";
+import PlusIcon from "@/components/icons/PlusIcon";
 
 const MY_COURSES_DATA = {
   title: "ចាប់ផ្តើមវគ្គសិក្សាថ្មី",

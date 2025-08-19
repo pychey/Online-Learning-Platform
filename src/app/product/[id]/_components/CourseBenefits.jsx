@@ -1,7 +1,7 @@
-import DesktopIcon from "../icons/DesktopIcon"
-import ClockIcon from "../icons/ClockIcon"
-import StarIcon from "../icons/StarIcon"
-import CertificateIcon from "../icons/CertificateIcon"
+import DesktopIcon from "@/components/icons/DesktopIcon"
+import ClockIcon from "@/components/icons/ClockIcon"
+import StarIcon from "@/components/icons/StarIcon"
+import CertificateIcon from "@/components/icons/CertificateIcon"
 
 const COURSE_BENEFITS = {
   top: [

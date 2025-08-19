@@ -1,10 +1,10 @@
-import Slide from "@/components/HomePage/Slide.jsx";
-import CourseOverview from "@/components/HomePage/CourseOverview.jsx";
-import CourseBenefitOverview from "@/components/HomePage/CourseBenefitOverview.jsx";
-import Feedback from "@/components/HomePage/Feedback.jsx";
-import CertificateOverview from "@/components/HomePage/CertificateOverview.jsx";
-import Partners from "@/components/HomePage/Partners.jsx";
-import Experience from "@/components/HomePage/Experince.jsx";
+import Slide from "@/app/_components/Slide.jsx";
+import CourseOverview from "@/app/_components/CourseOverview.jsx";
+import CourseBenefitOverview from "@/app/_components/CourseBenefitOverview.jsx";
+import Feedback from "@/app/_components/Feedback.jsx";
+import CertificateOverview from "@/app/_components/CertificateOverview.jsx";
+import Partners from "@/app/_components/Partners.jsx";
+import Experience from "@/app/_components/Experince.jsx";
 
 import COURSE_OVERVIEW_CONTENT from "../data/site-content.js";
 import SLIDE_DATA from '../data/slideshowcontent';

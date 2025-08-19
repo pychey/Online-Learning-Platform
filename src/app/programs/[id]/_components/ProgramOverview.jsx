@@ -1,8 +1,8 @@
-import BookIcon from "../icons/Book";
-import Clock from "../icons/Clock";
-import LevelIcon from "../icons/LevelIcon";
-import PriceTag from "../icons/PriceTag";
-import Unlock from "../icons/Unlock";
+import BookIcon from "../../../../components/icons/Book";
+import Clock from "../../../../components/icons/Clock";
+import LevelIcon from "../../../../components/icons/LevelIcon";
+import PriceTag from "../../../../components/icons/PriceTag";
+import Unlock from "../../../../components/icons/Unlock";
 
 const ProgramOverview = ({ data }) => {
 
