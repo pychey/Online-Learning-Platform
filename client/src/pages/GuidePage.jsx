@@ -18,6 +18,7 @@ const GuidePage= () => {
             <li><a href="/register">Register</a></li>
             <li><a href="/lost-password">LostPassword</a></li>
             <li><a href="/help">HelpCenter</a></li>
+            <li><a href="/socailimpactpage">SocialImpact</a></li>
         </ul>
     </div>
   )

@@ -16,14 +16,13 @@ const MyCourses = () => {
 
 	return(
 		<section 
-			className="px-4 py-10 w-full bg-white" 
-			style={{ wordSpacing: "-1px" }}
+			className="px-4 tablet:px-20 py-10 w-full bg-white leading-relaxed" 
 		>
-			<div className="text-center mx-auto mt-8 p-5 pb-6 w-full max-w-[780px] bg-[#f5f5f5] border 
+			<div className="text-center mx-auto p-5 pb-6 w-full max-w-[800px] bg-[#f5f5f5] border 
 										border-[#CBCBCB] rounded-xs"
 			>
-				<h1 className="text-xl font-semibold">{MY_COURSES_DATA.title}</h1>
-				<p className="mt-3 font-[450] text-sm tablet:text-base">{MY_COURSES_DATA.description}</p>
+				<h1 className="text-xl font-medium">{MY_COURSES_DATA.title}</h1>
+				<p className="leading-relaxed py-1 mt-3 font-[450] text-sm tablet:text-base">{MY_COURSES_DATA.description}</p>
 				<button className="flex items-center gap-1.5 mx-auto mt-5 px-4 py-2 bg-primary 
 												hover:bg-primary-hover rounded-sm cursor-pointer"
 				>

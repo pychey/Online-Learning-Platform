@@ -18,6 +18,7 @@ import RegisterPage from "./pages/RegisterPage";
 import MyCoursePage from "./pages/MyCoursePage";
 import MyCertificatePage from "./pages/MyCertificatePage";
 import GuidePage from "./pages/GuidePage";
+import CourseManagement from "./components/CourseManagement";
 
 function App() {
 
@@ -35,6 +36,11 @@ function App() {
         <Route path="/verify" element={<VerifyPage />} />
         <Route path="/my-courses" element={<MyCoursePage />} />
         <Route path="/my-certificates" element={<MyCertificatePage />} />
+  
+        <Route path="/course" element={<CourseListPage />} />
+        <Route path="/programs" element={<CourseListPage/>} />
+        <Route path="/language-tests" element={<CourseListPage/>} />
+
         <Route path="/my-account-settings" element={<RegisterLoginPage/>} />
         <Route path="/lost-password"element={<LostPasswordPage />} />
         <Route path="/login"element={<LoginPage />} />
