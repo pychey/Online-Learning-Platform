@@ -7,6 +7,7 @@ import PROGRAM_OVERVIEW from "@/data/program_overview"
 import PROGRAM_COURSES_CONTENT from "@/data/program_courses"
 
 import Program_faq from "./_components/programs_faq"
+import SkillCertificate from "./_components/SkillAndGetCertificate"
 
 const ProgramDetailPage = () => {
   return(
@@ -14,6 +15,7 @@ const ProgramDetailPage = () => {
       <ProgramOverview data={PROGRAM_OVERVIEW}/>
       <ProgramCourses courses={PROGRAM_COURSES_CONTENT}/>
       <KeyBenefits />
+      <SkillCertificate/>
       <Program_faq />
       <OtherProgramCertificate />
     </main>
