@@ -7,7 +7,7 @@ const GuidePage= () => {
             <li><a href="/">Home</a></li>
             <li><a href="/courselist">CourseList</a></li>
             <li><a href="/product/:id">CourseDetail</a></li>
-            <li><a href="/programs/:id">ProgramDetail</a></li>
+            <li><a href="/program/:id">ProgramDetail</a></li>
             <li><a href="/cart">Cart</a></li>
             <li><a href="/institute">Institute</a></li>
             <li><a href="/verify">VerifyCertificate</a></li>
