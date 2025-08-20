@@ -1,6 +1,11 @@
+'use client'
 
+import { useRouter } from "next/navigation";
 import React from "react";
+
 const Feedback = () => {
+  const router = useRouter();
+
   return (
     
     <section className="bg-white text-center py-12 px-4">
@@ -33,8 +38,7 @@ const Feedback = () => {
 
 
       <div className="mt-5">
-        <button className="bg-primary text-white font-semibold px-6 py-3  hover:bg-primary-hover rounded-full transition cursor-pointer ">
-        
+        <button className="bg-primary text-white font-semibold px-6 py-3  hover:bg-primary-hover rounded-full transition cursor-pointer" onClick={() => router.push('/my-account-settings')}>
           ចូលរៀនឥឡូវនេះ
         </button>
       </div>
