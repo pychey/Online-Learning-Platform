@@ -93,7 +93,7 @@ const RegisterLogin = () => {
 
             {/* Forgot Password */}
             <a 
-              href="/lost-password"
+              href="/forgot-password"
               className="text-sm text-[#0073aa] hover:underline cursor-pointer"
             >
               ភ្លេចពាក្យសម្ងាត់របស់អ្នក?

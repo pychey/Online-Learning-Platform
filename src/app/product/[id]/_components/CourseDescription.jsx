@@ -8,7 +8,7 @@ import { englishToKhmerNumber } from '@/utils/englishToKhmerNumber';
 import StarRating from '@/components/icons/StarRating';
 import RightArrow from '@/components/icons/RightArrow';
 import Tick from '@/components/icons/Tick';
-import VideoPreview from '@/components/VideoPreview';
+import VideoPreview from '@/components/ui/VideoPreview';
 
 const CourseDescription = ({ data }) => {
 
