@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="font-kantumruy">
+          {/* cz-shortcut-listen="true" */}
         <NavBar />
         {children}
         <Footer />

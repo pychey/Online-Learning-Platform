@@ -23,13 +23,13 @@ const founders = [
 
 export default function MeetFounders() {
   return (
-    <section className="bg-[#f2f2f2] min-h-[358px]  w-full   ">
+    <section className="bg-[#f2f2f2] min-h-[358px]  w-full  mb-10  ">
       <div className="max-w-1xl mx-auto text-center ">
         {/* Title */}
         <h2 className="text-2xl font-semibold pt-12">Meet the founders</h2>
 
         {/* Cards */}
-        <div className="flex flex-wrap justify-center  gap-8 mt-13 sm:w-full md:w-full md:flex-nowrap ml-2 mr-2 md:ml-0 md:mr-0   ">
+        <div className="flex flex-wrap justify-center  gap-8 mt-13 sm:w-full md:w-full md:flex-nowrap ml-4 mr-4 sm:ml-0 sm:mr-0   ">
           {founders.map((f, idx) => (
             <div
               key={idx}
@@ -40,16 +40,16 @@ export default function MeetFounders() {
                 <img
                   src={f.img}
                   alt={f.name}
-                  className="w-[168px] h-[168px] object-cover"
+                  className="sm:w-[168px] sm:h-[168px]  w-[150px] h-[168px] object-cover"
                 />
               </div>
 
               {/* Text */}
-              <div className="flex flex-col justify-center font-semibold ml-8 mr-2 text-left ">
-                <p className="italic text-sm mb-4">
+              <div className="flex flex-col justify-center font-semibold ml-4 sm:ml-8 mr-2 text-left ">
+                <p className="italic text-xs sm:text-sm mb-4">
                   “{f.quote}”
                 </p>
-                <p className="text-sm mt-2">
+                <p className="text-xs sm:text-base mt-2">
                   {f.name}, {f.role} |{" "}
                   <a
                     href={f.cvLink}
