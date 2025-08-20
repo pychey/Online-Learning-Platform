@@ -6,9 +6,11 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/grid';
+import { useRouter } from 'next/navigation';
 
 const CourseOverview = ({ data }) => {
-
+  const router = useRouter();
+  
   return (
     <div className="flex flex-col items-center gap-5 py-10 bg-white mt-4">
       <div className='flex flex-col items-center gap-5 text-xs tablet:text-sm laptop:text-lg px-10 tablet:px-20 text-center'>
@@ -56,7 +58,7 @@ const CourseOverview = ({ data }) => {
         </Swiper>
       </div>
       <div className='px-20 tablet:px-40'>
-        <button className='bg-primary px-5 py-3 tablet:px-8 text-wrap text-xs tablet:text-sm laptop:text-[16px] mt-2 text-white font-bold rounded-3xl hover:bg-primary-hover' >
+        <button className='bg-primary px-5 py-3 tablet:px-8 text-wrap text-xs tablet:text-sm laptop:text-[16px] mt-2 text-white font-bold rounded-3xl hover:bg-primary-hover cursor-pointer' onClick={() => router.push('/courselist')}>
           {data.buttonInfo}
         </button>
       </div>
