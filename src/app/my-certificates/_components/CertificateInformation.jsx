@@ -7,7 +7,7 @@ const certificates = [
     description:
       "អ្នកនឹងអាចទាញយកវិញ្ញាបនបត្រវគ្គសិក្សាផ្ទាល់ខ្លួនរបស់អ្នកសម្រាប់រាល់វគ្គសិក្សាដែលអ្នកបានបញ្ចប់។",
     button: "វគ្គសិក្សាអាជីវកម្ម >",
-    link: "/course",
+    link: "/courselist",
   },
   {
     img: "https://www.ibm-institute.com/wp-content/uploads/2021/06/programcertexample.png",
@@ -15,7 +15,7 @@ const certificates = [
     description:
       "អ្នកនឹងទទួលបានវិញ្ញាបនបត្រឥតគិតថ្លៃ ប្រសិនបើអ្នកបញ្ចប់វគ្គសិក្សាទាំងអស់ក្នុងជំនាញជាក់លាក់មួយ។",
     button: "រកមើលកម្មវិធីសិក្សា >",
-    link: "/programs",
+    link: "/courselist",
   },
   {
     img: "https://www.ibm-institute.com/wp-content/uploads/2021/06/programcertexample.png",
@@ -23,7 +23,7 @@ const certificates = [
     description:
       "អ្នកនឹងទទួលបានវិញ្ញាបនបត្រផ្ទាល់ខ្លួនបន្ទាប់ពីចូលរួមប្រឡងភាសារបស់យើង ដែលមានរយៈពេល ៤៥ នាទី។",
     button: "ការធ្វើតេស្តភាសា >",
-    link: "/language-tests",
+    link: "/courselist",
   },
 ];
 
