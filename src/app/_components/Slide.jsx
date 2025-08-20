@@ -6,8 +6,10 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useRouter } from 'next/navigation';
 
 const Slide = ({ slideData }) => {
+  const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const Slide = ({ slideData }) => {
           <p className="text-md text-white mb-6 max-w-md">
             {slideData[0]?.description}
           </p>
-          <button className="text-white  border-3 border-white  px-6 py-2 rounded-4xl hover:bg-white transition hover:text-gray-500 text-md">
+          <button className="text-white  border-3 border-white  px-6 py-2 rounded-4xl hover:bg-white transition hover:text-gray-500 text-md cursor-pointer" onClick={() => router.push('/courselist')}>
             {slideData[0]?.buttonText}
           </button>
           </div>
@@ -71,7 +73,7 @@ const Slide = ({ slideData }) => {
                   <p className="text-lg md:text-lg lg:text-2xl text-white font-normal  mb-6 ">
                     {item.description}
                   </p>
-                  <button className=" text-white  border-3 border-white  px-6 py-2 rounded-4xl hover:bg-white transition hover:text-gray-500 text-lg md:text-lg ">
+                  <button className=" text-white  border-3 border-white  px-6 py-2 rounded-4xl hover:bg-white transition hover:text-gray-500 text-lg md:text-lg cursor-pointer" onClick={() => router.push('/courselist')}>
                     {item.buttonText}
                   </button>
                 </div>
