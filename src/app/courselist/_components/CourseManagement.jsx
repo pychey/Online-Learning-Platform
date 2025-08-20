@@ -19,7 +19,7 @@ const CourseManagement = ({ COURSE_MANAGEMENT_CONTENT }) => {
                     <div className="row-span-1 flex flex-col gap-2 laptop:flex-row items-center justify-center laptop:justify-start">
                         <RightArrow size={16} className='text-primary hover:text-purple-950 cursor-pointer hidden laptop:block'/>
                         <p>បញ្ចប់គ្រប់វគ្កបណ្ដុះបណ្តាលចំនួន {englishToKhmerNumber(content.courses.length)} ដើម្បីទទួលបាន</p>
-                        <a href="" className="text-primary underline">{content.certificate}</a>
+                        <a href="/program/sample" className="text-primary underline">{content.certificate}</a>
                     </div>
                     <div className={'row-span-1 grid gap-6 grid-cols-2 tablet:grid-cols-4'}>
                         {content.courses.map((course, index) => (
