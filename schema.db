@@ -1,0 +1,43 @@
+Home Page
+
+NavBar : logo, [menu-title, menu-link, submenu: [title, link] ], account-button-message, account-button-link, cart-button-icon, cart-link
+
+SlideShow : [image-url, title, description, button-message, button-url]
+
+Course Overview : title, fixed description, fixed button-message, button-to-/courselist
+         [Courses: title, certificate-type, duration, online-percent, slug]
+
+Course Benefits : video, video-thumbnail, [icon, bold-benefits-message, benefit-description]
+
+Feedback : title, online-percent, online-description, recognization-percent, recognization-description, rating-percent, rating-description, button-message, button-to-/my-courses
+
+Certificate Benefits : certificate-image, [icon, bold-benefits-message, benefit-description]
+
+Partner : title, [logo-image, name]
+
+Experience-Review : title, [person-image, rating, name, generation, course-name]
+
+Footer : [section-title, [link-text, url] ], [law-text, url], right-message, recognization-messgae, description-message, [payment-method-logo]
+
+CourseList Page
+
+Header : title, category-title, [category-icon, category-name, href]
+
+CourseManagement : [certificate-title, course-quantity-message, how-to-get-certificate-message, certificate-name, slug, 
+         Courses : [course-image, course-title, course-rating, certificate-type, duration, original-price, discounted-price, slug]
+]
+
+CourseDetail Page
+
+CourseDetail: course-rating-fixed-text, introduction-text, skill-you-will-learn-fixed-text, [skill-text], 
+              about-fixed-text, [paragraph] : starting-paragraph, main-paragraph, ending-paragraph, video-url, video-thumbnail, button-add-cart-fixed-text
+     Course : course-title, course-rating, course-original-price, course-discounted-price, 
+              [course-info-icon, course-info-title, course-info-text] : course-study-type, course-duration, certificate-type, course-language, course-level, course-access,
+              certificate-icon, certificate-name, course-part-of-certificate-text
+
+CourseBenefit : course-preview-image, [benefit-icon, benefit-title, benefit-description], certificate-preview-image, [certificate-icon, certificate-title, certificate-description]
+
+CourseActionBar : view-course-button-message, view-course-button-url, discount-percent, discount-saving-message, add-to-cart-button-message, add-to-cart-button-url
+         Course : course-original-price, course-discounted-price
+
+CourseRecommend : title, [course-image, course-title, course-rating, certificate-type, course-duration, course-online-percent, course-original-price, course-discounted-price]
