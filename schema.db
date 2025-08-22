@@ -41,3 +41,13 @@ CourseActionBar : view-course-button-message, view-course-button-url, discount-p
          Course : course-original-price, course-discounted-price
 
 CourseRecommend : title, [course-image, course-title, course-rating, certificate-type, course-duration, course-online-percent, course-original-price, course-discounted-price]
+
+HelpCenter Page
+
+HelpCenter : title , [ subTitle : [ Question , Answer , Image ] ]
+
+my-certificates Page
+
+certificateInformation: certificate : [ img , title , description , button , link ]
+
+DownloadCertificate: title , subTitle 
