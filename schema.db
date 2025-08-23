@@ -5,7 +5,7 @@ NavBar : logo, [menu-title, menu-link, submenu: [title, link] ], account-button-
 SlideShow : [image-url, title, description, button-message, button-url]
 
 Course Overview : title, fixed description, fixed button-message, button-to-/courselist
-         [Courses: title, certificate-type, duration, online-percent, slug]
+        Courses : [title, certificate-type, duration, online-percent, slug]
 
 Course Benefits : video, video-thumbnail, [icon, bold-benefits-message, benefit-description]
 
@@ -29,15 +29,62 @@ CourseManagement : [certificate-title, course-quantity-message, how-to-get-certi
 
 CourseDetail Page
 
-CourseDetail: course-rating-fixed-text, introduction-text, skill-you-will-learn-fixed-text, [skill-text], 
-              about-fixed-text, [paragraph] : starting-paragraph, main-paragraph, ending-paragraph, video-url, video-thumbnail, button-add-cart-fixed-text
-     Course : course-title, course-rating, course-original-price, course-discounted-price, 
-              [course-info-icon, course-info-title, course-info-text] : course-study-type, course-duration, certificate-type, course-language, course-level, course-access,
-              certificate-icon, certificate-name, course-part-of-certificate-text
+CourseDetail : course-rating-fixed-text, introduction-text, skill-you-will-learn-fixed-text, [skill-text], 
+               about-fixed-text, [paragraph], video-url, video-thumbnail, button-add-cart-fixed-text
+     Course  : course-title, course-rating, course-original-price, course-discounted-price, 
+               [course-info-icon, course-info-title, course-info-text] : course-study-type, course-duration, certificate-type, course-language, course-level, course-access.
+               program-icon, program-name, program-url, course-part-of-program-text
 
-CourseBenefit : course-preview-image, [benefit-icon, benefit-title, benefit-description], certificate-preview-image, [certificate-icon, certificate-title, certificate-description]
+CourseBenefit : course-preview-image, [benefit-icon, benefit-title, benefit-description], certificate-preview-image, [program-icon, certificate-title, certificate-description]
 
 CourseActionBar : view-course-button-message, view-course-button-url, discount-percent, discount-saving-message, add-to-cart-button-message, add-to-cart-button-url
          Course : course-original-price, course-discounted-price
 
 CourseRecommend : title, [course-image, course-title, course-rating, certificate-type, course-duration, course-online-percent, course-original-price, course-discounted-price]
+
+ProgramDetail Page
+
+ProgramDetail : program-icon, program-title, about-text-title, about-text, for-who-text-title, [for-who-text], program-certificate-image,
+                [program-info-icon, program-info-title, program-info-text] : program-required-course, program-duration-each-course, program-level, program-price, program-how-to-get
+
+ProgramCourses : title,
+       Courses : [course-image, course-url, course-title, course-rating, course-certificate-type, course-duration, course-online-percent, 
+                  course-original-price, course-discounted-price, cart-button-message, cart-button-icon, cart-button-url]
+
+ProgramBenefits : title, [benefit-icon, benefit-description]
+
+AquireSkill : title, [paragraph], aquire-skill-image
+
+HowToGetCertificate : title, champion-icon, paragraph
+
+FrequentlyQuestion : title, [question, answer]
+
+OtherProgram : title, [program-icon, program-name, program-courses-quantity, program-slug]
+
+Institute Page
+
+Header : video-url, video-thumbnail, title, description
+
+InstituteOverview : title, image, img-alt, img-position, [paragraph]
+
+FourPillars : heading, [pillar-icon, pillar-title, pillar-description]
+
+MeetTheFounder : heading, [founder-img, founder-img-alt, founder-quote, founder-name, [founder-social-media]]
+
+ConnnectedtoCommunity : heading, img, [paragraph], [social-link], button-message, button-to-/help
+
+Cart Page
+
+TheWholePage : [heading] : cart-product-heading, cart-info-heading, success-heading, no-prodcut-message, add-course-button-message, go-to-pay-button-message
+
+Verify Certificate Page
+
+The Whole Page : certificate-img
+
+Social Impact Page
+
+Header : heading, sub-heading, community-logo-image
+
+Geography : paragraph, geograpgy-img
+
+CommunityImpactOverview : place-school-help-img, img-position, place-name-heading, [paragraph]
