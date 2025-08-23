@@ -9,8 +9,6 @@ const CourseList = () => {
 		<main className="mt-20">
 			
 			<CourseListHeader data={COURSE_LIST_CONTENT.HEADER}/>
-
-			
 			<CourseManagement COURSE_MANAGEMENT_CONTENT={COURSE_MANAGEMENT_CONTENT}/>
 		</main>
 	)

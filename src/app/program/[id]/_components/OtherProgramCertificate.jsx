@@ -42,7 +42,7 @@ const OtherProgramCertificate = () => {
 
   return (
     <div className="flex flex-col gap-11 my-15 mx-auto max-w-[1080px] px-4 w-full">
-      <h3 className='text-center text-lg tablet:text-xl laptop:text-2xl font-medium'>សញ្ញាបត្រកម្មវិធីសិក្សាផ្សេងៗ</h3>
+      <h3 className='text-center text-2xl tablet:text-3xl font-medium'>សញ្ញាបត្រកម្មវិធីសិក្សាផ្សេងៗ</h3>
       <div className="grid grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-6 gap-10">
         {content.map((program, index) => (
           <div key={index} className="flex flex-col items-center gap-4">

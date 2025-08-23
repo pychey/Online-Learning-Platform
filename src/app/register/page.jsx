@@ -27,7 +27,7 @@ const RegisterPage = () => {
         </a>
       </div>
       <div className="bg-white border border-gray-200 p-4 w-full max-w-md mb-6 rounded">
-        <p className="text-sm text-gray-700 border-l-4 border-sky-500 pl-3">
+        <p className="text-sm text-gray-700 border-l-4 border-[#9A6600] pl-3">
           ចុះឈ្មោះសម្រាប់គេហទំព័រនេះ
         </p>
       </div>
@@ -47,7 +47,7 @@ const RegisterPage = () => {
               <input
                 id="username"
                 type="email"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg outline-0 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
                 placeholder="អាសយដ្ឋានអ៊ីមែល"
               />
             </div>
@@ -64,7 +64,7 @@ const RegisterPage = () => {
               <input
                 id="password"
                 type={showPassword.login ? "text" : "password"}
-                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
+                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg outline-0 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
                 placeholder="ពាក្យសម្ងាត់"
                 onMouseOver={() => setShowEye(prev => ({...prev , login: true}))}
                 onMouseOut={() => setShowEye(prev => ({...prev , login: false}))}
@@ -102,7 +102,7 @@ const RegisterPage = () => {
                 {/* Login Button */}
                 <button
                 type="submit"
-                className="bg-[#0088cc] text-white font-semibold px-6 py-3 rounded-sm hover:bg-[#005d87] transition w-28 cursor-pointer"
+                className="bg-primary text-white font-semibold px-6 py-3 rounded-sm hover:bg-primary-hover transition duration-300 w-28 cursor-pointer"
                 >
                   ចុះឈ្មោះ
                 </button>

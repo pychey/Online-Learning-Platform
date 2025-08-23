@@ -7,7 +7,7 @@ const SkillCertificate = () => {
         <section className="flex flex-col laptop:flex-row items-center justify-center gap-6 py-10  px-5 text-base max-w-[1080px] w-full mx-auto">
             {/* Text Section */}
             <div className="flex flex-col gap-4 leading-relaxed flex-1">
-                <h2 className="text-lg tablet:text-xl laptop:text-2xl font-medium">
+                <h2 className="text-xl tablet:text-3xl font-medium">
                 ទទួលបានជំនាញអាជីវកម្មដ៏សំខាន់បំផុត
                 </h2>
                 <p>
@@ -34,8 +34,8 @@ const SkillCertificate = () => {
 
         <hr className="border-gray-200 w-full h-[1px] border-b"></hr>
 
-        <div className="flex flex-col items-center gap-4 py-10 border-b border-gray-200 max-w-[1080px] w-full mx-auto">
-            <h3 className="text-center font-medium text-lg tablet:text-2xl">
+        <div className="flex flex-col items-center gap-4 py-10 max-w-[1080px] w-full mx-auto">
+            <h3 className="text-center font-medium text-xl tablet:text-3xl">
                 របៀបទទួលបានវិញ្ញាបនបត្រផ្នែកគ្រប់គ្រងរបស់អ្នក
             </h3>
             <div className="flex flex-col laptop:flex-row items-center mx-auto gap-6 px-5">

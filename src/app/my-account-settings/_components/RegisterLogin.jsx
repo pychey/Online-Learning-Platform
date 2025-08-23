@@ -19,7 +19,7 @@ const RegisterLogin = () => {
         
         {/* LOGIN */}
         <div className="px-10 py-8 tablet:border-r border-gray-200 relative max-tablet:border-b">
-          <h3 className="text-center text-2xl font-bold text-[#0088cc] uppercase mb-8">
+          <h3 className="text-center text-2xl font-bold text-primary uppercase mb-8">
             ចូលគណនី
           </h3>
           <form className="space-y-6">
@@ -36,7 +36,7 @@ const RegisterLogin = () => {
               <input
                 id="username"
                 type="email"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg outline-0 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
                 placeholder="អាសយដ្ឋានអ៊ីមែល"
               />
             </div>
@@ -53,7 +53,7 @@ const RegisterLogin = () => {
               <input
                 id="password"
                 type={showPassword.login ? "text" : "password"}
-                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
+                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg outline-0 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
                 placeholder="ពាក្យសម្ងាត់"
                 onMouseOver={() => setShowEye(prev => ({...prev , login: true}))}
                 onMouseOut={() => setShowEye(prev => ({...prev , login: false}))}
@@ -86,7 +86,7 @@ const RegisterLogin = () => {
             {/* Login Button */}
             <button
               type="submit"
-              className="bg-[#0088cc] text-white font-semibold px-6 py-3 rounded-sm hover:bg-[#005d87] transition w-28 cursor-pointer"
+              className="bg-primary text-white font-semibold px-6 py-3 rounded-sm hover:bg-primary-hover transition w-28 cursor-pointer"
             >
               ចូល
             </button><br/>
@@ -94,7 +94,7 @@ const RegisterLogin = () => {
             {/* Forgot Password */}
             <a 
               href="/forgot-password"
-              className="text-sm text-[#0073aa] hover:underline cursor-pointer"
+              className="text-sm text-primary hover:underline cursor-pointer"
             >
               ភ្លេចពាក្យសម្ងាត់របស់អ្នក?
             </a>
@@ -103,7 +103,7 @@ const RegisterLogin = () => {
 
         {/* REGISTER */}
         <div className="px-10 py-8 relative">
-          <h3 className="text-center text-2xl font-bold text-[#0088cc] uppercase mb-8">
+          <h3 className="text-center text-2xl font-bold text-primary uppercase mb-8">
             ចុះឈ្មោះ
           </h3>
           <form className="space-y-6">
@@ -119,7 +119,7 @@ const RegisterLogin = () => {
               <input
                 id="reg_email"
                 type="email"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg outline-0 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
                 placeholder="អាសយដ្ឋានអ៊ីមែល"
               />
             </div>
@@ -136,7 +136,7 @@ const RegisterLogin = () => {
               <input
                 id="reg_password"
                 type={showPassword.register ? "text" : "password"}
-                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
+                className="w-full pl-10 pr-10 py-3 border border-gray-300 ronded-lg outline-0 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
                 placeholder="ពាក្យសម្ងាត់"
                 onMouseOver={() => setShowEye(prev => ({...prev , register: true}))}
                 onMouseOut={() => setShowEye(prev => ({...prev , register: false}))}
@@ -170,7 +170,7 @@ const RegisterLogin = () => {
             {/* Register Button */}
             <button
               type="submit"
-              className="bg-[#0088cc] text-white font-semibold px-6 py-3 rounded-sm hover:bg-[#005d87] transition w-32 cursor-pointer"
+              className="bg-primary text-white font-semibold px-6 py-3 rounded-sm hover:bg-primary-hover transition w-32 cursor-pointer"
             >
               ចុះឈ្មោះ
             </button>

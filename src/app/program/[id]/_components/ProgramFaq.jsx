@@ -4,8 +4,8 @@ import faqs from "@/data/Frequently_asked_questions"
 const ProgramFaq = () => {
 
   return (
-    <section className="mt-10 mb-20 ">
-        <div className="flex justify-center items-center py-10 text-4xl font-[500]">
+    <section className="mt-6">
+        <div className="flex justify-center items-center py-4 text-2xl tablet:text-3xl font-medium">
             <h1>សំណួរដែរតែងតែសួរ</h1>
         </div>
 

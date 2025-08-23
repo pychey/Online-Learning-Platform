@@ -43,7 +43,7 @@ const FourPillars = () => {
 							key={index}
 						>
 							<pillar.icon size={70} className={"text-primary"}/>
-							<h1 className="mt-6 text-xl font-medium">{pillar.title}</h1>
+							<h1 className="mt-6 text-[22px] font-medium">{pillar.title}</h1>
 							<p className="text-center mt-5">{pillar.description}</p>
 						</div>
 					))}
