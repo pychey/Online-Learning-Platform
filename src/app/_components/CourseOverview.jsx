@@ -58,7 +58,7 @@ const CourseOverview = ({ data }) => {
         </Swiper>
       </div>
       <div className='px-20 tablet:px-40'>
-        <button className='bg-primary px-5 py-3 tablet:px-8 text-wrap text-xs tablet:text-sm laptop:text-[16px] mt-2 text-white font-bold rounded-3xl hover:bg-primary-hover cursor-pointer' onClick={() => router.push('/courselist')}>
+        <button className='bg-primary px-5 py-3 tablet:px-8 text-wrap text-xs tablet:text-sm laptop:text-[16px] mt-2 text-white font-medium rounded-3xl hover:bg-primary-hover cursor-pointer' onClick={() => router.push('/courselist')}>
           {data.buttonInfo}
         </button>
       </div>

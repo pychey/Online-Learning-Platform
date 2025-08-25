@@ -8,7 +8,7 @@ import StarRating from "@/components/icons/StarRating.jsx";
 const CourseManagement = ({ COURSE_MANAGEMENT_CONTENT }) => {
 
     return (
-        <div className="flex flex-col items-center p-4">
+        <div className="flex flex-col items-center mb-4 p-4">
             {COURSE_MANAGEMENT_CONTENT.map((content, index) => (
                 <div key={index} className="mt-8 laptop:mt-4 grid grid-rows-[40px__1px_90px_auto] laptop:grid-rows-[70px_1px_50px_auto] mx-auto w-full max-w-[1050px]">
                     <div className="row-span-1 flex flex-col laptop:flex-row justify-between items-center">

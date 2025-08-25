@@ -6,7 +6,7 @@ import StarRating from "@/components/icons/StarRating";
 const CourseRecommend = ({ data: COURSES_RECOMMEND }) => {
 
     return (
-        <div className="mx-auto mt-25 flex flex-col items-center gap-8 p-4 max-w-[1050px] w-full">
+        <div className="mx-auto my-4 flex flex-col items-center gap-8 p-4 max-w-[1050px] w-full">
             <h1 className="font-medium text-2xl">សិស្សក៏បានទិញវគ្គ</h1>
             <div className={'grid gap-10 grid-cols-1 laptop:grid-cols-3 max-w-[500px] laptop:max-w-[1000px] w-full'}>
                 {COURSES_RECOMMEND.map((course, index) => (

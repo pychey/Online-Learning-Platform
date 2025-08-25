@@ -9,11 +9,14 @@ const CourseListHeader = ({ data }) => {
   const [ selected, setSelected ] = useState(1);
 
   return (
-    <section className="mt-20 w-full bg-[#F7F7F7]">
-      <div className="mx-auto max-w-[1100px] tablet:px-3 px-5 py-9 flex flex-col items-center">
+    <section 
+      className="w-full bg-cover bg-center"
+      style={{ backgroundImage: "url('/background-cover-white.jpg')" }}
+    >
+      <div className="mx-auto max-w-[1074px] tablet:px-3 px-4 py-9 flex flex-col items-center">
         <div className="flex flex-col tablet:flex-row items-center justify-between gap-4 w-full">
           <div className="flex justify-between tablet:max-w-[40%] w-full">
-            <h1 className="w-fill tablet:text-2xl tablet:font-bold text-xl font-semibold">វគ្គសិក្សាអនឡាញ</h1>
+            <h1 className="w-fill tablet:text-[28px] tablet:font-[550] text-xl font-semibold">វគ្គសិក្សាអនឡាញ</h1>
             <div className="flex flex-col items-end tablet:hidden text-sm">
               <h1>{data.totalCourses} វគ្គសិក្សា</h1>
               <h1>{data.totalPrograms} កម្មវិធី</h1>
@@ -23,8 +26,8 @@ const CourseListHeader = ({ data }) => {
           <div className="tablet:w-[420px] w-full flex flex-col">
             <button
               onClick={() => setIsActive(prev => !prev)}
-              className={`flex items-center px-1.5 w-full h-14 border border-b-0 border-[#E2E2E2] 
-                        ${isActive ? 'bg-[rgba(255,255,255,0.03)] text-purple-950 font-semibold' : "bg-white"}  
+              className={`flex items-center px-1.5 w-full h-14 border border-b-0 border-[#E2E2E2] bg-white
+                        ${isActive ? 'bg-[rgba(255,255,255,0.03)] text-purple-950 font-semibold' : "font-medium"}  
                         transition-transform duration-300 cursor-pointer`}
             >
               <ArrowUpIcon

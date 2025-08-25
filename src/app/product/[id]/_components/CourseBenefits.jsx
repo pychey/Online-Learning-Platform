@@ -36,9 +36,10 @@ const COURSE_BENEFITS = {
 const CourseBenefits = () => {
 
   return(
-    <section className="my-48 mx-auto px-4 max-w-[1112px] w-full">
-			<div className="tablet:grid tablet:grid-cols-3 laptop:gap-2 gap-[14px] w-full h-full">
-				<div className="col-span-1 flex flex-col justify-center gap-6 px-4 py-10">
+    <section className="mx-auto mb-2 px-4 max-w-[1112px] w-full">
+      
+			<div className="grid grid-cols-3 gap-2.5 w-full h-full">
+				<div className="col-span-3 laptop:col-span-1 flex flex-col tablet:flex-row laptop:flex-col justify-center gap-8 p-6">
           {COURSE_BENEFITS.top.map((benefit, index) => (
             <div key={index} className="flex flex-col items-center gap-6 py-1 w-full">
               <benefit.icon size={64} />
@@ -50,7 +51,7 @@ const CourseBenefits = () => {
           ))}
 				</div>
 				
-  			<div className="col-span-2 p-4">
+  			<div className="flex justify-center col-span-3 laptop:col-span-2 p-4">
 					<img 
 						className="aspect-[1.37] max-w-[690px] w-full"
 						src={COURSE_BENEFITS.topImage} 
@@ -59,8 +60,8 @@ const CourseBenefits = () => {
 				</div>
 			</div>
 
-      <div className="tablet:grid tablet:grid-cols-3 mt-4 w-full h-full">
-				<div className="col-span-1 laptop:order-2 flex flex-col justify-center gap-6 px-4 py-10">
+      <div className="grid grid-cols-3 gap-2.5 laptop:mt-2 w-full h-full">
+				<div className="col-span-3 laptop:col-span-1 laptop:order-2 flex flex-col tablet:flex-row laptop:flex-col justify-center gap-8 p-6">
 					{COURSE_BENEFITS.bottom.map((benefit,index) => (
             <div key={index} className="flex flex-col items-center gap-6 py-1 w-full">
               <benefit.icon size={64} />
@@ -72,7 +73,7 @@ const CourseBenefits = () => {
           ))}
 				</div>
 				
-  			<div className="col-span-2 p-4">
+  			<div className="flex justify-center col-span-3 laptop:col-span-2 p-4">
 					<img 
 						className="aspect-[1.37] max-w-[690px] w-full"
 						src={COURSE_BENEFITS.bottomImage} 
@@ -80,6 +81,7 @@ const CourseBenefits = () => {
 					/>
 				</div>
 			</div>
+
     </section>
   )
 }

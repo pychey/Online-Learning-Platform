@@ -1,7 +1,7 @@
 const Connnectedtocommunity = () => {
   return (
     <section className="py-2 h-auto lg:h-[460px] flex justify-center items-center ">
-      <div className="max-w-6xl mx-auto grid [@media(min-width:548px)]:grid-cols-2 gap-6 sm:gap-8 items-start lg:item-center  px-4 sm:px-10">
+      <div className="max-w-6xl mx-auto grid [@media(min-width:548px)]:grid-cols-2 gap-6 sm:gap-8 items-start lg:item-center px-4 sm:px-10">
         
         {/* Left Image */}
         <div className=" h-auto w-full">

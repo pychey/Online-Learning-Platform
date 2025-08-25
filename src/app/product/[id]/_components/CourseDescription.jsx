@@ -16,7 +16,7 @@ const CourseDescription = ({ data }) => {
     <div className="grid grid-cols-1 laptop:grid-cols-[1.5fr_1fr] laptop:grid-rows-[minmax(140px,auto)_1fr] gap-6 laptop:gap-8 max-w-[1100px] mx-auto mt-7 p-4 text-base">
       <div className="col-start-1 col-end-2 row-start-1 row-end-2">
         <h1 className="text-xl tablet:text-2xl laptop:text-3xl leading-relaxed font-medium text-black">{data.title}</h1>
-        <div className="flex items-center gap-2 mt-4">
+        <div className="flex items-center gap-2">
           <StarRating ratingNumber={false} rating={data.rating} />
           <span>( {englishToKhmerNumber(data.rating)} ការវាយតម្លៃរបស់អ្នកសិក្សា )</span>
         </div>
@@ -107,7 +107,7 @@ const CourseDescription = ({ data }) => {
         </div>
       </div>
 
-      <hr className='col-span-full h-[1px] border-none bg-gray-300 mt-12 w-[90%] mx-auto'></hr>
+      <hr className='col-span-full h-[1px] border-none bg-gray-300 mt-4 max-w-[1112px] w-full mx-auto'/>
     </div>
   );
 };

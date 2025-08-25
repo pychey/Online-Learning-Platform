@@ -23,7 +23,7 @@ const founders = [
 
 export default function MeetFounders() {
   return (
-    <section className="bg-[#f2f2f2] min-h-[358px]  w-full  mb-10  ">
+    <section className="bg-[#f2f2f2] min-h-[358px]  w-full">
       <div className="max-w-1xl mx-auto text-center ">
         {/* Title */}
         <h2 className="text-2xl font-semibold pt-12">Meet the founders</h2>
