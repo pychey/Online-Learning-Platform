@@ -1,0 +1,91 @@
+Home Page
+
+NavBar : logo
+
+SlideShow : [image-url, title, description, button-message, button-to-/page]
+
+Course Overview : heading, Courses : [title, img, certificate-type, duration, online-percent, slug]
+
+Course Benefits : video-url, video-thumbnail, [bold-benefits-message, benefit-description]
+
+Feedback : [percent, descritpion] : online, recognization, rating
+
+Certificate Benefits : certificate-image, [bold-benefits-message, benefit-description]
+
+Partner : [logo-image, name]
+
+Experience-Review : title, [person-image, rating, name, generation, course-name]
+
+Footer : about-descritpion right-message, recognization-messgae, description-message
+
+CourseList Page
+
+Header : title, category-title, Category : [category-icon, category-name, slug]
+
+CourseManagement : Program : [program-title, program-certificate-name, slug], 
+                   Courses : [course-image, course-title, course-rating, certificate-type, duration, original-price, discounted-price, slug]
+
+CourseDetail Page
+
+CourseDetail : introduction-text, [skill-text], [paragraph], video-url, video-thumbnail,
+     Course  : course-title, course-rating, course-original-price, course-discounted-price, 
+               [course-info-icon, course-info-title, course-info-text] : course-study-type, course-duration, certificate-type, course-language, course-level, course-access.
+     Program : program-icon, program-name
+
+CourseBenefit : benefit-preview-image, [benefit-title, benefit-description]
+
+CourseActionBar : Course : discount-percent, course-original-price, course-discounted-price
+
+CourseRecommend : Course : [course-image, course-title, course-rating, certificate-type, course-duration, course-online-percent, course-original-price, course-discounted-price]
+
+HelpCenter Page
+
+TheWholePage : title , [ subtitle-icon, subtitle, [ question , answer ] ]
+
+MyCertificates Page
+
+DownloadCertificate: nothing
+
+CertificateInformation: Certificate : [ certificate-img , certificate-type , description ]
+
+ProgramDetail Page
+
+ProgramDetail : program-icon, program-title, program-certificate-name, about-text, [design-for-who-list], program-certificate-image,
+                [program-info-icon, program-info-title, program-info-text] : program-required-course, program-duration-each-course, program-level, program-price, program-how-to-get
+
+ProgramCourses : Courses : [course-image, course-slug, course-title, course-rating, course-certificate-type, course-duration, course-online-percent, 
+                  course-original-price, course-discounted-price]
+
+ProgramBenefits : [benefit-icon, benefit-description]
+
+AquireSkill : title, [paragraph], aquire-skill-image
+
+HowToGetCertificate : title, champion-icon, paragraph
+
+FrequentlyQuestion : [question, answer]
+
+OtherProgram : [program-icon, program-title, program-courses-quantity, program-slug]
+
+Institute Page
+
+Header : video-url, video-thumbnail, title, description
+
+InstituteOverview : title, image, img-alt, img-position, [paragraph]
+
+FourPillars : heading, [pillar-icon, pillar-title, pillar-description]
+
+MeetTheFounder : [founder-img, founder-img-alt, founder-quote, founder-name, [founder-social-media]]
+
+ConnnectedtoCommunity : heading, img, [paragraph], [social-link]
+
+Verify Certificate Page
+
+The Whole Page : certificate-img, paragraph-descritpion
+
+Social Impact Page
+
+Header : heading, sub-heading, community-logo-image
+
+CommunityGeographyOverview : paragraph, geograpgy-img
+
+CommunityImpactOverview : place-school-help-img, img-position, place-name-heading, country-name, [paragraph]
