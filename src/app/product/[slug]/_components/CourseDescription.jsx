@@ -25,13 +25,13 @@ const CourseDescription = ({ data }) => {
       </div>
 
       <div className="col-span-1 laptop:col-start-2 laptop:col-end-3 laptop:row-span-full w-full mt-2 pb-4 laptop:border-1 laptop:border-gray-300">
-        <VideoPreview thumbnail={data.thumbnailImage} youtubeLink={data.youtubeLink} />
+        <VideoPreview thumbnail={data.img} youtubeLink={data.img} />
 
         <div className="mt-4 laptop:mt-2 flex flex-col laptop:flex-row gap-3 items-center laptop:px-4">
           <h2 className='laptop:hidden'>សន្សំ ៧០% លើវគ្គសិក្សាឥឡូវនេះ :</h2>
           <div className="flex flex-row laptop:flex-col gap-2 laptop:gap-0 items-center laptop:items-start laptop:justify-center pr-5 laptop:pt-2">
-            <p className="text-gray-400 line-through text-lg laptop:text-base">{data.pricing.originalPrice}</p>
-            <p className="text-3xl laptop:text-2xl font-medium">{data.pricing.currentPrice}</p>
+            <p className="text-gray-400 line-through text-lg laptop:text-base">${data.original_price}</p>
+            <p className="text-3xl laptop:text-2xl font-medium">${data.discounted_price}</p>
           </div>
           <button className="w-[90%] rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center gap-2 mt-2">
             បន្ថែមចូលកន្ត្រក <RightArrow size={12}/>
@@ -44,44 +44,44 @@ const CourseDescription = ({ data }) => {
           <div className="flex items-start">
             <ComputerIcon className='text-primary w-[24px] laptop:w-[16px]'/>
             <span className="ml-6 font-semibold laptop:font-medium w-30">ប្រភេទ: </span>
-            <span>{data.courseDetails.type}</span>
+            <span>{data.study_type}</span>
           </div>
 
           <div className="flex items-start">
             <ClockIcon className='text-primary  w-[24px] laptop:w-[16px]' />
             <span className="ml-6 font-semibold laptop:font-medium w-30">រយៈពេល: </span>
-            <span>{data.courseDetails.duration}</span>
+            <span>{data.duration}</span>
           </div>
 
           <div className="flex items-start">
             <StarIcon className='text-primary  w-[24px] laptop:w-[16px]'/>
             <span className="ml-6 font-semibold laptop:font-medium w-30">ទទួលបាន: </span>
-            <span>{data.courseDetails.award}</span>
+            <span>{data.certificate_type}</span>
           </div>
 
           <div className="flex items-start">
             <GlobalIcon className='text-primary  w-[24px] laptop:w-[16px]'/>
             <span className="ml-6 font-semibold laptop:font-medium w-30">ភាសា: </span>
-            <span>{data.courseDetails.language}</span>
+            <span>{data.language}</span>
           </div>
 
           <div className="flex items-start">
             <LevelIcon className='text-primary  w-[24px] laptop:w-[16px]'/>
             <span className="ml-6 font-semibold laptop:font-medium w-30">កម្រិត: </span>
-            <span>{data.courseDetails.level}</span>
+            <span>{data.level}</span>
           </div>
 
           <div className="flex items-start">
             <GroupIcon className='text-primary  w-[24px] laptop:w-[16px]'/>
             <span className="ml-6 font-semibold laptop:font-medium w-30">ការប្រើប្រាស់: </span>
-            <span>{data.courseDetails.access}</span>
+            <span>{data.access}</span>
           </div>
 
           <hr className='h-[1px] border-none bg-gray-300 mt-2 w-[90%] mx-auto'></hr>
 
           <div className="flex flex-col laptop:flex-row items-center gap-6 mt-2">
             <img src='https://www.ibm-institute.com/wp-content/uploads/2019/05/career-150x150.png' alt='icon' className='w-[100px] laptop:w-[60px]'/>
-            <p>{data.programInfo.text}<a href="/program/sample" className="mx-1 text-primary underline">{data.programInfo.programName}</a>កម្មវិធីសិក្សា</p>
+            <p>{data.title}<a href="/program/sample" className="mx-1 text-primary underline">{data.title}</a>កម្មវិធីសិក្សា</p>
           </div>
         </div>
       </div>
@@ -100,9 +100,7 @@ const CourseDescription = ({ data }) => {
         <div className="mt-10  laptop:mt-10">
           <h2 className="text-lg laptop:text-2xl font-medium text-black">អំពីវគ្គសិក្សានេះ</h2>
           <div className="text-base flex flex-col gap-4 leading-relaxed mt-4">
-            <p>{data.aboutCourse.main}</p>
-            <p>{data.aboutCourse.details}</p>
-            <p>{data.aboutCourse.caseStudy}</p>
+            <p>{data.title}</p>
           </div>
         </div>
       </div>
