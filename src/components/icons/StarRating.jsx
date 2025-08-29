@@ -1,4 +1,4 @@
-import { khmerToEnglishNumber } from "../../utils/khmerToEnglishNumber.js";
+import { khmerToEnglishNumber } from "../../lib/khmerToEnglishNumber.js";
 
 const StarRating = ({ ratingNumber = true ,rating, className = 'flex text-base select-none', outline = true }) => {
   const englishRating = khmerToEnglishNumber(rating);

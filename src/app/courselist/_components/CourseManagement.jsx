@@ -1,4 +1,4 @@
-import { englishToKhmerNumber } from "@/utils/englishToKhmerNumber.js";
+import { englishToKhmerNumber } from "@/lib/englishToKhmerNumber.js";
 
 import CheckCorrect from "@/components/icons/CheckCorrect.jsx";
 import Clock from "@/components/icons/Clock.jsx";

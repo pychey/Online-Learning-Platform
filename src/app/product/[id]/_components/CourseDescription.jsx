@@ -4,7 +4,7 @@ import LevelIcon from '@/components/icons/LevelIcon';
 import StarIcon from '@/components/icons/StarIcon';
 import GlobalIcon from '@/components/icons/GlobalIcon';
 import ComputerIcon from '@/components/icons/ComputerIcon';
-import { englishToKhmerNumber } from '@/utils/englishToKhmerNumber';
+import { englishToKhmerNumber } from '@/lib/englishToKhmerNumber';
 import StarRating from '@/components/icons/StarRating';
 import RightArrow from '@/components/icons/RightArrow';
 import Tick from '@/components/icons/Tick';
