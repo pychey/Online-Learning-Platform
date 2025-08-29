@@ -5,10 +5,11 @@ const courses = [
     id: 1,
     img: "https://example.com/images/course1.jpg",
     certificate_type: "Completion",
+    description:"This is description",
     duration: "8 weeks",
     online_percent: 100,
     slug: "intro-to-web-development",
-    rating: 4.7,
+    rating: 3.3,
     original_price: 200,
     discounted_price: 120,
     discount_percent: 40,
@@ -16,6 +17,7 @@ const courses = [
     study_type: "Online",
     language: "English",
     level: "Beginner",
+    skills:["rean jes","rean jes","rean jes"],
     access: "Lifetime",
     certificate_img: "https://example.com/certificates/course1.png"
   },
@@ -23,6 +25,7 @@ const courses = [
     id: 2,
     img: "https://example.com/images/course2.jpg",
     certificate_type: "Professional",
+    description:"This is description",
     duration: "12 weeks",
     online_percent: 80,
     slug: "advanced-data-science",
@@ -34,6 +37,7 @@ const courses = [
     study_type: "Hybrid",
     language: "English",
     level: "Advanced",
+    skills:["rean jes","rean jes","rean jes"],
     access: "1 Year",
     certificate_img: "https://example.com/certificates/course2.png"
   },
@@ -41,6 +45,7 @@ const courses = [
     id: 3,
     img: "https://example.com/images/course3.jpg",
     certificate_type: "Completion",
+    description:"This is description",
     duration: "6 weeks",
     online_percent: 90,
     slug: "python-for-beginners",
@@ -52,6 +57,7 @@ const courses = [
     study_type: "Online",
     language: "English",
     level: "Beginner",
+    skills:["rean jes","rean jes","rean jes"],
     access: "Lifetime",
     certificate_img: "https://example.com/certificates/course3.png"
   },
@@ -59,6 +65,7 @@ const courses = [
     id: 4,
     img: "https://example.com/images/course4.jpg",
     certificate_type: "Professional",
+    description:"This is description",
     duration: "10 weeks",
     online_percent: 70,
     slug: "fullstack-development",
@@ -70,6 +77,7 @@ const courses = [
     study_type: "Hybrid",
     language: "English",
     level: "Intermediate",
+    skills:["rean jes","rean jes","rean jes"],
     access: "2 Years",
     certificate_img: "https://example.com/certificates/course4.png"
   },
@@ -77,6 +85,7 @@ const courses = [
     id: 5,
     img: "https://example.com/images/course5.jpg",
     certificate_type: "Completion",
+    descripition:"This is description", 
     duration: "5 weeks",
     online_percent: 100,
     slug: "ui-ux-design",
@@ -88,6 +97,7 @@ const courses = [
     study_type: "Online",
     language: "English",
     level: "Beginner",
+    skills:["rean jes","rean jes","rean jes"],
     access: "Lifetime",
     certificate_img: "https://example.com/certificates/course5.png"
   }
@@ -95,10 +105,10 @@ const courses = [
 
 export async function GET(request, { params }) {
 
-  const { id } = await params;
+  const { slug } = await params;
 
   for(let course of courses){
-    if(course.id==id){
+    if(course.slug===slug){
       return NextResponse.json({course},{status:200})
     }
   }
