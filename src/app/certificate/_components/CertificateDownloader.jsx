@@ -35,8 +35,8 @@ const CertificateDownloader = ({ code = '123-45-678', name = "Sok Bunleap", cour
       </div>
 
       <PDFDownloadLink
-        document={<CertificatePage />}
-        fileName="certificate.pdf"
+        document={<CertificatePage code = {code} name = {name} courseTitle = {courseTitle} />}
+        fileName={`${name.split(' ')[0]}_certificate.pdf`}
         className="mt-4 px-4 py-2 bg-primary text-white rounded-md"
       >
           {({ loading }) => (loading ? "Preparing Document..." : "Download PDF")}
