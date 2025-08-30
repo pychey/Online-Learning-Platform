@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
-import { otpStore } from '@/data/otpStore.js'; // make sure extension is included
+import { otpStore } from '@/data/otpStore.js';
 
 function generateOTP() {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -29,20 +29,11 @@ export async function POST(req) {
       auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
     });
 
-    // await transporter.sendMail({
-    //   from: process.env.EMAIL_USER,
-    //   to: email,
-    //   subject: "Verify Your Email - OTP Code",
-    //   html: `<h2>សូមបញ្ជាក់អ៊ីមែលរបស់អ្នក</h2>
-    //          <p>Hello <strong>${firstName} ${lastName}</strong>,</p>
-    //          <p>Your OTP code is: <strong>${otp}</strong></p>
-    //          <p>It expires in 10 minutes.</p>`
-    // });
     await transporter.sendMail({
       from: `"MyApp Support" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Verify Your Email - OTP Code',
-      text: `Hello ${firstName} ${lastName}, your OTP code is ${otp}. It expires in 10 minutes.`, // plain text
+      text: `Hello ${firstName} ${lastName}, your OTP code is ${otp}. It expires in 10 minutes.`,
       html: `<h2>សូមបញ្ជាក់អ៊ីមែលរបស់អ្នក</h2>
          <p>Hello <strong>${firstName} ${lastName}</strong>,</p>
          <p>Your OTP code is: <strong>${otp}</strong></p>
