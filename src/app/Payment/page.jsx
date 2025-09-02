@@ -7,7 +7,6 @@ export default function PaymentPage() {
   const [paid, setPaid] = useState(false);
   const [timeLeft, setTimeLeft] = useState(60); 
 
-  // Countdown
   useEffect(() => {
     if (timeLeft > 0 && !paid) {
       const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
@@ -17,10 +16,10 @@ export default function PaymentPage() {
     }
   }, [timeLeft, paid]);
 
-  // Mock payment check (auto-paid after 10s)
+  //25s
   useEffect(() => {
     if (!paid && !expired) {
-      const check = setTimeout(() => setPaid(true), 15000); 
+      const check = setTimeout(() => setPaid(true), 25000); 
       return () => clearTimeout(check);
     }
   }, [paid, expired]);
