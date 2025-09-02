@@ -48,7 +48,7 @@ export default function CartPage() {
               key={course.id}
               className="flex items-center justify-between border-b border-gray-200 py-4"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 ">
                 <button
                   onClick={() => removeCourse(course.id)}
                   className="w-6 h-6 flex items-center justify-center border rounded-full text-gray-600 hover:bg-gray-100"
