@@ -1,4 +1,6 @@
+'use client'
 
+import { usePathname } from "next/navigation";
 
 const Footer = ({
   // Company/Brand Information
@@ -76,6 +78,12 @@ bottomLink =[
   topSectionBgColor = 'bg-[rgb(102,101,101)]',
   bottomSectionBgColor = 'bg-[rgb(56,54,54)]',
 }) => {
+
+  const pathname = usePathname()
+  const isAdminPage = pathname.startsWith('/admin')
+
+  if (isAdminPage) return null
+
   return (
     <footer className="text-white">
       {/* Top section with main links */}
