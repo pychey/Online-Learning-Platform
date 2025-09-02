@@ -7,8 +7,8 @@ const page = () => {
   return (
    <>
    <Cart/>
-   {/* <CartPage/> */}
-   <CheckoutPage/>
+   <CartPage/>
+   {/* <CheckoutPage/> */}
    </>
   )
 }
