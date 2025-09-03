@@ -28,6 +28,20 @@ export default function CartPage() {
       originalPrice: 50.0,
       img: "/course.png",
     },
+    {
+      id: 4,
+      title: "Marketing and Communications",
+      price: 14.99,
+      originalPrice: 50.0,
+      img: "/course.png",
+    },
+    {
+      id: 5,
+      title: "Marketing and Communications",
+      price: 14.99,
+      originalPrice: 50.0,
+      img: "/course.png",
+    },
   ]);
 
   const total = courses.reduce((sum, c) => sum + c.price, 0);
