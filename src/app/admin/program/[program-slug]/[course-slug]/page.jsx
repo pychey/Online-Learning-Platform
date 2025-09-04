@@ -1,0 +1,156 @@
+'use client'
+
+import { useBreadcrumb } from "@/app/context/BreadcrumbContext"
+import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
+import {
+  getSlugFromPathname,
+  findCourseBySlug,
+  findProgramById,
+  findChaptersByCourseId,
+  buildCourseBreadcrumbs,
+  findLessonsByChapterId
+} from "@/utils"
+import AdminTitleInput from "@/app/admin/_components/AdminTitleInput"
+import AdminDescriptionInput from "@/app/admin/_components/AdminDescriptionInput"
+import Link from "next/link"
+import Modal from "@/components/ui/Modal"
+import CourseDescription from "@/app/product/[slug]/_components/CourseDescription"
+import COURSE_DESCRIPTION from "@/data/course_description"
+
+const CoursePage = () => {
+  const [ description, setDescription ] = useState(COURSE_DESCRIPTION)
+  const [ course, setCourse ] = useState(null)
+  const [ chapters, setChapters ] = useState([])
+  const [ openedChapters, setOpenedChapters ] = useState({})
+  const { setBreadcrumbs } = useBreadcrumb()
+  const pathname = usePathname()
+  const slug = getSlugFromPathname(pathname)
+
+  useEffect(() => {
+    const currCourse = findCourseBySlug(slug)
+    const currProgram = findProgramById(currCourse.program_id)
+    const courseChapters = findChaptersByCourseId(currCourse.id)
+    const newBreadcrumbs = buildCourseBreadcrumbs(currProgram, currCourse)
+    
+    setCourse(currCourse)
+    setChapters(courseChapters)
+    setBreadcrumbs(newBreadcrumbs)
+  }, [slug, setBreadcrumbs])
+
+  const handleToggleChapter = (chapterId) => {
+    setOpenedChapters((prevState) => ({
+      ...prevState,
+      [chapterId]: !prevState[chapterId]
+    }))
+
+    const chapter = chapters.find(c => c.id === chapterId)
+    if (!chapter.lessons) {
+      const lessons = findLessonsByChapterId(chapterId)
+
+      setChapters((prevChapters) =>
+        prevChapters.map((c) =>
+          c.id === chapterId ? { ...c, lessons: lessons } : c
+        )
+      );
+    }
+  }
+
+  const handleDescriptionChange = (e, field) => {
+    setDescription(prev => ({...prev, [field]: e.target.value}))
+  }
+
+  return (
+		<div className="flex flex-col gap-4 p-5">
+      <section className="flex flex-col gap-2.5">
+        <h2 className="font-medium text-lg">Course Title</h2>
+        <AdminTitleInput 
+          value={description?.title}
+          // onChange={(e) => setCourse(prev => ({ ...prev, title: e.target.value }))}
+          onChange={(e) => handleDescriptionChange(e, "title")}
+          placeholder=""
+        />
+      </section>
+
+      <section className="flex flex-col gap-2.5">
+        <h2 className="font-medium text-lg">Course Description</h2>
+        <AdminDescriptionInput 
+          value={course?.description} 
+          onChange={(e) => setCourse(prev => ({ ...prev, description: e.target.value }))}
+        />
+      </section>
+
+      <section className="bg-white">
+        <CourseDescription data={description}/>
+      </section>
+
+      <section className="flex flex-col gap-2 p-6 w-full bg-white rounded-md border border-admin-border">
+        <h2 className="font-medium text-xl">Content</h2>
+
+        <div className="flex gap-3 text-xs"> 
+          <h3>9 Chapters</h3> {/* To be replaced later */}
+          <h3>24 Lessons</h3>
+        </div>
+
+        <div className="flex flex-col gap-2 py-4 w-full">
+          {chapters.map((chapter, index) => (
+            <div 
+              key={chapter.id}
+            >
+              <div 
+                className={`flex items-center gap-1 p-4 w-full rounded-lg border border-admin-border 
+                            ${openedChapters[chapter.id] ? "border-b-0 rounded-b-none" : ""}`}
+              >
+                <button onClick={() => handleToggleChapter(chapter.id)} >
+                  <Triangle 
+                    className={`${openedChapters[chapter.id] ? 'rotate-0' : 'rotate-[-90deg]'} transform 
+                              duration-300 hover:cursor-pointer`}
+                  />
+                </button>
+                <Link 
+                  href={pathname + "/" + chapter.slug}
+                  className="flex-1 text-lg hover:underline hover:cursor-pointer">{index + 1}. {chapter.title}
+                </Link>
+              </div>
+              {openedChapters[chapter.id] && chapter.lessons && chapter.lessons.map((lesson, index) => (
+                <Link 
+                  key={lesson.id}
+                  href={pathname + "/" + chapter.slug + "/" + lesson.slug}
+                  className={`flex items-center gap-3 w-full p-4 pl-12 border border-b-0 border-admin-border transform duration-300`}
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                  <h3>{lesson.title}</h3>
+                </Link>
+              ))}
+              {openedChapters[chapter.id] && (
+                <button className={`flex justify-start px-5 py-4 w-full font-medium border border-admin-border rounded-b-lg`}>
+                  <p className="text-primary">+ Add Lesson</p>
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+		</div>
+	)
+}
+
+const Triangle = ({ size = 24, className, color = "currentColor" }) => {
+  return(
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width={size} 
+      height={size} 
+      viewBox="0 0 24 24"
+      className={className}
+    >
+      <path 
+        fill={color}
+        d="M11.646 15.146L5.854 9.354a.5.5 0 0 1 .353-.854h11.586a.5.5 0 0 1 .353.854l-5.793 5.792a.5.5 0 0 1-.707 0" 
+      />
+    </svg>
+  )
+}
+
+export default CoursePage

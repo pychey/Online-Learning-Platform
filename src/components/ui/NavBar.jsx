@@ -1,9 +1,13 @@
 'use client'
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 const NavBar = () => {
+
+  const pathname = usePathname();
+  const isAdminPage = pathname.startsWith('/admin')
 
   const page={
     home:"/",
@@ -47,6 +51,8 @@ const NavBar = () => {
     setOpenMenu(false);
     setActiveSubmenuIndex(null); // optional: close any open submenu
   }
+
+  if (isAdminPage) return null
 
   return (
     <nav className='w-full h-20 border-gray shadow-md fixed top-0 left-0 right-0 bg-white z-50'>
