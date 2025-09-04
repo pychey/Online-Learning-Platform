@@ -35,11 +35,10 @@ const CourseDetail = () => {
 		try {
 
 		const data=await getCourseBySlug(slug);
-		setCourse(data.course)
+		setCourse(data)
 
 		} catch (error) {
 
-		console.log(error)
 		setError(error.response.data.message)
 
 		}finally{

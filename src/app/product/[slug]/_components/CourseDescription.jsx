@@ -25,7 +25,7 @@ const CourseDescription = ({ data }) => {
       </div>
 
       <div className="col-span-1 laptop:col-start-2 laptop:col-end-3 laptop:row-span-full w-full mt-2 pb-4 laptop:border-1 laptop:border-gray-300">
-        <VideoPreview thumbnail={data.img} youtubeLink={data.img} />
+        <VideoPreview thumbnail={data.img} youtubeLink={data.video_link} />
 
         <div className="mt-4 laptop:mt-2 flex flex-col laptop:flex-row gap-3 items-center laptop:px-4">
           <h2 className='laptop:hidden'>សន្សំ ៧០% លើវគ្គសិក្សាឥឡូវនេះ :</h2>
@@ -100,7 +100,9 @@ const CourseDescription = ({ data }) => {
         <div className="mt-10  laptop:mt-10">
           <h2 className="text-lg laptop:text-2xl font-medium text-black">អំពីវគ្គសិក្សានេះ</h2>
           <div className="text-base flex flex-col gap-4 leading-relaxed mt-4">
-            <p>{data.title}</p>
+            {data.about.map((about,index)=>(
+              <p key={index}>{about}</p>
+            ))}
           </div>
         </div>
       </div>
