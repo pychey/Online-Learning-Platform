@@ -1,26 +1,35 @@
+'use client'
+
 import PlayIcon from "@/components/icons/Playicon";
-
-const benefits = [
-  {
-    title: "កសាងសម្ថភាពជំនាញការវិភាគទិន្នន័យ​​​ និងការស្រាវជ្រាវ",
-    description:
-      "វគ្គបណ្តុះបណ្តាលរបស់យើង​ ត្រូវបានរៀបចំឡើង ដោយគ្រូជំនាញជាច្រើនរូបដូច្នេះ ជំនាញដែលទទួលបាន​ នឹងជាតម្រូវការខ្ពស់របស់ស្ថាប័នការងារផ្សេងៗ។",
-  },
-  {
-    title: "ទទួលបានចំណេះជំនាញលឿន ទាន់ចិត្ត",
-    description:
-      "មាតិកាបង្រៀន មានលក្ខណះប្រមូលផ្តុំចំណុចសំខាន់ៗ ដែលអាចឲ្យអ្នកសិក្សាទទួលបាននូវចំណេះជំនាញឆាប់រហ័ស និងមានប្រសិទ្ធភាព។",
-  },
-  {
-    title: "កាលវិភាគសិក្សា ស្ថិតលើដៃរបស់លោកអ្នក",
-    description:
-      "លោកអ្នកនឹងទទួលបាននូវសិទ្ធិក្នុងការចូលរៀនក្នុងគេហទំព័រយើង អស់មួយជីវិត ដូច្នេះ អ្នកអាចកំណត់ពេលវេលា និងទីកន្លែងសិក្សា ដោយខ្លួនឯងបាន។",
-  },
-];
-
-
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const CourseBenefitOverview = () => {
+  const [benefits, setBenefits] = useState([])
+
+  useEffect(() => {
+    async function fetchBenefits() {
+      try {
+        const response = await axios.get('/api/home/course-benefit');
+        const subHeading = response.data.filter(data => data.type === 'sub_heading');
+        const paragraph = response.data.filter(data => data.type === 'paragraph');
+
+        const combined = subHeading.map((heading, idx) => ({
+          title: heading.content,
+          description: paragraph[idx].content
+        }));
+
+        setBenefits(combined);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchBenefits();
+  }, []);
+
+  if (!benefits.length) return ( <p>Loading...</p> )
+
   return (
     <section className="px-2 py-10 w-full bg-[#F2F2F2]">
       <div className="flex flex-col tablet:flex-row gap-8 mx-auto px-4 max-w-[1320px]">
