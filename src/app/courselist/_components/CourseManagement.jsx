@@ -7,6 +7,7 @@ import RightArrow from "@/components/icons/RightArrow.jsx";
 import StarRating from "@/components/icons/StarRating.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 const CourseManagement = ({ COURSE_MANAGEMENT_CONTENT }) => {
     const [programs, setPrograms] = useState([])
@@ -43,7 +44,7 @@ const CourseManagement = ({ COURSE_MANAGEMENT_CONTENT }) => {
                     <div className={'row-span-1 grid gap-6 grid-cols-2 tablet:grid-cols-4'}>
                         {program.courses.map((course) => (
                             <div key={course.id} className="relative flex flex-col border border-gray-300 text-xs laptop:text-[13px] w-full">
-                                <a href={`/course/${course.slug}`}><img src={course.img_url} alt={course.slug} className="w-full h-[150px] object-cover" /></a>
+                                <Link href={`/product/${course.slug}`}><img src={course.img_url} alt={course.slug} className="w-full h-[150px] object-cover" /></Link>
                                 <div className="flex flex-col gap-2 p-2 laptop:p-4">
                                     <h2 className="text-base tablet:text-lg laptop:text-xl font-semibold">{course.title}</h2>
                                     <StarRating rating={course.rating} className='flex text-sm laptop:text-base select-none' />

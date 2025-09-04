@@ -1,12 +1,46 @@
+"use client"
+
+import { useState,useEffect } from "react"
 import DashboardHeader from "@/components/ui/DashboardHeader"
 import MyCourses from "./_components/MyCourses"
+import { getCourseByUser } from "@/lib/course"
 
 const MyCoursesPage = () => {
+
+	const [course,setCourse]=useState(null)
+	const [loading,setLoading]=useState(true)
+	const [error,setError]=useState("")
+
+
+	useEffect(()=>{
+		getCourse();
+	},[])
+
+	const getCourse =async()=>{
+		try {
+			const data=await getCourseByUser();
+			setCourse(data)
+			console.log(course)
+		} catch (error) {
+			setError(error.response.data.message)
+		}finally{
+			setLoading(false)
+		}
+	}
+
+	if (loading) {
+		return <h1 className="mt-20">Loading...</h1>;
+	}
+
+	if (error) {
+		return <h1 className="mt-20">{error}</h1>;
+	}
+
 
 	return(
 		<main className="mt-20">
 			<DashboardHeader />
-			<MyCourses />
+			<MyCourses courses={course}/>
 		</main>
 	)
 }

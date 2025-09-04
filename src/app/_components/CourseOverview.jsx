@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { englishToKhmerNumber } from '@/lib/englishToKhmerNumber';
+import Link from 'next/link';
 
 const CourseOverview = () => {
   const router = useRouter();
@@ -72,7 +73,7 @@ const CourseOverview = () => {
           {courses.map((course, index) => (
             <SwiperSlide key={index}>
               <div className="flex flex-col border border-gray-300 text-xs laptop:text-[13px] w-full">
-                <a href={`/course/${course.slug}`}><img src={course.img_url} alt={course.slug} className='w-full h-[150px] object-cover' /></a>
+                <Link href={`/product/${course.slug}`}><img src={course.img_url} alt={course.slug} className='w-full h-[150px] object-cover' /></Link>
                 <div className="flex flex-col gap-2 p-2">
                   <h2 className='font-bold'>{course.title}</h2>
                   <h4>| <span className="ml-1">ទទួលបានសញ្ញាបត្រ</span></h4>
