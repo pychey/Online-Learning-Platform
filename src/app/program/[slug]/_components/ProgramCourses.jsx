@@ -13,7 +13,7 @@ const ProgramCourses = ({ courses }) => {
             <h1 className="col-span-full mx-auto font-medium text-lg tablet:text-xl">កម្មវិធីសិក្សានេះមាន {englishToKhmerNumber(courses.length)} វគ្គ:</h1>
             {courses.map((course) => (
                 <div key={course.id} className="relative flex flex-col border border-gray-300 text-sm w-full mb-10">
-                    <Link href={`/course/${course.slug}`}><img src={course.img_url} alt={course.slug} /></Link>
+                    <Link href={`/product/${course.slug}`}><img src={course.img_url} alt={course.slug} /></Link>
                     <div className="flex flex-col gap-2 p-4">
                         <h2 className="text-lg font-medium">{course.title}</h2>
                         <StarRating ratingNumber={false} rating={course.rating} className='flex text-base select-none' outline={false}/>

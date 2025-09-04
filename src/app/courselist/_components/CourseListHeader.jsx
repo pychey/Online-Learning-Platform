@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from "react";
 import MenuIcon from "@/components/icons/MenuIcon";
@@ -33,27 +33,25 @@ const CourseListHeader = () => {
     >
       <div className="mx-auto max-w-[1074px] tablet:px-3 px-4 py-9 flex flex-col items-center">
         <div className="flex flex-col tablet:flex-row items-center justify-between gap-4 w-full">
-          <div className="flex justify-between tablet:max-w-[40%] w-full">
+          <div clawssName="flex justify-between tablet:max-w-[40%] w-full">
             <h1 className="w-fill tablet:text-[28px] tablet:font-[550] text-xl font-semibold">វគ្គសិក្សាអនឡាញ</h1>
             <div className="flex flex-col items-end tablet:hidden text-sm">
               <h1>{englishToKhmerNumber(programs.reduce((sum, program) => sum + program.courses?.length, 0))} វគ្គសិក្សា</h1>
               <h1>{englishToKhmerNumber(programs.length)} កម្មវិធី</h1>
             </div>
           </div>
-
           <div className="tablet:w-[420px] w-full flex flex-col">
             <button
               onClick={() => setIsActive(prev => !prev)}
               className={`flex items-center px-1.5 w-full h-14 border border-b-0 border-[#E2E2E2] bg-white
-                        ${isActive ? 'bg-[rgba(255,255,255,0.03)] text-purple-950 font-semibold' : "font-medium"}  
-                        transition-transform duration-300 cursor-pointer`}
+                ${isActive ? "bg-[rgba(255,255,255,0.03)] text-purple-950 font-semibold" : "font-medium"} 
+                transition-transform duration-300 cursor-pointer`}
             >
               <ArrowUpIcon
                 className={` text-primary hover:text-purple-950 transition-transform duration-300 
-                          ${ isActive ? "" : "rotate-180"}`}
+                ${isActive ? "" : "rotate-180"}`}
                 size={32}
               />
-        
               <p className="ml-1.5 text-lg">ប្រភេទវគ្គសិក្សា</p>
             </button>
           </div>
@@ -86,7 +84,6 @@ const CourseListHeader = () => {
           </div>
         </div>
       </div>
-      
     </section>
   );
 };
