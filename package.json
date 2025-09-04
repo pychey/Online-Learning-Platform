@@ -9,8 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^6.15.0",
+    "@react-pdf/renderer": "^4.3.0",
     "axios": "^1.11.0",
+    "bakong-khqr": "^1.0.20",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "cloudinary": "^2.7.0",
+    "express": "^5.1.0",
     "next": "15.4.6",
+    "nodemailer": "^7.0.5",
+    "qrcode": "^1.5.4",
     "react": "19.1.0",
     "swiper": "^11.2.10"
   },
@@ -19,6 +28,10 @@
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
+    "prisma": "^6.15.0",
     "tailwindcss": "^4"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   }
 }

@@ -23,4 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 .env
+<<<<<<< HEAD
 .next
+/generated/prisma
+=======
+.env.local
+.next
+>>>>>>> 52f9ea5f53f7731b8ac16ebcaf91ce8f65371566

@@ -10,6 +10,7 @@ const GuidePage= () => {
             <li><a href="/program/:id">ProgramDetail</a></li>
             <li><a href="/cart">Cart</a></li>
             <li><a href="/institute">Institute</a></li>
+            <li><a href="/certificate">Certificate</a></li>
             <li><a href="/verify">VerifyCertificate</a></li>
             <li><a href="/my-courses">MyCourses</a></li>
             <li><a href="/my-certificates">MyCertificate</a></li>

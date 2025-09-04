@@ -157,11 +157,11 @@ const RegisterLogin = () => {
             {/* Privacy Policy */}
             <p className="text-xs text-gray-600 leading-5">
               ដោយចុះឈ្មោះ អ្នកយល់ព្រមនឹង{" "}
-              <a href="#" className="text-[#0073aa] hover:underline">
+              <a href="#" className="text-primary hover:underline">
                 លក្ខខណ្ឌប្រើប្រាស់
               </a>{" "}
               និង{" "}
-              <a href="#" className="text-[#0073aa] hover:underline">
+              <a href="#" className="text-primary hover:underline">
                 គោលការណ៍ឯកជនភាព
               </a>{" "}
               របស់យើង។

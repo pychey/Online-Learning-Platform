@@ -4,13 +4,13 @@ import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
-const Slide = ({ slideData }) => {
+const Slide = () => {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
+  const [slideData, setSlideData] = useState([]);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 548);
@@ -19,62 +19,73 @@ const Slide = ({ slideData }) => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  useEffect(() => {
+    async function fetchSlideData() {
+      try {
+        const response = await axios.get('/api/home/slideshow')
+        setSlideData(response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchSlideData()
+  }, [])
 
-  const mobileBackgroundImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Zgt6APVNjNw3eMGwz7cIyUmgGefsi9ZclQ&s"; 
+  if (!slideData.length) return ( <p> Loading... </p> )
 
   return (
-   <div className="w-full relative text-white mt-20">
+    <>
+      <div className="w-full relative text-white mt-20">
         {isMobile ? (
-          <div
-            className="w-full h-[390px] xs:h-[410px] sm:h-[340px] md:[390px]   bg-center bg-cover relative flex flex-col justify-center items-center text-center px-4 "
-            style={{ backgroundImage: `url(${mobileBackgroundImage})` }}
-          >
-          <div/>
-          <div>
-             <h1 className="text-xl font-semibold text-white mb-4  ">
-            {slideData[0]?.title}
-          </h1>
-          <p className="text-md text-white mb-6 max-w-md">
-            {slideData[0]?.description}
-          </p>
-          <button className="text-white  border-3 border-white  px-6 py-2 rounded-4xl hover:bg-white transition hover:text-gray-500 text-md cursor-pointer" onClick={() => router.push('/courselist')}>
-            {slideData[0]?.buttonText}
-          </button>
+          <div className="relative w-full h-full">
+            <img
+              src={slideData[0].img_url}
+              alt={slideData[0].title}
+              className="w-screen h-[300px] object-cover brightness-55"
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 mt-4">
+              <h1 className="text-xl  font-bold text-white mb-4">
+                {slideData[0].title}
+              </h1>
+              <p className="text-base text-white font-normal mb-6 ">
+                {slideData[0].description}
+              </p>
+              <button className=" text-white  border-1 border-white  px-6 py-2 rounded-4xl hover:bg-white transition hover:text-gray-500 text-base cursor-pointer" onClick={() => router.push(slideData[0].route_link)}>
+                {slideData[0].button_message}
+              </button>
+            </div>
           </div>
-        </div>
-        
-      ) : (
-        // Desktop & Tablet 
+        ) : (
         <Swiper
           spaceBetween={30}
-          centeredSlides={true}
           loop={true}
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
           pagination={{ clickable: true }}
           navigation={true}
           modules={[Autoplay, Navigation, Pagination]}
-          className="w-full h-full "
+          className="w-full h-full custom-slide-swiper"
         >
           {slideData.map((item) => (
             <SwiperSlide key={item.id}>
               <div className="relative w-full h-full">
                 <img
-                  src={item.imageUrl}
+                  src={item.img_url}
                   alt={item.title}
-                  className="w-screen h-[350px] object-fill brightness-55"
+                  className="w-screen h-[350px] object-cover brightness-55"
                 />
                 <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 mt-4">
-                  <h1 className="text-2xl lg:text-4xl md:text-2xl  font-bold text-white mb-4">
+                  <h1 className="text-2xl laptop:text-4xl  font-bold text-white mb-4">
                     {item.title}
                   </h1>
                   <p className="text-lg md:text-lg lg:text-2xl text-white font-normal  mb-6 ">
                     {item.description}
                   </p>
-                  <button className=" text-white  border-3 border-white  px-6 py-2 rounded-4xl hover:bg-white transition hover:text-gray-500 text-lg md:text-lg cursor-pointer" onClick={() => router.push('/courselist')}>
-                    {item.buttonText}
+                  <button className=" mt-4 text-white  border-2 border-white  px-6 py-2 rounded-4xl hover:bg-white transition hover:text-gray-500 text-lg md:text-lg cursor-pointer" onClick={() => router.push(item.route_link)}>
+                    {item.button_message}
                   </button>
                 </div>
               </div>
@@ -84,41 +95,35 @@ const Slide = ({ slideData }) => {
       )}
       {!isMobile && (
         <style>{`
-          .swiper-button-prev1,
-          .swiper-button-next1 {
-            width: 24px !important;
-            height: 24px !important;
-            color: white !important;
-          }
-          .swiper-button-prev::after,
-          .swiper-button-next::after {
+          .custom-slide-swiper .swiper-button-prev::after,
+          .custom-slide-swiper .swiper-button-next::after {
             color:white;
             font-size:24px;
           }
-          .swiper-button-prev {
+          .custom-slide-swiper .swiper-button-prev {
             left: 3% !important;
           }
-          .swiper-button-next {
+          .custom-slide-swiper .swiper-button-next {
             right: 3% !important;
           }
-          .swiper-pagination-bullet {
+          .custom-slide-swiper .swiper-pagination-bullet {
             width: 14px;
             height: 14px;
-            border: 3px solid white;
+            border: 2px solid white;
             background: transparent;
             border-radius: 50%;
-            opacity: 0.6;
             margin: 0 4px !important;
             transition: all 0.3s ease;
             opacity: 0.5;
           }
-          .swiper-pagination-bullet-active {
+          .custom-slide-swiper .swiper-pagination-bullet-active {
             background: white !important;
             opacity: 1;
           }
         `}</style>
       )}
     </div>
+    </>
   );
 };
 

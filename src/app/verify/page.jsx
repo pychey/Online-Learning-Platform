@@ -3,14 +3,7 @@
 import { useState } from "react";
 import VerifyHeader from "@/app/verify/_components/VerifyHeader";
 import VerifyInstruction from "@/app/verify/_components/VerifyInstruction";
-
-const CERTIFICATE = {
-  code: "097-6001-889",
-  first_name: "សុគន់",
-  last_name: "ដេនី",
-  course_name: "រៀនសុីភ្លឹសៗ",
-  name: "សញ្ញាប័ត្រវគ្គសិក្សា"
-}
+import axios from "axios";
 
 const VerifyPage = () => {
 
@@ -18,20 +11,28 @@ const VerifyPage = () => {
   const [ validSearch, setValidSearch ] = useState(null);
   const [ invalidMessage, setInvalidMessage ] = useState("");
   const [ searchResult, setSearchResult ] = useState(null);
+  const [ imgSrc, setImgSrc ] = useState('/Certificate_Template.jpg')
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
+    setImgSrc(null)
     const trimmedSearch = search.trim();
+    const { data: certificate } = await axios.post('/api/verify', {
+      code: trimmedSearch,
+    });
 
     if (trimmedSearch === "") {
       setValidSearch(false);
+      setImgSrc('/Certificate_Template.jpg')
       setInvalidMessage("សូមបញ្ចូលលេខសម្គាល់សញ្ញាប័ត្រ ឬអ៊ីមែល");
-    } else if (trimmedSearch === "097-6001-889") {
+    } else if (certificate.message == 'Incorrect Code') {
+      setValidSearch(false);
+      setImgSrc('/Certificate_Template.jpg')
+      setInvalidMessage("ព័ត៌មានមិនត្រឹមត្រូវ");
+    } else {
       setValidSearch(true);
       setInvalidMessage("");
-      setSearchResult(CERTIFICATE)
-    } else {
-      setValidSearch(false);
-      setInvalidMessage("ព័ត៌មានមិនត្រឹមត្រូវ");
+      setImgSrc(certificate.url);
+      setSearchResult({...certificate, name: "សញ្ញាប័ត្រវគ្គសិក្សា"});
     }
   };
 
@@ -44,11 +45,15 @@ const VerifyPage = () => {
         <div className="flex flex-col flex-1 pt-9 px-[15px]">
           <p className="text-center text-[19px] text-primary">ឧទាហរណ៍</p>
           <span className="text-center font-semibold text-[22px]">ទីតាំងលេខសម្គាល់សញ្ញាប័ត្រ</span>
-          <img
-            className="my-9 aspect-[863/647] w-full"
-            src="/Certificate_Template.jpg"
-            alt="Certificate Example"
-          />
+          {imgSrc ?
+            <img
+              className="my-9 aspect-[863/647] w-full"
+              src={imgSrc}
+              alt="Certificate Image"
+            />
+            :
+            <p>Please Wait...</p>
+          }
         </div>
 
         <div className="flex flex-col flex-1 pt-9 px-[15px]">
@@ -95,15 +100,15 @@ const VerifyPage = () => {
                   </div>
                   <div>
                     <h1 className="text-[22px]">នាមត្រកូល:</h1>
-                    <p className="text-xl text-[#52B18B]">{searchResult.first_name}</p>
+                    <p className="text-xl text-[#52B18B]">{searchResult.user.firstName }</p>
                   </div>
                   <div>
                     <h1 className="text-[22px]">នាមឈ្មោះ:</h1>
-                    <p className="text-xl text-[#52B18B]">{searchResult.last_name}</p>
+                    <p className="text-xl text-[#52B18B]">{searchResult.user.lastName }</p>
                   </div>
                   <div>
                     <h1 className="text-[22px]">ឈ្មោះវគ្គសិក្សា:</h1>
-                    <p className="text-xl text-[#52B18B]">{searchResult.course_name}</p>
+                    <p className="text-xl text-[#52B18B]">{searchResult.courseTitle }</p>
                   </div>
                   <div>
                     <h1 className="text-[22px]">ឈ្មោះសញ្ញាប័ត្រ:</h1>
