@@ -3,20 +3,26 @@ import { useState, useEffect } from "react"
 import { useBreadcrumb } from "@/app/context/BreadcrumbContext"
 import Card from "../_components/Card"
 import AdminNewProgramModal from "../_components/AdminNewProgramModal"
-import { PROGRAM_DATA } from "@/data/admin"
+import { fetchPrograms } from "@/lib/program"
 
 const AdminProgramPage = () => {
 	const [ activeModal, setActiveModal ] = useState(false)
-	const [ programs, setPrograms ] = useState(PROGRAM_DATA)
+	const [ programs, setPrograms ] = useState([null])
 	const { setBreadcrumbs } = useBreadcrumb()
 	
+	const getPrograms = async () => {
+		const fetchedPrograms = await fetchPrograms()
+		setPrograms(fetchedPrograms)
+	}
+
 	useEffect(() => {
 		const newBreadcrumbs = [
 			{label: "Admin", url: "/admin"},
 			{label: "Program", url: "/admin/program"}
 		]
-	
+		getPrograms()
 		setBreadcrumbs(newBreadcrumbs)
+
 	}, [setBreadcrumbs])
 
 	const handleCreateProgram = (input) => {
@@ -24,6 +30,7 @@ const AdminProgramPage = () => {
 		setPrograms(prev => [...prev, {title: input, slug: "LOL"}])
 	}
 
+	if (programs === null) return(<h1>Loading</h1>)
 	return(
 		<div className="p-4">
 			<div className="flex justify-between items-center">
@@ -41,8 +48,8 @@ const AdminProgramPage = () => {
 				{programs.map((data, index) => (
 					<Card	
 						key={index}
-						title={data.title}
-						url={"/admin/program/" + data.slug}
+						title={data?.program_title}
+						url={"/admin/program/" + data?.slug}
 					/>
 				))}
 			</div>

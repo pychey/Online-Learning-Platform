@@ -1,5 +1,7 @@
 const COURSE_DESCRIPTION = {
+    id: 1,
     title: 'ការគ្រប់គ្រងទីផ្សារ និងការទំនាក់ទំនងអតិថិជន',
+    slug: 'management',
     rating: 4.9,
     description: 'ការណែនាំអំពីជំនាញសំខាន់បំផុត និងឧបករណ៍ដែលអាចអនុវត្តបានបំផុតនៃការគ្រប់គ្រងទីផ្សារ និងទំនាក់ទំនង។',
     skills: [
@@ -12,21 +14,22 @@ const COURSE_DESCRIPTION = {
         details: 'សំណុំនៃការចូលរួមដែលចាំបាច់សម្រាប់ការគ្រប់គ្រងទីផ្សារប្រកបដោយជោគជ័យរួមមាន ការចាប់យកការយល់ដឹងអំពីទីផ្សារ ការភ្ជាប់ទំនាក់ទំនងជាមួយអតិថិជន ការកសាងម៉ាកយីហោដ៏រឹងមាំ ការរៀបចំការផ្តល់ជូនទីផ្សារ ការផ្តល់ និងទំនាក់ទំនងតម្លៃ ការបង្កើតកំណើនរយៈពេលវែង និងការអភិវឌ្ឍយុទ្ធសាស្រ្ត និងផែនការទីផ្សារ។',
         caseStudy: 'អ្នកនឹងទទួលបានសិក្សាករណីខ្លីមួយដែលសង្ខេបយ៉ាងខ្លីអំពីចំណុចសំខាន់ៗនៃវគ្គសិក្សានេះ។',
     },
-    pricing: { originalPrice: '$៥០.០០', currentPrice: '$១៤.៩៩' },
-    courseDetails: {
-        type: 'វគ្គសិក្សា អនឡាញ',
-        duration: '៣​ ម៉ោង',
-        award: 'សញ្ញាបត្រ',
-        language: 'ភាសាខ្មែរ',
-        level: 'វគ្គណែនាំ',
-        access: 'ពេញមួយជីវិត',
-    },
+    original_price: '៥០.០០', 
+    discounted_price: '១៤.៩៩',
+    study_type: 'វគ្គសិក្សា អនឡាញ',
+    duration: '៣​ ម៉ោង',
+    certificate_type: 'សញ្ញាបត្រ',
+    language: 'ភាសាខ្មែរ',
+    level: 'វគ្គណែនាំ',
+    access: 'ពេញមួយជីវិត',
+    program_id: 1,
     programInfo: {
         text: 'វគ្គសិក្សានេះជាផ្នែកមួយនៃវគ្គ',
         programName: 'គ្រប់គ្រង'
     },
     youtubeLink: 'https://www.youtube.com/embed/YVs8xkJoKtI?si=lZnVsBrQDLurY797&autoplay=1',
-    thumbnailImage: '/AA001-IMG - 4 x 2.5.jpg',
-}
+    img: '/AA001-IMG - 4 x 2.5.jpg',
+  }
+
 
 export default COURSE_DESCRIPTION;
