@@ -4,15 +4,15 @@ import { NextResponse } from "next/server";
 export async function GET (req, {params}) {
     const { slug } = params;
     try {
-        const course = await prisma.course.findFirst({
+        const program = await prisma.program.findFirst({
             where: {
                 slug: slug
             },
             include: {
-                program: true
+                courses: true
             }
         })
-        return NextResponse.json(course)
+        return NextResponse.json(program)
     } catch (reason) {
         const message = reason instanceof Error ? reason.message : 'Unexpected error'
         return new Response(message, { status: 500 })

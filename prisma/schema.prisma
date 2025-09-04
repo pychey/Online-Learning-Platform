@@ -24,3 +24,114 @@ model Certificate {
 
   user User @relation(fields: [userId], references: [id])
 }
+
+model Course {
+  id                Int     @id @default(autoincrement())
+  img_url           String?
+  youtube_url       String?
+  certificate_type  String?
+  duration          String?
+  online_percent    String?
+  slug              String? @unique
+  rating            Int
+  original_price    String?
+  discounted_price  String?
+  discount_percent  String?
+  title             String
+  study_type        String?
+  language          String?
+  level             String?
+  access            String?
+  introduction_text String?
+  first_skill       String?
+  second_skill      String?
+  third_skill       String?
+  main_text         String?
+  detail_text       String? @db.Text
+  conclusion_text   String?
+  programId         Int?
+
+  program Program? @relation(fields: [programId], references: [id])
+}
+
+model Reviews {
+  id           Int     @id @default(autoincrement())
+  reviewer_img String?
+  rating       Float?
+  name         String
+  generation   String?
+  course_name  String?
+}
+
+model Partner {
+  id       Int     @id @default(autoincrement())
+  logo_img String?
+  name     String
+}
+
+model Assets {
+  id        Int     @id @default(autoincrement())
+  page      String?
+  section   String?
+  type      String?
+  url       String?
+  alt       String?
+  entity_id Int?
+}
+
+model SiteContents {
+  id        Int     @id @default(autoincrement())
+  page      String?
+  section   String?
+  type      String?
+  content   String?
+  entity_id Int?
+}
+
+model Founder {
+  id            Int     @id @default(autoincrement())
+  founder_img   String?
+  founder_quote String?
+  founder_name  String
+  social_link   String?
+}
+
+model FAQ {
+  id            Int     @id @default(autoincrement())
+  page          String?
+  subtitle_icon String?
+  section       String?
+  subtitle      String?
+  question      String
+  answer        String
+}
+
+model Program {
+  id                     Int     @id @default(autoincrement())
+  program_icon           String?
+  program_title          String
+  slug                   String  @unique
+  certificate_name       String?
+  logo_url               String?
+  certificate_img_url    String?
+  duration_each_course   String?
+  level                  String?
+  additional_price       String?
+  how_to_get             String?
+  about_text             String? @db.Text
+  firstDesignedFor_text  String?
+  secondDesignedFor_text String?
+  thirdDesignedFor_text  String?
+
+  courses Course[]
+}
+
+model SlideShows {
+  id             Int     @id @default(autoincrement())
+  img_url        String?
+  title          String
+  description    String?
+  button_message String?
+  route_link     String?
+  is_active      Boolean @default(true)
+}

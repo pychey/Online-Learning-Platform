@@ -1,12 +1,30 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MenuIcon from "@/components/icons/MenuIcon";
 import ArrowUpIcon from "@/components/icons/ArrowUpIcon";
+import axios from "axios";
+import { englishToKhmerNumber } from "@/lib/englishToKhmerNumber";
 
-const CourseListHeader = ({ data }) => {
+const CourseListHeader = () => {
   const [ isActive, setIsActive ] = useState(false);
-  const [ selected, setSelected ] = useState(1);
+  const [ selected, setSelected ] = useState(null);
+  const [programs, setPrograms] = useState([])
+
+  useEffect(() => {
+    async function fetchPrograms() {
+      try {
+        const response = await axios.get('/api/program')
+        setPrograms(response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchPrograms()
+  }, [])
+
+  if (!programs.length) return ( <p>Loading...</p> )
 
   return (
     <section 
@@ -18,8 +36,8 @@ const CourseListHeader = ({ data }) => {
           <div className="flex justify-between tablet:max-w-[40%] w-full">
             <h1 className="w-fill tablet:text-[28px] tablet:font-[550] text-xl font-semibold">វគ្គសិក្សាអនឡាញ</h1>
             <div className="flex flex-col items-end tablet:hidden text-sm">
-              <h1>{data.totalCourses} វគ្គសិក្សា</h1>
-              <h1>{data.totalPrograms} កម្មវិធី</h1>
+              <h1>{englishToKhmerNumber(programs.reduce((sum, program) => sum + program.courses?.length, 0))} វគ្គសិក្សា</h1>
+              <h1>{englishToKhmerNumber(programs.length)} កម្មវិធី</h1>
             </div>
           </div>
 
@@ -46,22 +64,24 @@ const CourseListHeader = ({ data }) => {
           
           <div className={`grid grid-cols-4 justify-items-center gap-2 tablet:gap-2 tablet:w-[420px] w-full 
                           border-x border-b border-[#E2E2E2] bg-white transition-all duration-300 
-                          overflow-hidden ${isActive ? "h-[224px] p-2" : "h-0"}`}
+                          overflow-hidden ${isActive ? "h-30 p-2" : "h-0"}`}
           >
-            {data.categories.map((category) => (
-              <div
-                key={category.id}
+            {programs.map((program) => (
+              <a
+                key={program.id}
+                href={`#${program.slug}`}
+                onClick={() => setSelected(program.id)}
                 className={`flex flex-col items-center justify-center gap-3 text-center max-w-[130px] w-full 
-                          h-[100px] text-sm ${selected === category.id ? "font-semibold" : "text-[#707070]"} 
+                          h-[100px] text-sm ${selected === program.id ? "font-semibold" : "text-[#707070]"} 
                           cursor-pointer transition-shadow duration-300
                           hover:[box-shadow:rgba(0,0,0,0.15)_0px_2.75px_5.5px_-3.75px,_rgba(0,0,0,0.200)_0px_2.5px_5.5px_0px]`}
               >
                 <MenuIcon 
                   size={40} 
-                  className={`${selected === category.id ? "text-primary" : ""}`}
+                  className={`${selected === program.id ? "text-primary" : ""}`}
                 />
-                {category.name}
-              </div>
+                {program.program_title}
+              </a>
             ))}
           </div>
         </div>
