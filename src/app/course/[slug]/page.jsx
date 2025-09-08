@@ -48,20 +48,20 @@ const Course = () => {
         <CourseLayout course={course}>
 			<div className="w-full">
 
-				<h1 className="text-2xl font-[500]">{course.metadata.course_title}</h1>
+				<h1 className="text-2xl font-[500]">{course.title}</h1>
 
-				<h2 className="my-2 opacity-60">{course.metadata.chapter} Chapters | {course.metadata.duration}</h2>
+				<h2 className="my-2 opacity-60">{course._count.courseContents} Chapters | {course.duration}</h2>
 
 				<h1 className="text-2xl my-10">មាតិកា</h1>
 
 				{
-					course.data.map((c,index)=>(
+					course.courseContents.map((c,index)=>(
 						<Link href={`/content/${c.slug}`} key={index} className="flex justify-start items-center gap-4 border-2 rounded-md border-gray-300 my-4 py-6 pl-4 ">
 
 							<div className={`relative border-4 border-gray-200 rounded-2xl h-6 w-6`}><Tick className={` h-6 w-6 ${c.isCompleted?"block":"hidden"} absolute -left-1 -top-1 text-white bg-green-300 rounded-2xl`}/></div>
 							<div className="flex flex-col gap-1">
-								<h1 className="text-lg ">{c.content_number}. {c.title}</h1>
-								{c.lesson!=0&&<p className="text-sm text-gray-400">{c.lesson} Topics</p>}
+								<h1 className="text-lg ">{c.order_number}. {c.title}</h1>
+								{c._count.lessons!=0&&<p className="text-sm text-gray-400">{c._count.lessons} Topics</p>}
 							</div>
 
 						</Link>

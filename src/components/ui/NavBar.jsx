@@ -1,18 +1,20 @@
 'use client'
 
 import { useState } from 'react';
+import { useSession } from "next-auth/react";
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 const NavBar = () => {
 
   const pathname = usePathname();
+  const { data: session } = useSession();
   const isAdminPage = pathname.startsWith('/admin')
 
   const page={
     home:"/",
     cart : "/cart",
-    login : "/my-account-settings",
+    login : "/my-courses",
     guide : "/guide"
   }
 
@@ -86,7 +88,18 @@ const NavBar = () => {
             )}
           </div>
           ))}
-          <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>ចូលរៀន/ចុះឈ្មោះ</a>
+          {/* <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>ចូលរៀន/ចុះឈ្មោះ</a> */}
+          {session?.user ? (
+  <Link
+    className="h-10 bg-primary px-3.5 py-2 rounded-md text-white flex items-center gap-2"
+    href={page.login}
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4" /></svg>
+    {session.user.email}
+  </Link>
+) : (
+  <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>ចូលរៀន/ចុះឈ្មោះ</a>
+)}
           <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.cart}>
               <svg
                       xmlns="http://www.w3.org/2000/svg"

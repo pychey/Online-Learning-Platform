@@ -4,10 +4,11 @@ import { useState,useEffect } from "react"
 import CourseLayout from "@/components/ui/CourseLayout"
 import { useParams,useRouter } from "next/navigation"   
 import { getCourseContent } from "@/lib/course"
-import { getLessonBySlug,markCompleted } from "@/lib/lesson"
+import { getLessonBySlug} from "@/lib/lesson"
 import Link from "next/link";
 import RightArrow from "@/components/icons/RightArrow"
 import Tick from "@/components/icons/Tick"
+import lessonContents from "../../../../prisma/model.data/lessonContent"
 
 const page = () => {
 
@@ -28,7 +29,7 @@ const page = () => {
         try {
           const data=await getLessonBySlug(slug)
           setLesson(data)
-          const course_data=await getCourseContent(data.course)
+          const course_data=await getCourseContent(data.courseSlug)
           setCourse(course_data)
     
         } catch (error) {
@@ -41,8 +42,13 @@ const page = () => {
     const markComplete=async()=>{
       try {
   
-        await markCompleted(slug);
-        router.push(`/lesson/${lesson.next}`)
+        // await markCompleted(slug);
+        if(lesson.nextSlug){
+          return router.push(`/lesson/${lesson.nextSlug}`)
+        
+        }
+          router.push(`/content/${lesson.courseContentSlug}`)
+        
   
       } catch (error) {
         setError(error?.response?.data?.message || error.message || "Something went wrong")
@@ -62,8 +68,25 @@ const page = () => {
     <CourseLayout course={course}>
       <div className="w-full">
 
-        <h1 className="text-center mx-auto text-3xl font-semibold">{lesson.lesson_number}. {lesson.title}</h1>
-        <p className="my-10">{lesson.text}</p>
+        <h1 className="text-center mx-auto text-3xl font-semibold">{lesson.order_number}. {lesson.title}</h1>
+        <p className="my-10 text-xl font-semibold">{lesson.key_takeaway_text}</p>
+
+        {lesson.lessonContents.map((content, index) => {
+          if (content.content_type === "image") {
+            return (
+              <div key={index} className="w-full">
+                <img className="w-full h-full object-contain" src={content.content} alt="lesson picture" />
+              </div>
+            );
+          } else {
+            return (
+              <p key={index} className="my-2 text-lg flex items-center gap-2">
+                {content.content_type === "list" && <span className="text-4xl flex-shrink-0">•</span>}
+                <span>{content.content}</span>
+              </p>
+            );
+          }
+        })}
 
         <div className="flex justify-between items-center flex-row-reverse my-10 w-full">
 
@@ -74,7 +97,7 @@ const page = () => {
           >
             បញ្ចប់មេរៀន <Tick />
           </div>
-            <Link href={`/lesson/${lesson.previous}`} className={`flex items-center justify-start ${lesson.previous?"block":"hidden"} px-12 py-2 bg-primary text-white text-lg cursor-pointer`}><RightArrow className={`rotate-180 h-6 w-6`}/>មេរៀនមុន</Link>
+            <Link href={`${lesson.prevSlug?`/lesson/${lesson.prevSlug}`:`/content/${lesson.courseContentSlug}`}`} className={`flex items-center justify-start px-12 py-2 bg-primary text-white text-lg cursor-pointer`}><RightArrow className={`rotate-180 h-6 w-6`}/>{lesson.prevSlug?"ចំណុចមុន":"ទៅមេរៀន"}</Link>
           </div>
       </div>
     </CourseLayout>

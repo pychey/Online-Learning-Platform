@@ -18,20 +18,20 @@ const CourseLayout = ({children,course}) => {
             <h1 className="text-xl mb-2">ដំណាក់កាល</h1>
 
             <div className="relative w-full bg-gray-200 h-1 rounded-2xl">
-                <div className={`absolute left-0 top-0 bg-green-600 h-1 rounded-2xl`} style={{width:`${course.metadata.completed}%`}}></div>
+                <div className={`absolute left-0 top-0 bg-green-600 h-1 rounded-2xl`} style={{width:`${70}%`}}></div>
             </div>
 
-            <h1 className="mt-1 font-semibold text-green-800">{course.metadata.completed}% បានជោគជ័យ</h1>
+            <h1 className="mt-1 font-semibold text-green-800">{`70`}% បានជោគជ័យ</h1>
 
             <h2 className="my-4 text-lg">មាតិកា</h2>
 
             <div className="underline mb-4">
-                <Link href={`/course/${course.metadata.slug}`} >ទំព័រមេរៀន</Link>
+                <Link href={`/course/${course.slug}`} >ទំព័រមេរៀន</Link>
             </div>
 
-            {course.data.map((content)=>{
+            {course.courseContents.map((content)=>{
 
-                const isActive = pathname === `/content/${content.slug}` || content.lesson_content?.some((lesson) => pathname === `/lesson/${lesson.slug}`);
+                const isActive = pathname === `/content/${content.slug}` || content.lessons?.some((lesson) => pathname === `/lesson/${lesson.slug}`);
 
 
                 return(
@@ -39,12 +39,12 @@ const CourseLayout = ({children,course}) => {
                     <div className="flex items-center justify-start  gap-4 py-4 border-b border-gray-200">
 
                         <div className={`relative border-2 ${isActive?"border-blue-700":"border-gray-200"} rounded-2xl h-4 w-4`}><Tick className={` h-[18px] w-[18px] ${content.isCompleted?"block":"hidden"} absolute -left-0.5 -top-1 text-white bg-green-300 rounded-2xl`}/></div>
-                        <Link href={`/content/${content.slug}`} className={`${isActive ? "text-blue-700 font-semibold" : ""}`}>{content.content_number}. {content.title}</Link>
+                        <Link href={`/content/${content.slug}`} className={`${isActive ? "text-blue-700 font-semibold" : ""}`}>{content.order_number}. {content.title}</Link>
 
                     </div>
-                    {content.lesson_content&&isActive&&(
+                    {content.lessons&&isActive&&(
                         <div className="bg-gray-100 w-[75%] mx-auto px-2 rounded-lg">
-                            {content.lesson_content.map((l,index)=>{
+                            {content.lessons.map((l,index)=>{
                             const isActiveLesson=pathname===`/lesson/${l.slug}`
                             return(
                 
