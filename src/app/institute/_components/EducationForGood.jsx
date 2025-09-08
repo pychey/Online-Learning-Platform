@@ -1,10 +1,13 @@
+'use client'
+
 import GlobeIcon from "@/components/icons/GlobeIcon"
+import { useRouter } from "next/navigation";
 
 const EDUCATION_FOR_GOOD = {
   title: "ការអប់រំសម្រាប់អត្ថប្រយោជន៍សាធារណៈ",
   description: (
   	<>
-			IBMI គាំទ្រផ្នែកហិរញ្ញវត្ថុដល់គម្រោងអប់រំមិនរកប្រាក់ចំណេញនៅ: 
+			អេសេត គាំទ្រផ្នែកហិរញ្ញវត្ថុដល់គម្រោងអប់រំមិនរកប្រាក់ចំណេញនៅ: 
 			<br/> 
 			កាមេរូន អ៊ុយហ្គង់ដា ហ្គាណា កេនយ៉ា ឡាវ និងហ្វីលីពីន
 		</>
@@ -13,6 +16,7 @@ const EDUCATION_FOR_GOOD = {
 }
 
 const EducationForGood = () => {
+	const router = useRouter();
 	return(
 		<section 
 			className="w-full px-7 py-14 relative overflow-hidden"
@@ -31,6 +35,7 @@ const EducationForGood = () => {
 					{EDUCATION_FOR_GOOD.description}
 				</p>
 				<button 
+					onClick={() => router.push('/social-impact')}
 					className="mt-7 px-[18px] py-2 bg-primary hover:bg-primary-hover font-medium rounded-sm 
 									text-white cursor-pointer"
 				>

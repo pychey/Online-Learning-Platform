@@ -19,18 +19,13 @@ const NavBar = () => {
   const nav = [
     { title: "គេហទំព័រ", link: "/" },
     {
-      title: "វគ្គបណ្តុះបណ្តាល",link:"/courselist",
-      submenu: [
-        { title: "អត់1", link: "/" },
-        { title: "អត់2", link: "/" },
-        { title: "អត់3", link: "/" }
-      ]
+      title: "វគ្គបណ្តុះបណ្តាល",link:"/courselist"
     },
     { title: "ស្ថាប័ន", link: "/institute" ,
       submenu: [
         { title: "អំពីយើង", link: "/institute" },
         { title: "បញ្ជាក់សញ្ញាបត្រ", link: "/verify" },
-        { title: "អត់6", link: "/social-impact" }
+        { title: "ឥទ្ធិពលល្អចំពោះសង្គម", link: "/social-impact" }
       ]
     },
   ];
@@ -58,7 +53,7 @@ const NavBar = () => {
     <nav className='w-full h-20 border-gray shadow-md fixed top-0 left-0 right-0 bg-white z-50'>
       <div className='flex items-center justify-between max-w-[1100px] mx-auto px-6 tablet:px-2'>
         <div className="w-[45%] tablet:w-60 h-full ">
-          <Link className="w-full h-full" href={page.guide}><img src="/Logo-AA-Horizontal.png" alt="logo" className="h-full w-full object-cover"/></Link>
+          <Link className="w-full h-full" href='/'><img src="/Logo-AA-Horizontal.png" alt="logo" className="h-full w-full object-cover"/></Link>
         </div>
         <div className="hidden laptop:flex items-center justify-end gap-2.5 lg:gap-4 xl:gap-6 py-5 ">
             {nav.map((n, index) => (

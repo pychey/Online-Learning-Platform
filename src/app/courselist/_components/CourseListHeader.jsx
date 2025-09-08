@@ -33,7 +33,7 @@ const CourseListHeader = () => {
     >
       <div className="mx-auto max-w-[1074px] tablet:px-3 px-4 py-9 flex flex-col items-center">
         <div className="flex flex-col tablet:flex-row items-center justify-between gap-4 w-full">
-          <div clawssName="flex justify-between tablet:max-w-[40%] w-full">
+          <div className="flex justify-between tablet:max-w-[40%] w-full">
             <h1 className="w-fill tablet:text-[28px] tablet:font-[550] text-xl font-semibold">វគ្គសិក្សាអនឡាញ</h1>
             <div className="flex flex-col items-end tablet:hidden text-sm">
               <h1>{englishToKhmerNumber(programs.reduce((sum, program) => sum + program.courses?.length, 0))} វគ្គសិក្សា</h1>

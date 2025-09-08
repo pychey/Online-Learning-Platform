@@ -5,10 +5,11 @@ import PriceTag from "@/components/icons/PriceTag";
 import Unlock from "@/components/icons/Unlock";
 import { englishToKhmerNumber } from "@/lib/englishToKhmerNumber";
 
-const ProgramOverview = ({ program }) => {
+const ProgramOverview = ({ program, admin = false }) => {
+
+    if (program === null) return (<h1>Loading</h1>)
   return (
-    <div className="mt-20 py-5 tablet:py-10 max-w-[1080px] w-full mx-auto grid grid-cols-1 laptop:grid-cols-[2fr_1fr] gap-6 laptop:gap-8">
-        <main className="col-span-1 flex flex-col gap-6 tablet:gap-10 p-4">
+        <div className={`${ admin ? "p-8 " : "mt-20 max-w-[1080px] py-5 tablet:py-10" } w-full mx-auto grid grid-cols-1 laptop:grid-cols-[2fr_1fr] gap-6 laptop:gap-8`}>        <main className="col-span-1 flex flex-col gap-6 tablet:gap-10 p-4">
             <figure className="flex flex-col laptop:flex-row gap-4 laptop:gap-8">
                 <img src={program.logo_url} className="w-[92px]"/>
                 <figcaption className="flex flex-col gap-2 laptop:gap-3">

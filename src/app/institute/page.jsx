@@ -9,7 +9,7 @@ const Institute = () => {
 
   const InstituteOverview = {
     img:{
-      src:"InstituteImage.png",
+      src:"https://opendevelopmentcambodia.net/wp-content/uploads/2024/04/433241412_7410815072313633_7237362618696677197_n.jpg",
       alt:"Institue Image",
       position:"left"
     },
@@ -20,7 +20,7 @@ const Institute = () => {
 
   const education = {
     img:{
-      src:"InstituteImage.png",
+      src:"https://cambodiainvestmentreview.com/wp-content/uploads/2022/03/CADT-0-1024x723.jpg",
       alt:"Institue Image",
       position:"right"
     },
@@ -31,7 +31,7 @@ const Institute = () => {
 
   const location = {
     img:{
-      src:"InstituteImage.png",
+      src:"https://opendevelopmentcambodia.net/wp-content/uploads/2024/04/433241412_7410815072313633_7237362618696677197_n.jpg",
       alt:"Institue Image",
       position:"left"
     },

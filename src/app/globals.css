@@ -16,3 +16,7 @@
     --color-second-primary: #996600;
     --color-second-primary-hover: #805500;
 }
+
+html {
+  scroll-behavior: smooth;
+}

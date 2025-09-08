@@ -23,14 +23,14 @@ const Partners = () => {
     <div className="mb-10 w-full px-4">
       <h1 className="text-2xl tablet:text-4xl mt-10 font-medium text-center">ដៃគូរសហការ</h1>
 
-      <div className="grid grid-cols-1 tablet:grid-cols-3 lg:grid-cols-5 gap-10 mt-10 place-items-center">
+      <div className="max-w-[1080px] w-full mx-auto grid grid-cols-1 tablet:grid-cols-3 lg:grid-cols-5 gap-10 mt-10">
         {partners ? (
           partners.map((item) => (
             <div
               key={item.id}
-              className="flex flex-col items-center text-center w-full max-w-[160px]"
+              className="flex flex-col items-center text-center w-full"
             >
-              <img src={item.logo_img} className="w-[150px] h-[150px] object-contain" />
+              <img src={item.logo_img} className="w-30 h-30 object-contain" />
               <p className="mt-2">{item.name}</p>
             </div>
           ))

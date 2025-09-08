@@ -22,7 +22,7 @@ const AdminSidebar = () => {
 					<button 
 						key={index}
 						onClick={() => router.push(item.path)}
-						className={`flex px-3 py-1.5 w-full font-medium text-sm rounded-sm ${pathname === item.path ? 
+						className={`flex px-3 py-1.5 w-full font-medium text-sm rounded-sm ${index === 2 ? 
 												"bg-secondary/15 border-l-[6px] border-secondary" : ""} cursor-pointer hover:bg-secondary/10`}
 					>
 						{item.label}
