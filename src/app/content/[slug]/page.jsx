@@ -69,6 +69,20 @@ const page = () => {
         <h1 className="text-center mx-auto text-3xl font-semibold">{content.content_number}. {content.title}</h1>
         <p className="my-10">{content.text}</p>
 
+        {content.lesson&&(
+          <>
+            <p className="text-2xl font-semibold">ចំណុច</p>
+            {content.lesson.map((lesson,index)=>(
+            <Link key={index} href={`/lesson/${lesson.slug}`}>
+              <div className="flex justify-start items-center gap-4 my-6 border border-gray-200 py-6 px-8">
+                <div className={`relative border-4 border-gray-200 rounded-2xl h-6 w-6`}><Tick className={` h-6 w-6 ${lesson.isCompleted?"block":"hidden"} absolute -left-1 -top-1 text-white bg-green-300 rounded-2xl`}/></div>
+                <div className="text-lg">{lesson.title}</div>
+              </div>
+            </Link>
+          ))}
+          </>
+        )}
+
         <div className="flex justify-between items-center flex-row-reverse my-10 w-full">
 
           <div

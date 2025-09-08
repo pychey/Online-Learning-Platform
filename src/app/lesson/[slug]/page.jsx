@@ -42,7 +42,11 @@ const page = () => {
       try {
   
         await markCompleted(slug);
-        router.push(`/lesson/${lesson.next}`)
+        if(lesson.next){
+          router.push(`/lesson/${lesson.next}`)
+        }{
+          router.push(`/content/${lesson.content}`)
+        }
   
       } catch (error) {
         setError(error?.response?.data?.message || error.message || "Something went wrong")
@@ -74,7 +78,7 @@ const page = () => {
           >
             បញ្ចប់មេរៀន <Tick />
           </div>
-            <Link href={`/lesson/${lesson.previous}`} className={`flex items-center justify-start ${lesson.previous?"block":"hidden"} px-12 py-2 bg-primary text-white text-lg cursor-pointer`}><RightArrow className={`rotate-180 h-6 w-6`}/>មេរៀនមុន</Link>
+            <Link href={`${lesson.previous?`/lesson/${lesson.previous}`:`/content/${lesson.content}`}`} className={`flex items-center justify-start px-12 py-2 bg-primary text-white text-lg cursor-pointer`}><RightArrow className={`rotate-180 h-6 w-6`}/>{lesson.previous?"ចំណុចមុន":"ទៅមេរៀន"}</Link>
           </div>
       </div>
     </CourseLayout>

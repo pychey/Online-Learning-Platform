@@ -23,6 +23,20 @@ const course_contents = [
     text: "In this lesson, we’ll guide you through installing the necessary tools and software.",
     isCompleted: false,
     previous:"introduction",
+    lesson:[{
+                title:"welcome",
+                slug:"welcome",
+                isCompleted:true},
+            {   
+                slug:"meet-your-instructor",
+                title:"meet-your-instructor",
+                isCompleted:false
+            },
+            {
+                title:"installing-required-tool",
+                slug:"installing-required-tool",
+                isCompleted:false
+            }],
     next:"core-concepts"
   },
   {

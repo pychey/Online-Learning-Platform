@@ -11,6 +11,7 @@ const lessons = [
     previous:null,
     next:"meet-your-instructor",
     course:"intro-to-web-development",
+    content:"setting-up",
     isComplete: true
   },
   {
@@ -23,6 +24,7 @@ const lessons = [
     previous:"welcome",
     next:"installing-required-tool",
     course:"intro-to-web-development",
+    content:"setting-up",
     isComplete: false
   },
   {
@@ -33,6 +35,7 @@ const lessons = [
     slug:"installing-required-tool",
     text: "Step-by-step guide on setting up the environment.",
     previous:"meet-your-instructor",
+    content:"setting-up",
     next:null,
     course:"intro-to-web-development",
     isComplete: false
