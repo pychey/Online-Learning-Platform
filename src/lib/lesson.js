@@ -9,9 +9,9 @@ export const getLessonBySlug=async(slug)=>{
 
 }
 
-export const markCompleted=async(slug)=>{
+// export const markCompleted=async(slug)=>{
     
-    const response=await axios.put(url+"lesson/"+slug)
-    return response.data;
+//     const response=await axios.put(url+"lesson/"+slug)
+//     return response.data;
 
-}
+// }

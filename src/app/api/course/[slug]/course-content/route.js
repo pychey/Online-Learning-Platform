@@ -9,9 +9,34 @@ export async function GET (req, {params}) {
                 slug: slug
             },
             include: {
-                courseContents: true
+                _count: {
+                    select: { courseContents: true },
+                },
+                courseContents: {
+                    include:{
+                        _count:{
+                            select: {lessons:true}
+                        },
+
+                        lessons:{
+                            select:{
+                                title:true,
+                                slug:true,
+                                isCompleted:true,
+                            },
+                            orderBy:{
+                                order_number:"asc"
+                            }
+                        }
+                    },
+                    orderBy:{
+                        order_number:"asc"
+                    }
+                },
             }
         })
+
+        
         return NextResponse.json(courseWithContents)
     } catch (reason) {
         const message = reason instanceof Error ? reason.message : 'Unexpected error'

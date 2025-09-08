@@ -17,6 +17,6 @@ export const getCourseByUser=async()=>{
 }
 
 export const getCourseContent=async(slug)=>{
-    const response=await axios.get(url+"course/"+slug+"/content")
+    const response=await axios.get(url+"course/"+slug+"/course-content")
     return response.data;
 }

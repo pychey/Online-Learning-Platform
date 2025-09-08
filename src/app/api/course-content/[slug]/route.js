@@ -28,16 +28,25 @@ export async function GET (req, { params }) {
         let next = null;
         let course = null;
 
-        if (currentCourseContent.order_number === 1 || currentCourseContent.order_number === totalCourseContent) {
-            course = await prisma.course.findFirst({
+        // if (currentCourseContent.order_number === 1 || currentCourseContent.order_number === totalCourseContent) {
+        //     course = await prisma.course.findFirst({
+        //         where: {
+        //             id: currentCourseContent.courseId
+        //         },
+        //         select: {
+        //             slug: true
+        //         }
+        //     })
+        // }
+
+        course = await prisma.course.findFirst({
                 where: {
                     id: currentCourseContent.courseId
                 },
                 select: {
                     slug: true
                 }
-            })
-        }
+        })
 
         if (currentCourseContent.order_number > 1) {
             prev = await prisma.courseContent.findFirst({

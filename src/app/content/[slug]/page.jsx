@@ -3,7 +3,7 @@
 import { useState } from "react"
 import CourseLayout from "@/components/ui/CourseLayout"
 import { useParams,useRouter } from "next/navigation"
-import { getContentBySlug,markCompleted } from "@/lib/content"
+import { getContentBySlug } from "@/lib/content"
 import { getCourseContent } from "@/lib/course"
 import { useEffect } from "react"
 import RightArrow from "@/components/icons/RightArrow"
@@ -32,7 +32,7 @@ const page = () => {
 
       const data=await getContentBySlug(slug);
       setContent(data)
-      const course_data=await getCourseContent(data.course)
+      const course_data=await getCourseContent(data.courseSlug)
       setCourse(course_data)
 
     } catch (error) {
@@ -45,8 +45,11 @@ const page = () => {
   const markComplete=async()=>{
     try {
 
-      await markCompleted(slug);
-      router.push(`/content/${content.next}`)
+      // await markCompleted(slug);
+      if(content.nextSlug){
+        return router.push(`/content/${content.nextSlug}`)
+      }
+      router.push(`/course/${content.courseSlug}`)
 
     } catch (error) {
       setError(error.response.data.message)
@@ -66,13 +69,16 @@ const page = () => {
     <CourseLayout course={course}>
       <div className="w-full">
 
-        <h1 className="text-center mx-auto text-3xl font-semibold">{content.content_number}. {content.title}</h1>
-        <p className="my-10">{content.text}</p>
+        <h1 className="text-center mx-auto mb-12 text-3xl font-semibold">{content.order_number}. {content.title}</h1>
 
-        {content.lesson&&(
+        <p className="my-10 text-lg indent-8">{content.introduction_text}</p>
+        <p className="my-10 text-lg indent-8">{content.body_paragraph}</p>
+        <p className="my-10 text-lg indent-8">{content.ending_paragraph}</p>
+
+        {content.lessons&& content.lessons.length > 0 &&(
           <>
             <p className="text-2xl font-semibold">ចំណុច</p>
-            {content.lesson.map((lesson,index)=>(
+            {content.lessons.map((lesson,index)=>(
             <Link key={index} href={`/lesson/${lesson.slug}`}>
               <div className="flex justify-start items-center gap-4 my-6 border border-gray-200 py-6 px-8">
                 <div className={`relative border-4 border-gray-200 rounded-2xl h-6 w-6`}><Tick className={` h-6 w-6 ${lesson.isCompleted?"block":"hidden"} absolute -left-1 -top-1 text-white bg-green-300 rounded-2xl`}/></div>
@@ -92,7 +98,7 @@ const page = () => {
           >
             បញ្ចប់មេរៀន <Tick />
           </div>
-            <Link href={`/content/${content.previous}`} className={`flex items-center justify-start ${content.previous?"block":"hidden"} px-12 py-2 bg-primary text-white text-lg cursor-pointer`}><RightArrow className={`rotate-180 h-6 w-6`}/>មេរៀនមុន</Link>
+            <Link href={content.prevSlug?`/content/${content.prevSlug}`:`/course/${content.courseSlug}`} className={`flex items-center justify-start block px-12 py-2 bg-primary text-white text-lg cursor-pointer`}><RightArrow className={`rotate-180 h-6 w-6`}/>{content.prevSlug?"មេរៀនមុន":"ទៅមេរៀន"}</Link>
           </div>
       </div>
     </CourseLayout>

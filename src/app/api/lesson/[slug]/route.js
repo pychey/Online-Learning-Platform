@@ -1,78 +1,120 @@
+import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-const lessons = [
-  {
-    id: 1,
-    course_content_id: 1,
-    lesson_number: 1,
-    title: "Welcome to the Course",
-    slug:"welcome",
-    text: "An overview of the course objectives and structure.",
-    previous:null,
-    next:"meet-your-instructor",
-    course:"intro-to-web-development",
-    content:"setting-up",
-    isComplete: true
-  },
-  {
-    id: 2,
-    course_content_id: 1,
-    lesson_number: 2,
-    title: "Meet Your Instructor",
-    slug:"meet-your-instructor",
-    text: "Get to know your instructor and their background.",
-    previous:"welcome",
-    next:"installing-required-tool",
-    course:"intro-to-web-development",
-    content:"setting-up",
-    isComplete: false
-  },
-  {
-    id: 3,
-    course_content_id: 2,
-    lesson_number: 3,
-    title: "Installing Required Tools",
-    slug:"installing-required-tool",
-    text: "Step-by-step guide on setting up the environment.",
-    previous:"meet-your-instructor",
-    content:"setting-up",
-    next:null,
-    course:"intro-to-web-development",
-    isComplete: false
-  }
-];
+export async function GET (req, { params }) {
+    const { slug } = await params;
+    try {
+        const currentLesson = await prisma.lesson.findFirst({
+            where: {
+                slug: slug
+            },
+            include: {
+                lessonContents: {
+                    orderBy:{
+                                order_number:"asc"
+                    }
+                }
+            }
+        })
+
+        if (!currentLesson) return NextResponse.json(
+            { error: "Lesson Not Found" }, 
+            { status: 404 }
+        );
+
+        const totalLesson = await prisma.lesson.count({
+            where: {
+                courseContentId: currentLesson.courseContentId,
+            },
+        });
+
+        let prev = null;
+        let next = null;
+        let courseContent = null;
+        let nextCourseContent = null;
+
+        // if (currentLesson.order_number === 1) {
+        //     courseContent = await prisma.courseContent.findFirst({
+        //         where: {
+        //             id: currentLesson.courseContentId
+        //         },
+        //         select: {
+        //             slug: true
+        //         }
+        //     })
+        // }
+
+        courseContent = await prisma.courseContent.findFirst({
+            where: {
+                id: currentLesson.courseContentId
+            },
+            select: {
+                slug: true,
+                course: {  // join the related course
+                    select: {
+                        slug: true
+                    }
+                }
+            }
+        });
 
 
-export async function GET(request,{params}) {
-
-    const {slug}= await params
-
-    for(let l of lessons){
+        if (currentLesson.order_number === totalLesson) {
+            const currentCourseContent = await prisma.courseContent.findFirst({
+                where: {
+                    id: currentLesson.courseContentId
+                },
+                select: {
+                    order_number: true
+                }
+            })
             
-        if(l.slug==slug){
-
-                return NextResponse.json(l,{status:200})
-    
+            nextCourseContent = await prisma.courseContent.findFirst({
+                where: {
+                    id: currentCourseContent.id,
+                    order_number: currentCourseContent.order_number + 1
+                },
+                select: {
+                    slug: true
+                }
+            })
         }
-    
-    }
 
-    return NextResponse.json({message:"Not found"},{status:400})
-}
+        if (currentLesson.order_number > 1) {
+            prev = await prisma.lesson.findFirst({
+                where: {
+                    courseContentId: currentLesson.courseContentId,
+                    order_number: currentLesson.order_number - 1
+                },
+                select: {
+                    slug: true
+                }
+            })
+        }
 
-export async function PUT(request,{params}){
-
-    const {slug}=await params;
-
-    for(let l of lessons){
+        if (currentLesson.order_number < totalLesson) {
+            next = await prisma.lesson.findFirst({
+                where: {
+                    courseContentId: currentLesson.courseContentId,
+                    order_number: currentLesson.order_number + 1
+                },
+                select: {
+                    slug: true
+                }
+            })
+        }
         
-        if(l.slug==slug){
-
-          l.isComplete=true
-          return NextResponse.json({message:"progress updated"},{status:200})
-    
-        }
+        return NextResponse.json({ 
+            ...currentLesson, 
+            prevSlug: prev?.slug, 
+            nextSlug: next?.slug,
+            courseContentSlug: courseContent?.slug,
+            courseSlug: courseContent.course.slug,
+            nextCourseContentSlug: nextCourseContent?.slug,
+            totalLesson
+        })
+    } catch (reason) {
+        const message = reason instanceof Error ? reason.message : 'Unexpected error'
+        return new Response(message, { status: 500 })
     }
-
-    return NextResponse.json({message:"Not found"},{status:404})
 }
