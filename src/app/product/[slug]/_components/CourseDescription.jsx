@@ -11,10 +11,10 @@ import Tick from '@/components/icons/Tick';
 import VideoPreview from '@/components/ui/VideoPreview';
 import Link from 'next/link';
 
-const CourseDescription = ({ course }) => {
+const CourseDescription = ({ course, admin = false }) => {
 
   return (
-    <div className="grid grid-cols-1 laptop:grid-cols-[1.5fr_1fr] laptop:grid-rows-[minmax(140px,auto)_1fr] gap-6 laptop:gap-8 max-w-[1100px] mx-auto mt-7 p-4 text-base">
+    <div className={`grid grid-cols-1 laptop:grid-cols-[1.5fr_1fr] laptop:grid-rows-[minmax(140px,auto)_1fr] gap-6 laptop:gap-8 ${admin ? "w-full p-8" : "max-w-[1100px] mt-7 p-4"} mx-auto  text-base`}>
       <div className="col-start-1 col-end-2 row-start-1 row-end-2">
         <h1 className="text-xl tablet:text-2xl laptop:text-3xl leading-relaxed font-medium text-black">{course.title}</h1>
         <div className="mt-4 flex items-center gap-2">

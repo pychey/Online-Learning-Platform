@@ -1,79 +1,99 @@
 export const PROGRAM_DATA = 
 [
-	{ 
-		id: 1, 
-		title: "Blok Jok", 
-		slug: "blok-jok",
-		description: `Blok Jok is the ultimate program for those who love creativity, chaos, 
-and the colorful world of Bikini Bottom. Dive into a sea of laughter, quirky challenges, 
-and lessons that bring out your inner sponge. Whether you're flipping Krabby Patties 
-or exploring Gary's daily routine, this program delivers non-stop fun. 
-
-Each course is packed with interactive activities, playful storytelling, 
-and unexpected surprises that mirror the unpredictable humor of SpongeBob 
-and his friends. From beginner-level goofiness to expert jellyfishing, 
-Blok Jok has everything you need to become a certified Bikini Bottom enthusiast.`
-	},
-
-	{ 
-		id: 2, 
-		title: "Klep Jep", 
-		slug: "klep-jep",
-		description: `Klep Jep takes learners on a hilarious culinary journey through the 
-kitchens and kelp fields of the underwater world. Perfect for aspiring chefs 
-and curious foodies, this program focuses on SpongeBob's finest (and funniest) 
-culinary escapades.
-
-Whether you're flipping your first Krabby Patty or tackling the Chum Bucket 
-Challenge, each course offers a mix of practical kitchen skills, 
-underwater recipes, and character-driven adventures. 
-
-Along the way, you'll meet familiar faces who offer wisdom, laughs, 
-and the occasional food fight. Klep Jep is perfect for those who love 
-learning with a side of humor and a dash of sea salt.`
-	},
-
-	{ 
-		id: 3, 
-		title: "Klap Jap", 
-		slug: "klap-jap",
-		description: `Klap Jap is where imagination meets discipline in the deep sea. 
-			This program is tailored for those looking to master the essential life skills 
-			of Bikini Bottom's quirky citizens. With courses on boating basics, 
-			plankton psychology, and more, learners will uncover the secrets 
-			of the ocean's most mysterious minds.
-
-			Each lesson is designed to be as educational as it is entertaining, 
-			featuring iconic scenes, underwater history, and even bubble-blowing techniques. 
-			It's the perfect blend of tradition and absurdity—ideal for fans of both 
-			structure and silliness. Klap Jap helps students sharpen their minds 
-			while still having a jellyfishy good time.`
-	},
-
-	{ 
-		id: 4, 
-		title: "Zorp Dorp", 
-		slug: "zorp-dorp",
-		description: `Zorp Dorp dives deep into the lore, legends, and landscapes 
-of Bikini Bottom. This is the program for the curious explorer, 
-the lore lover, and anyone who's wondered about the Flying Dutchman's backstory 
-or the secrets of the Kelp Forest.
-
-Students will journey through spooky tales, geography classes, and 
-invasion simulations—all while learning fun facts and uncovering hidden 
-aspects of their favorite underwater town. 
-
-With an emphasis on adventure, survival, and storytelling, 
-Zorp Dorp challenges learners to think critically, move creatively, 
-and never stop exploring. It's weird, it's wild, and it's wonderfully educational.`
-	}
+  {
+    id: 1,
+    programTitle: "កម្មវិធីសិក្សាផ្នែកគ្រប់គ្រងអាជីវកម្ម",
+    programIcon: 'https://www.ibm-institute.com/wp-content/uploads/2019/05/career-280x280.png',
+    certificateTitle: "សញ្ញាប័ត្រផ្នែកគ្រប់គ្រង",
+    certificateProgram: '/Certificate_Template.jpg',
+    about: "កម្មវិធីសិក្សាគ្រប់គ្រងអាជីវកម្ម គឺផ្តោតលើការអភិវឌ្ឍជំនាញអាជីវកម្មរបស់អ្នក។ វាជាកម្មវិធីសិក្សារយៈពេលខ្លីតាមប្រព័ន្ធអនឡាញ ដែលគ្របដណ្តប់លើវិស័យសំខាន់ទាំងអស់នៃការគ្រប់គ្រងអាជីវកម្មទូទៅ។ កម្មវិធីសិក្សាគ្រប់គ្រងអាជីវកម្ម គឺជាវិធីសាស្រ្តឆាប់រហ័ស និងចំណាយតិច ដើម្បីឈានដល់គោលដៅអាជីពបន្ទាប់ និងបង្កើនប្រវត្តិការងាររបស់អ្នក។ វាបង្ហាប់ចំណុចសំខាន់ៗនៃការសិក្សាគ្រប់គ្រងប្រពៃណី ទៅជាវគ្គសិក្សាអនឡាញ ៤ ដែលគួរឱ្យរំភើប និងមានតម្លៃសមរម្យ។",
+    designedFor: [
+        "អ្នកចង់ទទួលបានការយល់ដឹងគ្រឹះអំពីពិភពអាជីវកម្ម និងដាក់គ្រឹះល្អសម្រាប់ផ្លូវអាជីពរបស់ខ្លួន។",
+        "អ្នកគ្រប់គ្រងដែលចង់មានចំណេះដឹងទូលំទូលាយក្នុងវិស័យពាក់ព័ន្ធនឹងអាជីវកម្ម ដើម្បីអាចរីកចម្រើនក្នុងអាជីព។",
+        "អ្នកចង់ទទួលបានចំណុចសំខាន់ៗនៃការសិក្សាផ្នែកគ្រប់គ្រងក្នុងរយៈពេលលឿន និងចំណាយសមរម្យ។"
+    ],
+    designedFor: {
+      
+    },
+    details: {
+      requiredCourses: "៤",
+      duration: "៣ ម៉ោងក្នុងមួយវគ្គ",
+      level: "វគ្គណែនាំ",
+      price: "មិនមានចំណាយបន្ថែម",
+      access: "បើកដោយស្វ័យប្រវត្តិ បន្ទាប់ពីបញ្ចប់វគ្គសិក្សាតាមដែលត្រូវការ"
+    },
+    slug: "business-management-program",
+  },
+  {
+    id: 2,
+    programTitle: "កម្មវិធីសិក្សាផ្នែកទំនាក់ទំនងសាធារណៈ",
+    programIcon: 'https://www.ibm-institute.com/wp-content/uploads/2019/05/career-280x280.png',
+    certificateTitle: "សញ្ញាប័ត្រផ្នែកទំនាក់ទំនងសាធារណៈ",
+    certificateProgram: '/Certificate_Template.jpg',
+    about: "កម្មវិធីសិក្សានេះផ្តោតលើជំនាញសាស្ត្រទំនាក់ទំនងសាធារណៈ ដែលជាគ្រឿងដ៏សំខាន់សម្រាប់អ្នកបម្រើការងារនៅក្រុមហ៊ុនឬអង្គភាពណាមួយ។ វាជាវគ្គសិក្សារយៈពេលខ្លី ដែលបង្រៀនពីវិធីសាស្ត្របង្កើត និងថែរក្សាភាពសម្បទានិងសិទ្ធិរបស់អង្គភាពក្នុងសង្គម។",
+    designedFor: [
+        "អ្នកចាប់អារម្មណ៍ចូលរួមផ្នែកទំនាក់ទំនងសាធារណៈ និងចង់រៀនពីគន្លឹះនៃការបង្កើតទំនាក់ទំនងល្អ។",
+        "និស្សិតឬអ្នកបញ្ចប់ការសិក្សាថ្មីៗដែលចង់បង្កើនជំនាញក្នុងការប្រាស្រ័យទាក់ទង។",
+        "អ្នកធ្វើការផ្នែកផ្សព្វផ្សាយ ឬទីផ្សារដែលចង់បន្ថែមបទពិសោធន៍ទាក់ទង។"
+    ],
+    details: {
+      requiredCourses: "៤",
+      duration: "៣ ម៉ោងក្នុងមួយវគ្គ",
+      level: "វគ្គណែនាំ",
+      price: "មិនមានចំណាយបន្ថែម",
+      access: "បើកដោយស្វ័យប្រវត្តិ បន្ទាប់ពីបញ្ចប់វគ្គសិក្សាតាមដែលត្រូវការ"
+    },
+    slug: "public-relations-program"
+  },
+  {
+    id: 3,
+    programTitle: "កម្មវិធីសិក្សាផ្នែកទីផ្សារឌីជីថល",
+    programIcon: 'https://www.ibm-institute.com/wp-content/uploads/2019/05/career-280x280.png',
+    certificateTitle: "សញ្ញាប័ត្រផ្នែកទីផ្សារឌីជីថល",
+    certificateProgram: '/Certificate_Template.jpg',
+    about: "កម្មវិធីសិក្សានេះបង្រៀនពីជំនាញសំខាន់ៗក្នុងការផ្សព្វផ្សាយផលិតផល ឬសេវាកម្មតាមប្រព័ន្ធអនឡាញ ដូចជា Facebook, Google, Email Marketing និង Content Creation។ វាជាជម្រើសដ៏ល្អសម្រាប់អ្នកចង់បង្កើត ឬបង្កើនអាជីវកម្មឌីជីថល។",
+    designedFor: [
+        "អ្នកបង្កើតអាជីវកម្មតូចៗដែលចង់ចាប់ផ្តើមធ្វើទីផ្សារប្រកបដោយប្រសិទ្ធិភាព។",
+        "និស្សិតដែលចង់ចូលរួមក្នុងវិស័យទីផ្សារឌីជីថល។",
+        "អ្នកមានបទពិសោធន៍បន្តិច ប៉ុន្តេចង់បង្កើនការយល់ដឹងទាក់ទងនឹងអនាគតនៃទីផ្សារឌីជីថល។"
+    ],
+    details: {
+        requiredCourses: "៤",
+        duration: "៣ ម៉ោងក្នុងមួយវគ្គ",
+        level: "វគ្គណែនាំ",
+        price: "មិនមានចំណាយបន្ថែម",
+        access: "បើកដោយស្វ័យប្រវត្តិ បន្ទាប់ពីបញ្ចប់វគ្គសិក្សាតាមដែលត្រូវការ"
+    },
+    slug: "digital-marketing-program"
+  },
+  {
+    id: 4,
+    programTitle: "កម្មវិធីសិក្សាផ្នែកគ្រប់គ្រងគម្រោង",
+    programIcon: 'https://www.ibm-institute.com/wp-content/uploads/2019/05/career-280x280.png',
+    certificateTitle: "សញ្ញាប័ត្រផ្នែកគ្រប់គ្រងគម្រោង",
+    certificateProgram: '/Certificate_Template.jpg',
+    about: "កម្មវិធីសិក្សានេះផ្តោតទៅលើការបណ្តុះបណ្តាលជំនាញគ្រប់គ្រងគម្រោងសម័យថ្មី ដែលមានភាពរលូន សម្រេចបាននូវគោលដៅ និងអាចដឹកនាំក្រុមបានយ៉ាងមានប្រសិទ្ធិភាព។ វាសមស្របសម្រាប់អ្នកដែលចង់ធ្វើជា Project Manager ឬបង្កើនភាពជោគជ័យក្នុងគម្រោងរបស់ខ្លួន។",
+    designedFor: [
+        "អ្នកចង់ស្វែងយល់ពីការគ្រប់គ្រងគម្រោងដូចជាការធ្វើផែនការ និងតាមដានការអភិវឌ្ឍ។",
+        "អ្នកជាមេក្រុម ឬអ្នកដឹកនាំគម្រោងដែលចង់ពង្រឹងសមត្ថភាព។",
+        "និស្សិតឬអ្នកមានគម្រោងចង់ដំណើរការដោយមានគោលនយោបាយច្បាស់លាស់។"
+    ],
+    details: {
+      requiredCourses: "៤",
+      duration: "៣ ម៉ោងក្នុងមួយវគ្គ",
+      level: "វគ្គណែនាំ",
+      price: "មិនមានចំណាយបន្ថែម",
+      access: "បើកដោយស្វ័យប្រវត្តិ បន្ទាប់ពីបញ្ចប់វគ្គសិក្សាតាមដែលត្រូវការ"
+    },
+    slug: "project-management-program",
+  },
 ];
 
 export const COURSE_DATA = 
 [
   { 
     id: 1, 
-    title: "Sponge Bob", 
+    title: "ការគ្រប់គ្រងទីផ្សារ និងការទំនាក់ទំនងអតិថិជន", 
     slug: "sponge-bob", 
     program_id: 1,
     description: `Join SpongeBob SquarePants in an unforgettable journey through fun, friendship, and flipping patties! This course explores the bright and bubbly world of everyone's favorite sponge. You'll dive into episodes of everyday optimism, learn how to handle challenges with laughter, and uncover the power of staying true to yourself—no matter how square you may be. From jellyfishing mishaps to bubble-blowing brilliance, discover what makes SpongeBob tick and how to live every day like it's the best day ever. Expect interactive activities, emotional intelligence lessons, and yes, a few Krabby Patty secrets along the way.`
