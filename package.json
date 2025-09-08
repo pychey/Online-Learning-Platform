@@ -2,6 +2,7 @@
   "name": "olp",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -20,12 +21,9 @@
     "express": "^5.1.0",
     "next": "15.4.6",
     "next-auth": "^4.24.11",
-    "nodemailer": "^6.10.1",
+    "qrcode": "^1.5.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "nodemailer": "^7.0.5",
-    "qrcode": "^1.5.4",
-    "react": "19.1.0",
     "swiper": "^11.2.10"
   },
   "devDependencies": {

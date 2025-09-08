@@ -27,7 +27,7 @@ const RegisterPage = () => {
         </a>
       </div>
       <div className="bg-white border border-gray-200 p-4 w-full max-w-md mb-6 rounded">
-        <p className="text-sm text-gray-700 border-l-4 border-[#9A6600] pl-3">
+        <p className="text-sm text-gray-700 border-l-4 border-primary pl-3">
           ចុះឈ្មោះសម្រាប់គេហទំព័រនេះ
         </p>
       </div>
@@ -47,7 +47,7 @@ const RegisterPage = () => {
               <input
                 id="username"
                 type="email"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg outline-0 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg outline-0 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 text-sm"
                 placeholder="អាសយដ្ឋានអ៊ីមែល"
               />
             </div>
@@ -64,7 +64,7 @@ const RegisterPage = () => {
               <input
                 id="password"
                 type={showPassword.login ? "text" : "password"}
-                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg outline-0 focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
+                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg outline-0 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 text-sm"
                 placeholder="ពាក្យសម្ងាត់"
                 onMouseOver={() => setShowEye(prev => ({...prev , login: true}))}
                 onMouseOut={() => setShowEye(prev => ({...prev , login: false}))}
@@ -75,7 +75,7 @@ const RegisterPage = () => {
                 onClick={() =>
                   setShowPassword((prev) => ({ ...prev, login: !prev.login }))
                 }
-                className="absolute right-5 top-9 text-gray-400 hover:text-sky-500 transition-colors "
+                className="absolute right-5 top-9 text-gray-400 hover:text-text-primary transition-colors "
               >
                 {/* {!showPassword.login ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />} */}
               </button>
@@ -112,28 +112,20 @@ const RegisterPage = () => {
 
       {/* Links */}
       <div className="mt-6 text-sm text-gray-600 space-x-2">
-        <a href="/login" className="text-sky-700 hover:underline">
+        <a href="/login" className="text-primary hover:underline">
           ចូលគណនី
         </a>
         <span>|</span>
-        <a href="/forgot-password" className="text-sky-700 hover:underline">
+        <a href="/forgot-password" className="text-primary hover:underline">
           ភ្លេចពាក្យសម្ងាត់របស់អ្នក?
         </a>
       </div>
 
       <a
         href="/"
-        className="mt-2 text-sm text-gray-600 hover:underline"
+        className="mt-6 text-sm text-primary hover:underline"
       >
-        ← ត្រលប់ទៅទំព័រដើម
-      </a>
-
-      {/* Footer */}
-      <a
-        href="/privacy"
-        className="mt-6 text-sm text-sky-700 hover:underline"
-      >
-        គោលការណ៍ឯកជនភាព
+        ត្រលប់ទៅទំព័រដើម
       </a>
     </div>
 	)

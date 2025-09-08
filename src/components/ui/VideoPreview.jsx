@@ -3,11 +3,11 @@
 import { useState } from "react";
 import PlayIcon from "../icons/Playicon";
 
-const VideoPreview = ({ thumbnail, youtubeLink }) => {
+const VideoPreview = ({ thumbnail, youtubeLink, className = '' }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <div className='relative w-full'>
+    <div className={`${className} relative w-full`}>
       {!isPlaying ? (
         <>
           <img

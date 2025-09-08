@@ -15,7 +15,7 @@ const verificationInstructions = [
 		description: (
 			<>
 				បើអ្នកមានសំណួរអំពីសញ្ញាប័ត្រណាមួយ ឬរកឃើញអ្វីដែលខុសគ្នា សូមកុំស្ទាក់ស្ទើរក្នុងការទំនាក់ទំនងមកយើងបានគ្រប់ពេល៖{" "}
-				<a href="/help-center" className="text-primary underline">
+				<a href="/help" className="text-primary underline">
 					ចូលទៅកាន់មជ្ឈមណ្ឌលជំនួយ
 				</a>
 			</>
@@ -26,7 +26,7 @@ const verificationInstructions = [
 const VerifyInstruction = () => {
 	return(
 		<section className="py-4 w-full bg-[#F7F7F7]">
-      <div className="flex flex-col gap-5 px-4 py-9 mx-auto max-w-[1080px] text-xl leading-[1.6]">
+      <div className="flex flex-col gap-5 px-4 py-9 mx-auto max-w-[1080px] text-lg leading-[1.6]">
         {verificationInstructions.map((instruction, index) => (
           <p key={index}>{instruction.description}</p>
         ))}

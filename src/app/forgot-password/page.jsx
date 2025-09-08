@@ -17,7 +17,7 @@ return (
 
       {/* Message */}
       <div className="bg-white border border-gray-200 p-4 w-full max-w-md mb-6 rounded">
-        <p className="text-sm text-gray-700 border-l-4 border-sky-500 pl-3">
+        <p className="text-sm text-gray-700 border-l-4 border-primary pl-3">
           សូមបញ្ចូលឈ្មោះអ្នកប្រើ ឬអាសយដ្ឋានអ៊ីមែលរបស់អ្នក។ 
           អ្នកនឹងទទួលបានសារអ៊ីមែលមួយដែលមានការណែនាំអំពីរបៀបកំណត់ពាក្យសម្ងាត់ឡើងវិញ។
         </p>
@@ -30,7 +30,7 @@ return (
         </label>
         <input
           type="text"
-          className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-sky-500 mb-4"
+          className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-hover mb-4"
         />
         <button className="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded text-sm cursor-pointer ml-66 ">
           ទទួលពាក្យសម្ងាត់ថ្មី
@@ -39,28 +39,21 @@ return (
 
       {/* Links */}
       <div className="mt-6 text-sm text-gray-600 space-x-2">
-        <a href="/login" className="text-sky-700 hover:underline">
+        <a href="/login" className="text-primary hover:underline">
           ចូលគណនី
         </a>
         <span>|</span>
-        <a href="/register" className="text-sky-700 hover:underline">
+        <a href="/register" className="text-primary hover:underline">
           ចុះឈ្មោះ
         </a>
       </div>
 
-      <a
-        href="/"
-        className="mt-2 text-sm text-gray-600 hover:underline"
-      >
-        ← ត្រលប់ទៅទំព័រដើម
-      </a>
-
       {/* Footer */}
       <a
-        href="/privacy"
-        className="mt-6 text-sm text-sky-700 hover:underline"
+        href="/"
+        className="mt-6 text-sm text-primary hover:underline"
       >
-        គោលការណ៍ឯកជនភាព
+        ត្រលប់ទៅទំព័រដើម
       </a>
     </div>
   );

@@ -16,7 +16,7 @@ const COURSE_BENEFITS = {
       icon: ClockIcon,
     },
   ],
-  topImage: "/Merged-Scheme-laptop-course-view.png",
+  topImage: "https://www.ibm-institute.com/wp-content/uploads/2023/06/new-screenshot-course2.png",
       
   bottom: [
     {
@@ -30,7 +30,7 @@ const COURSE_BENEFITS = {
       icon: CertificateIcon,
     }
   ],
-  bottomImage: "/SN_Laptop_Front_1000.jpg"
+  bottomImage: "https://www.ibm-institute.com/wp-content/uploads/2023/06/new-screenshot-certificate2.png"
 }
 
 const CourseBenefits = () => {
@@ -44,7 +44,7 @@ const CourseBenefits = () => {
             <div key={index} className="flex flex-col items-center gap-6 py-1 w-full">
               <benefit.icon size={64} />
               <div className="flex flex-col items-center gap-2">						
-                <h1 className="text-center font-semibold text-2xl">{benefit.title}</h1>
+                <h1 className="text-center font-medium text-2xl">{benefit.title}</h1>
                 <span className="text-center font-normal text-base">{benefit.description}</span>
               </div>
             </div>
@@ -66,7 +66,7 @@ const CourseBenefits = () => {
             <div key={index} className="flex flex-col items-center gap-6 py-1 w-full">
               <benefit.icon size={64} />
               <div className="flex flex-col items-center gap-2">						
-                <h1 className="text-center font-semibold text-2xl">{benefit.title}</h1>
+                <h1 className="text-center font-medium text-2xl">{benefit.title}</h1>
 						    <span className="text-center font-normal text-base">{benefit.description}</span>
               </div>
             </div>
