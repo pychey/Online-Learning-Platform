@@ -1,15 +1,22 @@
+import Certificate from "@/components/icons/Certificate";
+import MultipleCheck from "@/components/icons/MultipleCheck";
+import UserValue from "@/components/icons/UserValue";
+
 const benefits = [
   {
+    icon: Certificate,
     title: "ទទួលបានវិញ្ញាបនបត្របញ្ជាក់ការសិក្សា",
     description:
       "លោកអ្នកនឹងទទួលបាន វិញ្ញាបនបត្រឌីជីថល ដែលមានគុណភាពខ្ពស់ជាមួយនឹង លេខសម្គាល់ខ្លួន នៅបញ្ជាប់ការសិក្សា។",
   },
   {
+    icon: MultipleCheck,
     title: "ទទួលបានព្រឹតិ្តបត្រពិន្ទុ ក្រោយពេលរៀបចប់",
     description:
       "លោកអ្នកនឹងទទួលបាន ព្រឹតិ្តបត្រពិន្ទុឌីជីថល ដែលមានបញ្ជាក់អំពីមាតិកា និងពេលវេលារៀនត្រឹមត្រូវច្បាស់លាស់។",
   },
   {
+    icon: UserValue,
     title: 'បងើ្កតគុណភាព "ប្រវតិ្តរូបសង្ខេប" របស់លោកអ្នក',
     description:
       'លោកអ្នកអាចអាចពន្លេច វិញ្ញាបនបត្រ និងព្រឹត្តិបត្រពិន្ទុ ដែលទទួលបាននៅក្នុង​ "ប្រវតិ្តរូបសង្ខេប ឬ CV" ដើម្បីធ្វើការដាក់សុំចូលបម្រើការងារផ្សេងៗបាន។',
@@ -31,9 +38,9 @@ const CertificateOverview = () => {
           {benefits.map((benefit, index) => (
             <div key={index} className="flex gap-4">
               <div className="flex items-center justify-center h-[84px] min-w-[84px] border-2 
-                          border-primary rounded-full transition-colors duration-300 hover:bg-primary"
+                          border-primary rounded-full transition-colors duration-300 hover:bg-primary text-primary hover:text-white"
               >
-                <EducationIcon />
+                <benefit.icon size={40} />
               </div>
               <div>
                 <h2 className="text-xl font-semibold">{benefit.title}</h2>
