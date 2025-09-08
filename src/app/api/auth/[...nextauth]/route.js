@@ -5,7 +5,9 @@ import { compare } from "bcryptjs";
 
 
 const authOptions = {
-  session: { strategy: "jwt" },
+  session: { strategy: "jwt",
+     maxAge: 60 * 60 * 24 * 7,
+   },
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
