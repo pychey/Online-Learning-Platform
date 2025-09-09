@@ -27,7 +27,7 @@ const NavBar = () => {
       submenu: [
         { title: "អំពីយើង", link: "/institute" },
         { title: "បញ្ជាក់សញ្ញាបត្រ", link: "/verify" },
-        { title: "ឥទ្ធិពលល្អចំពោះសង្គម", link: "/social-impact" }
+        { title: "សកម្មភាពក្នុងសង្គម", link: "/social-impact" }
       ]
     },
   ];
@@ -55,10 +55,10 @@ const NavBar = () => {
     <nav className='w-full h-20 border-gray shadow-md fixed top-0 left-0 right-0 bg-white z-50'>
       <div className='flex items-center justify-between max-w-[1100px] mx-auto px-6 tablet:px-2'>
         <div className="w-[45%] tablet:w-60 h-full ">
-          <Link className="w-full h-full" href='/'><img src="/Logo-AA-Horizontal.png" alt="logo" className="h-full w-full object-cover"/></Link>
+          <Link href='/'><img src='/Logo-AA-Horizontal.png' alt="logo" className="h-full w-full object-cover"/></Link>
         </div>
         <div className="hidden laptop:flex items-center justify-end gap-2.5 lg:gap-4 xl:gap-6 py-5 ">
-            {nav.map((n, index) => (
+          {nav.map((n, index) => (
             <div key={index} className="relative group">
               <div className="text-gray-800 font-[600] hover:text-primary-color cursor-pointer py-2 px-1 select-none group-hover:text-gray-400">
                 <span className="inline-flex items-center gap-1">
@@ -67,39 +67,28 @@ const NavBar = () => {
                 </span>
               </div>
 
-            {n.submenu && (
-              <div className="absolute left-0 mt-0 hidden group-hover:block flex-col bg-white shadow-xl rounded z-50 min-w-[150px] border border-gray-300">
-                
-                <div className="absolute -top-2 left-1/4 -translate-x-1/2">
-                  <div className="absolute left-0 top-0 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-gray-400"></div>
-                  <div className="relative left-0 top-[1px] w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white"></div>
-                </div>
+              {n.submenu && (
+                <div className="absolute left-0 mt-0 hidden group-hover:block flex-col bg-white shadow-xl rounded z-50 min-w-[150px] border border-gray-300">
+                  
+                  <div className="absolute -top-2 left-1/4 -translate-x-1/2">
+                    <div className="absolute left-0 top-0 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-gray-400"></div>
+                    <div className="relative left-0 top-[1px] w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white"></div>
+                  </div>
 
-                {n.submenu.map((sub, subIndex) => (
-                  <Link
-                    key={subIndex}
-                    href={sub.link}
-                    className="px-4 py-2 text-sm font-semibold text-gray-400 hover:text-primary whitespace-nowrap block hover:bg-gray-200"
-                  >
-                    {sub.title}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+                  {n.submenu.map((sub, subIndex) => (
+                    <Link
+                      key={subIndex}
+                      href={sub.link}
+                      className="px-4 py-2 text-sm font-semibold text-gray-400 hover:text-primary whitespace-nowrap block hover:bg-gray-200"
+                    >
+                      {sub.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
-          {/* <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>ចូលរៀន/ចុះឈ្មោះ</a> */}
-          {session?.user ? (
-  <Link
-    className="h-10 bg-primary px-3.5 py-2 rounded-md text-white flex items-center gap-2"
-    href={page.login}
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4" /></svg>
-    {session.user.email}
-  </Link>
-) : (
-  <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>ចូលរៀន/ចុះឈ្មោះ</a>
-)}
+          <Link className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>{session?.user ? 'គណនីរបស់ខ្ញុំ' : 'ចូលរៀន/ចុះឈ្មោះ'}</Link>
           <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.cart}>
               <svg
                       xmlns="http://www.w3.org/2000/svg"

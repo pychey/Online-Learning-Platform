@@ -3,16 +3,13 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "@/lib/prisma";
 import { compare } from "bcryptjs";
 
-
 const authOptions = {
-  session: { strategy: "jwt",
-     maxAge: 60 * 60 * 24 * 7,
-   },
+  session: { strategy: "jwt", maxAge: 60 * 60 * 24 * 7 },
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
-        const user = await prisma.user.findUnique({ where: { email: credentials.email } });
-        if (!user || !user.emailVerified) return null;
+        const user = await prisma.user.findFirst({ where: { email: credentials.email, emailVerified: true } });
+        if (!user) return null;
         const valid = await compare(credentials.password, user.password);
         if (!valid) return null;
         return { id: user.id, email: user.email };
@@ -28,9 +25,7 @@ const authOptions = {
       if (token) session.user.id = token.id;
       return session;
     }
-    
   }
-
 };
 
 const handler = NextAuth(authOptions);
