@@ -6,7 +6,7 @@ const Contentmap = () => {
       <div className="max-w-6xl mx-auto grid [@media(min-width:548px)]:grid-cols-2 gap-6 sm:gap-8 items-start lg:item-center  px-4 sm:px-10">
          <div>
           <p className="text-black mb-2 sm:mb-2 md:mb-6  text-base md:text-lg lg:text-lg leading-normal lg:leading-[31px] mt-0 lg:mt-10 ">
-          We believe a better world is possible through better education. Learning opportunities can open the door to jobs, resources, and skills that a person needs to not just survive, but thrive. Education is one of the most powerful vehicles for sustainable development – by fighting global poverty, inequality, and vulnerability. Therefore IBMI supports education projects in Cameroon, Uganda, Ghana, Kenya, Laos, and the Philippines.
+          យើងជឿជាក់ថា ពិភពលោកល្អប្រសើរជាងនេះអាចកើតមានបាន តាមរយៈការអប់រំប្រសើរជាងមុន។ ឱកាសក្នុងការសិក្សាអាចបើកទ្វារទៅកាន់ការងារ ធនធាន និងជំនាញដែលមនុស្សត្រូវការដើម្បីមិនត្រឹមតែរស់រានមានជីវិត ប៉ុន្តែឱ្យរីកចម្រើន។ ការអប់រំគឺជាវិធីសាស្រ្តដែលមានអំណាចខ្លាំងបំផុតសម្រាប់ការអភិវឌ្ឍន៍យ៉ាងច្នៃប្រឌិត – ដោយការប្រយុទ្ធប្រឆាំងនឹងភាពក្រីក្រ សមភាពមិនស្មើ និងភាពងាយរងគ្រោះនៅជុំវិញពិភពលោក។ ដូចនេះ អង្គការអេសេតគាំទ្រគម្រោងអប់រំនៅប្រទេសកាមេរូន អ៊ូហ្កង់ដា ហ្គាណា កេនយ៉ា លាវ និងហ្វីលីពីន។
           </p>
         </div>
         {/* Left Image */}

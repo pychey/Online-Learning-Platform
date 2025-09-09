@@ -4,7 +4,7 @@ const Overview = ({ item }) => {
 
   return (
     <section
-      className={`grid gap-6 py-8 laptop:py-10 px-5 sm:px-10 xl:px-50 w-full laptop:grid-rows-1 laptop:grid-cols-2 `}>
+      className={`mt-10 grid gap-6 py-8 laptop:py-10 px-6 max-w-[1080px] w-full mx-auto laptop:grid-rows-1 laptop:grid-cols-2 `}>
       {/* Image */}
       <div className="w-full h-full">
         <img
