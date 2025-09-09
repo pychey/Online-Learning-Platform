@@ -1,7 +1,7 @@
 import MenuIcon from "@/components/icons/MenuIcon"
 // import { MenuIcon,MdKeyboardArrowLeft } from "react-icons/md";
 
-const Cart = () => {
+const Cartheader = () => {
   const nav=[
     {name:"កន្ត្រកអីវ៉ាន់",url:"/"},
     {name:"ព័ត៌មានការទិញ",url:"/"},
@@ -41,13 +41,8 @@ const Cart = () => {
           </p>
         </a>
       </div>
-      {/* <div className="flex justify-center items-center pt-8">កន្ត្រករបស់អ្នកគឺទទេរ</div> */}
-      {/* <div className="flex justify-center items-center  gap-4 tablet:gap-10 laptop:gap-60  tablet:text-xl pt-20 px-2">
-        <a href={nav[3].url} className='flex justify-center items-center border-2 py-2  w-60 text-primary border-primary hover:text-white hover:bg-primary transition-colors duration-300 ease-in-out '><MenuIcon/> {nav[3].name}</a>
-        <a href={nav[4].url} className='flex justify-center items-center border-2 py-2 w-60 text-white bg-primary hover:bg-purple-950 transition-colors duration-300 ease-in-out '> {nav[4].name} <MenuIcon/></a>
-      </div> */}
     </main>
   )
 }
 
-export default Cart
+export default Cartheader;

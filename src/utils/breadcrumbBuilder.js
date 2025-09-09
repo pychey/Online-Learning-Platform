@@ -19,7 +19,7 @@ export const buildChapterBreadcrumbs = (program, course, chapter) => ([
 export const buildCourseBreadcrumbs = (program, course) => ([
   { label: "Admin", url: "/admin" },
   { label: "Program", url: "/admin/program" },
-  { label: program.programTitle, url: `/admin/program/${program.slug}` },
+  { label: program.program_title, url: `/admin/program/${program.slug}` },
   { label: course.title, url: `/admin/program/${program.slug}/${course.slug}` }
 ])
 

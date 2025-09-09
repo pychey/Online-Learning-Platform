@@ -13,7 +13,7 @@
     "@prisma/client": "^6.15.0",
     "@react-pdf/renderer": "^4.3.0",
     "axios": "^1.11.0",
-    "bakong-khqr": "^1.0.20",
+    "bakong-khqr": "^1.0.7",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",

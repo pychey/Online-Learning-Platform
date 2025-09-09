@@ -33,6 +33,7 @@ import "./globals.css";
 import NavBar from "@/components/ui/NavBar";
 import Footer from "@/components/ui/Footer";
 import SessionWrapper from "./SessionWrapper"; // Import the wrapper
+import { CartProvider } from "@/app/context/CartContext"; 
 
 export const metadata = {
   title: "Online Learning Platform",
@@ -52,9 +53,11 @@ export default function RootLayout({ children }) {
       </head>
       <body className="font-kantumruy">
         <SessionWrapper>
-          <NavBar />
-          {children}
-          <Footer />
+          <CartProvider>  
+            <NavBar />
+            {children}
+            <Footer />
+          </CartProvider>
         </SessionWrapper>
       </body>
     </html>

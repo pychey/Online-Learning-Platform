@@ -41,7 +41,7 @@ const ProgramOverview = ({ program, admin = false }) => {
             </section>
         </main>
         <aside>
-            <img src={program.certificate_img_url} alt='Program Certificate' className="border-1 border-primary"/>
+            <img src={program.certificate_img_url || '/Certificate_Template.jpg'} alt='Program Certificate' className="border-1 border-primary"/>
             <div className='flex flex-col gap-5 laptop:gap-3 text-base p-6 laptop:px-8 border-1 border-gray-300'> 
                 <div className="flex items-start gap-4">
                     <BookIcon className='text-primary w-[18px] pr-[4px]'/>
