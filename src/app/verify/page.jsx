@@ -23,7 +23,7 @@ const VerifyPage = () => {
     if (trimmedSearch === "") {
       setValidSearch(false);
       setImgSrc('/Certificate_Template.jpg')
-      setInvalidMessage("សូមបញ្ចូលលេខសម្គាល់សញ្ញាប័ត្រ ឬអ៊ីមែល");
+      setInvalidMessage("សូមបញ្ចូលលេខសម្គាល់សញ្ញាប័ត្រ");
     } else if (certificate.message == 'Incorrect Code') {
       setValidSearch(false);
       setImgSrc('/Certificate_Template.jpg')
@@ -61,7 +61,7 @@ const VerifyPage = () => {
           <span className="text-center font-semibold text-[22px]">ពិនិត្យលេខសម្គាល់សញ្ញាប័ត្រ</span>
           <div className="flex flex-col items-center my-9 p-12 w-full border border-[#CCCCCC] shadow-lg bg-white">
             <h2 className="mt-2 text-xl text-center">
-              ស្វែងរកតាមលេខសម្គាល់សញ្ញាប័ត្រ ឬ អ៊ីមែល: *
+              ស្វែងរកតាមលេខសម្គាល់សញ្ញាប័ត្រ:
             </h2>
             <div className="my-2.5 pt-2.5 w-full">
               <input
@@ -71,7 +71,7 @@ const VerifyPage = () => {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="ឧ. 097-6001-889 ឬ student@example.com"
+                placeholder="ឧ. 057-08-213"
               />
             </div>
             <div className="items-center mb-[30px] w-full">

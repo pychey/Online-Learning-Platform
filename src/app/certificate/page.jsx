@@ -25,9 +25,9 @@ const Certificate = () => {
     e.preventDefault();
     setIsSubmit(true);
     try {
-      const { data } = await axios.post('/api/certificate', form);
-      console.log(data);
-      setData(data);
+      const response = await axios.post('/api/certificate', form);
+      console.log(response.data);
+      setData(response.data);
     } catch (error) {
       console.log(error);
     }

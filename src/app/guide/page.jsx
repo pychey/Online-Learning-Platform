@@ -6,8 +6,8 @@ const GuidePage= () => {
         <ul className="underline">
             <li><a href="/">Home</a></li>
             <li><a href="/courselist">CourseList</a></li>
-            <li><a href="/product/:id">CourseDetail</a></li>
-            <li><a href="/program/:id">ProgramDetail</a></li>
+            <li><a href="/product/statistic-excel">CourseDetail</a></li>
+            <li><a href="/program/research">ProgramDetail</a></li>
             <li><a href="/cart">Cart</a></li>
             <li><a href="/institute">Institute</a></li>
             <li><a href="/certificate">Certificate</a></li>

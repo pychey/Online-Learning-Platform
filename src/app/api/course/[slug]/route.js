@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET (req, {params}) {
     const { slug } = await params;
 
+    // FOR TESTING
     const { searchParams } = new URL(req.url);
     const includeChapters = searchParams.get("include")?.split(",").includes("chapters");
     const chapterFieldsParam = searchParams.get("chapter_fields");

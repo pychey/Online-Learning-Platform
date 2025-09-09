@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET (req, {params}) {
-    const { slug } = params;
+    const { slug } = await params;
     try {
         const program = await prisma.program.findFirst({
             where: {

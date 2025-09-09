@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Footer = ({
@@ -18,28 +19,25 @@ const Footer = ({
     {
       title: 'អាកសេត អាខាដេមី',
       links: [
-        { text: 'គេហទំព័រ', url: '#' },
-        { text: 'វគ្គបណ្តុះបណ្តាល', url: '#' },
-        { text: 'ស្ថាប័ន', url: '#' },
-        { text: 'ការងារ', url: '#' },
+        { text: 'គេហទំព័រ', url: '/' },
+        { text: 'វគ្គបណ្តុះបណ្តាល', url: '/courselist' },
+        { text: 'ស្ថាប័ន', url: '/institue' },
       ],
     },
     {
-      title: 'គណនេយ្យ',
+      title: 'គណនី',
       links: [
-        { text: 'ចូលរៀន', url: '#' },
-        { text: 'ចុះឈ្មោះចូលរៀន', url: '#' },
-        { text: 'គណនេយ្យរបស់ខ្ញុំ', url: '#' },
-        { text: 'ជំនួយ', url: '#' },
+        { text: 'ចូលគណនី', url: '/login' },
+        { text: 'ចុះឈ្មោះគណនី', url: '/register' },
+        { text: 'គណនីរបស់ខ្ញុំ', url: '/my-courses' }
       ],
     },
     {
       title: 'បណ្តាញសង្គម',
       links: [
-        { text: 'Facebook', url: '#' },
-        { text: 'Linkedin', url: '#' },
-        { text: 'YouTube', url: '#' },
-        { text: 'ទំនាក់ទំនង', url: '#' },
+        { text: 'Facebook', url: 'https://www.facebook.com/CADT.Academy' },
+        { text: 'YouTube', url: 'https://www.facebook.com/CADT.Academy' },
+        { text: 'មជ្ឈមណ្ឌលជំនួយ', url: '/help' },
       ],
     },
   ],
@@ -48,13 +46,13 @@ const Footer = ({
 
 bottomLink =[
   {
-    text: 'លក្ខន្តិកៈស្ថាប័ន', url: '#'
+    text: 'លក្ខន្តិកៈកិច្ចព្រមព្រៀង', url: '#'
   },
   {
-    text: 'លក្ខន្តិកៈស្ថាប័ន', url: '#'
+    text: 'លក្ខន្តិកៈឯកជនភាព', url: '#'
   },
   {
-    text: 'លក្ខន្តិកៈស្ថាប័ន', url: '#'
+    text: 'លក្ខន្តិកៈផ្នែកច្បាប់', url: '#'
   }
 ],
   
@@ -100,12 +98,12 @@ bottomLink =[
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
                       {link.url ? (
-                        <a
+                        <Link
                           href={link.url}
                           className="hover:text-white hover:underline transition-colors duration-200 text-sm leading-relaxed"
                         >
                           {link.text}
-                        </a>
+                        </Link>
                       ) : (
                         <span className="text-sm leading-relaxed">
                           {link.text}

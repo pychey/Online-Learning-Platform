@@ -17,10 +17,15 @@ export const getCourseByUser = async () => {
     
 }
 
-export const getCourseContent = async (slug) => {
-    const response=await axios.get(url+"course/"+slug+"/content")
+export const getCourseContent=async(slug)=>{
+    const response=await axios.get(url+"course/"+slug+"/course-content")
     return response.data;
 }
+
+// export const getCourseContent = async (slug) => {
+//     const response=await axios.get(url+"course/"+slug+"/content")
+//     return response.data;
+// }
 
 export const createCourse = async (payload) => {
   const response = await axios.post("/api/course", payload);

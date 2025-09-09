@@ -95,7 +95,7 @@ const CertificatePage = ({ code = '123-45-678', name = "Sok Bunleap", courseTitl
 	return(
 		<Document>
             <Page size={{ width, height }} wrap={false} style={styles.page}>
-                <Image src={'https://res.cloudinary.com/dogwsyf81/image/upload/v1756450656/Certificate_Template_600_PPI_vueko1.jpg'} style={styles.image} />
+                <Image src={'https://res.cloudinary.com/dogwsyf81/image/upload/v1757256454/Certificate_Template_400_PPI_mrufeh.jpg'} style={styles.image} />
 
                 <View style={styles.code}>
                     <Text style={{ fontFamily: 'Times-Roman', fontWeight: 'light' }}>{code}</Text>

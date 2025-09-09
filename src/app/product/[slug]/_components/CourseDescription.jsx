@@ -82,7 +82,7 @@ const CourseDescription = ({ course, admin = false }) => {
 
           <div className="flex flex-col laptop:flex-row items-center gap-6 mt-2">
             <Link href={`/program/${course.program.slug}`}><img src={course.program.logo_url} alt='icon' className='w-[100px] laptop:w-[60px]'/></Link>
-            <p>វគ្គសិក្សានេះជាផ្នែកមួយនៃវគ្គ<Link href={`/program/${course.program.slug}`} className="mx-1 text-primary underline">{course.title}</Link>កម្មវិធីសិក្សា</p>
+            <p>វគ្គសិក្សានេះជាផ្នែកមួយនៃវគ្គ<Link href={`/program/${course.program.slug}`} className="mx-1 text-primary underline">{course.program.program_title}</Link>កម្មវិធីសិក្សា</p>
           </div>
         </div>
       </div>

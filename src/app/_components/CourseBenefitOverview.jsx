@@ -1,6 +1,7 @@
 'use client'
 
 import PlayIcon from "@/components/icons/Playicon";
+import VideoPreview from "@/components/ui/VideoPreview";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -34,18 +35,11 @@ const CourseBenefitOverview = () => {
     <section className="px-2 py-10 w-full bg-[#F2F2F2]">
       <div className="flex flex-col tablet:flex-row gap-8 mx-auto px-4 max-w-[1320px]">
         <div className="flex justify-center items-center flex-1">
-          <div
-              className="flex justify-center items-center aspect-[960/584] w-full max-w-[495px] bg-cover bg-center"
-              style={{ backgroundImage: "url('/AA001-IMG - 4 x 2.5.jpg')" }}
-          >
-            <button
-              className="flex items-center justify-center aspect-[75/75] min-h-[75px] border-2 
-                        border-white rounded-full bg-transparent hover:border-transparent 
-                        hover:bg-primary transition-colors duration-300 cursor-pointer"
-            >
-              <PlayIcon size={50} color={"#FFFFFF"} />
-            </button>
-          </div>
+          <VideoPreview 
+            thumbnail='https://res.cloudinary.com/dogwsyf81/image/upload/v1756783946/AA001-IMG_-_4_x_2.5_abvtx1.jpg'
+            youtubeLink='https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1'
+            className='max-w-[495px]'
+            />
         </div>
 
         <div className="flex flex-col justify-between gap-6 flex-1">
