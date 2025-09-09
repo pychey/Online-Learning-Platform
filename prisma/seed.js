@@ -75,7 +75,7 @@ const courses = [
         slug: 'statistic-description',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$0.0១',
         discount_percent: '៧០%',
         title: 'ការវិភាគស្ថិតិពិពណ៌នា',
         study_type: 'វគ្គសិក្សា អនឡាញ',

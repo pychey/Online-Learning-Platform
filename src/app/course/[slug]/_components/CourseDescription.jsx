@@ -10,8 +10,10 @@ import RightArrow from '@/components/icons/RightArrow';
 import Tick from '@/components/icons/Tick';
 import VideoPreview from '@/components/ui/VideoPreview';
 import Link from 'next/link';
+import { useCart } from "@/app/context/CartContext";
 
 const CourseDescription = ({ course }) => {
+    const { addToCart } = useCart();
 
   return (
     <div className="grid grid-cols-1 laptop:grid-cols-[1.5fr_1fr] laptop:grid-rows-[minmax(140px,auto)_1fr] gap-6 laptop:gap-8 max-w-[1100px] mx-auto mt-7 p-4 text-base">
@@ -34,7 +36,9 @@ const CourseDescription = ({ course }) => {
             <p className="text-gray-400 line-through text-lg laptop:text-base">{course.original_price}</p>
             <p className="text-3xl laptop:text-2xl font-medium">{course.discounted_price}</p>
           </div>
-          <button className="w-[90%] rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center gap-2 mt-2">
+          <button 
+          onClick={() => addToCart(course)}
+          className="w-[90%] rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center gap-2 mt-2">
             បន្ថែមចូលកន្ត្រក <RightArrow size={12}/>
           </button>
         </div>

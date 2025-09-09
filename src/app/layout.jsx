@@ -1,6 +1,7 @@
 import "./globals.css";
 import NavBar from "@/components/ui/NavBar";
 import Footer from "@/components/ui/Footer";
+import { CartProvider } from "@/app/context/CartContext"; 
 
 export const metadata = {
   title: "Online Learning Platform",
@@ -19,10 +20,11 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="font-kantumruy">
-          {/* cz-shortcut-listen="true" */}
-        <NavBar />
-        {children}
-        <Footer />
+        <CartProvider>  
+          <NavBar />
+          {children}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
