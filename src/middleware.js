@@ -8,5 +8,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-    matcher: ["/my-courses"],
+    matcher: ['/my-courses', '/payment-fake'],
 };

@@ -15,6 +15,62 @@ import lessonContents from './model.data/lessonContent.js'
 
 const prisma = new PrismaClient()
 
+const users = [
+    {
+        email: 'pychey@gmail.com',
+        password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
+        emailVerified: true,
+    },
+    {
+        email: 'methy@gmail.com',
+        password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
+        emailVerified: true,
+    },
+    {
+        email: 'rithea@gmail.com',
+        password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
+        emailVerified: true,
+    },
+    {
+        email: 'deny@gmail.com',
+        password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
+        emailVerified: true,
+    },
+    {
+        email: 'seyha@gmail.com',
+        password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
+        emailVerified: true,
+    },
+    {
+        email: 'bunleap@gmail.com',
+        password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
+        emailVerified: true,
+    },
+]
+
+const enrollments = [
+    {
+        userId: 1,
+        courseId: 1,
+    },
+    {
+        userId: 1,
+        courseId: 2,
+    },
+    {
+        userId: 4,
+        courseId: 3,
+    },
+    {
+        userId: 4,
+        courseId: 4,
+    },
+    {
+        userId: 4,
+        courseId: 5,
+    },
+]
+
 export async function main() {
     for (const program of programs) await prisma.program.create({ data: program })
     for (const course of courses) await prisma.course.create({ data: course })
@@ -28,6 +84,8 @@ export async function main() {
     for (const benefit of certificateBenefits) await prisma.siteContents.create({ data: benefit })
     for (const partner of partners) await prisma.partner.create({ data: partner })
     for (const review of reviews) await prisma.reviews.create({ data: review })
+    for (const user of users) await prisma.user.create({ data: user })
+    for (const enrollment of enrollments) await prisma.enrollment.create({ data: enrollment })
 }
 
 main()

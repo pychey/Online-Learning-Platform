@@ -2,21 +2,11 @@
 
 import Link from "next/link";
 import PlusIcon from "@/components/icons/PlusIcon";
-
-const MY_COURSES_DATA = {
-  title: "ចាប់ផ្តើមវគ្គសិក្សាថ្មី",
-  description: (
-    <>
-      ដើម្បីបន្ថែមវគ្គសិក្សាថ្មី សូមទិញវគ្គសិក្សាពីបញ្ជីវគ្គសិក្សារបស់យើង។
-      អ្នកនឹងទទួលបានការចូលប្រើវគ្គសិក្សានោះភ្លាមៗ ហើយអាចបញ្ចប់វានៅពេលណាក៏បានតាមតម្រូវការរបស់អ្នក។ 
-      អ្នកនឹងទទួលបានវិញ្ញាបនបត្រនៅចុងបញ្ចប់នៃវគ្គសិក្សារៀងៗខ្លួន។
-    </>
-  ),
-  buttonText: "បន្ថែមវគ្គសិក្សាថ្មី",
-};
+import { useRouter } from "next/navigation";
 
 const MyCourses = ({courses}) => {
-
+	const router = useRouter();
+	
 	return(
 		<section 
 			className="px-4 tablet:px-20 py-10 w-full bg-white leading-relaxed" 
@@ -24,26 +14,27 @@ const MyCourses = ({courses}) => {
 			<div className="text-center mx-auto p-5 pb-6 w-full max-w-[800px] bg-[#f5f5f5] border 
 										border-[#CBCBCB] rounded-xs"
 			>	
-				<div className="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-8 w-full text-sm text-left pt-4 pb-8">
+				<h1 className="text-xl font-medium">{courses.length > 0 ? "វគ្គសិក្សារបស់ខ្ញុំ" : "ចាប់ផ្តើមវគ្គសិក្សាថ្មី"}</h1>
+				<div className="mt-8 grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-6 w-full text-sm text-left">
 					{courses.map((course,index)=>(
 						<Link key={index} href={`/course/${course.slug}`}>
-							<div className=" flex flex-col relative pb-2 border-1 rounded-sm border-gray-300 gap-2">
-								<div className="w-full h-38"><img className="w-full h-full object-cover" src={course.image} alt="course image" /></div>
-								<p className="pl-1">{course.title}</p>
-								<span className="absolute top-2 left-2 bg-blue-600 text-white text-xs font-medium px-2 py-1 rounded shadow-md">
-									ចុះឈ្មោះហើយ
+							<div className="relative flex flex-col border border-gray-300 text-sm w-full">
+								<img src={course.img_url} alt={course.slug} className='w-full z-10 h-[150px] object-cover' />
+								<h2 className='font-medium flex items-center py-3 px-4'>{course.title}</h2>
+								<span className="absolute z-10 top-2 -left-3 bg-primary text-white text-sm font-medium px-3 py-1">
+									បានចូលរៀន
 								</span>
+								<span className="absolute top-2 -left-3 bg-primary-hover w-8 h-7 origin-bottom-left rotate-25"></span>
 							</div>
 						</Link>
 					))}
 				</div>
-				<h1 className="text-xl font-medium">{MY_COURSES_DATA.title}</h1>
-				<p className="leading-relaxed py-1 mt-3 font-[450] text-sm tablet:text-base">{MY_COURSES_DATA.description}</p>
-				<button className="flex items-center gap-1.5 mx-auto mt-5 px-4 py-2 bg-primary 
-												hover:bg-primary-hover rounded-sm cursor-pointer"
-				>
-					<PlusIcon color="white" />
-					<p className="font-medium text-white">{MY_COURSES_DATA.buttonText}</p>
+				<p className="mt-6 leading-relaxed py-1 font-[450] text-sm tablet:text-base text-gray-700">
+					ដើម្បីបន្ថែមវគ្គសិក្សាថ្មី សូមទិញវគ្គសិក្សាពីបញ្ជីវគ្គសិក្សារបស់យើង។ អ្នកនឹងទទួលបានការចូលប្រើវគ្គសិក្សានោះភ្លាមៗ ហើយអាចបញ្ចប់វានៅពេលណាក៏បានតាមតម្រូវការរបស់អ្នក។ អ្នកនឹងទទួលបានវិញ្ញាបនបត្រនៅចុងបញ្ចប់នៃវគ្គសិក្សារៀងៗខ្លួន។
+				</p>
+				<button className="flex items-center gap-1.5 mx-auto mt-5 px-4 py-2 bg-primary hover:bg-primary-hover rounded-sm cursor-pointer" onClick={() => router.push('/courselist')}>
+					<p className="font-medium text-white">បន្ថែមវគ្គសិក្សាថ្មី</p>
+					<PlusIcon color="white" size={20}/>
 				</button>
 			</div>
 		</section>
