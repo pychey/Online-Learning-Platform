@@ -1,6 +1,5 @@
 "use client";
 import { createContext, useContext, useState, useEffect } from "react";
-
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
@@ -11,28 +10,28 @@ export const CartProvider = ({ children }) => {
     if (saved) setCart(JSON.parse(saved));
   }, []);
 
-
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-
   const addToCart = (course) => {
     setCart((prev) => {
-      if (prev.find((c) => c.id === course.id)) return prev;
+      if (prev.find((c) => c.id === course.id)) {
+        alert("វគ្គនេះមានរួចហើយក្នុងកន្ត្រករបស់អ្នក 🛒");
+        return prev;
+      }
       return [...prev, course];
     });
   };
+
   const removeFromCart = (id) => {
     setCart((prev) => prev.filter((c) => c.id !== id));
   };
-
 
   const clearCart = () => {
     setCart([]);
     localStorage.removeItem("cart");
   };
-
 
   const getTotal = () => {
     return cart.reduce((sum, c) => {
@@ -40,7 +39,6 @@ export const CartProvider = ({ children }) => {
     }, 0);
   };
 
-  
   const getCount = () => {
     return cart.length;
   };
@@ -59,5 +57,6 @@ export const CartProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
-}
+};
+
 export const useCart = () => useContext(CartContext);

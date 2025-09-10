@@ -69,7 +69,7 @@ export default function CheckoutPage() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 p-6 rounded shadow-md py-12 bg-white">
           {/* Billing Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
-            <h2 className="text-2xl font-bold mb-4">Billing Details</h2>
+            <h2 className="text-xl font-bold mb-4">ព័ត៌មានលម្អិតអំពីវិក័យប័ត្រ</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input name="firstName" onChange={handleChange} required placeholder="First Name" className="p-3 border rounded w-full" />
               <input name="lastName" onChange={handleChange} required placeholder="Last Name" className="p-3 border rounded w-full" />
@@ -88,7 +88,7 @@ export default function CheckoutPage() {
 
           {/* Order Summary */}
           <div className="border rounded p-6">
-            <h2 className="text-2xl font-bold mb-4">Your Order</h2>
+            <h2 className="text-xl font-bold mb-4">ការកម្មង់ទិញរបស់អ្នក</h2>
             <div className="space-y-2">
               {cart.length > 0 ? (
                 cart.map((item, i) => (
@@ -99,15 +99,19 @@ export default function CheckoutPage() {
                     </span>
                   </div>
                 ))
-              ) : <p className="text-gray-500">No items in your cart</p>}
+              ) : <p className="text-gray-500">មិនមានទំនិញនៅក្នងកន្ត្រកទេ</p>}
               <hr className="my-4" />
               <div className="flex justify-between font-semibold text-lg">
-                <span>Total</span>
+                <span>សរុប</span>
                 <span className="text-amber-400">${englishToKhmerNumber(total.toFixed(2))}</span>
               </div>
+               <div className='w-full h-auto mt-6'>
+           <img src="https://devithuotkeo.com/static/image/portfolio/khqr/khqr-5.png" alt="" className='h-60 w-full' />
+            </div>
             </div>
           </div>
         </div>
+        
       </div>
     </>
   );

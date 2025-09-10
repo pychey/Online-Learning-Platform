@@ -25,7 +25,7 @@ const LoginPage = () => {
         password: password
       });
 
-      if (response && !response.error) router.push('/my-courses')
+      if (response && !response.error) router.push('/checkoutdetail')
       else {
         console.log(response?.error)
         setMessage('ព័ត៌មានដែលអ្នកបានបញ្ចូលមិនត្រឹមត្រូវទេ សូមព្យាយាមម្ដងទៀត។')
