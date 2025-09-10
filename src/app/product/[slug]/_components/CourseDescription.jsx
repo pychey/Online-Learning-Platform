@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { useCart } from "@/app/context/CartContext";
 
 const CourseDescription = ({ course, admin = false }) => {
-
+   const { addToCart } = useCart();
   return (
     <div className={`grid grid-cols-1 laptop:grid-cols-[1.5fr_1fr] laptop:grid-rows-[minmax(140px,auto)_1fr] gap-6 laptop:gap-8 ${admin ? "w-full p-8" : "max-w-[1100px] mt-7 p-4"} mx-auto  text-base`}>
       <div className="col-start-1 col-end-2 row-start-1 row-end-2">
