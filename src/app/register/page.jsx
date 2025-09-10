@@ -4,8 +4,8 @@ import EyeOff from "@/components/icons/EyeOff";
 import EyeOn from "@/components/icons/EyeOn";
 import axios from "axios";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('')
@@ -14,6 +14,18 @@ const RegisterPage = () => {
   const [buttonMessage, setButtonMessage] = useState('ចុះឈ្មោះ')
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const [isFromPayment, setIsFromPayment] = useState();
+
+  useEffect(() => {
+    const fromPayment = searchParams.get('fromPayment')
+    if(fromPayment) {
+      setMessage('សូមចូលគណនី ឫចុះឈ្មោះមុនការទិញវគ្គសិក្សា')
+      setIsFromPayment(Number(fromPayment))
+    } else {
+      setIsFromPayment(0)
+    }
+  },[searchParams])
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -22,7 +34,7 @@ const RegisterPage = () => {
       const { data } = await axios.post('/api/auth/send-otp', { email, password });
       if (data.success) {
         sessionStorage.setItem('tempPassword', password);
-        router.push(`/verify-otp?userId=${data.userId}&email=${encodeURIComponent(email)}`);
+        router.push(`/verify-otp?userId=${data.userId}&email=${encodeURIComponent(email)}&fromPayment=${isFromPayment}`);
       } else {
         setMessage(data.message);
         setButtonMessage("ចុះឈ្មោះ");
@@ -118,7 +130,7 @@ const RegisterPage = () => {
           </form>
         </div>
       <div className="mt-6 text-sm text-gray-600 space-x-2">
-        <Link href="/login" className="text-primary hover:underline">
+        <Link href={`${isFromPayment ? '/login?fromPayment=1' : '/login'}`} className="text-primary hover:underline">
           ចូលគណនី
         </Link>
         <span>|</span>

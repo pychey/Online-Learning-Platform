@@ -4,8 +4,8 @@ import EyeOff from "@/components/icons/EyeOff";
 import EyeOn from "@/components/icons/EyeOn";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const LoginPage = () => {
   const [email, setEmail] = useState('')
@@ -14,6 +14,18 @@ const LoginPage = () => {
   const [message, setMessage] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const [isFromPayment, setIsFromPayment] = useState();
+
+  useEffect(() => {
+    const fromPayment = searchParams.get('fromPayment')
+    if(fromPayment) {
+      setMessage('សូមចូលគណនី ឫចុះឈ្មោះមុនការទិញវគ្គសិក្សា')
+      setIsFromPayment(Number(fromPayment))
+    } else {
+      setIsFromPayment(0)
+    }
+  },[searchParams])
   
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -25,7 +37,7 @@ const LoginPage = () => {
         password: password
       });
 
-      if (response && !response.error) router.push('/my-courses')
+      if (response && !response.error) isFromPayment ? router.push('/payment-fake') : router.push('/my-courses')
       else {
         console.log(response?.error)
         setMessage('ព័ត៌មានដែលអ្នកបានបញ្ចូលមិនត្រឹមត្រូវទេ សូមព្យាយាមម្ដងទៀត។')
@@ -122,7 +134,7 @@ const LoginPage = () => {
           </form>
         </div>
       <div className="mt-6 text-sm text-gray-600 space-x-2">
-        <Link href="/register" className="text-primary hover:underline">
+        <Link href={`${isFromPayment ? '/register?fromPayment=1' : '/register'}`} className="text-primary hover:underline">
           ចុះឈ្មោះ
         </Link>
         <span>|</span>

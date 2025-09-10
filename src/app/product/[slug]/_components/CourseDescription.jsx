@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { useCart } from "@/app/context/CartContext";
 import { useRouter } from 'next/navigation';
 
-const CourseDescription = ({ course, admin = false }) => {
+const CourseDescription = ({ course, admin = false, isPaid = false }) => {
   const { addToCart } = useCart();
   const router = useRouter();
 
@@ -94,7 +94,7 @@ const CourseDescription = ({ course, admin = false }) => {
           <button 
             onClick={() => router.push(`/payment-fake?courseId=${course.id}`)}
             className='mt-2 w-full rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center'>
-            បន្លំទិញ
+            {isPaid ? 'បានទិញរួច' : 'បន្លំទិញ'}
           </button>
         </div>
       </div>
