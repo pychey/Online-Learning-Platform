@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/app/context/CartContext";
 import { khmerToEnglishNumber } from "@/lib/khmerToEnglishNumber";
 import { englishToKhmerNumber } from "@/lib/englishToKhmerNumber";
+import { useEffect, useState } from "react";
 
 function parsePrice(priceStr) {
   if (!priceStr) return 0;
@@ -13,7 +14,7 @@ function parsePrice(priceStr) {
   return parseFloat(clean) || 0;
 }
 
-export default function CartPage() {
+export default function CartPage(course ,isPaid=false) {
   const router = useRouter(); 
   const { cart, removeFromCart } = useCart();
 
@@ -92,9 +93,9 @@ export default function CartPage() {
           </div>
           <div className="flex-1/2 border-t border-gray-200 pr-6 mt-2"></div>
           <button
-            onClick={() => router.push("/login")} 
+            disabled={cart.length === 0 || isPaid}
+            onClick={() => router.push("/checkoutdetail")} 
             className="w-60 py-4 bg-primary text-white font-medium hover:bg-purple-800 transition rounded mt-6"
-            disabled={cart.length === 0}
           >
             ទៅកន្លែងបង់ប្រាក់  &gt;
           </button>

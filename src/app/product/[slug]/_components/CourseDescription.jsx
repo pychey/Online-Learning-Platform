@@ -42,7 +42,7 @@ const CourseDescription = ({ course, admin = false, isPaid = false }) => {
           disabled={isPaid}
           onClick={() => addToCart(course)}
           className="w-[90%] rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center gap-2 mt-2">
-            {isPaid ? 'បានទិញរួច' : 'បន្ថែមចូលកន្ត្រក'} <RightArrow size={12}/>
+            {isPaid ? 'វគ្គសិក្សាបានទិញរួច' : 'បន្ថែមចូលកន្ត្រក' } {!isPaid && <RightArrow size={12}/>} 
           </button>
         </div>
 

@@ -9,7 +9,7 @@ export default function PaymentPage() {
   const trxId = searchParams.get("trxId");
   const total = searchParams.get("total");
   const qr = searchParams.get("qr");
-  const merchant = searchParams.get("merchant") || "Merchant Name";
+  const merchant = searchParams.get("merchant") || "Online Course";
 
   const [expired, setExpired] = useState(false);
   const [paid, setPaid] = useState(false);
@@ -17,7 +17,7 @@ export default function PaymentPage() {
   const [checking, setChecking] = useState(false);
   const [qrImage, setQrImage] = useState(null);
 
-  // Generate QR image from KHQR string
+  // generate QR image from KHQR string
   useEffect(() => {
     if (qr) {
       QRCode.toDataURL(qr, { width: 280, margin: 1 })
@@ -26,7 +26,7 @@ export default function PaymentPage() {
     }
   }, [qr]);
 
-  // Countdown timer
+  // countdown timer
   useEffect(() => {
     if (timeLeft > 0 && !paid) {
       const timer = setInterval(() => setTimeLeft((t) => t - 1), 1000);
@@ -36,15 +36,13 @@ export default function PaymentPage() {
     }
   }, [timeLeft, paid]);
 
-  // Auto check payment status
+  // check payment status
   useEffect(() => {
     if (!paid && !expired && qr) {
       const interval = setInterval(async () => {
         setChecking(true);
         try {
-          const res = await fetch(
-            `/api/checkstatus?qrString=${encodeURIComponent(qr)}`
-          );
+          const res = await fetch(`/api/checkstatus?qrString=${encodeURIComponent(qr)}`);
           const data = await res.json();
           if (data.paid) setPaid(true);
         } catch (err) {
@@ -57,38 +55,27 @@ export default function PaymentPage() {
     }
   }, [qr, paid, expired]);
 
-  // Paid state
   if (paid) {
     return (
       <div className="flex flex-col items-center justify-center h-screen text-center">
         <h2 className="text-2xl font-bold text-green-600">សូមអរគុណ!</h2>
         <p className="mt-2 text-gray-600">
-          ការទូទាត់ចំនួន{" "}
-          <span className="font-semibold">
-            {Number(total).toLocaleString()} ៛
-          </span>{" "}
-          ជោគជ័យ <br />
+          ការទូទាត់របស់អ្នក <span className="font-semibold">{total} ៛</span> ជោគជ័យ <br />
           Transaction ID: <span className="text-primary">{trxId}</span>
         </p>
       </div>
     );
   }
 
-  // Expired state
   if (expired) {
     return (
       <div className="flex flex-col items-center justify-center h-screen text-center">
-        <h2 className="text-2xl font-bold text-red-600">
-          QR Code របស់អ្នកអស់សុពលភាពហើយ
-        </h2>
-        <p className="mt-2 text-gray-600">
-          សូមធ្វើការរីហ្វ្រេសផេកដើម្បីទទួលបាន QR Code ថ្មី
-        </p>
+        <h2 className="text-2xl font-bold text-red-600">QR Code អស់សុពលភាព</h2>
+        <p className="mt-2 text-gray-600">សូមធ្វើការរីហ្វ្រេសដើម្បីទទួលបាន QR Code ថ្មី</p>
       </div>
     );
   }
 
-  // Default KHQR style display
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="w-[320px] bg-white shadow-lg rounded-lg overflow-hidden border">
@@ -101,7 +88,7 @@ export default function PaymentPage() {
         <div className="text-center py-4">
           <h2 className="text-gray-800 font-semibold">{merchant}</h2>
           <p className="text-2xl font-bold mt-1 text-gray-900">
-            {Number(total).toLocaleString()} ៛
+            {Number(total).toLocaleString()} $
           </p>
         </div>
 

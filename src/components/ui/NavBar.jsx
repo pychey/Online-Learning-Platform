@@ -65,7 +65,7 @@ const NavBar = () => {
       <div className='flex items-center justify-between max-w-[1100px] mx-auto px-6 tablet:px-2'>
         
         <div className="w-[45%] tablet:w-60 h-full ">
-          <Link className="w-full h-full" href={page.guide}>
+          <Link className="w-full h-full" href="/">
             <img src="/Logo-AA-Horizontal.png" alt="logo" className="h-full w-full object-cover" />
           </Link>
         </div>

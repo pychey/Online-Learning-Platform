@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const VerifyOtpPage = () => {
+const PaymentPage = () => {
   const { data: session, status, update } = useSession();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -127,4 +127,4 @@ const VerifyOtpPage = () => {
 	)
 }
 
-export default VerifyOtpPage
+export default PaymentPage
