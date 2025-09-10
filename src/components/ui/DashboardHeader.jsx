@@ -1,7 +1,7 @@
 'use client'
 
 
-import { useSession, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import ProfileIcon from "../icons/ProfileIcon";
 import TagIcon from "../icons/TagIcon";
 import HelpIcon from "../icons/HelpIcon";
@@ -51,7 +51,6 @@ const UserIcon = ({ color = "white", size = 24 }) => (
 );
 
 const DashboardHeader = () => {
-  const { data: session } = useSession();
 
   const pathname = usePathname();
   const router = useRouter();
@@ -62,13 +61,6 @@ const DashboardHeader = () => {
         <div className="flex items-center justify-center tablet:justify-between gap-4 mx-auto w-full max-w-[1080px]">
           <div className="w-[19px] laptop:px-8 px-6 py-4 tablet:block hidden">
             <UserIcon />
-
-            {/* Show user email if logged in */}
-            {session?.user?.email && (
-              <span className="text-white text-xs laptop:text-sm truncate max-w-[120px]">
-                {session.user.email}
-              </span>
-            )}
           </div>
 
           <div className="flex w-[500px] laptop:w-[600px] gap-2 laptop:gap-4 px-4 py-4 
@@ -78,15 +70,10 @@ const DashboardHeader = () => {
             {NAV_ITEMS.map(({ title, mobileHidden, url, icon: Icon }, index) => (
               <button
                 key={index}
-                className={`flex items-center gap-1 mx-auto ${ mobileHidden ? "tablet:flex hidden" : ""} 
-                          cursor-pointer`}
-                // onClick={() => router.push(url)}
-                               onClick={() => {
-                  if (title === "ចាកចេញ") {
-                    signOut({ callbackUrl: "/login" }); // <-- Log out and redirect
-                  } else {
-                    router.push(url);
-                  }
+                className={`flex items-center gap-1 mx-auto ${ mobileHidden ? "tablet:flex hidden" : ""} cursor-pointer`}
+                onClick={() => {
+                  if (title === "ចាកចេញ") signOut({ callbackUrl: "/login" }); 
+                  else router.push(url);
                 }}
               >
                 <Icon size={16} />

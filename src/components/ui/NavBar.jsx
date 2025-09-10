@@ -25,18 +25,13 @@ const NavBar = () => {
     { title: "គេហទំព័រ", link: "/" },
     {
       title: "វគ្គបណ្តុះបណ្តាល", link: "/courselist",
-      submenu: [
-        { title: "អត់1", link: "/" },
-        { title: "អត់2", link: "/" },
-        { title: "អត់3", link: "/" }
-      ]
     },
     {
       title: "ស្ថាប័ន", link: "/institute",
       submenu: [
         { title: "អំពីយើង", link: "/institute" },
         { title: "បញ្ជាក់សញ្ញាបត្រ", link: "/verify" },
-        { title: "ឥទ្ធិពលល្អចំពោះសង្គម", link: "/social-impact" }
+        { title: "សកម្មភាពក្នុងសង្គម", link: "/social-impact" }
       ]
     },
   ];
@@ -62,13 +57,9 @@ const NavBar = () => {
   return (
     <nav className='w-full h-20 border-gray shadow-md fixed top-0 left-0 right-0 bg-white z-50'>
       <div className='flex items-center justify-between max-w-[1100px] mx-auto px-6 tablet:px-2'>
-        
-        
         <div className="w-[45%] tablet:w-60 h-full ">
-          <Link className="w-full h-full" href='/'><img src="/Logo-AA-Horizontal.png" alt="logo" className="h-full w-full object-cover"/></Link>
+          <Link href='/'><img src='/Logo-AA-Horizontal.png' alt="logo" className="h-full w-full object-cover"/></Link>
         </div>
-
-      
         <div className="hidden laptop:flex items-center justify-end gap-2.5 lg:gap-4 xl:gap-6 py-5 ">
           {nav.map((n, index) => (
             <div key={index} className="relative group">
@@ -85,6 +76,7 @@ const NavBar = () => {
 
               {n.submenu && (
                 <div className="absolute left-0 mt-0 hidden group-hover:block flex-col bg-white shadow-xl rounded z-50 min-w-[150px] border border-gray-300">
+                  
                   <div className="absolute -top-2 left-1/4 -translate-x-1/2">
                     <div className="absolute left-0 top-0 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-gray-400"></div>
                     <div className="relative left-0 top-[1px] w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white"></div>
@@ -103,43 +95,14 @@ const NavBar = () => {
               )}
             </div>
           ))}
-          {/* <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>ចូលរៀន/ចុះឈ្មោះ</a> */}
-          {session?.user ? (
-  <Link
-    className="h-10 bg-primary px-3.5 py-2 rounded-md text-white flex items-center gap-2"
-    href={page.login}
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4" /></svg>
-    {session.user.email}
-  </Link>
-) : (
-  <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>ចូលរៀន/ចុះឈ្មោះ</a>
-)}
-          <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg"href={page.cart}>
-              <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      className="h-8 w-8 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="0.9">
-              <path d="M6.616 21q-.691 0-1.153-.462T5 19.385V8.615q0-.69.463-1.152T6.616 7H8.5v-.5q0-1.458 1.021-2.479T12 3t2.479 1.021T15.5 6.5V7h1.885q.69 0 1.152.463T19 8.616v10.769q0 .69-.463 1.153T17.385 21zm0-1h10.769q.23 0 .423-.192t.192-.424V8.616q0-.231-.192-.424T17.384 8H15.5v2.5q0 .214-.143.357T15 11t-.357-.143t-.143-.357V8h-5v2.5q0 .214-.143.357T9 11t-.357-.143T8.5 10.5V8H6.616q-.231 0-.424.192T6 8.616v10.769q0 .23.192.423t.423.192M9.5 7h5v-.5q0-1.056-.722-1.778T12 4t-1.778.722T9.5 6.5zM6 20V8z" />
-            </svg>
-          </a>
-
-      
-          <a className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>
-            ចូលរៀន/ចុះឈ្មោះ
-          </a>
-
-          {/* lek ler add to cart */}
+          <Link className="h-10 bg-primary px-3.5 py-2 rounded-md text-white" href={page.login}>{session?.user ? 'គណនីរបស់ខ្ញុំ' : 'ចូលរៀន/ចុះឈ្មោះ'}</Link>
           <div className="relative">
-            <a className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg" href={page.cart}>
+            <Link className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg" href={page.cart}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                 className="h-8 w-8 text-white" fill="none" stroke="currentColor" strokeWidth="0.9">
                 <path d="M6.616 21q-.691 0-1.153-.462T5 19.385V8.615q0-.69.463-1.152T6.616 7H8.5v-.5q0-1.458 1.021-2.479T12 3t2.479 1.021T15.5 6.5V7h1.885q.69 0 1.152.463T19 8.616v10.769q0 .69-.463 1.153T17.385 21zm0-1h10.769q.23 0 .423-.192t.192-.424V8.616q0-.231-.192-.424T17.384 8H15.5v2.5q0 .214-.143.357T15 11t-.357-.143t-.143-.357V8h-5v2.5q0 .214-.143.357T9 11t-.357-.143T8.5 10.5V8H6.616q-.231 0-.424.192T6 8.616v10.769q0 .23.192.423t.423.192M9.5 7h5v-.5q0-1.056-.722-1.778T12 4t-1.778.722T9.5 6.5zM6 20V8z" />
               </svg>
-            </a>
+            </Link>
 
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-amber-300 text-primary text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
