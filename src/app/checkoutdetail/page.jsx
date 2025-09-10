@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCart } from "@/app/context/CartContext";
 import { khmerToEnglishNumber } from "@/lib/khmerToEnglishNumber";
 import { englishToKhmerNumber } from "@/lib/englishToKhmerNumber";
 import Cartheader from "../cart/Cartheader";
+import { useSession } from "next-auth/react";
 
 function parsePrice(priceStr) {
   if (!priceStr) return 0;
