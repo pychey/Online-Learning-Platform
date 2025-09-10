@@ -92,7 +92,7 @@ export default function CartPage() {
           </div>
           <div className="flex-1/2 border-t border-gray-200 pr-6 mt-2"></div>
           <button
-            onClick={() => router.push("/checkoutdetail")} 
+            onClick={() => router.push("/login")} 
             className="w-60 py-4 bg-primary text-white font-medium hover:bg-purple-800 transition rounded mt-6"
             disabled={cart.length === 0}
           >

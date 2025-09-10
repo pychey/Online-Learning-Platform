@@ -39,9 +39,10 @@ const CourseDescription = ({ course, admin = false, isPaid = false }) => {
             <p className="text-3xl laptop:text-2xl font-medium">{course.discounted_price}</p>
           </div>
           <button 
+          disabled={isPaid}
           onClick={() => addToCart(course)}
           className="w-[90%] rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center gap-2 mt-2">
-            បន្ថែមចូលកន្ត្រក <RightArrow size={12}/>
+            {isPaid ? 'បានទិញរួច' : 'បន្ថែមចូលកន្ត្រក'} <RightArrow size={12}/>
           </button>
         </div>
 
@@ -92,6 +93,7 @@ const CourseDescription = ({ course, admin = false, isPaid = false }) => {
           </div>
 
           <button 
+            disabled={isPaid}
             onClick={() => router.push(`/payment-fake?courseId=${course.id}`)}
             className='mt-2 w-full rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center'>
             {isPaid ? 'បានទិញរួច' : 'បន្លំទិញ'}
