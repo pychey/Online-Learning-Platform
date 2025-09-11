@@ -2,12 +2,19 @@ import axios from "axios";
 
 const url="/api/"
 
-export const getContentBySlug = async (slug, admin = false) => {
-    const response = await axios.get(url + "course-content/" + slug, {
+export const getContentBySlug=async(slug, userId, admin = false)=>{
+    let endpoint = url + "course-content/" + slug
+
+    if(userId){
+      endpoint += `?userId=${userId}`;
+    }
+
+    const response = await axios.get(endpoint, {
         params: {
             ...(admin && { admin: true }) 
         }
     });
+
     return response.data;
 };
 
@@ -22,9 +29,11 @@ export const patchChapter = async (slug, payload) => {
         throw err; 
     }
 }
-// export const markCompleted=async(slug)=>{
-    
-//     const response=await axios.put(url+"content/"+slug)
-//     return response.data;
 
-// }
+export const markCompleted=async(slug,userId)=>{
+
+    
+    const response=await axios.post(url+"course-content/"+slug+"/mark-complete",{userId})
+    return response.data;
+
+}

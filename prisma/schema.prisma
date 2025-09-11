@@ -18,6 +18,19 @@ model User {
   otpTokens     OtpToken[]
   certificates  Certificate[]
   enrollments   Enrollment[]
+  carts         Cart[]
+  courseContentProgresses CourseContentProgress[]
+  LessonProgress          LessonProgress[]
+}
+
+model Cart {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  courseId  Int
+  createdAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
 }
 
 model Enrollment {
@@ -72,6 +85,7 @@ model Course {
   program        Program?        @relation(fields: [programId], references: [id])
   courseContents CourseContent[]
   enrollments    Enrollment[]
+  carts          Cart[]
 }
 
 model CourseContent {
@@ -84,11 +98,12 @@ model CourseContent {
   starting_paragraph String? @db.LongText
   body_paragraph     String? @db.LongText
   ending_paragraph   String? @db.LongText
-  isCompleted        Boolean @default(false)
+  isCompleted       Boolean @default(false)
   courseId           Int?
 
-  course  Course?  @relation(fields: [courseId], references: [id])
-  lessons Lesson[]
+  course                  Course?                 @relation(fields: [courseId], references: [id])
+  lessons                 Lesson[]
+  courseContentProgresses CourseContentProgress[]
 }
 
 model Lesson {
@@ -100,8 +115,9 @@ model Lesson {
   isCompleted       Boolean @default(false)
   courseContentId   Int?
 
-  courseContent  CourseContent?  @relation(fields: [courseContentId], references: [id])
+  courseContent  CourseContent?   @relation(fields: [courseContentId], references: [id])
   lessonContents LessonContent[]
+  LessonProgress LessonProgress[]
 }
 
 model LessonContent {
@@ -202,4 +218,24 @@ model OtpToken {
   expiresAt DateTime
   user      User     @relation(fields: [userId], references: [id])
   userId    Int
+}
+
+model CourseContentProgress {
+  userId            Int
+  courseContentSlug String
+
+  user          User          @relation(fields: [userId], references: [id])
+  courseContent CourseContent @relation(fields: [courseContentSlug], references: [slug])
+
+  @@id([userId, courseContentSlug]) // composite primary key
+}
+
+model LessonProgress {
+  userId     Int
+  lessonSlug String
+
+  user   User   @relation(fields: [userId], references: [id])
+  lesson Lesson @relation(fields: [lessonSlug], references: [slug])
+
+  @@id([userId, lessonSlug])
 }

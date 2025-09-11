@@ -18,10 +18,10 @@ const CourseLayout = ({children,course}) => {
             <h1 className="text-xl mb-2">ដំណាក់កាល</h1>
 
             <div className="relative w-full bg-gray-200 h-1 rounded-2xl">
-                <div className={`absolute left-0 top-0 bg-green-600 h-1 rounded-2xl`} style={{width:`${70}%`}}></div>
+                <div className={`absolute left-0 top-0 bg-green-600 h-1 rounded-2xl`} style={{width:`${course.completedPercentage}%`}}></div>
             </div>
 
-            <h1 className="mt-1 font-semibold text-green-800">{`70`}% បានជោគជ័យ</h1>
+            <h1 className="mt-1 font-semibold text-green-800">{course.completedPercentage}% បានជោគជ័យ</h1>
 
             <h2 className="my-4 text-lg">មាតិកា</h2>
 
@@ -38,7 +38,7 @@ const CourseLayout = ({children,course}) => {
                 <div key={content.id} className="w-full">
                     <div className="flex items-center justify-start  gap-4 py-4 border-b border-gray-200">
 
-                        <div className={`relative border-2 ${isActive?"border-blue-700":"border-gray-200"} rounded-2xl h-4 w-4`}><Tick className={` h-[18px] w-[18px] ${content.isCompleted?"block":"hidden"} absolute -left-0.5 -top-1 text-white bg-green-300 rounded-2xl`}/></div>
+                        <div className={`relative border-2 ${isActive?"border-blue-700":"border-gray-200"} rounded-2xl h-4 w-4 aspect-square`}><Tick className={` h-[18px] w-[18px] ${content.isCompleted?"block":"hidden"} absolute -left-0.5 -top-1 text-white bg-green-300 rounded-2xl`}/></div>
                         <Link href={`/content/${content.slug}`} className={`${isActive ? "text-blue-700 font-semibold" : ""}`}>{content.order_number}. {content.title}</Link>
 
                     </div>

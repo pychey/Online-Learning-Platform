@@ -3,7 +3,6 @@ import NavBar from "@/components/ui/NavBar";
 import Footer from "@/components/ui/Footer";
 import SessionWrapper from "./_components/SessionWrapper";
 import { CartProvider } from "@/app/context/CartContext"; 
-
 export const metadata = {
   title: "Online Learning Platform",
   description: "This is a Next.js App Router project",

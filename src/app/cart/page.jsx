@@ -1,15 +1,14 @@
 import React from 'react'
-import CartPage from './Cartpage'
-import Cartheader from './Cartheader'
-// import CheckoutPage from './CheckoutDetail'
+import CartPage from './_component/Cartpage'
+import Cartheader from './_component/Cartheader'
 
-const page = () => {
+const Cart = () => {
   return (
-   <>
-   <Cartheader/>
-   <CartPage/>
-   </>
+    <div className='mt-20'>
+      <Cartheader/>
+      <CartPage/>
+    </div>
   )
 } 
 
-export default page
+export default Cart

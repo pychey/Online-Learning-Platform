@@ -6,8 +6,8 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const VerifyOtpPage = () => {
-  const { data: session, status } = useSession();
+const PaymentPage = () => {
+  const { data: session, status, update } = useSession();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [userId, setUserId] = useState('');
@@ -19,6 +19,7 @@ const VerifyOtpPage = () => {
 
   useEffect(() => {
     if (status === 'loading') return;
+    if (status === 'unauthenticated') router.push('/login?fromPayment=1')
 
     const courseIdParam = searchParams.get('courseId');
     
@@ -46,7 +47,10 @@ const VerifyOtpPage = () => {
         firstName,
         lastName,
       })
-      if (data) router.push('/my-courses')
+      if (data) {
+        await update({ firstName, lastName });
+        router.push('/my-courses')
+      }
     } catch (error) {
       console.log(error)
       setMessage("មានបញ្ហាក្នុងការទិញវគ្គសិក្សា សូមព្យាយាមម្ដងទៀត។");
@@ -123,4 +127,4 @@ const VerifyOtpPage = () => {
 	)
 }
 
-export default VerifyOtpPage
+export default PaymentPage
