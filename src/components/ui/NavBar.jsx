@@ -122,7 +122,7 @@ const NavBar = () => {
               </svg>
             </Link>
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-amber-300 text-primary text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
                 {englishToKhmerNumber(cartCount)}
               </span>
             )}

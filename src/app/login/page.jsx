@@ -37,7 +37,7 @@ const LoginPage = () => {
         password: password
       });
 
-      if (response && !response.error) isFromPayment ? router.push('/payment-fake') : router.push('/my-courses')
+      if (response && !response.error) isFromPayment ? router.push('/checkout-detail') : router.push('/my-courses')
       else {
         console.log(response?.error)
         setMessage('ព័ត៌មានដែលអ្នកបានបញ្ចូលមិនត្រឹមត្រូវទេ សូមព្យាយាមម្ដងទៀត។')

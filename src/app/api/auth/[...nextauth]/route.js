@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "@/lib/prisma";
 import { compare } from "bcryptjs";
 
-const authOptions = {
+export const authOptions = {
   session: { strategy: "jwt", maxAge: 60 * 60 * 24 * 7 },
   providers: [
     CredentialsProvider({

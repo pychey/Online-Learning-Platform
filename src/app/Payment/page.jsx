@@ -3,13 +3,23 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import QRCode from "qrcode";
+import { useCart } from "../context/CartContext";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 
 export default function PaymentPage() {
+  const { cart, clearCart } = useCart()
+  const { data: session, status, update } = useSession();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [userId, setUserId] = useState('');
+  const [courseIds, setCourseIds] = useState([])
   const searchParams = useSearchParams();
   const trxId = searchParams.get("trxId");
   const total = searchParams.get("total");
   const qr = searchParams.get("qr");
   const merchant = searchParams.get("merchant") || "Online Course";
+  const [error, setError] = useState(null)
 
   const [expired, setExpired] = useState(false);
   const [paid, setPaid] = useState(false);
@@ -36,6 +46,22 @@ export default function PaymentPage() {
     }
   }, [timeLeft, paid]);
 
+  useEffect(() => {
+    if (status === 'loading') return;
+    if (status === 'unauthenticated') router.push('/login?fromPayment=1')
+
+    const firstNameParams = searchParams.get('firstName');
+    const lastNameParams = searchParams.get('lastName');
+
+    if(firstNameParams) setFirstName(firstNameParams)
+    if(lastNameParams) setLastName(lastNameParams)
+    
+    if (session) setUserId(session.user.id);
+    console.log(session)
+
+    if (cart) setCourseIds(cart.map(c => c.id))
+  }, [searchParams, status]);
+
   // check payment status
   useEffect(() => {
     if (!paid && !expired && qr) {
@@ -44,8 +70,14 @@ export default function PaymentPage() {
         try {
           const res = await fetch(`/api/checkstatus?qrString=${encodeURIComponent(qr)}`);
           const data = await res.json();
-          if (data.paid) setPaid(true);
+          if (data.paid) {
+            handlePayment();
+            clearCart();
+            setPaid(true)
+            router.push('/my-courses')
+          }
         } catch (err) {
+          setError("មានបញ្ហាក្នុងការទិញវគ្គសិក្សា សូមព្យាយាមម្ដងទៀត។");
           console.error("Error checking payment status:", err);
         } finally {
           setChecking(false);
@@ -54,6 +86,25 @@ export default function PaymentPage() {
       return () => clearInterval(interval);
     }
   }, [qr, paid, expired]);
+
+  const handlePayment = async () => {
+    try {
+      const { data } = await axios.post('/api/enrollment', {
+        userId,
+        courseIds,
+        firstName,
+        lastName,
+      })
+      if (data) {
+        await update({ firstName, lastName });
+      }
+    } catch (error) {
+      console.log(error)
+      setError("មានបញ្ហាក្នុងការទិញវគ្គសិក្សា សូមព្យាយាមម្ដងទៀត។");
+    }
+  };
+
+  if (status === 'loading') return <p>Loading...</p>
 
   if (paid) {
     return (
@@ -75,6 +126,8 @@ export default function PaymentPage() {
       </div>
     );
   }
+
+  if(error) return <p>{error}</p>
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
