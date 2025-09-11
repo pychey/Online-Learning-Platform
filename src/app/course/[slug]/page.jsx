@@ -6,9 +6,12 @@ import { useState,useEffect } from "react";
 import { getCourseContent } from "@/lib/course";
 import CourseLayout from "@/components/ui/CourseLayout";
 import Tick from "@/components/icons/Tick";
+import { useSession } from "next-auth/react";
 
 
 const Course = () => {
+
+	const { data: session, status } = useSession();
 
 	const params = useParams(); 
 	const {slug}=params;
@@ -17,16 +20,23 @@ const Course = () => {
 	const [loading,setLoading]=useState(true)
 	const [error,setError]=useState("")
 
-	useEffect(()=>{
+	useEffect(() => {
+      if (status === "loading") return;
 
-		getContentOfCourse()
+      if (status === "unauthenticated") {
+        setError("You must be logged in to view your courses.");
+        setLoading(false);
+        return;
+      }
 
-	},[])
+      getContentOfCourse()
+  	}, [status]);
+
 
 
 	const getContentOfCourse= async()=>{
 		try {
-			const data=await getCourseContent(slug);
+			const data=await getCourseContent(slug,session.user.id);
 			setCourse(data)
 		} catch (error) {
 			setError(error.response.data.message)
