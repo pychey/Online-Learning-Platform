@@ -5,7 +5,6 @@ export async function GET (req, { params }) {
     const { slug } = await params;
 
     const { searchParams } = new URL(req.url);
-    if (searchParams.get("admin"))
     
     try {
         const include = {
