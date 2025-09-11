@@ -13,9 +13,14 @@ import Link from 'next/link';
 import { useCart } from "@/app/context/CartContext";
 import { useRouter } from 'next/navigation';
 
-const CourseDescription = ({ course, admin = false }) => {
+const CourseDescription = ({ course, admin = false, isPaid = false }) => {
   const { addToCart } = useCart();
   const router = useRouter();
+
+  const handleAddToCart = async () => {
+    const isExist = await addToCart(course)
+    router.push(`/cart?isExist=${Number(isExist)}&courseTitle=${course.title}`)
+  }
 
   return (
     <div className={`grid grid-cols-1 laptop:grid-cols-[1.5fr_1fr] laptop:grid-rows-[minmax(140px,auto)_1fr] gap-6 laptop:gap-8 ${admin ? "w-full p-8" : "max-w-[1100px] mt-7 p-4"} mx-auto  text-base`}>
@@ -39,9 +44,10 @@ const CourseDescription = ({ course, admin = false }) => {
             <p className="text-3xl laptop:text-2xl font-medium">{course.discounted_price}</p>
           </div>
           <button 
-          onClick={() => addToCart(course)}
+          disabled={isPaid}
+          onClick={handleAddToCart}
           className="w-[90%] rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center gap-2 mt-2">
-            បន្ថែមចូលកន្ត្រក <RightArrow size={12}/>
+            {isPaid ? 'វគ្គសិក្សាបានទិញរួច' : 'បន្ថែមចូលកន្ត្រក' } {!isPaid && <RightArrow size={12}/>} 
           </button>
         </div>
 
@@ -90,12 +96,6 @@ const CourseDescription = ({ course, admin = false }) => {
             <Link href={`/program/${course.program.slug}`}><img src={course.program.logo_url} alt='icon' className='w-[100px] laptop:w-[60px]'/></Link>
             <p>វគ្គសិក្សានេះជាផ្នែកមួយនៃវគ្គ<Link href={`/program/${course.program.slug}`} className="mx-1 text-primary underline">{course.program.program_title}</Link>កម្មវិធីសិក្សា</p>
           </div>
-
-          <button 
-            onClick={() => router.push(`/payment-fake?courseId=${course.id}`)}
-            className='mt-2 w-full rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center'>
-            បន្លំទិញ
-          </button>
         </div>
       </div>
 

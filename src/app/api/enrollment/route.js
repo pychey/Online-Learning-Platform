@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
     try {
-        const { userId, courseId, firstName, lastName } = await req.json()
+        const { userId, courseIds, firstName, lastName } = await req.json()
 
         const user = await prisma.user.findUnique({ where: { id: userId } })
 
@@ -19,23 +19,16 @@ export async function POST(req) {
             });
         }
 
-        const existingEnrollment = await prisma.enrollment.findFirst({
-            where: {
-                userId, 
-                courseId: Number(courseId), 
-            },
-        });
+        for (const courseId of courseIds) {
+            await prisma.enrollment.create({
+                data: {
+                    userId,
+                    courseId: Number(courseId),
+                },
+            });
+        }
 
-        if (existingEnrollment) return NextResponse.json('User Already Bought the Course', { status: 400 });
-
-        const enrollment = await prisma.enrollment.create({
-            data: {
-                userId,
-                courseId: Number(courseId),
-            },
-        });
-
-        return NextResponse.json(enrollment);
+        return NextResponse.json({ success: true });
     } catch (reason) {
         const message = reason instanceof Error ? reason.message : 'Unexpected error'
         console.log(message)

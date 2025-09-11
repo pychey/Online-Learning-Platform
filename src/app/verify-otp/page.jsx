@@ -14,13 +14,16 @@ const VerifyOtpPage = () => {
   const [message, setMessage] = useState('លេខសម្ងាត់ ៦ខ្ទង់ បានផ្ញើទៅអ៊ីមែលរបស់អ្នក។ សូមបញ្ចូលដើម្បីបញ្ជាក់។')
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isFromPayment, setIsFromPayment] = useState();
 
   useEffect(() => {
     const userIdParam = searchParams.get('userId');
     const emailParam = searchParams.get('email');
+    const fromPayment = searchParams.get('fromPayment');
     
     if (userIdParam) setUserId(userIdParam);
     if (emailParam) setEmail(decodeURIComponent(emailParam));
+    if (fromPayment) setIsFromPayment(Number(fromPayment))
 
   }, [searchParams]);
   
@@ -41,7 +44,7 @@ const VerifyOtpPage = () => {
           password: tempPassword,
         });
         sessionStorage.removeItem('tempPassword');
-        if (response && !response.error) router.push('/my-courses')
+        if (response && !response.error) isFromPayment ? router.push('/checkout-detail') : router.push('/my-courses')
         else {
           console.log(response?.error)
           setMessage('បញ្ជាក់លេខសម្ងាត់ជោគជ័យ ប៉ុន្តែការចូលគណនីមានបញ្ហា សូមព្យាយាមចូលគណនីដោយខ្លួនឯង។')
