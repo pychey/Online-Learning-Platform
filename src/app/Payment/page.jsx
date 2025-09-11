@@ -6,8 +6,10 @@ import QRCode from "qrcode";
 import { useCart } from "../context/CartContext";
 import { useSession } from "next-auth/react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function PaymentPage() {
+  const router = useRouter(); 
   const { cart, clearCart } = useCart()
   const { data: session, status, update } = useSession();
   const [firstName, setFirstName] = useState('');
@@ -23,7 +25,7 @@ export default function PaymentPage() {
 
   const [expired, setExpired] = useState(false);
   const [paid, setPaid] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(180);
   const [checking, setChecking] = useState(false);
   const [qrImage, setQrImage] = useState(null);
 
