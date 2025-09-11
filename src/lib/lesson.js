@@ -9,9 +9,11 @@ export const getLessonBySlug=async(slug)=>{
 
 }
 
-// export const markCompleted=async(slug)=>{
-    
-//     const response=await axios.put(url+"lesson/"+slug)
-//     return response.data;
 
-// }
+export const markCompleted=async(slug,userId)=>{
+
+    
+    const response=await axios.post(url+"lesson/"+slug+"/mark-complete",{userId})
+    return response.data;
+
+}

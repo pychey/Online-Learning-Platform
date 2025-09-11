@@ -9,6 +9,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 export default function PaymentPage() {
+  const router = useRouter(); 
   const { cart, clearCart } = useCart()
   const { data: session, status, update } = useSession();
   const [firstName, setFirstName] = useState('');
@@ -21,7 +22,6 @@ export default function PaymentPage() {
   const qr = searchParams.get("qr");
   const merchant = searchParams.get("merchant") || "Online Course";
   const [error, setError] = useState(null)
-  const router = useRouter()
 
   const [expired, setExpired] = useState(false);
   const [paid, setPaid] = useState(false);

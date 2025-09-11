@@ -3,8 +3,10 @@ import { NextResponse } from "next/server";
 
 export async function GET (req, { params }) {
     const { slug } = await params;
+    const { searchParams } = new URL(req.url);
+    const userId = searchParams.get("userId")
     try {
-        const currentCourseContent = await prisma.courseContent.findFirst({
+        let currentCourseContent = await prisma.courseContent.findFirst({
             where: {
                 slug: slug
             },
@@ -70,6 +72,17 @@ export async function GET (req, { params }) {
                     slug: true
                 }
             })
+        }
+
+        for (const lesson of currentCourseContent.lessons) {
+            const exist = await prisma.lessonProgress.findFirst({
+                where: { userId: Number(userId), lessonSlug: lesson.slug }
+            });
+            if (exist) {
+                lesson.isCompleted = true;
+            } else {
+                lesson.isCompleted = false;
+            }
         }
         
         return NextResponse.json({ ...currentCourseContent, prevSlug: prev?.slug , nextSlug: next?.slug, courseSlug: course?.slug, totalCourseContent })
