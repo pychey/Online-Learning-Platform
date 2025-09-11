@@ -6,10 +6,13 @@ import { useParams,useRouter } from "next/navigation"
 import { getCourseContent } from "@/lib/course"
 import { getLessonBySlug} from "@/lib/lesson"
 import LessonDetail from "./component/LessonDetail"
+import { useSession } from "next-auth/react";
+import { markCompleted } from "@/lib/lesson"
 
 const page = () => {
 
     const param=useParams();
+    const { data: session, status } = useSession();
     const {slug}=param;
     const router=useRouter()
 
@@ -18,15 +21,22 @@ const page = () => {
     const [loading,setLoading]=useState(true)
     const [error,setError]=useState("")
 
-      useEffect(()=>{
+    useEffect(() => {
+        if (status === "loading") return;
+
+        if (status === "unauthenticated") {
+          setError("You must be logged in to view your courses.");
+          setLoading(false);
+          return;
+        }
+
         getLesson()
-      },[])
-    
+      }, [status]);
     const getLesson=async()=>{
         try {
           const data=await getLessonBySlug(slug)
           setLesson(data)
-          const course_data=await getCourseContent(data.courseSlug)
+          const course_data=await getCourseContent(data.courseSlug,session.user.id)
           setCourse(course_data)
     
         } catch (error) {
@@ -39,7 +49,7 @@ const page = () => {
     const markComplete=async()=>{
       try {
   
-        // await markCompleted(slug);
+        await markCompleted(slug,session.user.id);
         if(lesson.nextSlug){
           return router.push(`/lesson/${lesson.nextSlug}`)
         
