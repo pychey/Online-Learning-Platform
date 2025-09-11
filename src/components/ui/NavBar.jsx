@@ -26,11 +26,6 @@ const NavBar = () => {
     { title: "គេហទំព័រ", link: "/" },
     {
       title: "វគ្គបណ្តុះបណ្តាល", link: "/courselist",
-      submenu: [
-        { title: "អត់1", link: "/" },
-        { title: "អត់2", link: "/" },
-        { title: "អត់3", link: "/" }
-      ]
     },
     {
       title: "ស្ថាប័ន", link: "/institute",
