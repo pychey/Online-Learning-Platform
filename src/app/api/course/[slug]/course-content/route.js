@@ -1,8 +1,9 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function GET (req, {params}) {
+export async function GET (req, { params }) {
     const { slug } = await params;
+
     try {
         const courseWithContents = await prisma.course.findFirst({
             where: {
@@ -39,6 +40,7 @@ export async function GET (req, {params}) {
         
         return NextResponse.json(courseWithContents)
     } catch (reason) {
+        console.log(reason)
         const message = reason instanceof Error ? reason.message : 'Unexpected error'
         return new Response(message, { status: 500 })
     }

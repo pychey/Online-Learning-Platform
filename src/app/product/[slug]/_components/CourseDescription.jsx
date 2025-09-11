@@ -93,7 +93,8 @@ const CourseDescription = ({ course, admin = false }) => {
 
           <button 
             onClick={() => router.push(`/payment-fake?courseId=${course.id}`)}
-            className='mt-2 w-full rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center'>
+            className={`${admin ? "hidden" : ""} mt-2 w-full rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center`}
+          >
             បន្លំទិញ
           </button>
         </div>

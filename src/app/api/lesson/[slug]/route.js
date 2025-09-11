@@ -3,18 +3,48 @@ import { NextResponse } from "next/server";
 
 export async function GET (req, { params }) {
     const { slug } = await params;
+
+    const { searchParams } = new URL(req.url);
+    if (searchParams.get("admin"))
+    
     try {
+        const include = {
+            lessonContents: {
+                orderBy:{
+                order_number:"asc"
+                }
+            }
+        }
+
+        if (searchParams.get("admin")) {
+            include.courseContent = {
+                select: {
+                    id: true,
+                    title: true,
+                    slug: true,
+                    course: {
+                        select: {
+                            id: true,
+                            title: true,
+                            slug: true,
+                            program: {
+                                select: {
+                                    id: true,
+                                    program_title: true,
+                                    slug: true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         const currentLesson = await prisma.lesson.findFirst({
             where: {
                 slug: slug
             },
-            include: {
-                lessonContents: {
-                    orderBy:{
-                                order_number:"asc"
-                    }
-                }
-            }
+            include
         })
 
         if (!currentLesson) return NextResponse.json(

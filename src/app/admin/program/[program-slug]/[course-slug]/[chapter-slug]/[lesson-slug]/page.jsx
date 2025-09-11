@@ -13,6 +13,10 @@ import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import AdminTitleInput from "@/app/admin/_components/AdminTitleInput"
 import AdminDescriptionInput from "@/app/admin/_components/AdminDescriptionInput"
+import { getLessonBySlug } from "@/lib/lesson"
+import LessonDetail from "@/app/lesson/[slug]/component/LessonDetail"
+import lessonContents from "../../../../../../../../prisma/model.data/lessonContent"
+import InlineTitleInput from "@/components/ui/InlineTitleInput"
 
 const LessonPage = () => {
 	const [ course, setCourse ] = useState({})
@@ -22,43 +26,163 @@ const LessonPage = () => {
 	const slug = getSlugFromPathname(pathname)
 	const { setBreadcrumbs } = useBreadcrumb()
 
-	useEffect(() => {
-		const currLesson = findLessonBySlug(slug)
-		const currChapter = findChapterById(currLesson.chapter_id)
-		const currCourse = findCourseById(currChapter.course_id)
-		const currProgram = findProgramById(currCourse.program_id)
-		const newBreadcrumbs = buildLessonBreadcrumbs(currProgram, currCourse, currChapter, currLesson)
+	const getLesson = async () => {
+		const response = await getLessonBySlug(slug, true)
+		setLesson(response)
+		console.log(response);		
+		const newBreadcrumbs = buildLessonBreadcrumbs(
+			response.courseContent.course.program, 
+			response.courseContent.course, 
+			response.courseContent, 
+			{
+				title: response.title,
+				slug: response.slug
+			}
+		)
 
-		setLesson(currLesson)
-		setChapter(currChapter)
-		setCourse(currCourse)
 		setBreadcrumbs(newBreadcrumbs)
+
+	}
+
+	useEffect(() => {
+		getLesson()
+
 	}, [slug, setBreadcrumbs])
 
-	return(
-		<div className="flex flex-col gap-6 p-5 h-full">
-			<section className="flex flex-col gap-3 font-medium">
-				<h2 className="">Chapter</h2>
-				<div className="px-4 py-3 w-[720px] bg-white border border-admin-border rounded-md">{chapter.title}</div>
-			</section>
+	const handleLessonContentChanges = (e, index) => {
+		setLesson(prev => {
+			const updatedContents = [...prev.lessonContents];
+			updatedContents[index] = {
+				...updatedContents[index],
+				content: e.target.value
+			};
+			return { ...prev, lessonContents: updatedContents };
+		})
+	}
 
-			<section className="flex flex-col gap-3 font-medium">
-				<h2 className="">Lesson Title</h2>
-				<AdminTitleInput
+	const updateContentType = (index, newType) => {
+		setLesson(prev => {
+			const updatedContents = [...prev.lessonContents];
+			const current = updatedContents[index];
+
+			let transformedContent = current.content;
+
+			if (newType === 'list') {
+				if (typeof current.content === 'string') {
+					transformedContent = [current.content];
+				} else if (!Array.isArray(current.content)) {
+					transformedContent = [''];
+				}
+			} else if (newType === 'text' || newType === 'heading') {
+				if (Array.isArray(current.content)) {
+					transformedContent = current.content.join(', ');
+				}
+			} else if (newType === 'space') {
+				transformedContent = '';
+			}
+
+			updatedContents[index] = {
+				...current,
+				content_type: newType,
+				content: transformedContent,
+			};
+
+			return { ...prev, lessonContents: updatedContents };
+		});
+	};
+
+	return(
+		<div className="flex flex-col gap-4 p-5 h-full">
+			<section className="flex gap-3 font-medium">
+				<h2 className="font-semibold text-2xl">Lesson Title</h2>
+				<InlineTitleInput
 					value={lesson.title}
 					onChange={(e) => setLesson(prev => ({ ...prev, title: e.target.value }))}
 					placeholder={"Chapter Title"}
+					className="font-semibold text-2xl"
 				/>
 			</section>
 
 			<section className="flex flex-col gap-3 font-medium">
 				<h2 className="">Lesson Content</h2>
-				<AdminDescriptionInput
-					value={lesson.content}
-					onChange={(e) => setLesson(prev => ({ ...prev, content: e.target.value }))}
-					placeholder={"Chapter Title"}
-				/>
+				{lesson.lessonContents && lesson.lessonContents.map((content, index) => (
+					<div 
+						key={index} 
+						className="flex justify-between gap-4 w-full mb-4 border border-gray-200 rounded-md p-4 bg-white"
+					>
+						{content.content_type === "heading" && (
+							<div className="w-full">
+								<input
+									className="px-4 py-3 w-full bg-gray-50 border rounded-md border-gray-300 font-semibold 
+														text-gray-700 focus:text-black focus:shadow-sm focus:outline-none 
+														transition-all duration-300"
+									value={content.content}
+									onChange={(e) => {
+										handleLessonContentChanges(e, index)
+									}}
+									placeholder={"Enter heading"}
+								/>
+							</div>
+						)}
+
+						{content.content_type === "text" && (
+							<div className="w-full">
+								<AdminDescriptionInput
+									value={content.content}
+									onChange={(e) => {
+										handleLessonContentChanges(e, index)
+									}}
+									placeholder={"Enter text"}
+								/>
+							</div>
+						)}
+
+						{content.content_type === "space" && (
+							<div>
+								<label className="text-sm text-gray-500 mb-2 block">Line Break</label>
+								<p className="text-gray-400 italic text-sm">This will render a line break in the content.</p>
+							</div>
+						)}
+
+						{content.content_type === "list" && (
+							<div className="w-full">
+								<div className="flex px-4 w-full bg-gray-50 border rounded-md border-gray-300 font-semibold focus-within:shadow-sm transition-shadow duration-300">
+									<p className="my-auto mr-2 h-full">•</p>
+									<input
+										className="w-full h-12 text-gray-700 focus:text-black focus:outline-none transition-all duration-300"
+										value={content.content}
+										onChange={(e) => {
+											handleLessonContentChanges(e, index)
+										}}
+										placeholder="Enter heading"
+									/>
+								</div>
+
+							</div>
+						)}
+
+						<div className="content-end mb-4 h-9">
+							<select
+								className="border border-gray-300 rounded-md text-sm h-full p-2 cursor-pointer"
+								value={content.content_type}
+								onChange={(e) => updateContentType(index, e.target.value)}
+							>
+								<option value="heading">Heading</option>
+								<option value="text">Text</option>
+								<option value="list">List</option>
+								<option value="space">Line Break</option>
+							</select>
+						</div>
+					</div>
+				))}
 			</section>
+
+			<section className="flex flex-col gap-2.5 pt-2">
+        <h2 className="font-medium text-2xl">Preview</h2>
+        <div className="bg-white rounded-md border border-admin-border">
+					<LessonDetail lesson={lesson} admin={true}/>
+        </div>
+      </section>
 
 		</div>
 	)

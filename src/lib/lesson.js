@@ -2,9 +2,13 @@ import axios from "axios";
 
 const url="/api/"
 
-export const getLessonBySlug=async(slug)=>{
+export const getLessonBySlug = async (slug, admin = false) => {
 
-    const response=await axios.get(url+"lesson/"+slug)
+    const response = await axios.get(url + "lesson/" + slug, {
+        params: {
+            ...(admin && { admin: true }) 
+        }
+    })
     return response.data;
 
 }

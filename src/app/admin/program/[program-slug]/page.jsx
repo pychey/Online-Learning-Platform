@@ -191,7 +191,7 @@ const ProgramCoursePage = () => {
 						+ New Course
 					</button>
 				</div>
-				<div className="flex justify-between">
+				<div className="grid grid-cols-4 gap-4">
 					{courses?.map((course) => (
 						<Card 
 							key={course.id}

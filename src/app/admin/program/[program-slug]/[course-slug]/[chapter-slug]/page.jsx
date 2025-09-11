@@ -11,83 +11,160 @@ import {
 	findProgramById, 
 	getSlugFromPathname 
 } from "@/utils"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { getCourseContent } from "@/lib/course"
+import { getContentBySlug, patchChapter } from "@/lib/content"
+import ContentDetail from "@/app/content/[slug]/component/ContentDetail"
+import InlineTitleInput from "@/components/ui/InlineTitleInput"
 
 const ChapterPage = () => {
 	const [ lessons, setLessons ] = useState([])
 	const [ chapter, setChapter ] = useState({})
 	const [ course, setCourse ] = useState({})
 	const pathname = usePathname()
+	const router = useRouter()
 	const slug = getSlugFromPathname(pathname)
 	const { setBreadcrumbs } = useBreadcrumb()
 
-	useEffect(() => {
-		const currChapter = findChapterBySlug(slug)
-		const currCourse = findCourseById(currChapter.course_id)
-		const currProgram = findProgramById(currCourse.program_id)
-		const currLessons = findLessonsByChapterId(currChapter.id)
-		const newBreadcrumbs = buildChapterBreadcrumbs(currProgram, currCourse, currChapter)		
+	const getChapter = async () => {
+		const response = await getContentBySlug(slug, true)
+		console.log(response);
+		
+		setChapter(response)
+		const newBreadcrumbs = buildChapterBreadcrumbs(
+			response.course.program, 
+			response.course, 
+			{
+				title: response.title,
+				slug: response.slug
+			}
+		)		
 
-		setLessons(currLessons)
-		setChapter(currChapter)
-		setCourse(currCourse)
 		setBreadcrumbs(newBreadcrumbs)
+	}
+
+	useEffect(() => {
+		getChapter()
+
 	}, [slug, setBreadcrumbs])
 
+	const handleChapterChange = (e, field, index = null) => {
+		if (index === null) setChapter(prev => ({...prev, [field]: e.target.value}))
+		else {
+			setChapter(prev => ({
+        ...prev,
+        [field]: prev[field].map((item, i) =>
+          i === index ? e.target.value : item
+        )
+      }))
+		}
+	}
+
+	const handleSaveChanges = async () => {
+		try {
+			await patchChapter(slug, chapter);
+			alert("Successfully Updated Changes")
+			router.refresh()
+		} catch (error) {
+			alert("Failed to save changes. Please try again.");
+			console.error(error);
+		}
+	};
+
 	return(
-		<div className="flex w-full h-full">
-			<div className="flex flex-col gap-6 p-5 h-full">
+		<div className="flex flex-col p-5 w-full h-full">
 
-				<section className="flex flex-col gap-3 font-medium">
-					<h2 className="">Course</h2>
-					<div className="px-4 py-3 w-full bg-white border border-admin-border rounded-md">{course.title}</div>
-				</section>
-
-				<section className="flex flex-col gap-3 font-medium">
-					<h2 className="">Chapter Title</h2>
-					<AdminTitleInput
-						value={chapter.title}
-						onChange={(e) => setChapter(prev => ({ ...prev, title: e.target.value }))}
-						placeholder={"Chapter Title"}
+			<div className="flex justify-between">
+				<div className="flex items-center gap-2">
+					<h1 className="font-semibold text-2xl">Chapter Title: </h1>
+					<InlineTitleInput
+						value={chapter.title || ""}
+						onChange={(e) => handleChapterChange(e, "title")}
+						className="font-semibold text-2xl"
 					/>
-				</section>
-
-				<section className="flex flex-col gap-3 font-medium">
-					<h2 className="">Chapter Description</h2>
-					<AdminDescriptionInput
-						value={chapter.content}
-						onChange={(e) => setChapter(prev => ({ ...prev, content: e.target.value }))}
-						placeholder={"Chapter Title"}
-					/>
-				</section>
-
-			</div>
-
-			<div className="mx-auto py-14 ">
-				<div className={`flex justify-between items-center px-4 py-5 w-[460px] bg-[#D3D3D3] 
-												${lessons.length === 0 ? "rounded-md" : "rounded-t-md"}`}
-				>
-					<div className="flex items-center gap-2">
-						<Paper size={20}/>
-						<h3 className="font-medium">Lesson Content</h3>
-					</div>
-
-					<button>
-						<Plus />
-					</button>
 				</div>
-				{lessons && lessons.map((lesson, index) => (
-					<Link 
-						key={index}
-						href={pathname + "/" + lesson.slug}
-						className={`flex px-4 py-5 font-medium border border-t-0 border-[#D3D3D3]/55 cursor-pointer transition
-											duration-150 ${index === lessons.length - 1 ? "rounded-b-md" : ""} hover:bg-[#D3D3D3]/40`}>
-						<h3>{lesson.title}</h3>
-					</Link>
-				))}
+
+				<section className="flex mb-0.5">
+					<button
+						onClick={handleSaveChanges}
+						className="px-4 h-10 bg-primary hover:bg-primary-hover font-medium text-white 
+											rounded-sm transition duration-200 cursor-pointer"
+					>
+						Save Changes
+					</button>
+				</section>
 			</div>
+
+			<div className="flex w-full justify-between">
+				<div className="flex flex-col gap-6 py-2 h-full">
+					{/* <section className="flex flex-col gap-3 font-medium">
+						<h2 className="">Course</h2>
+						<div className="px-4 py-3 w-full bg-white border border-admin-border rounded-md">{chapter?.course?.title}</div>
+					</section> */}
+
+					<section className="flex flex-col gap-3 font-medium">
+						<h2 className="">Chapter Content</h2>
+						<AdminDescriptionInput
+							value={chapter.introduction_text || ""}
+							onChange={(e) => handleChapterChange(e, "introduction_text")}
+							placeholder={"Introduction Text"}
+						/>
+						
+						<AdminDescriptionInput
+							value={chapter.starting_paragraph || ""}
+							onChange={(e) => handleChapterChange(e, "starting_paragraph")}
+							placeholder={"Starting Paragraph"}
+						/>
+
+						<AdminDescriptionInput
+							value={chapter.body_paragraph || ""}
+							onChange={(e) => handleChapterChange(e, "body_paragraph")}
+							placeholder={"Body Paragraph"}
+						/>
+
+						<AdminDescriptionInput
+							value={chapter.ending_paragraph || ""}
+							onChange={(e) => handleChapterChange(e, "ending_paragraph")}
+							placeholder={"Ending Paragraph"}
+						/>
+					</section>
+
+				</div>
+
+				<div className="py-12 ">
+					<div className={`flex justify-between items-center px-4 py-5 w-[460px] bg-[#D3D3D3] 
+													${chapter.lessons?.length === 0 ? "rounded-md" : "rounded-t-md"}`}
+					>
+						<div className="flex items-center gap-2">
+							<Paper size={20}/>
+							<h3 className="font-medium">Lesson Content</h3>
+						</div>
+
+						<button>
+							<Plus />
+						</button>
+					</div>
+					{chapter.lessons && chapter.lessons.map((lesson, index) => (
+						<Link 
+							key={index}
+							href={pathname + "/" + lesson.slug}
+							className={`flex px-4 py-5 font-medium border border-t-0 border-[#D3D3D3]/55 cursor-pointer transition
+												duration-150 ${index === chapter.lessons?.length - 1 ? "rounded-b-md" : ""} hover:bg-[#D3D3D3]/40`}>
+							<h3>{lesson.title}</h3>
+						</Link>
+					))}
+				</div>
+			</div>
+
+      <section className="flex flex-col gap-2.5 pt-2">
+        <h2 className="font-medium text-2xl">Preview</h2>
+        <div className="bg-white rounded-md border border-admin-border">
+					<ContentDetail content={chapter} admin={true}/>
+        </div>
+      </section>
+
 		</div>
 	)
 }

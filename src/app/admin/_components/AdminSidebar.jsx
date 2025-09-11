@@ -14,6 +14,8 @@ const AdminSidebar = () => {
 	const pathname = usePathname()
 	const router = useRouter()
 
+	const paths = pathname.split('/')
+
 	return(
 		<nav className="flex flex-col gap-2.5 shrink-0 p-3 w-[224px] h-full border-r border-admin-border">
 			<h3 className="text-primary font-medium">Navigations</h3>

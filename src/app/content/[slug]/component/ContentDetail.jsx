@@ -4,15 +4,16 @@ import Link from "next/link"
 import Tick from "@/components/icons/Tick"
 import RightArrow from "@/components/icons/RightArrow"
 
-const ContentDetail = ({content,markComplete}) => {
+const ContentDetail = ({content, markComplete, admin = false}) => {
 
 
   return (
-          <div className="w-full">
+      <div className={`w-full ${admin ? "p-8" : ""}`}>
 
         <h1 className="text-center mx-auto mb-12 text-3xl font-semibold">{content.order_number}. {content.title}</h1>
 
         <p className="my-10 text-lg indent-8">{content.introduction_text}</p>
+        <p className="my-10 text-lg indent-8">{content.starting_paragraph}</p>
         <p className="my-10 text-lg indent-8">{content.body_paragraph}</p>
         <p className="my-10 text-lg indent-8">{content.ending_paragraph}</p>
 
@@ -30,17 +31,20 @@ const ContentDetail = ({content,markComplete}) => {
           </>
         )}
 
-        <div className="flex justify-between items-center flex-row-reverse my-10 w-full">
+        {!admin && (
+          <div className="flex justify-between items-center flex-row-reverse my-10 w-full">
 
-          <div
-            onClick={markComplete}
-            className={`flex items-center justify-start px-12 py-2 bg-green-800
-             text-white text-lg cursor-pointer`}
-          >
-            បញ្ចប់មេរៀន <Tick />
-          </div>
+            <div
+              onClick={markComplete}
+              className={`flex items-center justify-start px-12 py-2 bg-green-800
+              text-white text-lg cursor-pointer`}
+            >
+              បញ្ចប់មេរៀន <Tick />
+            </div>
             <Link href={content.prevSlug?`/content/${content.prevSlug}`:`/course/${content.courseSlug}`} className={`flex items-center justify-start px-12 py-2 bg-primary text-white text-lg cursor-pointer`}><RightArrow className={`rotate-180 h-6 w-6`}/>{content.prevSlug?"មេរៀនមុន":"ទៅមេរៀន"}</Link>
           </div>
+        )}
+      
       </div>
   )
 }

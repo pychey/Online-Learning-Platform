@@ -4,50 +4,50 @@ import { NextResponse } from "next/server";
 export async function GET (req, {params}) {
     const { slug } = await params;
 
-    // FOR TESTING
     const { searchParams } = new URL(req.url);
     const includeChapters = searchParams.get("include")?.split(",").includes("chapters");
-    const chapterFieldsParam = searchParams.get("chapter_fields");
-    const chapterFields = chapterFieldsParam ? chapterFieldsParam.split(",") : undefined;    
-    
+
     try {
+        const include = {
+            program: true,
+        };
+
+        if (includeChapters) {
+            include.courseContents = {
+                orderBy: {
+                    order_number: 'asc',
+                },
+                select: {
+                    id: true,
+                    title: true,
+                    slug: true,
+                    order_number: true,
+                    lessons: {
+                        orderBy: {
+                            order_number: 'asc'
+                        },
+                        select: {
+                            id: true,
+                            title: true,
+                            slug: true,
+                        }
+                    }
+                },
+            }; 
+        }
+
         const course = await prisma.course.findFirst({
-            where: {
-                slug: slug
-            },
-            include: {
-                program: true
-            }
-        })
-        return NextResponse.json(course)
+            where: { slug },
+            include,
+        });
+
+        return NextResponse.json(course);
     } catch (reason) {
-        const message = reason instanceof Error ? reason.message : 'Unexpected error'
-        return new Response(message, { status: 500 })
+        
+        const message = reason instanceof Error ? reason.message : 'Unexpected error';
+        return new Response(message, { status: 500 });
     }
-  }
-// export async function GET(req, context) {
-//   try {
-//     const { slug } = await context.params;
-
-//     const course = await prisma.course.findFirst({
-//       where: { slug },
-//       include: { program: true },
-//     });
-
-//     if (!course) {
-//       return NextResponse.json(
-//         { error: "Course not found" },
-//         { status: 404 }
-//       );
-//     }
-
-//     return NextResponse.json(course, { status: 200 });
-//   } catch (reason) {
-//     const message =
-//       reason instanceof Error ? reason.message : "Unexpected error";
-//     return NextResponse.json({ error: message }, { status: 500 });
-//   }
-// }
+}
 
 export async function PATCH (req, {params}) {
     const slug = await params.slug 

@@ -19,10 +19,7 @@ export async function POST(req) {
     try {
         const body = await req.json()
         const { programId, title, slug } = body
-        
-        console.log(programId)
-        console.log(title)
-        console.log(slug)
+
         if (!programId || !title || !slug) {
             return new Response("Missing data", { status: 400 });
         }

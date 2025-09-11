@@ -17,25 +17,24 @@ import Link from "next/link"
 import CourseDescription from "@/app/product/[slug]/_components/CourseDescription"
 import AdminLinkInput from "@/app/admin/_components/AdminLinkInput"
 import AdminPointInput from "@/app/admin/_components/AdminPointInput"
-import { getCourseBySlug, patchCourse } from "@/lib/course"
+import { getCourseBySlug, getCourseContent, getCourseWithContent, patchCourse } from "@/lib/course"
 import InlineTitleInput from "@/components/ui/InlineTitleInput"
 
 const CoursePage = () => {
   const [ loading, setLoading ] = useState(true)
   const [ course, setCourse ] = useState(null)
   const [ chapters, setChapters ] = useState([])
-  const [ titleInputWidth, setTitleInputWidth ] = useState(0)
-	const [ isEditingTitle, setIsEditingTitle ] = useState(false)
   const [ openedChapters, setOpenedChapters ] = useState({})
   const { setBreadcrumbs } = useBreadcrumb()
   const pathname = usePathname()
   const slug = getSlugFromPathname(pathname)
 
   const getCourse = async () => {
-    const response = await getCourseBySlug(slug)
+    const response = await getCourseWithContent(slug)
     const newBreadcrumbs = buildCourseBreadcrumbs(response.program, response)
 
     setCourse(response)
+    setChapters(response.courseContents)
     setBreadcrumbs(newBreadcrumbs)
     setLoading(false)
   }
@@ -59,17 +58,6 @@ const CoursePage = () => {
       ...prevState,
       [chapterId]: !prevState[chapterId]
     }))
-
-    const chapter = chapters.find(c => c.id === chapterId)
-    if (!chapter.lessons) {
-      const lessons = findLessonsByChapterId(chapterId)
-
-      setChapters((prevChapters) =>
-        prevChapters.map((c) =>
-          c.id === chapterId ? { ...c, lessons: lessons } : c
-        )
-      );
-    }
   }
 
   const handleCourseChange = (e, field, index = null, subfield = null) => {
@@ -275,11 +263,11 @@ const CoursePage = () => {
         <h2 className="font-medium text-xl">Content</h2>
 
         <div className="flex gap-3 text-xs"> 
-          <h3>9 Chapters</h3> {/* To be replaced later */}
-          <h3>24 Lessons</h3>
+          <h3>{chapters.length} Chapters</h3>
+          {/* <h3>24 Lessons</h3> */}
         </div>
 
-        {/* <div className="flex flex-col gap-2 py-4 w-full">
+        <div className="flex flex-col gap-2 py-4 w-full">
           {chapters.map((chapter, index) => (
             <div 
               key={chapter.id}
@@ -296,10 +284,13 @@ const CoursePage = () => {
                 </button>
                 <Link 
                   href={pathname + "/" + chapter.slug}
-                  className="flex-1 text-lg hover:underline hover:cursor-pointer">{index + 1}. {chapter.title}
+                  className="flex justify-between items-center flex-1 text-lg hover:underline hover:cursor-pointer"
+                >
+                  <h2>{index + 1}. {chapter.title}</h2>
+                  <p className="text-sm text-primary font-medium">{chapter.lessons.length === 0 ? "No Lesson" : chapter.lessons.length + " Lessons"}</p>
                 </Link>
               </div>
-              {openedChapters[chapter.id] && chapter.lessons && chapter.lessons.map((lesson, index) => (
+              {openedChapters[chapter.id] && chapter.lessons && chapter.lessons.map((lesson, lindex) => (
                 <Link 
                   key={lesson.id}
                   href={pathname + "/" + chapter.slug + "/" + lesson.slug}
@@ -316,7 +307,7 @@ const CoursePage = () => {
               )}
             </div>
           ))}
-        </div> */}
+        </div>
       </section>
 
 		</div>
