@@ -27,9 +27,15 @@ export const getCourseByUser = async () => {
     
 }
 
-export const getCourseContent = async (slug) => {    
-  const response = await axios.get(url + "course/" + slug + "/course-content")
-  return response.data;
+export const getCourseContent=async(slug,userId=0)=>{
+    let endpoint=url+"course/"+slug+"/course-content"
+
+    if(userId){
+      endpoint += `?userId=${userId}`;
+    }
+    
+    const response=await axios.get(endpoint)
+    return response.data;
 }
 
 export const createCourse = async (payload) => {

@@ -10,6 +10,7 @@ import StarIcon from "../icons/StarIcon";
 import BookIcon from "../icons/Book";
 
 import { usePathname, useRouter } from 'next/navigation';
+import { useCart } from "@/app/context/CartContext";
 
 const NAV_ITEMS = [
   { 
@@ -51,9 +52,14 @@ const UserIcon = ({ color = "white", size = 24 }) => (
 );
 
 const DashboardHeader = () => {
-
   const pathname = usePathname();
   const router = useRouter();
+  const { setCart } = useCart()
+
+  const handleSignOut = () => {
+    setCart([])
+    signOut({ callbackUrl: "/login" })
+  }
 
   return (
     <div className="w-full">
@@ -72,8 +78,8 @@ const DashboardHeader = () => {
                 key={index}
                 className={`flex items-center gap-1 mx-auto ${ mobileHidden ? "tablet:flex hidden" : ""} cursor-pointer`}
                 onClick={() => {
-                  if (title === "ចាកចេញ") signOut({ callbackUrl: "/login" }); 
-                  else router.push(url);
+                  if (title === "ចាកចេញ") handleSignOut()
+                  else router.push(url)
                 }}
               >
                 <Icon size={16} />

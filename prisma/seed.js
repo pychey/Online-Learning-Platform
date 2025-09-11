@@ -51,11 +51,11 @@ const users = [
 const enrollments = [
     {
         userId: 1,
-        courseId: 1,
+        courseId: 3,
     },
     {
         userId: 1,
-        courseId: 2,
+        courseId: 4,
     },
     {
         userId: 4,
@@ -68,6 +68,17 @@ const enrollments = [
     {
         userId: 4,
         courseId: 5,
+    },
+]
+
+const carts = [
+    {
+        userId: 1,
+        courseId: 1,
+    },
+    {
+        userId: 1,
+        courseId: 2,
     },
 ]
 
@@ -86,6 +97,7 @@ export async function main() {
     for (const review of reviews) await prisma.reviews.create({ data: review })
     for (const user of users) await prisma.user.create({ data: user })
     for (const enrollment of enrollments) await prisma.enrollment.create({ data: enrollment })
+    for (const cart of carts) await prisma.cart.create({ data: cart })
 }
 
 main()
