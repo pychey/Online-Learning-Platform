@@ -94,6 +94,7 @@ export default function PaymentPage() {
     const currentCourseIds = cart?.map(c => c.id) || [];
     const currentFirstName = searchParams.get('firstName') || firstName;
     const currentLastName = searchParams.get('lastName') || lastName;
+    console.log(currentCourseIds, currentFirstName, currentLastName, currentUserId)
     try {
       console.log(userId, courseIds, firstName, lastName)
       const { data } = await axios.post('/api/enrollment', {
@@ -102,7 +103,7 @@ export default function PaymentPage() {
         firstName: currentFirstName,
         lastName: currentLastName,
       })
-      if (data) {
+      if (data.success) {
         await update({ firstName, lastName });
       }
     } catch (error) {
