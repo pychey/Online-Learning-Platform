@@ -6,6 +6,7 @@ import QRCode from "qrcode";
 import { useCart } from "../context/CartContext";
 import { useSession } from "next-auth/react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function PaymentPage() {
   const { cart, clearCart } = useCart()
@@ -20,10 +21,11 @@ export default function PaymentPage() {
   const qr = searchParams.get("qr");
   const merchant = searchParams.get("merchant") || "Online Course";
   const [error, setError] = useState(null)
+  const router = useRouter()
 
   const [expired, setExpired] = useState(false);
   const [paid, setPaid] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(180);
   const [checking, setChecking] = useState(false);
   const [qrImage, setQrImage] = useState(null);
 
@@ -88,12 +90,17 @@ export default function PaymentPage() {
   }, [qr, paid, expired]);
 
   const handlePayment = async () => {
+    const currentUserId = session?.user?.id;
+    const currentCourseIds = cart?.map(c => c.id) || [];
+    const currentFirstName = searchParams.get('firstName') || firstName;
+    const currentLastName = searchParams.get('lastName') || lastName;
     try {
+      console.log(userId, courseIds, firstName, lastName)
       const { data } = await axios.post('/api/enrollment', {
-        userId,
-        courseIds,
-        firstName,
-        lastName,
+        userId: currentUserId,
+        courseIds: currentCourseIds,
+        firstName: currentFirstName,
+        lastName: currentLastName,
       })
       if (data) {
         await update({ firstName, lastName });
@@ -162,7 +169,7 @@ export default function PaymentPage() {
 
         {/* Timer */}
         <div className="text-center text-gray-500 pb-4">
-          Expires in {timeLeft}s {checking && !paid ? "(Checking...)" : ""}
+          Expires in {timeLeft}s {checking && !paid ? "" : ""}
         </div>
       </div>
     </div>

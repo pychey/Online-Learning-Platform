@@ -69,10 +69,9 @@ export default function CheckoutPage() {
 
       if (data.success && data.qrString) {
         router.push(
-          `/payment?trxId=${data.trxId}&total=${
+          `/payment?firstName=${formData.firstName}&lastName=${formData.lastName}&trxId=${data.trxId}&total=${
             data.amount
-          }&qr=${encodeURIComponent(data.qrString)}
-          &firstName=${formData.firstName}&lastName=${formData.lastName}`
+          }&qr=${encodeURIComponent(data.qrString)}`
         );
       } else {
         alert("Failed to generate QR. Try again.");
