@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import RightArrow from "@/components/icons/RightArrow"
-import Tick from "@/components/icons/Tick"
 
 const LessonDetail = ({lesson , markComplete, admin = false}) => {
   return (
@@ -32,10 +31,10 @@ const LessonDetail = ({lesson , markComplete, admin = false}) => {
           <div className="flex justify-between items-center flex-row-reverse my-10 w-full">
             <div
               onClick={markComplete}
-              className={`flex items-center justify-start px-12 py-2 bg-green-800
+              className={`flex items-center justify-start px-12 py-2 bg-primary-green
               text-white text-lg cursor-pointer`}
             >
-              បញ្ចប់មេរៀន <Tick />
+              បន្តមេរៀន <RightArrow className={` h-6 w-6`}/>
             </div>
             <Link href={`${lesson.prevSlug?`/lesson/${lesson.prevSlug}`:`/content/${lesson.courseContentSlug}`}`} className={`flex items-center justify-start px-12 py-2 bg-primary text-white text-lg cursor-pointer`}><RightArrow className={`rotate-180 h-6 w-6`}/>{lesson.prevSlug?"ចំណុចមុន":"ទៅមេរៀន"}</Link>
           </div>
