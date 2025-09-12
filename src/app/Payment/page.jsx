@@ -1,35 +1,34 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import QRCode from "qrcode";
 import { useCart } from "../context/CartContext";
 import { useSession } from "next-auth/react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 export default function PaymentPage() {
-  const router = useRouter(); 
-  const { cart, clearCart } = useCart()
+  const router = useRouter();
+  const { cart, clearCart } = useCart();
   const { data: session, status, update } = useSession();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [userId, setUserId] = useState('');
-  const [courseIds, setCourseIds] = useState([])
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userId, setUserId] = useState("");
+  const [courseIds, setCourseIds] = useState([]);
   const searchParams = useSearchParams();
   const trxId = searchParams.get("trxId");
   const total = searchParams.get("total");
   const qr = searchParams.get("qr");
   const merchant = searchParams.get("merchant") || "Online Course";
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   const [expired, setExpired] = useState(false);
   const [paid, setPaid] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(180);
+  const [timeLeft, setTimeLeft] = useState(5000);
   const [checking, setChecking] = useState(false);
   const [qrImage, setQrImage] = useState(null);
 
-  // generate QR image from KHQR string
+  // generate QR image
   useEffect(() => {
     if (qr) {
       QRCode.toDataURL(qr, { width: 280, margin: 1 })
@@ -48,35 +47,37 @@ export default function PaymentPage() {
     }
   }, [timeLeft, paid]);
 
+
   useEffect(() => {
-    if (status === 'loading') return;
-    if (status === 'unauthenticated') router.push('/login?fromPayment=1')
+    if (status === "loading") return;
+    if (status === "unauthenticated") router.push("/login?fromPayment=1");
 
-    const firstNameParams = searchParams.get('firstName');
-    const lastNameParams = searchParams.get('lastName');
+    const firstNameParams = searchParams.get("firstName");
+    const lastNameParams = searchParams.get("lastName");
 
-    if(firstNameParams) setFirstName(firstNameParams)
-    if(lastNameParams) setLastName(lastNameParams)
-    
+    if (firstNameParams) setFirstName(firstNameParams);
+    if (lastNameParams) setLastName(lastNameParams);
+
     if (session) setUserId(session.user.id);
-    console.log(session)
 
-    if (cart) setCourseIds(cart.map(c => c.id))
+    if (cart) setCourseIds(cart.map((c) => c.id));
   }, [searchParams, status]);
 
-  // check payment status
+  
   useEffect(() => {
     if (!paid && !expired && qr) {
       const interval = setInterval(async () => {
         setChecking(true);
         try {
-          const res = await fetch(`/api/checkstatus?qrString=${encodeURIComponent(qr)}`);
+          const res = await fetch(
+            `/api/checkstatus?qrString=${encodeURIComponent(qr)}`
+          );
           const data = await res.json();
           if (data.paid) {
             handlePayment();
             clearCart();
-            setPaid(true)
-            router.push('/my-courses')
+            setPaid(true);
+            router.push("/my-courses");
           }
         } catch (err) {
           setError("មានបញ្ហាក្នុងការទិញវគ្គសិក្សា សូមព្យាយាមម្ដងទៀត។");
@@ -91,35 +92,35 @@ export default function PaymentPage() {
 
   const handlePayment = async () => {
     const currentUserId = session?.user?.id;
-    const currentCourseIds = cart?.map(c => c.id) || [];
-    const currentFirstName = searchParams.get('firstName') || firstName;
-    const currentLastName = searchParams.get('lastName') || lastName;
-    console.log(currentCourseIds, currentFirstName, currentLastName, currentUserId)
+    const currentCourseIds = cart?.map((c) => c.id) || [];
+    const currentFirstName = searchParams.get("firstName") || firstName;
+    const currentLastName = searchParams.get("lastName") || lastName;
+
     try {
-      console.log(userId, courseIds, firstName, lastName)
-      const { data } = await axios.post('/api/enrollment', {
+      const { data } = await axios.post("/api/enrollment", {
         userId: currentUserId,
         courseIds: currentCourseIds,
         firstName: currentFirstName,
         lastName: currentLastName,
-      })
+      });
       if (data.success) {
         await update({ firstName, lastName });
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setError("មានបញ្ហាក្នុងការទិញវគ្គសិក្សា សូមព្យាយាមម្ដងទៀត។");
     }
   };
 
-  if (status === 'loading') return <p>Loading...</p>
+  if (status === "loading") return <p>Loading...</p>;
 
   if (paid) {
     return (
       <div className="flex flex-col items-center justify-center h-screen text-center">
         <h2 className="text-2xl font-bold text-green-600">សូមអរគុណ!</h2>
         <p className="mt-2 text-gray-600">
-          ការទូទាត់របស់អ្នក <span className="font-semibold">{total} ៛</span> ជោគជ័យ <br />
+          ការទូទាត់របស់អ្នក <span className="font-semibold">{total} ៛</span>{" "}
+          ជោគជ័យ <br />
           Transaction ID: <span className="text-primary">{trxId}</span>
         </p>
       </div>
@@ -129,50 +130,70 @@ export default function PaymentPage() {
   if (expired) {
     return (
       <div className="flex flex-col items-center justify-center h-screen text-center">
-        <h2 className="text-2xl font-bold text-red-600">QR Code អស់សុពលភាព</h2>
-        <p className="mt-2 text-gray-600">សូមធ្វើការរីហ្វ្រេសដើម្បីទទួលបាន QR Code ថ្មី</p>
+        <h2 className="text-2xl font-bold text-red-600">
+          QR Code អស់សុពលភាព
+        </h2>
+        <p className="mt-2 text-gray-600">
+          សូមធ្វើការរីហ្វ្រេសដើម្បីទទួលបាន QR Code ថ្មី
+        </p>
       </div>
     );
   }
 
-  if(error) return <p>{error}</p>
+  if (error) return <p>{error}</p>;
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="w-[320px] bg-white shadow-lg rounded-lg overflow-hidden border">
-        {/* Header */}
-        <div className="bg-red-600 text-white text-center py-2 text-xl font-bold">
-          KHQR
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <div className="w-[320px] h-118 bg-white shadow-2xl rounded-3xl overflow-hidden ">
+        <div className="bg-red-600 text-white text-center py-6 text-xl font-bold relative flex justify-center items-center ">
+          <img
+            src="https://checkout.payway.com.kh/images/khqr-icon.svg"
+            alt="KHQR"
+            className="w-20"
+          />
         </div>
-
-        {/* Merchant & Amount */}
-        <div className="text-center py-4">
-          <h2 className="text-gray-800 font-semibold">{merchant}</h2>
-          <p className="text-2xl font-bold mt-1 text-gray-900">
+       <div className="flex justify-end">
+       <div className="w-0 h-0 border-l-[30px] border-l-transparent border-t-[25px] border-red-600"></div>
+       </div>
+        <div className="text-center py-4 -mt-4 flex justify-start flex-col items-start">
+          <h2 className="text-gray-800 font-semibold text-md ml-6 ">{merchant}</h2>
+          <p className="text-2xl font-bold mt-1  text-gray-900 ml-6">
             {Number(total).toLocaleString()} $
           </p>
         </div>
 
-        {/* QR Code */}
-        <div className="flex justify-center py-4">
+       <div
+        className="mx-1 h-[1px] mt-1" 
+        style={{
+          backgroundImage: "repeating-linear-gradient(to right, gray 0px, gray 10px, transparent 10px, transparent 20px)",
+        }}
+      ></div>
+
+
+        <div className="flex justify-center py-8 relative">
           {qrImage ? (
-            <img
-              src={qrImage}
-              alt="KHQR"
-              width={280}
-              height={280}
-              className="border rounded-lg shadow-md"
-            />
+            <>
+              <img
+                src={qrImage}
+                alt="KHQR"
+                width={230}
+                height={250}
+              />
+              <img
+                src="https://checkout.payway.com.kh/images/usd-khqr-logo.svg"
+                alt="USD Logo"
+                className="absolute top-0 left-0 right-0 bottom-0 m-auto w-14 h-14"
+              />
+            </>
           ) : (
-            <p className="text-red-500">Failed to generate QR</p>
+            <p className="text-red-500">កំពុងបង្កើត QR...</p>
           )}
         </div>
-
-        {/* Timer */}
-        <div className="text-center text-gray-500 pb-4">
-          Expires in {timeLeft}s {checking && !paid ? "" : ""}
-        </div>
       </div>
+        {/* <div className="text-center text-gray-500 py-4">
+          អស់សុពលភាពក្នុង {timeLeft}s{" "}
+          {checking && !paid ? "" : ""}
+        </div> */}
     </div>
   );
 }

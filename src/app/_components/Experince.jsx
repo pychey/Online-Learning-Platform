@@ -31,7 +31,7 @@ const Experience = () => {
   return (
     <div className="w-full px-6 flex flex-col items-center gap-10 my-15">
       <h1 className='font-medium text-xl tablet:text-2xl laptop:text-4xl leading-[2rem] text-center'>
-        បទពិសោធន៍អ្នកដែលបានរៀនជាមួយ <span className='text-primary'>អាសេតអាខាដាមី</span>
+        បទពិសោធន៍អ្នកដែលបានរៀនជាមួយ <span className='text-primary'>សាស្ត្រាអាខាដាមី</span>
       </h1>
 
       <Swiper

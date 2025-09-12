@@ -15,23 +15,21 @@ const ArtmeetsEducation = () => {
         </div>
 
         {/* Right Content */}
-        <div>
-          <h2 className="text-xl sm:text-lg md:text-xl lg:text-2xl font-medium mb-2 sm:mb-4 md:mb-4 lg:mb-8  leading-normal lg:leading-[31px]">
-           Leapfrog e.V.  <a className="text-[#808080]">/ អាហ្វ្រិក
-            </a> 
-           
-          </h2>
-          <p className="text-gray-950 mb-2 sm:mb-2 md:mb-6  text-base md:text-lg lg:text-lg  leading-normal lg:leading-[31px]">
-            ការបែកបាក់ឌីជីថលគឺជាបញ្ហាសង្គម – សំដៅទៅលើភាពខុសគ្នានៅក្នុងការចូលប្រើបច្ចេកវិទ្យាសារព័ត៌មាន និងការទំនាក់ទំនង រវាងប្រទេសខាងជើងនិងខាងត្បូង បុរសនិងស្ត្រី ភូមិ និងទីក្រុង និងមនុស្សវ័យក្មេងនិងចាស់។
-          </p>
-          <p className="text-gray-950 mb-4 sm:mb-2 md:mb-6 text-base md:text-lg lg:text-lg  leading-normal lg:leading-[31px]">
-           ក្នុងការសហការយ៉ាងជិតស្និទ្ធជាមួយអង្គការដៃគូក្នុងតំបន់នៅអាហ្វ្រិក ចូលរួមក្នុងការបិទចន្លោះឌីជីថលនៅប្រទេសកេនយ៉ា កាមេរូន អ៊ូហ្កង់ដា និងហ្គាណា។{" "}
-            <a href="#" className="text-primary underline">
-              អ្នកអាចស្វែងយល់ព័ត៌មានបន្ថែម និងគាំទ្រគម្រោងនេះ នៅទីនេះ
-            </a>
-          
-          </p>
-        </div>
+       <div>
+        <h2 className="text-xl sm:text-lg md:text-xl lg:text-2xl font-medium mb-2 sm:mb-4 md:mb-4 lg:mb-8 leading-normal lg:leading-[31px]">
+          ចំណេះដឹងថ្មី
+        </h2>
+        <p className="text-gray-950 mb-2 sm:mb-2 md:mb-6 text-base md:text-lg lg:text-lg leading-normal lg:leading-[31px]">
+          ការចូលប្រើបច្ចេកវិទ្យា និងឌីជីថលនៅកម្ពុជា នៅតែមានភាពខុសគ្នា – រវាងទីក្រុងនិងភូមិ បុរសនិងស្ត្រី និងកុមារវ័យក្មេង និងអ្នកធំ។ គម្រោងនេះផ្តោតលើការផ្តល់ឱកាសឲ្យកុមារនិងយុវវ័យទទួលបានចំណេះដឹងថ្មី និងចូលប្រើបច្ចេកវិទ្យាឌីជីថលបានយ៉ាងងាយស្រួល។
+        </p>
+        <p className="text-gray-950 mb-4 sm:mb-2 md:mb-6 text-base md:text-lg lg:text-lg leading-normal lg:leading-[31px]">
+          ដោយសហការជាមួយអង្គការដៃគូក្នុងតំបន់ កម្មវិធីនេះចូលរួមក្នុងការបង្កើតឱកាសសិក្សា និងការអប់រំក្នុងភូមិ និងទីក្រុងខ្លះៗនៅកម្ពុជា។{" "}
+          <a href="#" className="text-primary underline">
+            អ្នកអាចស្វែងយល់ព័ត៌មានបន្ថែម និងគាំទ្រគម្រោងនេះ នៅទីនេះ
+          </a>
+        </p>
+      </div>
+
       </div>
     </section>
   );

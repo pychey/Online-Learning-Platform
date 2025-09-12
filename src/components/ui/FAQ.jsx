@@ -8,7 +8,7 @@ const FAQ = ({ items }) => {
   const toggle = (index) => setActiveIndex(prev => prev === index ? null : index);
 
   return (
-    <div className="mt-6 bg-gray-100 text-xl rounded-sm">
+    <div className="mt-6 bg-gray-100 text-lg rounded-sm">
       {items.map((item, index) => (
         <div key={index}>
           <div 

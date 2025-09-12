@@ -7,7 +7,7 @@ const EDUCATION_FOR_GOOD = {
   title: "ការអប់រំសម្រាប់អត្ថប្រយោជន៍សាធារណៈ",
   description: (
   	<>
-			អេសេត គាំទ្រផ្នែកហិរញ្ញវត្ថុដល់គម្រោងអប់រំមិនរកប្រាក់ចំណេញនៅ: 
+			សាស្ត្រា គាំទ្រផ្នែកហិរញ្ញវត្ថុដល់គម្រោងអប់រំមិនរកប្រាក់ចំណេញនៅ: 
 			<br/> 
 			កាមេរូន អ៊ុយហ្គង់ដា ហ្គាណា កេនយ៉ា ឡាវ និងហ្វីលីពីន
 		</>
@@ -22,11 +22,14 @@ const EducationForGood = () => {
 			className="w-full px-7 py-14 relative overflow-hidden"
 		>
 			<div 
-        className="absolute inset-0 bg-center bg-no-repeat bg-cover" 
-        style={{ 
-					backgroundImage: `url(/Unity.jpg)`, 
-					opacity: 0.35, zIndex: 0 }} 
-      />
+				className="absolute inset-0 bg-center bg-no-repeat bg-cover" 
+				style={{ 
+					backgroundImage: `url("https://cambodia.un.org/sites/default/files/styles/featured_image/public/2021-08/50899730963_8d6f6a0de3_o.jpg?itok=z0KISPNN")`, 
+					opacity: 0.45, 
+					zIndex: 0 
+				}} 
+				/>
+
 			
 			<div className="relative flex flex-col items-center text-center z-10">
 				<GlobeIcon size={70} className="text-primary" />
