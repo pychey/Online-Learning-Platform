@@ -18,6 +18,7 @@ import LogoDropdown from "@/app/program/[slug]/_components/LogoDropdown"
 import { LOGOS } from "./_logo"
 import { createCourse } from "@/lib/course"
 import InlineTitleInput from "@/components/ui/InlineTitleInput"
+import Menu from "../../_components/Menu"
 
 const ProgramCoursePage = () => {
 	const [ loading, setLoading ] = useState(true)
@@ -92,7 +93,7 @@ const ProgramCoursePage = () => {
 					/>
 				</div>
 
-		    <section className="flex mb-0.5">
+		    <section className="flex items-center gap-2 mb-0.5">
 					<button
 						onClick={handleSaveChanges}
 						className="px-4 h-10 bg-primary hover:bg-primary-hover font-medium text-white 
@@ -100,6 +101,8 @@ const ProgramCoursePage = () => {
 					>
 						Save Changes
 					</button>
+
+					<Menu model={"Program"} data={program} />
 				</section>
 			</div>
 

@@ -35,6 +35,9 @@ export async function GET (req, { params }) {
             include
         })
 
+        if (searchParams.get('admin')) 
+            return NextResponse.json(currentCourseContent)
+
         if (!currentCourseContent) return NextResponse.json(
             { error: "Course Content Not Found" },
             { status: 404 }
@@ -95,7 +98,7 @@ export async function GET (req, { params }) {
         }
 
         for (const lesson of currentCourseContent.lessons) {
-            const exist = await prisma.lessonProgress.findFirst({
+            const exist = await prisma.lessonProgress?.findFirst({
                 where: { userId: Number(userId), lessonSlug: lesson.slug }
             });
             if (exist) {
@@ -107,6 +110,8 @@ export async function GET (req, { params }) {
         
         return NextResponse.json({ ...currentCourseContent, prevSlug: prev?.slug , nextSlug: next?.slug, courseSlug: course?.slug, totalCourseContent })
     } catch (reason) {
+        console.log(reason);
+        
         const message = reason instanceof Error ? reason.message : 'Unexpected error'
         return new Response(message, { status: 500 })
         
@@ -144,5 +149,23 @@ export async function PATCH (req, {params}) {
     } catch (error) {
         console.log(error)
         return new Response("Failed to update course " + error, { status: 500 });
+    }
+}
+
+export async function DELETE(req, { params }) {
+    const slug = params.slug;
+
+    try {
+        const deletedCourseContent = await prisma.courseContent.delete({
+            where: { slug }
+        });
+
+        return NextResponse.json({
+            message: "Course content deleted successfully.",
+            deletedCourseContent
+        });
+    } catch (error) {
+        console.error("Delete error:", error);
+        return new Response("Failed to delete course content: " + error, { status: 500 });
     }
 }

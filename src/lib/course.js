@@ -43,6 +43,16 @@ export const createCourse = async (payload) => {
   return response.data;
 };
 
+export const deleteCourse = async (slug) => {
+  try {
+    const response = await axios.delete(`/api/course/${slug}`);
+    return response.data;
+  } catch (err) {
+    console.error(`Failed to delete course ${slug}:`, err);
+    throw err;
+  }
+};
+
 export const patchCourse = async (slug, updatedData) => {
   try {
 		console.log(slug)
