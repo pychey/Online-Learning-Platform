@@ -195,7 +195,7 @@ export default function CheckoutPage() {
               <hr className="hidden laptop:block h-[3px] w-full bg-gray-200 border-none"></hr>
               <div className="w-full h-auto mt-8 flex justify-end">
                 <img
-                  src="https://devithuotkeo.com/static/image/portfolio/khqr/khqr-5.png"
+                  src="/KHQR_Logo.png"
                   alt=""
                   className="h-auto w-20"
                 />
