@@ -8,13 +8,13 @@ export async function GET() {
 
   if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
 
-  const coursesCart = await prisma.cart.findMany({
+  const coursesCart = await prisma.cart?.findMany({
     where: { userId: session.user.id },
     include: { course: true },
     orderBy: { createdAt: 'asc' }
   });
 
-  const courses = coursesCart.map(cart => cart.course)
+  const courses = coursesCart?.map(cart => cart.course)
 
   return NextResponse.json(courses);
 }

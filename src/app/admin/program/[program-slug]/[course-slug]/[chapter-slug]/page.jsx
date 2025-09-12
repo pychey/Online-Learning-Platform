@@ -18,18 +18,22 @@ import { getCourseContent } from "@/lib/course"
 import { getContentBySlug, patchChapter } from "@/lib/content"
 import ContentDetail from "@/app/content/[slug]/component/ContentDetail"
 import InlineTitleInput from "@/components/ui/InlineTitleInput"
+import Menu from "@/app/admin/_components/Menu"
+import AdminNewLessonModal from "@/app/admin/_components/AdminNewLessonModal"
+import { createLesson } from "@/lib/lesson"
 
 const ChapterPage = () => {
 	const [ lessons, setLessons ] = useState([])
 	const [ chapter, setChapter ] = useState({})
 	const [ course, setCourse ] = useState({})
+	const [ activeLessonModal, setActiveLessonModal ] = useState(false)
 	const pathname = usePathname()
 	const router = useRouter()
 	const slug = getSlugFromPathname(pathname)
 	const { setBreadcrumbs } = useBreadcrumb()
 
 	const getChapter = async () => {
-		const response = await getContentBySlug(slug, true)
+		const response = await getContentBySlug(slug, null, true)
 		console.log(response);
 		
 		setChapter(response)
@@ -73,6 +77,19 @@ const ChapterPage = () => {
 		}
 	};
 
+	const handleCreateLesson = async (input) => {
+		const payload = {
+      ...input,
+      courseContentId: chapter.id,
+      order_number: chapter.lessons.length + 1,
+    };
+
+		setActiveLessonModal(false)
+		await createLesson(payload)
+		router.push(pathname + "/" + payload.slug)
+		
+	}
+
 	return(
 		<div className="flex flex-col p-5 w-full h-full">
 
@@ -86,7 +103,7 @@ const ChapterPage = () => {
 					/>
 				</div>
 
-				<section className="flex mb-0.5">
+				<section className="flex gap-2 mb-0.5">
 					<button
 						onClick={handleSaveChanges}
 						className="px-4 h-10 bg-primary hover:bg-primary-hover font-medium text-white 
@@ -94,6 +111,8 @@ const ChapterPage = () => {
 					>
 						Save Changes
 					</button>
+
+					<Menu model={"Chapter"} data={chapter}/>
 				</section>
 			</div>
 
@@ -142,7 +161,10 @@ const ChapterPage = () => {
 							<h3 className="font-medium">Lesson Content</h3>
 						</div>
 
-						<button>
+						<button 
+							className="cursor-pointer"
+							onClick={() => setActiveLessonModal(true)}
+						>
 							<Plus />
 						</button>
 					</div>
@@ -164,6 +186,12 @@ const ChapterPage = () => {
 					<ContentDetail content={chapter} admin={true}/>
         </div>
       </section>
+
+			<AdminNewLessonModal
+				isOpen={activeLessonModal}
+				onCancel={() => setActiveLessonModal(false)}
+				onSave={(input) => handleCreateLesson(input)}
+			/>
 
 		</div>
 	)

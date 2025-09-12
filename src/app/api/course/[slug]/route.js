@@ -91,3 +91,21 @@ export async function PATCH (req, {params}) {
         return new Response("Failed to update course " + error, { status: 500 });
     }
 }
+
+export async function DELETE(req, { params }) {
+    const slug = params.slug;
+
+    try {
+        const deletedCourse = await prisma.course.delete({
+            where: { slug }
+        });
+
+        return NextResponse.json({
+            message: "Course deleted successfully.",
+            deletedCourse
+        });
+    } catch (error) {
+        console.error("Delete error:", error);
+        return new Response("Failed to delete course: " + error, { status: 500 });
+    }
+}

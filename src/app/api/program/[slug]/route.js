@@ -19,6 +19,24 @@ export async function GET (req, {params}) {
     }
 }
 
+export async function DELETE(req, { params }) {
+    const slug = params.slug;
+
+    try {
+        const deletedProgram = await prisma.program.delete({
+            where: { slug }
+        });
+
+        return NextResponse.json({
+            message: "Program deleted successfully.",
+            deletedProgram
+        });
+    } catch (error) {
+        console.error("Delete error:", error);
+        return new Response("Failed to delete program: " + error, { status: 500 });
+    }
+}
+
 export async function PATCH (req, {params}) {
     const slug = await params.slug 
     const body = await req.json()
