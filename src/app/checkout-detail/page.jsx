@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/app/context/CartContext";
 import { khmerToEnglishNumber } from "@/lib/khmerToEnglishNumber";
 import { englishToKhmerNumber } from "@/lib/englishToKhmerNumber";
@@ -20,30 +20,33 @@ export default function CheckoutPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const { cart } = useCart();
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    street: "",
-    city: "",
-    zip: "",
-    country: "",
+    phone: "",
+    organization: "",
+    Company: "",
+    jobTitle: "",
   });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-      if (status === 'loading') return;
-      if (status === 'unauthenticated') router.push('/login?fromPayment=1')
+    if (status === 'loading') return;
+    if (status === 'unauthenticated') router.push('/login?fromPayment=1')
 
-      if (session?.user.firstName && session?.user.lastName) {
-          setFormData({...formData, firstName: session.user.firstName});
-          setLastName({...formData, firstName: session.user.lastName});
-          setMessage("អ្នកមានឈ្មោះរួចហើយ អ្នកអាចប្តូរឈ្មោះនេះបានឫអត់ក៏បាន ដែលឈ្មោះនេះនឹងត្រូវបានប្រើនៅលើសញ្ញាប័ត្ររបស់អ្នក។");
-      } else {
-        setMessage("សូមបំពេញឈ្មោះរបស់អ្នក ដែលឈ្មោះនេះនឹងត្រូវបានប្រើនៅលើសញ្ញាប័ត្ររបស់អ្នក។");
-      }
-    }, [status]);
+    if (session?.user.firstName && session?.user.lastName) {
+      setFormData({
+        ...formData,
+        firstName: session.user.firstName,
+        lastName: session.user.lastName
+      });
+      setMessage("អ្នកមានឈ្មោះរួចហើយ អ្នកអាចប្តូរឈ្មោះនេះបានឫអត់ក៏បាន ដែលឈ្មោះនេះនឹងត្រូវបានប្រើនៅលើសញ្ញាប័ត្ររបស់អ្នក។");
+    } else {
+      setMessage("សូមបំពេញឈ្មោះរបស់អ្នក ដែលឈ្មោះនេះនឹងត្រូវបានប្រើនៅលើសញ្ញាប័ត្ររបស់អ្នក។");
+    }
+  }, [status]);
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -94,6 +97,7 @@ export default function CheckoutPage() {
               ព័ត៌មានលម្អិតអំពីវិក័យប័ត្រ
             </h2>
             <p className="text-center text-sm text-primary">{message}</p>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
                 name="firstName"
@@ -110,6 +114,7 @@ export default function CheckoutPage() {
                 className="p-3 border w-full border-gray-300 focus:outline-none focus:shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-sm text-gray-700"
               />
             </div>
+
             <input
               name="email"
               type="email"
@@ -118,36 +123,37 @@ export default function CheckoutPage() {
               placeholder="Email Address"
               className="p-3 border w-full border-gray-300 focus:outline-none focus:shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-sm text-gray-700"
             />
+
             <input
-              name="street"
+              name="phone"
+              type="tel"
               onChange={handleChange}
               required
-              placeholder="Street and House Number"
+              placeholder="Phone Number"
               className="p-3 border w-full border-gray-300 focus:outline-none focus:shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-sm text-gray-700"
             />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                name="city"
-                onChange={handleChange}
-                required
-                placeholder="Town / City"
-                className="p-3 border w-full border-gray-300 focus:outline-none focus:shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-sm text-gray-700"
-              />
-              <input
-                name="zip"
-                onChange={handleChange}
-                required
-                placeholder="Postcode / ZIP"
-                className="p-3 border w-full border-gray-300 focus:outline-none focus:shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-sm text-gray-700"
-              />
-            </div>
-            <input
-              name="country"
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+               <input
+              name="organization"
               onChange={handleChange}
-              required
-              placeholder="Country"
+              placeholder="Organization (Optional)"
               className="p-3 border w-full border-gray-300 focus:outline-none focus:shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-sm text-gray-700"
-            />
+             />
+
+             <input
+              name="Company"
+              onChange={handleChange}
+              placeholder="Company (Optional)"
+              className="p-3 border w-full border-gray-300 focus:outline-none focus:shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-sm text-gray-700"
+              />
+              </div>
+              <input
+              name="Company"
+              onChange={handleChange}
+              placeholder="Job title (Optional)"
+              className="p-3 border w-full border-gray-300 focus:outline-none focus:shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-sm text-gray-700"
+              />
+           
           </form>
 
           <div className="border-primary border-2 shadow-[0_0_10px_rgba(0,0,0,0.2)] rounded p-6">
@@ -189,7 +195,7 @@ export default function CheckoutPage() {
               <hr className="hidden laptop:block h-[3px] w-full bg-gray-200 border-none"></hr>
               <div className="w-full h-auto mt-8 flex justify-end">
                 <img
-                  src="https://devithuotkeo.com/static/image/portfolio/khqr/khqr-5.png"
+                  src="/KHQR_Logo.png"
                   alt=""
                   className="h-auto w-20"
                 />

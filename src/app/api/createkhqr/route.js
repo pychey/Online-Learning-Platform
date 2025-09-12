@@ -12,7 +12,6 @@ function parsePrice(priceStr) {
 export async function POST(req) {
   try {
     const { cart, formData, orderId } = await req.json();
-
     if (!cart || !Array.isArray(cart) || cart.length === 0) {
       throw new Error("Cart is empty");
     }
