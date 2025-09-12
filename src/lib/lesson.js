@@ -28,6 +28,11 @@ export const deleteLesson = async (slug) => {
   }
 };
 
+export const saveLesson = async (payload) => {
+  const response = await axios.post("/api/lesson/batch-save", payload);
+  return response.data;
+}
+
 export const markCompleted=async(slug,userId)=>{
 
     

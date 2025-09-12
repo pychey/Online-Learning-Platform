@@ -239,12 +239,3 @@ model LessonProgress {
 
   @@id([userId, lessonSlug])
 }
-
-model Draft {
-  id          Int   @id @default(uuid())
-  modelId     Int
-  modelType   String     // "course", "lesson", "chapter", etc.
-  data        Json
-
-  @@unique([modelId, modelType])
-}
