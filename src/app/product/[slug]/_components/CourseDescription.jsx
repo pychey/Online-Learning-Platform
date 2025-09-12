@@ -97,12 +97,12 @@ const CourseDescription = ({ course, admin = false, isPaid = false }) => {
             <p>វគ្គសិក្សានេះជាផ្នែកមួយនៃវគ្គ<Link href={`/program/${course.program.slug}`} className="mx-1 text-primary underline">{course.program.program_title}</Link>កម្មវិធីសិក្សា</p>
           </div>
 
-          <button 
+          {/* <button 
             onClick={() => router.push(`/payment-fake?courseId=${course.id}`)}
             className={`${admin ? "hidden" : ""} mt-2 w-full rounded-sm text-white text-base tablet:text-lg py-3 font-medium bg-primary hover:bg-primary-hover transition-colors duration-300 cursor-pointer flex items-center justify-center`}
           >
             បន្លំទិញ
-          </button>
+          </button> */}
         </div>
       </div>
 
