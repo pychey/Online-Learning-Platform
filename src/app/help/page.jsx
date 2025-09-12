@@ -124,14 +124,14 @@ const Help = () => {
   return (
     <section className='my-20'>
 
-        <div className="flex justify-center items-center py-10 text-4xl font-[500]">
+        <div className="flex justify-center items-center py-10 text-3xl font-[500]">
             <h1>មជ្ឈមណ្ឌលជំនួយ</h1>
         </div>
 
         <div className="grid grid-cols-[1fr] laptop:grid-cols-[1fr_1fr] gap-8 gap-y-14 px-4 w-full max-w-[1200px] mx-auto">
 
             <div >
-                <h1 className='font-medium flex justify-start items-center gap-4 text-3xl'>
+                <h1 className='font-medium flex justify-start items-center gap-4 text-2xl'>
                     <ComputerIcon className="inline-block" size={32}/>
                     ការចាប់ផ្តើម
                 </h1>
@@ -139,7 +139,7 @@ const Help = () => {
             </div>
 
             <div >
-                <h1 className='font-medium text-3xl flex justify-start items-center gap-4'>
+                <h1 className='font-medium text-2xl flex justify-start items-center gap-4'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" className='text-primary'><path fill="currentColor" d="M2.725 21q-.275 0-.5-.137t-.35-.363t-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3t.488.125t.387.375l9.25 16q.15.25.138.513t-.138.487t-.35.363t-.5.137zM12 18q.425 0 .713-.288T13 17t-.288-.712T12 16t-.712.288T11 17t.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10t-.712.288T11 11v3q0 .425.288.713T12 15"/></svg>
                     បញ្ហាជាមួយការបញ្ជាទិញ ឬគណនី
                 </h1>
@@ -147,7 +147,7 @@ const Help = () => {
             </div>
 
             <div >
-                <h1 className='font-medium text-3xl flex justify-start items-center gap-4'>
+                <h1 className='font-medium text-2xl flex justify-start items-center gap-4'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" className='text-primary'><path fill="currentColor" d="M7.625 6.4L12 .725L16.375 6.4l6.85 2.3l-4.325 6.125l.175 6.825L12 19.675L4.925 21.65L5.1 14.8L.8 8.7z"/></svg>
                     វិញ្ញាបនបត្រ
                 </h1>
@@ -155,7 +155,7 @@ const Help = () => {
             </div>
 
             <div >
-                <h1 className='font-medium text-3xl flex justify-start items-center gap-4'>
+                <h1 className='font-medium text-2xl flex justify-start items-center gap-4'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" className='text-primary'><g fill="currentColor"><path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2"/><path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414"/></g></svg>
                     ការចំណាយ និងការទូទាត់
                 </h1>
@@ -163,7 +163,7 @@ const Help = () => {
             </div>
 
             <div >
-                <h1 className='font-medium text-3xl flex justify-start items-center gap-4'>
+                <h1 className='font-medium text-2xl flex justify-start items-center gap-4'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" className='text-primary'><path fill="currentColor" d="M13 13h8v6q0 .825-.587 1.413T19 21h-6zm0-2V3h6q.825 0 1.413.588T21 5v6zm-2 0H3V5q0-.825.588-1.412T5 3h6zm0 2v8H5q-.825 0-1.412-.587T3 19v-6z"/></svg>
                     កម្មវិធី (រាប់បញ្ចូលទាំង Mini-MBA)
                 </h1>
@@ -171,7 +171,7 @@ const Help = () => {
             </div>
 
             <div >
-                <h1 className='font-medium text-3xl flex justify-start items-center gap-4'>
+                <h1 className='font-medium text-2xl flex justify-start items-center gap-4'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" className='text-primary'><path fill="currentColor" d="M14.6 8.075q0-1.075-.712-1.725T12 5.7q-.725 0-1.312.313t-1.013.912q-.4.575-1.088.663T7.4 7.225q-.35-.325-.387-.8t.237-.9q.8-1.2 2.038-1.862T12 3q2.425 0 3.938 1.375t1.512 3.6q0 1.125-.475 2.025t-1.75 2.125q-.925.875-1.25 1.363T13.55 14.6q-.1.6-.513 1t-.987.4t-.987-.387t-.413-.963q0-.975.425-1.787T12.5 11.15q1.275-1.125 1.688-1.737t.412-1.338M12 22q-.825 0-1.412-.587T10 20t.588-1.412T12 18t1.413.588T14 20t-.587 1.413T12 22"/></svg>
                     សំណួរ និងទំនាក់ទំនងបន្ថែម
                 </h1>

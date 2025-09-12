@@ -44,6 +44,8 @@ export async function GET (req, { params }) {
         let completed=0;
         let total=0;
 
+        let n=0,contentSlug;
+
         for (const content of courseWithContents.courseContents) {
             const exist = await prisma.courseContentProgress.findFirst({
                 where: { userId: Number(userId), courseContentSlug: content.slug }
@@ -53,6 +55,10 @@ export async function GET (req, { params }) {
                 completed += 1;
                 content.isCompleted = true; // fix typo
             } else {
+                if(n===0){
+                    contentSlug=content.slug;
+                    n+=1;
+                }
                 content.isCompleted = false;
             }
 
@@ -72,7 +78,7 @@ export async function GET (req, { params }) {
 
         const percentage=((completed/total)*100).toFixed(2)
 
-        const course={...courseWithContents,completedPercentage:percentage}
+        const course={...courseWithContents,completedPercentage:percentage,continue:contentSlug}
         
         return NextResponse.json(course)
     } catch (reason) {

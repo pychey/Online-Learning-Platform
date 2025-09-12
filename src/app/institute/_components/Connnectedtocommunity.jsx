@@ -6,13 +6,13 @@ const Connnectedtocommunity = () => {
   const router = useRouter();
 
   return (
-    <section className="py-6 h-auto lg:h-[460px] flex justify-center items-center ">
+    <section className="py-6 h-auto lg:h-[460px] flex justify-center items-center  ">
       <div className="max-w-6xl mx-auto grid [@media(min-width:548px)]:grid-cols-2 gap-6 sm:gap-8 items-start lg:item-center px-4 sm:px-10">
         
         {/* Left Image */}
-        <div className=" h-auto w-full">
+        <div className=" h-auto w-full mt-2">
           <img decoding="async" width="100" height="655"
-            src="https://www.ibm-institute.com/wp-content/uploads/2022/05/team.jpg"
+            src="https://ourneighbourhood.ca/wp-content/uploads/2023/11/Community-Project.png"
             alt="Community"
             className="shadow-md object-fit-contain h-full w-full"
           />

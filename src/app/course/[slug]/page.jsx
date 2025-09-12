@@ -7,6 +7,7 @@ import { getCourseContent } from "@/lib/course";
 import CourseLayout from "@/components/ui/CourseLayout";
 import Tick from "@/components/icons/Tick";
 import { useSession } from "next-auth/react";
+import RightArrow from "@/components/icons/RightArrow"
 
 
 const Course = () => {
@@ -68,7 +69,7 @@ const Course = () => {
 					course.courseContents.map((c,index)=>(
 						<Link href={`/content/${c.slug}`} key={index} className="flex justify-start items-center gap-4 border-2 rounded-md border-gray-300 my-4 py-6 pl-4 ">
 
-							<div className={`relative border-4 border-gray-200 rounded-2xl h-6 w-6`}><Tick className={` h-6 w-6 ${c.isCompleted?"block":"hidden"} absolute -left-1 -top-1 text-white bg-green-300 rounded-2xl`}/></div>
+							<div className={`relative border-4 border-gray-200 rounded-2xl h-6 w-6`}><Tick className={` h-6 w-6 ${c.isCompleted?"block":"hidden"} absolute -left-1 -top-1 text-white bg-primary-green rounded-2xl`}/></div>
 							<div className="flex flex-col gap-1">
 								<h1 className="text-lg ">{c.order_number}. {c.title}</h1>
 								{c._count.lessons!=0&&<p className="text-sm text-gray-400">{c._count.lessons} Topics</p>}
@@ -76,6 +77,11 @@ const Course = () => {
 
 						</Link>
 					))
+				}
+				{course.continue&&
+					<div className="flex justify-end items-center my-10 w-full">
+						<Link href={`/content/${course.continue}`} className={`flex items-center justify-start px-12 py-2 bg-primary-green text-white text-lg cursor-pointer`}>បន្តមេរៀន<RightArrow className={`h-6 w-6`}/></Link>
+					</div>
 				}
 			</div>
 		</CourseLayout>

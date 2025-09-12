@@ -85,6 +85,15 @@ export async function GET (req, { params }) {
             })
         }
 
+        if(prev){
+            const exist=await prisma.courseContentProgress.findFirst({
+                where: { userId: Number(userId), courseContentSlug: prev.slug }
+            })
+            if(!exist){
+                return NextResponse.json({message:"សូមបញ្ចប់មេរៀនមុន",course:course.slug},{status:400})
+            }
+        }
+
         if (currentCourseContent.order_number < totalCourseContent) {
             next = await prisma.courseContent.findFirst({
                 where: {
@@ -97,6 +106,8 @@ export async function GET (req, { params }) {
             })
         }
 
+        let n=0,lessonSlug;
+
         for (const lesson of currentCourseContent.lessons) {
             const exist = await prisma.lessonProgress?.findFirst({
                 where: { userId: Number(userId), lessonSlug: lesson.slug }
@@ -104,11 +115,15 @@ export async function GET (req, { params }) {
             if (exist) {
                 lesson.isCompleted = true;
             } else {
+                if(n===0){
+                    lessonSlug=lesson.slug;
+                    n+=1;
+                }
                 lesson.isCompleted = false;
             }
         }
         
-        return NextResponse.json({ ...currentCourseContent, prevSlug: prev?.slug , nextSlug: next?.slug, courseSlug: course?.slug, totalCourseContent })
+        return NextResponse.json({ ...currentCourseContent, prevSlug: prev?.slug , nextSlug: next?.slug, courseSlug: course?.slug, totalCourseContent,continueLesson:lessonSlug })
     } catch (reason) {
         console.log(reason);
         

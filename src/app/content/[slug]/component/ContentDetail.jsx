@@ -4,7 +4,7 @@ import Link from "next/link"
 import Tick from "@/components/icons/Tick"
 import RightArrow from "@/components/icons/RightArrow"
 
-const ContentDetail = ({content, markComplete, errorMark="", admin = false}) => {
+const ContentDetail = ({content, markComplete, errorMark="",slug="", admin = false}) => {
 
 
   return (
@@ -24,7 +24,7 @@ const ContentDetail = ({content, markComplete, errorMark="", admin = false}) => 
             {content.lessons.map((lesson,index)=>(
             <Link key={index} href={`/lesson/${lesson.slug}`}>
               <div className="flex justify-start items-center gap-4 my-6 border border-gray-200 py-6 px-8">
-                <div className={`relative border-4 border-gray-200 rounded-2xl h-6 w-6`}><Tick className={` h-6 w-6 ${lesson.isCompleted?"block":"hidden"} absolute -left-1 -top-1 text-white bg-green-300 rounded-2xl`}/></div>
+                <div className={`relative border-4 border-gray-200 rounded-2xl h-6 w-6`}><Tick className={` h-6 w-6 ${lesson.isCompleted?"block":"hidden"} absolute -left-1 -top-1 text-white bg-primary-green rounded-2xl`}/></div>
                 <div className="text-lg">{lesson.title}</div>
               </div>
             </Link>
@@ -35,16 +35,19 @@ const ContentDetail = ({content, markComplete, errorMark="", admin = false}) => 
         {!admin && (
           <div className="flex justify-between items-center flex-row-reverse my-10 w-full">
 
-          <div
+          {!slug&&<div
             onClick={markComplete}
-            className={`flex items-center justify-start px-12 py-2 bg-green-800
+            className={`flex items-center justify-start relative px-12 py-2 bg-green-500
              text-white text-lg cursor-pointer`}
           >
-            បញ្ចប់មេរៀន <Tick />
+            បន្តមេរៀន <RightArrow className={` h-6 w-6`}/>
             {errorMark&&<span className="absolute -top-7 left-0 text-red-600">
                 * {errorMark}
               </span>}
-          </div>
+          </div>}
+
+          {slug&&<Link href={`/lesson/${slug}`} className={`flex items-center justify-start px-12 py-2 bg-primary-green text-white text-lg cursor-pointer`}>បន្តមេរៀន<RightArrow className={` h-6 w-6`}/></Link>}
+          
             <Link href={content.prevSlug?`/content/${content.prevSlug}`:`/course/${content.courseSlug}`} className={`flex items-center justify-start px-12 py-2 bg-primary text-white text-lg cursor-pointer`}><RightArrow className={`rotate-180 h-6 w-6`}/>{content.prevSlug?"មេរៀនមុន":"ទៅមេរៀន"}</Link>
           </div>
         )}

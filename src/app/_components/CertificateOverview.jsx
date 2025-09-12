@@ -29,7 +29,7 @@ const CertificateOverview = () => {
       <div className=" flex tablet:flex-row flex-col gap-8 mx-auto px-4 max-w-[1320px]">
         <div className="flex flex-1 items-center justify-center">
           <img
-            src="/Certificate_Template.jpg"
+            src="/Certificate_Template_400PPI.jpg"
             className="aspect-[957/624] w-full max-w-[495px] bg-slate-500"
           />
         </div>
