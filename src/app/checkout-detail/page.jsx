@@ -38,7 +38,7 @@ export default function CheckoutPage() {
 
       if (session?.user.firstName && session?.user.lastName) {
           setFormData({...formData, firstName: session.user.firstName});
-          setLastName({...formData, firstName: session.user.lastName});
+          setFormData({...formData, firstName: session.user.lastName});
           setMessage("អ្នកមានឈ្មោះរួចហើយ អ្នកអាចប្តូរឈ្មោះនេះបានឫអត់ក៏បាន ដែលឈ្មោះនេះនឹងត្រូវបានប្រើនៅលើសញ្ញាប័ត្ររបស់អ្នក។");
       } else {
         setMessage("សូមបំពេញឈ្មោះរបស់អ្នក ដែលឈ្មោះនេះនឹងត្រូវបានប្រើនៅលើសញ្ញាប័ត្ររបស់អ្នក។");
@@ -189,7 +189,7 @@ export default function CheckoutPage() {
               <hr className="hidden laptop:block h-[3px] w-full bg-gray-200 border-none"></hr>
               <div className="w-full h-auto mt-8 flex justify-end">
                 <img
-                  src="https://devithuotkeo.com/static/image/portfolio/khqr/khqr-5.png"
+                  src="/KHQR_Logo.png"
                   alt=""
                   className="h-auto w-20"
                 />
