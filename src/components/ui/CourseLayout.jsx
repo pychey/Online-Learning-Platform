@@ -18,10 +18,10 @@ const CourseLayout = ({children,course}) => {
             <h1 className="text-xl mb-2">ដំណាក់កាល</h1>
 
             <div className="relative w-full bg-gray-200 h-1 rounded-2xl">
-                <div className={`absolute left-0 top-0 bg-green-600 h-1 rounded-2xl`} style={{width:`${course.completedPercentage}%`}}></div>
+                <div className={`absolute left-0 top-0 bg-primary-green h-1 rounded-2xl`} style={{width:`${course.completedPercentage}%`}}></div>
             </div>
 
-            <h1 className="mt-1 font-semibold text-green-800">{course.completedPercentage}% បានជោគជ័យ</h1>
+            <h1 className="mt-1 font-semibold text-primary-green">{course.completedPercentage}% បានជោគជ័យ</h1>
 
             <h2 className="my-4 text-lg">មាតិកា</h2>
 
@@ -38,19 +38,19 @@ const CourseLayout = ({children,course}) => {
                 <div key={content.id} className="w-full">
                     <div className="flex items-center justify-start  gap-4 py-4 border-b border-gray-200">
 
-                        <div className={`relative border-2 ${isActive?"border-blue-700":"border-gray-200"} rounded-2xl h-4 w-4 aspect-square`}><Tick className={` h-[18px] w-[18px] ${content.isCompleted?"block":"hidden"} absolute -left-0.5 -top-1 text-white bg-green-300 rounded-2xl`}/></div>
+                        <div className={`relative border-2 ${isActive?"border-blue-700":"border-gray-200"} rounded-2xl h-4 w-4 aspect-square`}><Tick className={` h-[18px] w-[18px] ${content.isCompleted?"block":"hidden"} absolute -left-0.5 -top-1 text-white bg-primary-green rounded-2xl`}/></div>
                         <Link href={`/content/${content.slug}`} className={`${isActive ? "text-blue-700 font-semibold" : ""}`}>{content.order_number}. {content.title}</Link>
 
                     </div>
                     {content.lessons&&isActive&&(
-                        <div className="bg-gray-100 w-[75%] mx-auto px-2 rounded-lg">
+                        <div className="bg-gray-100 w-[90%] ml-auto px-2 rounded-lg">
                             {content.lessons.map((l,index)=>{
                             const isActiveLesson=pathname===`/lesson/${l.slug}`
                             return(
                 
                                 <div key={index} className="flex items-center justify-start  gap-4 py-4  my-1">
-                                    <div className={`relative border-2 border-gray-400  rounded-2xl h-4 aspect-square`}><Tick className={` h-[17px] w-[17px] ${l.isCompleted?"block":"hidden"} absolute -left-[2.3px] -top-0.5 text-white bg-green-300 rounded-2xl`}/></div>
-                                    <Link href={`/lesson/${l.slug}`} className={`${isActiveLesson?`font-semibold`:`font-light`} `}>{index+1}. {l.title}</Link>
+                                    <div className={`relative border-2 border-gray-400  rounded-2xl h-4 aspect-square`}><Tick className={` h-[17px] w-[17px] ${l.isCompleted?"block":"hidden"} absolute -left-[2.3px] -top-0.5 text-white bg-primary-green rounded-2xl`}/></div>
+                                    <Link href={`/lesson/${l.slug}`} className={`${isActiveLesson?`font-semibold`:`font-light`} `}> {l.title}</Link>
                                 </div>
                             )})}
                         </div>

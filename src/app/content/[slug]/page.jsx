@@ -8,6 +8,8 @@
   import { useEffect } from "react"
   import ContentDetail from "./component/ContentDetail"
   import { useSession } from "next-auth/react";
+  import RightArrow from "@/components/icons/RightArrow"
+  import Link from "next/link"
 
 
   const page = () => {
@@ -25,6 +27,8 @@
     const [loading,setLoading]=useState(true)
     const [error,setError]=useState("")
     const [errorMark,setErrorMark]=useState("")
+    const [conLesson,setConLesson]=useState("")
+    const [courseSlug,setCourseSlug]=useState("")
 
   useEffect(() => {
       if (status === "loading") return;
@@ -44,11 +48,15 @@
 
         const data=await getContentBySlug(slug,session.user.id);
         setContent(data)
+        setConLesson(data.continueLesson)
         const course_data=await getCourseContent(data.courseSlug,session.user.id)
         setCourse(course_data)
 
       } catch (error) {
         setError(error.response.data.message)
+        if(error.response.data.course){
+          setCourseSlug(error.response.data.course)
+        }
       }finally{
         setLoading(false)
       }
@@ -74,12 +82,17 @@
     }
 
     if (error) {
-      return <h1 className="mt-20">{error}</h1>;
+      return(
+        <h1 className="flex justify-center items-center relative mt-20 h-[50vh]">
+          <Link href={`/course/${courseSlug}`} className="flex justify-center items-center absolute left-12 top-12 text-lg"><RightArrow className={`rotate-180 h-12 aspect-square `}/>​ទៅទំព័រមេរៀន</Link>
+          <p className="text-red-500 text-2xl">{error}</p>
+        </h1>
+      )
     }
 
     return (
       <CourseLayout course={course}>
-        <ContentDetail content={content} markComplete={markComplete} errorMark={errorMark}/>
+        <ContentDetail content={content} markComplete={markComplete} errorMark={errorMark} slug={conLesson}/>
       </CourseLayout>
     )
   }
