@@ -173,7 +173,8 @@ const Quiz = () => {
   return (
     <div className="w-full flex flex-col">
       <CourseLayout course={course}>
-       
+        
+         {/* QUIZ START SCREEN */}
         {!started && (
           <div className="w-full rounded-2xl p-8">
             <h2 className="text-2xl font-semibold -mb-6 text-center">
@@ -203,7 +204,7 @@ const Quiz = () => {
           </div>
         )}
 
-       
+          {/* QUIZ DURING QUESTIONS */}
         {started && !finished && (
           <div className="w-full rounded-2xl p-8">
             <h2 className="text-xl font-medium mb-4">
@@ -241,6 +242,8 @@ const Quiz = () => {
           </div>
         )}
 
+
+           {/* QUIZ END / RESULT */}
         {finished && (
         <div className="w-full rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-semibold -mb-6 text-center">
