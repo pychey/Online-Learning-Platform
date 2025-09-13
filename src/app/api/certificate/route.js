@@ -3,6 +3,8 @@ import CertificatePage from "@/app/certificate/_components/CertificatePage";
 import { v2 as cloudinary } from "cloudinary";
 import { pdf } from '@react-pdf/renderer';
 import prisma from "@/lib/prisma";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/route";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -37,27 +39,59 @@ const handleUpload= async (name, courseTitle, code) => {
 
 export async function POST(req) {
   try {
-    const { firstName, lastName, courseTitle } = await req.json();
+    const { userId, courseId } = await req.json();
     const code = generateCertificateCode();
-    const name = `${firstName} ${lastName}`;
 
-    let user = await prisma.user.findFirst({ where: { firstName, lastName }});
-    if (!user) user = await prisma.user.create({ data: { firstName, lastName }});
-
-    const url = await handleUpload(name, courseTitle, code);
-
-    const certificate = await prisma.certificate.create({
-      data: {
-        courseTitle: courseTitle,
-        code: code,
-        userId: user.id,
-        url: url
+    const user = await prisma.user.findFirst({ where: { id: userId }});
+    const course = await prisma.course.findFirst({ where: { id: courseId }})
+    
+    let certificate = await prisma.certificate.findFirst({
+      where: {
+        courseTitle: course.english_title,
+        userId: user.id
       }
-    });
+    })
 
-    return NextResponse.json({ ...certificate, firstName: user.firstName, lastName: user.lastName });
+    let url = certificate?.url
+
+    if (!certificate) {
+      const name = `${user.firstName} ${user.lastName}`;
+      url = await handleUpload(name, course.english_title, code);
+
+      certificate = await prisma.certificate.create({
+        data: {
+          courseSlug: course.slug,
+          courseTitle: course.english_title,
+          courseKhmerTitle: course.title,
+          code: code,
+          userId: user.id,
+          url: url
+        }
+      });
+    }
+
+    return NextResponse.json({ ...certificate, firstName: user.firstName, lastName: user.lastName, url: url });
   } catch (reason) {
     const message = reason instanceof Error ? reason.message : 'Unexpected error';
+    return new Response(message, { status: 500 });
+  }
+}
+
+export async function GET(req) {
+  try {
+    const session = await getServerSession(authOptions)
+
+    if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+
+    const user = await prisma.user.findFirst({
+      where: { id: session.user.id },
+      include: { certificates: true },
+    });
+
+    return NextResponse.json(user.certificates);
+  } catch (reason) {
+    const message = reason instanceof Error ? reason.message : 'Unexpected error';
+    console.log(message)
     return new Response(message, { status: 500 });
   }
 }
