@@ -23,7 +23,9 @@ export default function RootLayout({ children }) {
         <SessionWrapper>
           <CartProvider>  
             <NavBar />
-            {children}
+              <div className="min-h-screen">
+                {children}
+              </div>
             <Footer />
           </CartProvider>
         </SessionWrapper>
