@@ -87,7 +87,7 @@ export async function GET (req, { params }) {
             }
         });
 
-
+ 
         if (currentLesson.order_number === totalLesson) {
             const currentCourseContent = await prisma.courseContent.findFirst({
                 where: {
@@ -145,5 +145,23 @@ export async function GET (req, { params }) {
     } catch (reason) {
         const message = reason instanceof Error ? reason.message : 'Unexpected error'
         return new Response(message, { status: 500 })
+    }
+}
+
+export async function DELETE(req, { params }) {
+    const slug = params.slug;
+
+    try {
+        const deletedLesson = await prisma.lesson.delete({
+            where: { slug }
+        });
+
+        return NextResponse.json({
+            message: "Lesson deleted successfully.",
+            deletedLesson
+        });
+    } catch (error) {
+        console.error("Delete error:", error);
+        return new Response("Failed to delete lesson: " + error, { status: 500 });
     }
 }

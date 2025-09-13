@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const certificates = [
   {
-    img: "https://www.ibm-institute.com/wp-content/uploads/2021/06/coursecertexample.png", 
+    img: "/Certificate_Template_400PPI.jpg", 
     title: "វិញ្ញាបនបត្រពាក់ព័ន្ធនឹងវគ្គសិក្សា",
     description:
       "អ្នកនឹងអាចទាញយកវិញ្ញាបនបត្រវគ្គសិក្សាផ្ទាល់ខ្លួនរបស់អ្នកសម្រាប់រាល់វគ្គសិក្សាដែលអ្នកបានបញ្ចប់។",
@@ -10,7 +10,7 @@ const certificates = [
     link: "/courselist",
   },
   {
-    img: "https://www.ibm-institute.com/wp-content/uploads/2021/06/programcertexample.png",
+    img: "/Certificate_Template_400PPI.jpg", 
     title: "វិញ្ញាបនបត្រពាក់ព័ន្ធនឹងកម្មវិធីសិក្សា",
     description:
       "អ្នកនឹងទទួលបានវិញ្ញាបនបត្រឥតគិតថ្លៃ ប្រសិនបើអ្នកបញ្ចប់វគ្គសិក្សាទាំងអស់ក្នុងជំនាញជាក់លាក់មួយ។",
@@ -18,7 +18,7 @@ const certificates = [
     link: "/courselist",
   },
   {
-    img: "https://www.ibm-institute.com/wp-content/uploads/2021/06/programcertexample.png",
+   img: "/Certificate_Template_400PPI.jpg", 
     title: "វិញ្ញាបនបត្រភាសា",
     description:
       "អ្នកនឹងទទួលបានវិញ្ញាបនបត្រផ្ទាល់ខ្លួនបន្ទាប់ពីចូលរួមប្រឡងភាសារបស់យើង ដែលមានរយៈពេល ៤៥ នាទី។",

@@ -11,7 +11,7 @@ const VerifyPage = () => {
   const [ validSearch, setValidSearch ] = useState(null);
   const [ invalidMessage, setInvalidMessage ] = useState("");
   const [ searchResult, setSearchResult ] = useState(null);
-  const [ imgSrc, setImgSrc ] = useState('/Certificate_Template.jpg')
+  const [ imgSrc, setImgSrc ] = useState('/Certificate_Template_400PPI.jpg')
 
   const handleSearch = async () => {
     setImgSrc(null)

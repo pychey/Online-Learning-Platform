@@ -10,6 +10,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
     "@prisma/client": "^6.16.0",
     "@react-pdf/renderer": "^4.3.0",
     "axios": "^1.11.0",
@@ -19,13 +22,14 @@
     "body-parser": "^2.2.0",
     "cloudinary": "^2.7.0",
     "express": "^5.1.0",
-    "next": "15.4.6",
+    "next": "^15.5.3",
     "next-auth": "^4.24.11",
     "nodemailer": "^6.10.1",
     "qrcode": "^1.5.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "swiper": "^11.2.10"
+    "swiper": "^11.2.10",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

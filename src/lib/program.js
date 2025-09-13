@@ -25,6 +25,16 @@ export const createProgram = async (programData) => {
   return response.data;
 };
 
+export const deleteProgram = async (slug) => {
+  try {
+    const response = await axios.delete(`/api/program/${slug}`);
+    return response.data;
+  } catch (err) {
+    console.error(`Failed to delete program ${slug}:`, err);
+    throw err;
+  }
+};
+
 export const patchProgram = async (slug, updatedData) => {
   try {
 		console.log(slug)

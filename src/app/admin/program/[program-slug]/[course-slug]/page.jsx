@@ -2,7 +2,7 @@
 
 import { useBreadcrumb } from "@/app/context/BreadcrumbContext"
 import { useEffect, useState } from "react"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import {
   getSlugFromPathname,
   findCourseBySlug,
@@ -19,14 +19,23 @@ import AdminLinkInput from "@/app/admin/_components/AdminLinkInput"
 import AdminPointInput from "@/app/admin/_components/AdminPointInput"
 import { getCourseBySlug, getCourseContent, getCourseWithContent, patchCourse } from "@/lib/course"
 import InlineTitleInput from "@/components/ui/InlineTitleInput"
+import AdminNewChapterModal from "@/app/admin/_components/AdminNewChapterModal"
+import AdminNewLessonModal from "@/app/admin/_components/AdminNewLessonModal"
+import Menu from "@/app/admin/_components/Menu"
+import { createContent } from "@/lib/content"
+import { createLesson } from "@/lib/lesson"
 
 const CoursePage = () => {
   const [ loading, setLoading ] = useState(true)
   const [ course, setCourse ] = useState(null)
   const [ chapters, setChapters ] = useState([])
   const [ openedChapters, setOpenedChapters ] = useState({})
+  const [ activeChapterModal, setActiveChapterModal ] = useState(false)
+  const [ activeLessonModal, setActiveLessonModal ] = useState(false)
+  const [ activeChapterId, setActiveChapterId ] = useState(null)
   const { setBreadcrumbs } = useBreadcrumb()
   const pathname = usePathname()
+  const router = useRouter()
   const slug = getSlugFromPathname(pathname)
 
   const getCourse = async () => {
@@ -42,16 +51,9 @@ const CoursePage = () => {
   useEffect(() => {
     setLoading(true)
     getCourse()
-    // const currCourse = findCourseBySlug(slug)
-    // const currProgram = findProgramById(currCourse.program_id)
-    // const courseChapters = findChaptersByCourseId(currCourse.id)
-    // const newBreadcrumbs = buildCourseBreadcrumbs(currProgram, currCourse)
-    
-    // // setCourse(currCourse)
-    // setChapters(courseChapters)
-    // setBreadcrumbs(newBreadcrumbs)
+
   }, [slug, setBreadcrumbs])
-  // }, [])
+
 
   const handleToggleChapter = (chapterId) => {
     setOpenedChapters((prevState) => ({
@@ -95,6 +97,43 @@ const CoursePage = () => {
     }
   }
 
+  const handleCreateChapter = async (input) => {
+    
+    const payload = {
+      ...input, 
+      courseId: course.id, 
+      order_number: course.courseContents.length + 1
+    }
+
+    setActiveChapterModal(false)
+    await createContent(payload)
+    router.push(pathname + "/" + payload.slug)
+  }
+
+  const handleCreateLesson = async (input) => {
+  
+    const chapter = chapters.find((c) => c.id === activeChapterId);
+
+    if (!chapter) {
+      console.error("Chapter not found for lesson creation.");
+      return;
+    }
+
+    const lessonCount = chapter.lessons?.length || 0;
+
+    const payload = {
+      ...input,
+      courseContentId: activeChapterId,
+      order_number: lessonCount + 1,
+    };
+
+    setActiveChapterId(null)
+    setActiveLessonModal(false)
+    await createLesson(payload)
+    router.push(pathname + "/" + chapter.slug + "/" + payload.slug)
+
+  }
+
   if (loading) return (<h1>Loading...</h1>)
 
   return (
@@ -110,7 +149,7 @@ const CoursePage = () => {
 					/>
 				</div>
 
-		    <section className="flex mb-0.5">
+		    <section className="flex gap-2 mb-0.5">
 					<button
 						onClick={handleSaveChanges}
 						className="px-4 h-10 bg-primary hover:bg-primary-hover font-medium text-white 
@@ -118,6 +157,8 @@ const CoursePage = () => {
 					>
 						Save Changes
 					</button>
+
+          <Menu model={"Course"} data={course} />
 				</section>
       </div>
 
@@ -260,11 +301,21 @@ const CoursePage = () => {
       </section>
 
       <section className="flex flex-col gap-2 p-6 w-full bg-white rounded-md border border-admin-border">
-        <h2 className="font-medium text-xl">Content</h2>
+        <div className="w-full grid grid-cols-2">
+          <h2 className="font-medium text-xl">Content</h2>
 
-        <div className="flex gap-3 text-xs"> 
-          <h3>{chapters.length} Chapters</h3>
-          {/* <h3>24 Lessons</h3> */}
+          <button 
+						onClick={() => setActiveChapterModal(true)}
+						className="flex justify-end font-semibold text-sm text-gray-900/60 hover:text-primary cursor-pointer transition-colors duration-300"
+					>
+						+ New Chapter
+					</button>
+
+          <div className="flex gap-3 text-xs"> 
+            <h3>{chapters.length} Chapters</h3>
+            {/* <h3>24 Lessons</h3> */}
+          </div>
+
         </div>
 
         <div className="flex flex-col gap-2 py-4 w-full">
@@ -301,8 +352,15 @@ const CoursePage = () => {
                 </Link>
               ))}
               {openedChapters[chapter.id] && (
-                <button className={`flex justify-start px-5 py-4 w-full font-medium border border-admin-border rounded-b-lg`}>
-                  <p className="text-primary">+ Add Lesson</p>
+                <button 
+                  onClick={() => {
+                    setActiveChapterId(chapter.id)
+                    setActiveLessonModal(true)
+                  }}
+                  className={`flex justify-start px-5 py-4 w-full font-medium border border-admin-border rounded-b-lg
+                              cursor-pointer`}
+                >
+                  <p className="text-primary hover:text-primary-hover">+ Add Lesson</p>
                 </button>
               )}
             </div>
@@ -310,6 +368,21 @@ const CoursePage = () => {
         </div>
       </section>
 
+      <AdminNewChapterModal 
+      	isOpen={activeChapterModal}
+				onCancel={() => setActiveChapterModal(false)
+        }
+				onSave={(input) => handleCreateChapter(input)}
+      />
+
+      <AdminNewLessonModal
+      	isOpen={activeLessonModal}
+				onCancel={() => {
+          setActiveLessonModal(false)
+          setActiveChapterId(null)
+        }}
+				onSave={(input) => handleCreateLesson(input)}      
+      />
 		</div>
 	)
 }
