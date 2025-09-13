@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import RightArrow from "@/components/icons/RightArrow"
+import VideoPreview from "@/components/ui/VideoPreview";
 
 const LessonDetail = ({lesson , markComplete, admin = false}) => {
   return (
@@ -17,6 +18,17 @@ const LessonDetail = ({lesson , markComplete, admin = false}) => {
                 <img className="w-full h-full object-contain" src={content.content} alt="lesson picture" />
               </div>
             );
+          } else if (content.content_type === "video") {
+            const [thumbnail, video] = content.content.split(',')
+            return (
+              <div className="w-[640px]">
+                <VideoPreview
+                  thumbnail={thumbnail}
+                  youtubeLink={video}
+                  className="mt-4"
+                />
+              </div>
+            )
           } else {
             return (
               <p key={index} className="my-2 text-lg flex items-center gap-2">

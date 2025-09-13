@@ -5,6 +5,7 @@ import Card from "../_components/Card"
 import AdminNewProgramModal from "../_components/AdminNewProgramModal"
 import { createProgram, fetchPrograms } from "@/lib/program"
 import { usePathname, useRouter } from "next/navigation"
+import AdminProgramCard from "../_components/AdminProgramCard"
 
 const AdminProgramPage = () => {
 	const [ activeModal, setActiveModal ] = useState(false)
@@ -14,7 +15,7 @@ const AdminProgramPage = () => {
 	const router = useRouter()
 	
 	const getPrograms = async () => {
-		const fetchedPrograms = await fetchPrograms()
+		const fetchedPrograms = await fetchPrograms()		
 		setPrograms(fetchedPrograms)
 	}
 
@@ -50,9 +51,9 @@ const AdminProgramPage = () => {
 
 			<div className="grid grid-cols-4 gap-4 my-4">
 				{programs.map((data, index) => (
-					<Card	
+					<AdminProgramCard	
 						key={index}
-						title={data?.program_title}
+						data={data}
 						url={"/admin/program/" + data?.slug}
 					/>
 				))}

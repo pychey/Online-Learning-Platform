@@ -36,7 +36,7 @@ const CoursesPage = () => {
 				<h1 className="font-semibold text-xl">Courses</h1>
 			</div>
 
-			<div className="grid grid-cols-4 gap-4 my-4">
+			<div className="grid grid-cols-4 gap-6 my-4">
 				{courses.map((data, index) => (
 					<AdminCourseCard
 						key={index}
