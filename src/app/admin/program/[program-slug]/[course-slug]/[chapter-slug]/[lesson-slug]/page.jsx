@@ -35,9 +35,29 @@ const LessonPage = () => {
 
   const getLesson = async () => {
     const response = await getLessonBySlug(slug, true)
-    setLesson(response)
-    setOriginalLesson(response)
+    
+    const parsedLessonContents = (response?.lessonContents).map((item) => {
+      if (item.content_type === "video" && typeof item.content === "string") {
+        const [thumbnail, video] = item.content.split(",")
 
+        return {
+          ...item,
+          thumbnail: thumbnail?.trim() || "",
+          video: video?.trim() || "",
+        }
+      }
+
+      return item
+    })
+
+    const parsedResponse = {
+      ...response,
+      lessonContents: parsedLessonContents
+    }
+
+    setLesson(parsedResponse)
+    setOriginalLesson(parsedResponse)
+    
     const newBreadcrumbs = buildLessonBreadcrumbs(
       response.courseContent.course.program,
       response.courseContent.course,
@@ -51,35 +71,55 @@ const LessonPage = () => {
     if (slug) getLesson()
   }, [slug, setBreadcrumbs])
 
-  const handleLessonContentChanges = (e, index) => {
-		setLesson(prev => {
-			const updatedContents = [...prev.lessonContents];
-			updatedContents[index] = {
-				...updatedContents[index],
-				content: e.target.value
-			};
-			return { ...prev, lessonContents: updatedContents };
-		})
-  }
-
-  const updateContentType = (index, newType) => {
+  const handleLessonContentChanges = (e, index, type = "") => {
     setLesson(prev => {
-      const updated = [...prev.lessonContents]
-      const current = updated[index]
-      let transformedContent = current.content
+      const updatedContents = [...prev.lessonContents];
+      const item = { ...updatedContents[index] };
 
-      if (newType === "list") {
-        transformedContent = Array.isArray(current.content) ? current.content : [current.content || ""]
-      } else if (newType === "text" || newType === "heading") {
-        transformedContent = Array.isArray(current.content) ? current.content.join(", ") : current.content
-      } else if (newType === "space") {
-        transformedContent = ""
+      if (type === "") {
+        item.content = e.target.value;
+      } else {
+        item[type] = e.target.value;
+
+        const newThumbnail = type === "thumbnail" ? e.target.value : item.thumbnail || "";
+        const newVideo = type === "video" ? e.target.value : item.video || "";
+
+        item.content = `${newThumbnail},${newVideo}`;
       }
 
-      updated[index] = { ...current, content_type: newType, content: transformedContent }
-      return { ...prev, lessonContents: updated }
-    })
+      updatedContents[index] = item;
+
+      return { ...prev, lessonContents: updatedContents };
+    });
   }
+
+const updateContentType = (index, newType) => {
+  setLesson(prev => {
+    const updated = [...prev.lessonContents]
+    const current = updated[index]
+
+    if (newType === "video") {
+      updated[index] = {
+        ...current,
+        content_type: newType,
+        content: current.content,
+        // video: "https://www.youtube.com/embed/HRnyV4Tgp88?si=Y7xQTCvxDGj_9Nlq",
+        // thumbnail: "https://picsum.photos/600/400?random=3",
+      }
+    } else {
+      const { video, thumbnail, ...rest } = current
+
+      updated[index] = {
+        ...rest,
+        content_type: newType,
+        content: newType === "space" ? "" : current.content || "",
+      }
+    }
+
+    return { ...prev, lessonContents: updated }
+  })
+}
+
 
   const handleAddContent = () => {
 
@@ -92,7 +132,7 @@ const LessonPage = () => {
         order_number: updated.length + 1,
       })
       return { ...prev, lessonContents: updated }
-    })
+    })    
   }
 
   const handleRemoveContent = (index) => {
@@ -220,7 +260,9 @@ const LessonPage = () => {
                     key={content.id}
                     id={content.id}
                     content={content}
-                    onChange={(e) => handleLessonContentChanges(e, index)}
+                    onChange={(e, type) => {                                            
+                      handleLessonContentChanges(e, index, type)
+                    }}
                     onUpdateType={(e) => updateContentType(index, e.target.value)}
                     onDelete={() => handleRemoveContent(index)}
                   />

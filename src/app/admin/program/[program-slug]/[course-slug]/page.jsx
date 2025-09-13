@@ -163,12 +163,13 @@ const CoursePage = () => {
       </div>
 
       <div className="flex gap-6 -mt-2 border-t border-gray-300">
-        <div className="flex flex-col gap-4 mt-3">
+        <div className="flex flex-col gap-4 mt-3 w-full">
           <section className="flex flex-col gap-2.5">
             <h2 className="font-medium text-lg">Course Description</h2>
             <AdminDescriptionInput 
               value={course?.introduction_text || ""} 
               onChange={(e) => handleCourseChange(e, "introduction_text")}
+              placeholder={"Introduction Text"}
             />
           </section>
 
@@ -185,16 +186,19 @@ const CoursePage = () => {
               <AdminPointInput
                 value={course.first_skill || ""}
                 onChange={(e) => handleCourseChange(e, "first_skill")}
+                placeholder={"Skill 1"}
               />
 
               <AdminPointInput
                 value={course.second_skill || ""}
                 onChange={(e) => handleCourseChange(e, "second_skill")}
+                placeholder={"Skill 2"}
               />
 
               <AdminPointInput
                 value={course.third_skill || ""}
                 onChange={(e) => handleCourseChange(e, "third_skill")}
+                placeholder={"Skill 3"}
               />
             </div>
           </section>
@@ -205,16 +209,19 @@ const CoursePage = () => {
               <AdminDescriptionInput 
                 value={course.main_text || ""}
                 onChange={(e) => handleCourseChange(e, "main_text")}
+                placeholder={"Main Text"}
               />
 
               <AdminDescriptionInput 
                 value={course.detail_text || ""}
                 onChange={(e) => handleCourseChange(e, "detail_text")}
+                placeholder={"Detail Text"}
               />
 
               <AdminDescriptionInput 
                 value={course.conclusion_text || ""}
                 onChange={(e) => handleCourseChange(e, "conclusion_text")}
+                placeholder={"Conclusion Text"}
               />
               
             </div>         

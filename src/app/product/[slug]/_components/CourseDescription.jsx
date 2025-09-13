@@ -35,7 +35,13 @@ const CourseDescription = ({ course, admin = false, isPaid = false }) => {
       </div>
 
       <div className="col-span-1 laptop:col-start-2 laptop:col-end-3 laptop:row-span-full w-full mt-2 pb-4 laptop:border-1 laptop:border-gray-300">
-        <VideoPreview thumbnail={course.img_url} youtubeLink={course.youtube_url} />
+        <VideoPreview 
+          thumbnail={
+            course.img_url ||
+            "https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ="
+          } 
+          youtubeLink={course.youtube_url} 
+        />
 
         <div className="mt-4 laptop:mt-2 flex flex-col laptop:flex-row gap-3 items-center laptop:px-4">
           <h2 className='laptop:hidden'>សន្សំ {course.discount_percent} លើវគ្គសិក្សាឥឡូវនេះ :</h2>

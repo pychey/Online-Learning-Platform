@@ -19,6 +19,7 @@ import { LOGOS } from "./_logo"
 import { createCourse } from "@/lib/course"
 import InlineTitleInput from "@/components/ui/InlineTitleInput"
 import Menu from "../../_components/Menu"
+import AdminCourseCard from "../../_components/AdminCourseCard"
 
 const ProgramCoursePage = () => {
 	const [ loading, setLoading ] = useState(true)
@@ -194,13 +195,15 @@ const ProgramCoursePage = () => {
 						+ New Course
 					</button>
 				</div>
-				<div className="grid grid-cols-4 gap-4">
+				<div className="grid grid-cols-4 gap-6">
 					{courses?.map((course) => (
-						<Card 
+						<AdminCourseCard
 							key={course.id}
-							title={course.title}
-							url={pathname + "/" + course.slug}
+							data={course}
+							program_title={program.program_title}
+							url={pathname + "/" + course.slug}	
 						/>
+
 					))}
 				</div>
 			</section>

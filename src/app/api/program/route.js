@@ -27,7 +27,12 @@ export async function POST(req) {
         const createdProgram = await prisma.program.create({
             data: {
                 program_title,
-                slug
+                slug,
+                additional_price: "មិនមានចំណាយបន្ថែម",
+                duration_each_course: "២ ម៉ោងក្នុងមួយវគ្គ",
+                level: "វគ្គណែនាំ",
+                how_to_get: "បើកដោយស្វ័យប្រវត្តិ បន្ទាប់ពីបញ្ចប់វគ្គសិក្សាតាមដែលត្រូវការ",
+                
             }
         });
 

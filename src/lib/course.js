@@ -2,9 +2,13 @@ import axios from "axios";
 
 const url="/api/"
 
+export const fetchAllCourses = async () => {
+  const response = await axios.get(url + "course")
+  return response.data
+}
+
 export const getCourseBySlug = async (slug) => {
   const response = await axios.get(url + "course/" + slug)
-  console.log(response.data)
   return response.data;
 }
 
@@ -14,9 +18,7 @@ export const getCourseWithContent = async (slug) => {
       include: "chapters",
       chapter_fields: "id"
     }
-  })
-  console.log(response.data);
-  
+  })  
   return response.data
 }
 
