@@ -5,6 +5,7 @@ import Feedback from "@/app/_components/Feedback.jsx";
 import CertificateOverview from "@/app/_components/CertificateOverview.jsx";
 import Partners from "@/app/_components/Partners.jsx";
 import Experience from "@/app/_components/Experince.jsx";
+// import Page from "@/app/quiz/page";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <CertificateOverview />
       <Partners />
       <Experience />
+      {/* <Page/> */}
     </div>
   );
 }
