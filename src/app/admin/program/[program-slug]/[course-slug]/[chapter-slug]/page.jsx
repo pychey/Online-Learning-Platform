@@ -123,7 +123,7 @@ const ChapterPage = () => {
 						<div className="px-4 py-3 w-full bg-white border border-admin-border rounded-md">{chapter?.course?.title}</div>
 					</section> */}
 
-					<section className="flex flex-col gap-3 font-medium">
+					<section className="flex flex-col gap-3 w-[640px] font-medium">
 						<h2 className="">Chapter Content</h2>
 						<AdminDescriptionInput
 							value={chapter.introduction_text || ""}
