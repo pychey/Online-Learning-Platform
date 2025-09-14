@@ -1,3 +1,10 @@
+export const buildQuizBreadCrumbs = (program, course) => ([
+  { label: "Admin", url: "/admin" },
+  { label: "Program", url: "/admin/program" },
+  { label: program.program_title, url: `/admin/program/${program.slug}` },
+  { label: course.title, url: `/admin/program/${program.slug}/${course.slug}` },
+  { label: "Quiz", url: ``}  
+])
 
 export const buildLessonBreadcrumbs = (program, course, chapter, lesson) => ([
   { label: "Admin", url: "/admin" },
