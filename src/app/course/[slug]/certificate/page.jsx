@@ -122,7 +122,7 @@ const Course = () => {
                 name={`${data.firstName} ${data.lastName}`}
                 courseTitle={data.courseTitle}
                 additionalClassName="mt-4 hover:bg-primary-hover transition-all duration-200 transform hover:scale-105 shadow-lg"
-                bgColor="bg-blue-600"
+                bgColor="bg-primary"
               />
             </div>
           ) : (

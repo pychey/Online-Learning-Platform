@@ -16,7 +16,7 @@ const COURSE_BENEFITS = {
       icon: ClockIcon,
     },
   ],
-  topImage: "https://www.ibm-institute.com/wp-content/uploads/2023/06/new-screenshot-course2.png",
+  topImage: "/CopyofUntitled.svg",
       
   bottom: [
     {
@@ -30,7 +30,7 @@ const COURSE_BENEFITS = {
       icon: CertificateIcon,
     }
   ],
-  bottomImage: "https://www.ibm-institute.com/wp-content/uploads/2023/06/new-screenshot-certificate2.png"
+  bottomImage: "/Untitleddesign.svg"
 }
 
 const CourseBenefits = () => {

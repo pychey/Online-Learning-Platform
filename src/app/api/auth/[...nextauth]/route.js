@@ -12,7 +12,7 @@ export const authOptions = {
         if (!user) return null;
         const valid = await compare(credentials.password, user.password);
         if (!valid) return null;
-        return { id: user.id, email: user.email, firstName:  user.firstName ?? null ,lastName: user.lastName ?? null };
+        return { id: user.id, email: user.email, firstName:  user.firstName ?? null ,lastName: user.lastName ?? null, isAdmin: user.isAdmin ?? false };
       }
     })
   ],
@@ -22,6 +22,7 @@ export const authOptions = {
         token.id = user.id;
         token.firstName = user.firstName ?? null;
         token.lastName = user.lastName ?? null;
+        token.isAdmin = user.isAdmin ?? false;
       }
 
       if (trigger === "update" && session) {
@@ -36,6 +37,7 @@ export const authOptions = {
         session.user.id = token.id;
         session.user.firstName = token.firstName ?? null;
         session.user.lastName = token.lastName ?? null;
+        session.user.isAdmin = token.isAdmin ?? false;
       }
       return session;
     }
