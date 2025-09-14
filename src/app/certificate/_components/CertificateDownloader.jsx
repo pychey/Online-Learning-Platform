@@ -19,27 +19,27 @@ const PDFDownloadLink = dynamic(
   },
 );
 
-const CertificateDownloader = ({ code = '123-45-678', name = "Sok Bunleap", courseTitle = "Deep Research" }) => {
-  const aspectRatio = 3308 / 4677;
+const CertificateDownloader = ({ code = '123-45-678', name = "Sok Bunleap", courseTitle = "Deep Research", additionalClassName = '', bgColor = 'bg-primary', textColor = 'text-white'}) => {
+  const aspectRatio = 3478 / 4861;
 
   return (
-    <div className="py-10 max-w-[900px] w-full mx-auto flex flex-col items-center">
+    <div className="py-4 max-w-[900px] w-full mx-auto flex flex-col items-center">
 
-      <div
+      {/* <div
         className="relative w-full border-b-1"
         style={{ paddingTop: `${aspectRatio * 100}%` }}
       >
         <PDFViewer className="absolute top-0 left-0 w-full h-full">
           <CertificatePage code = {code} name = {name} courseTitle = {courseTitle} />
         </PDFViewer>
-      </div>
+      </div> */}
 
       <PDFDownloadLink
         document={<CertificatePage code = {code} name = {name} courseTitle = {courseTitle} />}
         fileName={`${name.split(' ')[0]}_certificate.pdf`}
-        className="mt-4 px-4 py-2 bg-primary text-white rounded-md"
+        className={`px-6 py-3 ${bgColor} ${textColor} rounded-md font-medium ${additionalClassName}`}
       >
-          {({ loading }) => (loading ? "Preparing Document..." : "Download PDF")}
+          {({ loading }) => (loading ? "Preparing Document..." : "ទាញយករូបភាពសញ្ញាបត្រ")}
       </PDFDownloadLink>
     </div>
   );

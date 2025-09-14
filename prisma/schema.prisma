@@ -8,19 +8,20 @@ datasource db {
 }
 
 model User {
-  id            Int           @id @default(autoincrement())
-  firstName     String?
-  lastName      String?
-  email         String?
-  password      String?
-  emailVerified Boolean?      @default(false)
-  createdAt     DateTime      @default(now())
-  otpTokens     OtpToken[]
-  certificates  Certificate[]
-  enrollments   Enrollment[]
-  carts         Cart[]
+  id                      Int                     @id @default(autoincrement())
+  firstName               String?
+  lastName                String?
+  email                   String?
+  password                String?
+  emailVerified           Boolean?                @default(false)
+  createdAt               DateTime                @default(now())
+  otpTokens               OtpToken[]
+  certificates            Certificate[]
+  enrollments             Enrollment[]
+  carts                   Cart[]
   courseContentProgresses CourseContentProgress[]
   LessonProgress          LessonProgress[]
+  Complete                Complete[]
 }
 
 model Cart {
@@ -49,6 +50,8 @@ model Certificate {
   id          Int      @id @default(autoincrement())
   code        String   @unique
   courseTitle String
+  courseKhmerTitle String?
+  courseSlug String?
   url         String?
   issuedAt    DateTime @default(now())
   userId      Int
@@ -69,6 +72,7 @@ model Course {
   discounted_price  String?
   discount_percent  String?
   title             String
+  english_title     String?
   study_type        String?
   language          String?
   level             String?
@@ -86,6 +90,8 @@ model Course {
   courseContents CourseContent[]
   enrollments    Enrollment[]
   carts          Cart[]
+  quiz           quiz[]
+  Complete       Complete[]
 }
 
 model CourseContent {
@@ -98,7 +104,7 @@ model CourseContent {
   starting_paragraph String? @db.LongText
   body_paragraph     String? @db.LongText
   ending_paragraph   String? @db.LongText
-  isCompleted       Boolean @default(false)
+  isCompleted        Boolean @default(false)
   courseId           Int?
 
   course                  Course?                 @relation(fields: [courseId], references: [id])
@@ -238,4 +244,35 @@ model LessonProgress {
   lesson Lesson @relation(fields: [lessonSlug], references: [slug])
 
   @@id([userId, lessonSlug])
+}
+
+model quiz {
+  id         Int      @id @default(autoincrement())
+  question   String   @db.LongText
+  courseSlug String
+  course     Course   @relation(fields: [courseSlug], references: [slug])
+  answers    Answer[]
+}
+
+model Answer {
+  id        Int     @id @default(autoincrement())
+  text      String  @db.LongText
+  isCorrect Boolean @default(false)
+  order     Int
+  quizId    Int
+  quiz      quiz    @relation(fields: [quizId], references: [id])
+}
+
+model Complete {
+  userId     Int
+  courseSlug String
+
+  score Int @default(0)
+
+  total Int @default(0)
+
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseSlug], references: [slug])
+
+  @@id([userId, courseSlug])
 }

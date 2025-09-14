@@ -3,6 +3,8 @@
 import Link from "next/link"
 import Tick from "@/components/icons/Tick"
 import RightArrow from "@/components/icons/RightArrow"
+import Certificate from "@/components/icons/Certificate"
+import FinishCourse from "@/components/icons/FinishCourse"
 
 const ContentDetail = ({content, markComplete, errorMark="",slug="", admin = false}) => {
 
@@ -13,7 +15,6 @@ const ContentDetail = ({content, markComplete, errorMark="",slug="", admin = fal
         <h1 className="text-center mx-auto mb-12 text-3xl font-semibold">{content.order_number}. {content.title}</h1>
 
         <p className="my-10 text-lg indent-8">{content.introduction_text}</p>
-        <p className="my-10 text-lg indent-8">{content.starting_paragraph}</p>
         <p className="my-10 text-lg indent-8">{content.starting_paragraph}</p>
         <p className="my-10 text-lg indent-8">{content.body_paragraph}</p>
         <p className="my-10 text-lg indent-8">{content.ending_paragraph}</p>
@@ -40,7 +41,7 @@ const ContentDetail = ({content, markComplete, errorMark="",slug="", admin = fal
             className={`flex items-center justify-start relative px-12 py-2 bg-green-500
              text-white text-lg cursor-pointer`}
           >
-            បន្តមេរៀន <RightArrow className={` h-6 w-6`}/>
+            {content.nextSlug ? 'បន្តមេរៀន' : 'ធ្វើការប្រឡង'} {content.nextSlug ? <RightArrow className={` h-6 w-6`} /> : <FinishCourse size={20} className={'ml-2'}/>}
             {errorMark&&<span className="absolute -top-7 left-0 text-red-600">
                 * {errorMark}
               </span>}

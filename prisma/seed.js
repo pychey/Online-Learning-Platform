@@ -12,6 +12,8 @@ import reviews from './model.data/review.js'
 import courseContents from './model.data/courseContent.js'
 import lessons from './model.data/lesson.js'
 import lessonContents from './model.data/lessonContent.js'
+import quizzes from './model.data/quiz.js'
+import answers from './model.data/answer.js'
 
 const prisma = new PrismaClient()
 
@@ -98,6 +100,8 @@ export async function main() {
     for (const user of users) await prisma.user.create({ data: user })
     for (const enrollment of enrollments) await prisma.enrollment.create({ data: enrollment })
     for (const cart of carts) await prisma.cart.create({ data: cart })
+    for (const quiz of quizzes) await prisma.quiz.create({ data: quiz })
+    for (const answer of answers) await prisma.answer.create({ data: answer })
 }
 
 main()

@@ -373,7 +373,18 @@ const CoursePage = () => {
             </div>
           ))}
         </div>
+
+        <div className="">
+          <h3 className="text-lg font-medium mb-2">Quizzes</h3>
+          <Link 
+            href={`${pathname}/quiz`}
+            className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-hover transition duration-200 cursor-pointer">
+              Manage Course Quizzes
+          </Link>
+        </div>
       </section>
+
+      
 
       <AdminNewChapterModal 
       	isOpen={activeChapterModal}
