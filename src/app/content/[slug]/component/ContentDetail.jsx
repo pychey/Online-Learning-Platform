@@ -41,7 +41,7 @@ const ContentDetail = ({content, markComplete, errorMark="",slug="", admin = fal
             className={`flex items-center justify-start relative px-12 py-2 bg-green-500
              text-white text-lg cursor-pointer`}
           >
-            {content.nextSlug ? 'បន្តមេរៀន' : 'ទទួលសញ្ញាបត្រ'} {content.nextSlug ? <RightArrow className={` h-6 w-6`} /> : <FinishCourse size={20} className={'ml-2'}/>}
+            {content.nextSlug ? 'បន្តមេរៀន' : 'ធ្វើការប្រឡង'} {content.nextSlug ? <RightArrow className={` h-6 w-6`} /> : <FinishCourse size={20} className={'ml-2'}/>}
             {errorMark&&<span className="absolute -top-7 left-0 text-red-600">
                 * {errorMark}
               </span>}
