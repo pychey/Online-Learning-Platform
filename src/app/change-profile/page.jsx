@@ -1,9 +1,10 @@
 'use client'
 
+import RightArrow from "@/components/icons/RightArrow";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const PaymentPage = () => {
@@ -11,17 +12,13 @@ const PaymentPage = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [userId, setUserId] = useState('');
-  const [courseId, setCourseId] = useState('')
-  const [buttonMessage, setButtonMessage] = useState('ទិញវគ្គសិក្សា')
+  const [buttonMessage, setButtonMessage] = useState('រក្សាទុកឈ្មោះ')
   const [message, setMessage] = useState('')
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (status === 'loading') return;
-    if (status === 'unauthenticated') router.push('/login?fromPayment=1')
-
-    const courseIdParam = searchParams.get('courseId');
+    if (status === 'unauthenticated') router.push('/login')
     
     if (session) setUserId(session.user.id);
     console.log(session)
@@ -33,17 +30,14 @@ const PaymentPage = () => {
     } else {
       setMessage("សូមបំពេញឈ្មោះរបស់អ្នក ដែលឈ្មោះនេះនឹងត្រូវបានប្រើនៅលើសញ្ញាប័ត្ររបស់អ្នក។");
     }
-
-    if (courseIdParam) setCourseId(courseIdParam);
-  }, [searchParams, session]);
+  }, [status]);
   
-  const handlePayment = async (e) => {
+  const handleChangeName = async (e) => {
     e.preventDefault();
-    setButtonMessage("កំពុងធ្វើការទិញ...");
+    setButtonMessage("កំពុងធ្វើរក្សាទុក...");
     try {
-      const { data } = await axios.post('/api/enrollment', {
+      const { data } = await axios.post('/api/save-name', {
         userId,
-        courseId,
         firstName,
         lastName,
       })
@@ -53,8 +47,8 @@ const PaymentPage = () => {
       }
     } catch (error) {
       console.log(error)
-      setMessage("មានបញ្ហាក្នុងការទិញវគ្គសិក្សា សូមព្យាយាមម្ដងទៀត។");
-      setButtonMessage("ទិញវគ្គសិក្សា");
+      setMessage("មានបញ្ហាក្នុងការរក្សាឈ្មោះ សូមព្យាយាមម្ដងទៀត។");
+      setButtonMessage("រក្សាទុកឈ្មោះ");
     }
   };
 
@@ -73,11 +67,11 @@ const PaymentPage = () => {
       </div>
       <div className="bg-white border border-gray-200 p-4 w-full max-w-md mb-6 rounded">
         <p className="text-sm text-gray-700 border-l-4 border-primary pl-3">
-          ទិញវគ្គសិក្សាសម្រាប់គេហទំព័រនេះ
+          កែប្រូហ្វាល់សម្រាប់គេហទំព័រនេះ
         </p>
       </div>
       <div className="px-10 py-8 border-gray-200 relative rounded border w-full max-w-md">
-        <form className="space-y-6 " onSubmit={handlePayment}>
+        <form className="space-y-6 " onSubmit={handleChangeName}>
           <div className="relative">
             <label
               htmlFor="firstName"
@@ -113,10 +107,17 @@ const PaymentPage = () => {
             />
           </div>
           <p className="text-sm text-primary">{message}</p>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-between">
               <button
-              type="submit"
-              className="bg-primary text-white font-semibold px-6 py-3 rounded-sm hover:bg-primary-hover transition duration-300 min-w-28 cursor-pointer"
+                onClick={() => router.push('/my-courses')}
+                className="flex gap-2 items-center justify-center bg-gray-500 text-white font-semibold px-6 py-3 rounded-sm hover:bg-gray-600 transition duration-300 min-w-28 cursor-pointer"
+              >
+                <RightArrow className='rotate-180' size={16}/>
+                ទៅគណនី
+              </button>
+              <button
+                type="submit"
+                className="bg-primary text-white font-semibold px-6 py-3 rounded-sm hover:bg-primary-hover transition duration-300 min-w-28 cursor-pointer"
               >
                 {buttonMessage}
               </button>
