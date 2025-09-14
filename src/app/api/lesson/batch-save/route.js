@@ -8,7 +8,10 @@ export async function POST(req) {
     const result = await prisma.$transaction(async (tx) => {
       await tx.lesson.update({
         where: { id: lessonId },
-        data: { title: lesson.title },
+        data: { 
+          title: lesson.title ,
+          key_takeaway_text: lesson.key_takeaway_text,
+        },
       })
 
       if (toDelete?.length) {

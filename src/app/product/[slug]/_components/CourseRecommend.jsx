@@ -37,7 +37,11 @@ const CourseRecommend = ({ slug, programId }) => {
             <div className={'grid gap-10 grid-cols-1 laptop:grid-cols-3 max-w-[500px] laptop:max-w-[1000px] w-full'}>
                 {otherCourses.map((course) => (
                     <div key={course.id} className="relative flex flex-col border border-gray-300 text-base w-full">
-                        <Link href={`/product/${course.slug}`}><img src={course.img_url} alt={course.slug} /></Link>
+                        <Link href={`/product/${course.slug}`}>
+                        <img src={course.img_url ||
+                            "https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ="
+                        } alt={course.slug} />
+                        </Link>
                         <div className="flex flex-col gap-2 p-4">
                             <h2 className="text-xl font-semibold">{course.title}</h2>
                             <StarRating ratingNumber={false} rating={course.rating} className='flex text-lg select-none' />

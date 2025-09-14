@@ -33,7 +33,12 @@ export async function GET (req, {params}) {
                         }
                     }
                 },
-            }; 
+            };
+            include.quiz = {
+                select: {
+                    id: true
+                }
+            }
         }
 
         const course = await prisma.course.findFirst({
