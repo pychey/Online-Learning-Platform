@@ -55,6 +55,8 @@ const LessonPage = () => {
       lessonContents: parsedLessonContents
     }
 
+    console.log(parsedResponse);
+    
     setLesson(parsedResponse)
     setOriginalLesson(parsedResponse)
     
@@ -178,7 +180,14 @@ const updateContentType = (index, newType) => {
       lesson
     }
 
-    await saveLesson(payload)
+    try {
+      await saveLesson(payload)
+      alert("Lesson Updated Sucessfully.")
+    } catch (err) {
+      console.error(err);
+      
+    }
+
   }
 
 
@@ -240,6 +249,16 @@ const updateContentType = (index, newType) => {
           <Menu model="Lesson" data={lesson} />
         </section>
       </div>
+
+      <section className="flex flex-col gap-3 w-[640px] font-medium"
+      >			
+        <h2 className="">Key Takeaway</h2>
+        <AdminDescriptionInput
+					value={lesson.key_takeaway_text || ""}
+					onChange={(e) => setLesson(prev => ({ ...prev, key_takeaway_text: e.target.value }))}
+					placeholder={"Starting Paragraph"}
+				/>
+      </section>
 
       <section className="flex flex-col gap-3 font-medium">
         <h2>Lesson Content</h2>
