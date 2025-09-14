@@ -49,8 +49,8 @@ const lessonContents =     [
     },
     {
         order_number: 3,
-        content_type: "space",
-        content: "",
+        content_type: "image",
+        content: "https://www.zonkafeedback.com/hubfs/Untitled%20design%20%2812%29.png",
         lessonId: 2,
     },
     {
@@ -68,7 +68,7 @@ const lessonContents =     [
     {
         order_number: 6,
         content_type: "image",
-        content: "https://picsum.photos/600/400?random=2",
+        content: "https://scontent.fpnh5-3.fna.fbcdn.net/v/t39.30808-6/488004560_1084752257024626_1139644088342440346_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Ql_mvvjE2lAQ7kNvwFRka9I&_nc_oc=AdlSMIF42ZHxHTUSz_mCbKVYdPw3ffCQ7BMT8I_9juzxVHJug5WTK5s5RSTHdQCLUm8&_nc_zt=23&_nc_ht=scontent.fpnh5-3.fna&_nc_gid=zCg4m6eCjUwwh26Vd5C0Rg&oh=00_AfZ-XoWlXsc8bKUVKMQ7YFvIpzBZSTTdeA52SQHTz7qb9A&oe=68CC08E0",
         lessonId: 2,
     },
     {
@@ -85,8 +85,8 @@ const lessonContents =     [
     },
     {
         order_number: 3,
-        content_type: "space",
-        content: "",
+        content_type: "image",
+        content: "https://cdn.prod.website-files.com/619e15d781b21202de206fb5/62f62b00791f0a712a693a46_Core-Benefits-of-Automated-Testing-in-App-Development.webp",
         lessonId: 3,
     },
     {
@@ -104,7 +104,7 @@ const lessonContents =     [
     {
         order_number: 6,
         content_type: "image",
-        content: "https://picsum.photos/600/400?random=3",
+        content: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2015/04/usertesting.jpg",
         lessonId: 3,
     },
     {
@@ -121,8 +121,8 @@ const lessonContents =     [
     },
     {
         order_number: 3,
-        content_type: "space",
-        content: "",
+        content_type: "image",
+        content: "https://bizkhmer.com/storage/articles/Da0yV8wXni6pKz6hFkfRKwx6d5ois8fkUTQRjgQb.jpeg",
         lessonId: 4,
     },
     {
@@ -139,8 +139,8 @@ const lessonContents =     [
     },
     {
         order_number: 6,
-        content_type: "image",
-        content: "https://picsum.photos/600/400?random=4",
+        content_type: "space",
+        content: "",
         lessonId: 4,
     },
     {
@@ -218,18 +218,18 @@ const lessonContents =     [
     {
         order_number: 3,
         content_type: "image",
-        content: "https://picsum.photos/600/400?random=5",
+        content: "https://i.ytimg.com/vi/dC4p5YZkw8o/maxresdefault.jpg",
         lessonId: 7,
     },
     {
         order_number: 4,
-        content_type: "space",
-        content: "",
+        content_type: "text",
+        content: "តារាងចែកចាយប្រេកង់ (Frequency Distribution Table) គឺជាតារាងដែលបង្ហាញពីភាពញឹកញាប់នៃតម្លៃនីមួយៗក្នុងសំណុំទិន្នន័យ។",
         lessonId: 7,
     },
     {
         order_number: 5,
-        content_type: "list",
+        content_type: "list",   
         content: "វាមានជួរឈរសម្រាប់ប្រភេទនិងភាពញឹកញាប់។",
         lessonId: 7,
     },
@@ -259,8 +259,8 @@ const lessonContents =     [
     },
     {
         order_number: 5,
-        content_type: "image",
-        content: "https://picsum.photos/600/400?random=6",
+        content_type: "space",
+        content: "",
         lessonId: 8,
     },
     {
@@ -427,8 +427,8 @@ const lessonContents =     [
     },
     {
         order_number: 3,
-        content_type: "image",
-        content: "https://picsum.photos/600/400?random=7",
+        content_type: "space",
+        content: "",
         lessonId: 14,
     },
     {
@@ -469,8 +469,8 @@ const lessonContents =     [
     },
     {
         order_number: 5,
-        content_type: "image",
-        content: "https://picsum.photos/600/400?random=8",
+        content_type: "space",
+        content: "",
         lessonId: 15,
     },
     {
@@ -649,8 +649,8 @@ const lessonContents =     [
     },
     {
         order_number: 5,
-        content_type: "image",
-        content: "https://picsum.photos/600/400?random=9",
+        content_type: "space",
+        content: "",
         lessonId: 21,
     },
     {
@@ -763,8 +763,8 @@ const lessonContents =     [
     },
     {
         order_number: 3,
-        content_type: "image",
-        content: "https://picsum.photos/600/400?random=10",
+        content_type: "space",
+        content: "",
         lessonId: 25,
     },
     {

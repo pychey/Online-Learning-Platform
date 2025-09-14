@@ -51,7 +51,7 @@ const users = [
 const enrollments = [
     {
         userId: 1,
-        courseId: 3,
+        courseId: 1,
     },
     {
         userId: 1,
