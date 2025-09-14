@@ -73,7 +73,10 @@ const CourseOverview = () => {
           {courses.map((course, index) => (
             <SwiperSlide key={index}>
               <div className="flex flex-col border border-gray-300 text-xs laptop:text-[13px] w-full">
-                <Link href={`/product/${course.slug}`}><img src={course.img_url} alt={course.slug} className='w-full h-[150px] object-cover' /></Link>
+                <Link href={`/product/${course.slug}`}>
+                <img src={course.img_url ||
+                  "https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ="
+                } alt={course.slug} className='w-full h-[150px] object-cover' /></Link>
                 <div className="flex flex-col gap-2 p-2">
                   <h2 className='font-bold'>{course.title}</h2>
                   <h4>| <span className="ml-1">ទទួលបានសញ្ញាបត្រ</span></h4>

@@ -19,7 +19,9 @@ const MyCourses = ({courses}) => {
 					{courses.map((course,index)=>(
 						<Link key={index} href={`/course/${course.slug}`}>
 							<div className="relative flex flex-col border border-gray-300 text-sm w-full">
-								<img src={course.img_url} alt={course.slug} className='w-full z-10 h-[150px] object-cover' />
+								<img src={course.img_url ||
+									"https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ="
+								} alt={course.slug} className='w-full z-10 h-[150px] object-cover' />
 								<h2 className='font-medium flex items-center py-3 px-4'>{course.title}</h2>
 								<span className="absolute z-10 top-2 -left-3 bg-primary text-white text-sm font-medium px-3 py-1">
 									បានចូលរៀន

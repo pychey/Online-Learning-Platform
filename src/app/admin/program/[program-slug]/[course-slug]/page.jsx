@@ -24,6 +24,7 @@ import AdminNewLessonModal from "@/app/admin/_components/AdminNewLessonModal"
 import Menu from "@/app/admin/_components/Menu"
 import { createContent } from "@/lib/content"
 import { createLesson } from "@/lib/lesson"
+import axios from "axios"
 
 const CoursePage = () => {
   const [ loading, setLoading ] = useState(true)
@@ -41,6 +42,7 @@ const CoursePage = () => {
   const getCourse = async () => {
     const response = await getCourseWithContent(slug)
     const newBreadcrumbs = buildCourseBreadcrumbs(response.program, response)
+console.log(response);
 
     setCourse(response)
     setChapters(response.courseContents)
@@ -132,6 +134,16 @@ const CoursePage = () => {
     await createLesson(payload)
     router.push(pathname + "/" + chapter.slug + "/" + payload.slug)
 
+  }
+
+  const handleCreateQuiz = async () => {
+    try {
+      await axios.post(`/api/quiz/`, { slug })
+      router.push(`${pathname}/quiz`)
+    } catch (error) {
+      alert("Failed to save changes. Please try again.");
+      console.error(error);
+    }
   }
 
   if (loading) return (<h1>Loading...</h1>)
@@ -375,12 +387,29 @@ const CoursePage = () => {
         </div>
 
         <div className="">
-          <h3 className="text-lg font-medium mb-2">Quizzes</h3>
-          <Link 
-            href={`${pathname}/quiz`}
-            className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-hover transition duration-200 cursor-pointer">
-              Manage Course Quizzes
-          </Link>
+          <h3 className="text-lg font-medium">Quizzes</h3>
+          {course.quiz.length !== 0 && (
+            <div>
+              <div className="text-xs mt-1 mb-4">{course.quiz.length} Quizzes</div>
+              <Link 
+                href={`${pathname}/quiz`}
+                className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-primary-hover transition duration-200 cursor-pointer">
+                  Manage Course Quizzes
+              </Link>
+            </div>
+          )}
+          {course.quiz.length === 0 && (
+            <div>
+              <div className="text-xs mt-1">This course has no quiz yet.</div>
+              <button
+                className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-primary-hover 
+                          transition duration-200 cursor-pointer"
+                onClick={() => handleCreateQuiz()}
+              >
+                Create quiz for this course
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
