@@ -50,6 +50,8 @@ model Certificate {
   id          Int      @id @default(autoincrement())
   code        String   @unique
   courseTitle String
+  courseKhmerTitle String?
+  courseSlug String?
   url         String?
   issuedAt    DateTime @default(now())
   userId      Int
@@ -70,6 +72,7 @@ model Course {
   discounted_price  String?
   discount_percent  String?
   title             String
+  english_title     String?
   study_type        String?
   language          String?
   level             String?
