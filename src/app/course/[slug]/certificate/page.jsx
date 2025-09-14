@@ -190,12 +190,12 @@ const Course = () => {
               <RightArrow className="h-6 w-6 rotate-180" />
               ទៅទំព័រវគ្គសិក្សា
             </button>
-            <button
+            {/* <button
               onClick={() => router.push('/')}
               className="flex items-center justify-center gap-3 px-12 py-2 bg-primary hover:bg-primary-hover text-white text-lg font-semibold rounded-sm cursor-pointer transition-all duration-200 transform hover:scale-105 shadow-lg"
             >
               ចង់ទៅផ្ទះ
-            </button>
+            </button> */}
             <button
               onClick={() => router.push('/my-certificates')}
               className="flex items-center justify-center gap-3 px-10 py-2 bg-primary hover:bg-primary-hover text-white text-lg font-semibold rounded-sm cursor-pointer transition-all duration-200 transform hover:scale-105 shadow-lg"

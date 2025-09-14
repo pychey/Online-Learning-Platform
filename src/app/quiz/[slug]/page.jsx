@@ -181,7 +181,7 @@ const Quiz = () => {
               disabled={selected === null}
               className="mt-6 px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-lg shadow disabled:opacity-50"
             >
-              {currentQ === quiz.length - 1 ? "Finish" : "Next"}
+              {currentQ === quiz.length - 1 ? "បញ្ចប់" : "បន្ទាប់"}
             </button>
           </div>
         )}
@@ -214,8 +214,8 @@ const Quiz = () => {
             </div>
 
             {score / total >= 0.8 && (
-            <div className="h-16">
-              <Link href={`/course/${slug}/certificate?score=${score}&total=${total}`} className="px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-lg shadow mb-6">
+            <div className="h-16 mt-8 -mb-2">
+              <Link href={`/course/${slug}/certificate?score=${score}&total=${total}`} className="px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-lg shadow mb-6 ">
                ទាញយកសញ្ញាបត្ររបស់អ្នក
               </Link>
             </div>
@@ -226,7 +226,7 @@ const Quiz = () => {
             សូមអមអរសាទរ អ្នកបានបញ្ចប់វគ្គសិក្សានេះ ហើយទទួលបានរបស់អ្នក។
             វិញ្ញាបនបត្រវគ្គសិក្សា. អ្នកអាចទាញយកវិញ្ញាបនបត្ររបស់អ្នកឥឡូវនេះ។ វានឹងផងដែរ។
             លេចឡើងនៅក្នុងផ្នែក{" "}
-            <a href="/my-certificates" className="text-blue-600 underline">
+            <a href="/my-certificates" className="text-primary ">
             “សញ្ញាបត្ររបស់អ្នក”
             </a>{" "}
             នៃគណនីរបស់អ្នក.
@@ -240,7 +240,7 @@ const Quiz = () => {
             onClick={handleReExam}
             className="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg shadow mt-4"
             >
-            Re-Exam
+            ប្រឡងម្តងទៀត
             </button>
         </div>
         )}
