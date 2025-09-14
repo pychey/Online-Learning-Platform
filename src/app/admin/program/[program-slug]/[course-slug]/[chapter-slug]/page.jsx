@@ -116,14 +116,14 @@ const ChapterPage = () => {
 				</section>
 			</div>
 
-			<div className="flex w-full justify-between">
+			<div className="flex w-full justify-between gap-4">
 				<div className="flex flex-col gap-6 py-2 h-full">
 					{/* <section className="flex flex-col gap-3 font-medium">
 						<h2 className="">Course</h2>
 						<div className="px-4 py-3 w-full bg-white border border-admin-border rounded-md">{chapter?.course?.title}</div>
 					</section> */}
 
-					<section className="flex flex-col gap-3 w-[640px] font-medium">
+					<section className="flex flex-col gap-3 w-[520px] font-medium">
 						<h2 className="">Chapter Content</h2>
 						<AdminDescriptionInput
 							value={chapter.introduction_text || ""}

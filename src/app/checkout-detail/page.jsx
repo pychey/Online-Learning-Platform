@@ -36,12 +36,19 @@ export default function CheckoutPage() {
     if (status === 'loading') return;
     if (status === 'unauthenticated') router.push('/login?fromPayment=1')
 
+    if (session?.user.email) {
+      setFormData(prev => ({
+        ...prev,
+        email: session.user.email ?? prev.email
+      }));
+    }
+
     if (session?.user.firstName && session?.user.lastName) {
-      setFormData({
-        ...formData,
-        firstName: session.user.firstName,
-        lastName: session.user.lastName
-      });
+      setFormData(prev => ({
+        ...prev,
+        firstName: session.user.firstName ?? prev.firstName,
+        lastName: session.user.lastName ?? prev.lastName,
+      }));
       setMessage("អ្នកមានឈ្មោះរួចហើយ អ្នកអាចប្តូរឈ្មោះនេះបានឫអត់ក៏បាន ដែលឈ្មោះនេះនឹងត្រូវបានប្រើនៅលើសញ្ញាប័ត្ររបស់អ្នក។");
     } else {
       setMessage("សូមបំពេញឈ្មោះរបស់អ្នកជាអក្សរឡាតាំង ដែលឈ្មោះនេះនឹងត្រូវបានប្រើនៅលើសញ្ញាប័ត្ររបស់អ្នក។");
@@ -100,6 +107,7 @@ export default function CheckoutPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
+                value={formData.firstName}
                 name="firstName"
                 onChange={handleChange}
                 required
@@ -107,6 +115,7 @@ export default function CheckoutPage() {
                 className="p-3 border w-full border-gray-300 focus:outline-none focus:shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-sm text-gray-700"
               />
               <input
+                value={formData.lastName}
                 name="lastName"
                 onChange={handleChange}
                 required
@@ -116,6 +125,7 @@ export default function CheckoutPage() {
             </div>
 
             <input
+              value={formData.email}
               name="email"
               type="email"
               onChange={handleChange}
@@ -128,8 +138,7 @@ export default function CheckoutPage() {
               name="phone"
               type="tel"
               onChange={handleChange}
-              required
-              placeholder="Phone Number"
+              placeholder="Phone Number (Optional)"
               className="p-3 border w-full border-gray-300 focus:outline-none focus:shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-sm text-gray-700"
             />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

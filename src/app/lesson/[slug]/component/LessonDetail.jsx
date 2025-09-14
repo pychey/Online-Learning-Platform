@@ -12,19 +12,26 @@ const LessonDetail = ({lesson , markComplete, admin = false}) => {
         <p className="my-10 text-xl font-semibold">{lesson.key_takeaway_text}</p>
 
         {lesson.lessonContents?.map((content, index) => {
+          const safeContent = content.content || null;
+
           if (content.content_type === "image") {
+            if (!safeContent) return null;
             return (
               <div key={index} className="w-full">
-                <img className="w-full h-full object-contain" src={content.content} alt="lesson picture" />
+                <img className="w-full h-full object-contain" src={safeContent} alt="lesson picture" />
               </div>
             );
           } else if (content.content_type === "video") {
+            if (!safeContent) return null;
+
             const [thumbnail, video] = content.content.split(',')
+            if (!thumbnail && !video) return null;
+
             return (
-              <div className="w-[640px]">
+              <div key={index} className="w-[640px]">
                 <VideoPreview
-                  thumbnail={thumbnail}
-                  youtubeLink={video}
+                  thumbnail={thumbnail || null}
+                  youtubeLink={video || null}
                   className="mt-4"
                 />
               </div>
@@ -33,7 +40,7 @@ const LessonDetail = ({lesson , markComplete, admin = false}) => {
             return (
               <p key={index} className="my-2 text-lg flex items-center gap-2">
                 {content.content_type === "list" && <span className="text-4xl flex-shrink-0">•</span>}
-                <span>{content.content}</span>
+                <span className={`${content.content_type === 'heading' ? 'font-semibold' : ''}`}>{safeContent}</span>
               </p>
             );
           }

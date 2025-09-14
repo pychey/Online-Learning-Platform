@@ -29,7 +29,7 @@ const Experience = () => {
   if (!reviews.length) return ( <p>Loading...</p> )
 
   return (
-    <div className="w-full px-6 py-6 flex flex-col items-center gap-10 my-15 bg-[#F2F2F2]">
+    <div className="w-full px-6 py-8 flex flex-col items-center gap-10 my-15 bg-[#F2F2F2]">
       <h1 className='font-medium text-xl tablet:text-2xl laptop:text-4xl leading-[2rem] text-center'>
         បទពិសោធន៍អ្នកដែលបានរៀនជាមួយ <span className='text-primary'>សាស្ត្រាអាខាដាមី</span>
       </h1>

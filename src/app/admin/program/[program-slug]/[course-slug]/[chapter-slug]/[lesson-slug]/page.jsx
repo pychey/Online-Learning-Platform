@@ -86,6 +86,8 @@ const LessonPage = () => {
         const newThumbnail = type === "thumbnail" ? e.target.value : item.thumbnail || "";
         const newVideo = type === "video" ? e.target.value : item.video || "";
 
+        item.thumbnail = newThumbnail;
+        item.video = newVideo;
         item.content = `${newThumbnail},${newVideo}`;
       }
 

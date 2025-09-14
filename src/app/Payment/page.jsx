@@ -19,7 +19,7 @@ export default function PaymentPage() {
   const trxId = searchParams.get("trxId");
   const total = searchParams.get("total");
   const qr = searchParams.get("qr");
-  const merchant = searchParams.get("merchant") || "Online Course";
+  const merchant = searchParams.get("merchant") || "Sastra Academy";
   const [error, setError] = useState(null);
 
   const [expired, setExpired] = useState(false);
@@ -74,7 +74,7 @@ export default function PaymentPage() {
           );
           const data = await res.json();
           if (data.paid) {
-            handlePayment();
+            await handlePayment();
             clearCart();
             setPaid(true);
             router.push("/my-courses");
@@ -104,7 +104,7 @@ export default function PaymentPage() {
         lastName: currentLastName,
       });
       if (data.success) {
-        await update({ firstName, lastName });
+        await update({ firstName: currentFirstName, lastName: currentLastName });
       }
     } catch (error) {
       console.log(error);

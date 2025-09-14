@@ -20,6 +20,7 @@ export const authOptions = {
     async jwt({ token, user, trigger, session }) {
       if (user) {
         token.id = user.id;
+        token.email = user.email ?? null;
         token.firstName = user.firstName ?? null;
         token.lastName = user.lastName ?? null;
         token.isAdmin = user.isAdmin ?? false;
@@ -35,6 +36,7 @@ export const authOptions = {
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id;
+        session.user.email = token.email ?? null;
         session.user.firstName = token.firstName ?? null;
         session.user.lastName = token.lastName ?? null;
         session.user.isAdmin = token.isAdmin ?? false;

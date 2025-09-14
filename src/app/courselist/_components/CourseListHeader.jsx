@@ -24,7 +24,7 @@ const CourseListHeader = () => {
     fetchPrograms()
   }, [])
 
-  if (!programs.length) return ( <p>Loading...</p> )
+  if (!programs.length) return null
 
   return (
     <section 
@@ -62,7 +62,7 @@ const CourseListHeader = () => {
           
           <div className={`grid grid-cols-4 justify-items-center gap-2 tablet:gap-2 tablet:w-[420px] w-full 
                           border-x border-b border-[#E2E2E2] bg-white transition-all duration-300 
-                          overflow-hidden ${isActive ? "h-30 p-2" : "h-0"}`}
+                          overflow-hidden ${isActive ? `${programs.length > 4 ? 'h-60' : 'h-30'} p-2` : "h-0"}`}
           >
             {programs.map((program) => (
               <a

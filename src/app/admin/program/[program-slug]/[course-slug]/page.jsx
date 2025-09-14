@@ -388,9 +388,9 @@ console.log(response);
 
         <div className="">
           <h3 className="text-lg font-medium">Quizzes</h3>
-          {course.quiz.length !== 0 && (
+          {course.quiz?.length !== 0 && (
             <div>
-              <div className="text-xs mt-1 mb-4">{course.quiz.length} Quizzes</div>
+              <div className="text-xs mt-1 mb-4">{course.quiz?.length} Quizzes</div>
               <Link 
                 href={`${pathname}/quiz`}
                 className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-primary-hover transition duration-200 cursor-pointer">
@@ -398,7 +398,7 @@ console.log(response);
               </Link>
             </div>
           )}
-          {course.quiz.length === 0 && (
+          {course.quiz?.length === 0 && (
             <div>
               <div className="text-xs mt-1">This course has no quiz yet.</div>
               <button

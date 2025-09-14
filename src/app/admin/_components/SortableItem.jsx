@@ -108,7 +108,7 @@ const SortableItem = ({ id, content, onChange, onUpdateType, onDelete, isOverlay
 					<label className="text-sm text-gray-500 mb-2 block">Video Thumbnail URL</label>
 					<input
 						className="px-4 py-3 w-full h-12 text-gray-700 border rounded-md border-gray-300 focus:outline-none transition-all duration-300"
-						value={content.thumbnail}
+						value={content.thumbnail || ''}
 						onChange={(e) => onChange(e, "thumbnail")}
 						placeholder="Enter thumbnail URL"
 					/>
@@ -116,7 +116,7 @@ const SortableItem = ({ id, content, onChange, onUpdateType, onDelete, isOverlay
 					<label className="text-sm text-gray-500 mb-2 mt-4 block">Video URL</label>
 					<input
 						className="px-4 py-3 w-full h-12 text-gray-700 border rounded-md border-gray-300 focus:outline-none transition-all duration-300"
-						value={content.video}
+						value={content.video || ''}
 						onChange={(e) => onChange(e, "video")}
 						placeholder="Enter video URL"
 					/>
