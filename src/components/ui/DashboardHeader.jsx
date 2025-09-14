@@ -1,7 +1,7 @@
 'use client'
 
 
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import ProfileIcon from "../icons/ProfileIcon";
 import TagIcon from "../icons/TagIcon";
 import HelpIcon from "../icons/HelpIcon";
@@ -15,7 +15,7 @@ import { useCart } from "@/app/context/CartContext";
 const NAV_ITEMS = [
   { 
     title: "កែប្រូហ្វាល់", 
-    url: "/",
+    url: "/change-profile",
     icon: ProfileIcon,
   },
   { 
@@ -52,6 +52,7 @@ const UserIcon = ({ color = "white", size = 24 }) => (
 );
 
 const DashboardHeader = () => {
+  const { data: session, status } = useSession()
   const pathname = usePathname();
   const router = useRouter();
   const { setCart } = useCart()
@@ -61,12 +62,15 @@ const DashboardHeader = () => {
     signOut({ callbackUrl: "/login" })
   }
 
+  if (status === 'loading') return <p>Loading...</p>
+
   return (
     <div className="w-full">
       <nav className="w-full bg-[#898989]">
         <div className="flex items-center justify-center tablet:justify-between gap-4 mx-auto w-full max-w-[1080px]">
-          <div className="w-[19px] laptop:px-8 px-6 py-4 tablet:block hidden">
-            <UserIcon />
+          <div className="w-[200px] laptop:px-8 px-6 py-4 hidden tablet:grid grid-cols-[19px_1fr] gap-4 justify-between items-center">
+            <UserIcon/>
+            <p className="w-full text-white">{session?.user.firstName ?? ''} {session?.user.lastName ?? ''}</p>
           </div>
 
           <div className="flex w-[500px] laptop:w-[600px] gap-2 laptop:gap-4 px-4 py-4 
@@ -91,8 +95,9 @@ const DashboardHeader = () => {
       </nav>
 
       <div className="mb-0.5 px-4 tablet:px-20 pt-6 w-full border-b border-b-[#CCCCCC] bg-[#F5F5F5]">
-        <div className="flex justify-center pb-4 tablet:hidden">
+        <div className="flex gap-3 items-center justify-center pb-4 tablet:hidden">
           <UserIcon color="#808080" />
+          <p>{session?.user.firstName ?? ''} {session?.user.lastName ?? ''}</p>
         </div>
 
         <div className="flex gap-8 laptop:gap-16 max-w-[800px] w-full h-full mx-auto">
