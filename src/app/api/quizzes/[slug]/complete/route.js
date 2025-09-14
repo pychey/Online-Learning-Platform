@@ -93,7 +93,7 @@ export async function GET(req, { params }) {
     })
 
     if(exist){
-      return NextResponse.json({complete:true,score:exist.score,total:exist.score}, { status: 200 })
+      return NextResponse.json({complete:true,score:exist.score,total:exist.total}, { status: 200 })
     }
 
 
