@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { getCourseContent } from "@/lib/course";
 import CourseLayout from "@/components/ui/CourseLayout";
@@ -18,6 +18,9 @@ const Course = () => {
   const [error, setError] = useState("");
   const [data, setData] = useState(null);
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const score = searchParams.get('score')
+  const total = searchParams.get('total')
 
   useEffect(() => {
     if (status === "loading") return;
@@ -69,9 +72,32 @@ const Course = () => {
   return (
     <CourseLayout course={course}>
       <div className="w-full">
-        {/* Course Title */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-semibold text-blue-800 px-4">{course?.title}</h1>
+        <div className="w-full rounded-2xl p-8 text-center">
+            <h2 className="text-2xl font-semibold -mb-6 text-center">
+             មូលដ្ឋានគ្រឹះនៃការគ្រប់គ្រងគម្រោង - ការប្រឡង
+            </h2>
+
+            <div className="flex items-center justify-center w-full">
+              <div className="w-60 h-60 flex items-center justify-center mr-6">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/16815/16815634.png"
+                  alt="quiz"
+                />
+              </div>
+              <p className="text-gray-700 text-md text-start leading-relaxed max-w-full">
+                សូមស្វាគមន៍មកកាន់វគ្គសំនួរសាកល្បង! ឥឡូវនេះជាឱកាសសាកល្បងចំណេះដឹងរបស់អ្នក
+                និងទទួលបានវិញ្ញាបនបត្រវគ្គសិក្សា។ អ្នកអាចទាញយកវិញ្ញាបនបត្ររបស់អ្នកបន្ទាប់ពីសម្រេចបានពិន្ទុអប្បបរមា
+                <span className="font-semibold text-green-600"> 80%</span>។ <br />
+                អ្នកអាចសាកល្បងវគ្គសំនួរនេះបានច្រើនដងតាមដែលចង់បាន ប្រសិនបើអ្នកមិនទាន់សម្រេចបានពិន្ទុនោះ។
+                </p>
+            </div>
+            <div className="bg-gray-100 p-4 rounded-lg text-gray-800 font-medium mb-8">
+            អ្នកទទួលបានពិន្ទុចំនួន {score} នៃ {total} ពិន្ទុសរុប (
+            {Math.round((score / total) * 100)}%)
+            </div>
+
+            
+
         </div>
         
         {/* Celebration Header */}

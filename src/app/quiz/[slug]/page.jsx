@@ -214,9 +214,11 @@ const Quiz = () => {
             </div>
 
             {score / total >= 0.8 && (
-            <button className="px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-lg shadow mb-6">
+            <div className="h-16">
+              <Link href={`/course/${slug}/certificate?score=${score}&total=${total}`} className="px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-lg shadow mb-6">
                ទាញយកសញ្ញាបត្ររបស់អ្នក
-            </button>
+              </Link>
+            </div>
             )}
 
            {score / total >= 0.8 ? (

@@ -69,7 +69,7 @@
         if(content.nextSlug){
           return router.push(`/content/${content.nextSlug}`)
         }
-        router.push(`/course/${content.courseSlug}/certificate`)
+        router.push(`/quiz/${content.courseSlug}`)
 
       } catch (error) {
         setErrorMark(error.response.data.message)
