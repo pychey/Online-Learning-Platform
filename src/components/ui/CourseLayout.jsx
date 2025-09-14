@@ -75,16 +75,10 @@ const CourseLayout = ({children,course}) => {
             
             <Link href={`/quiz/${course.slug}`}>
                 <div className="flex items-center justify-start border-b border-gray-200  gap-4 py-4  my-1">
-                    <div className={` rounded-2xl h-4 aspect-square ${pathname===`/quiz/${course.slug}`?`text-blue-700 font-bold`:``}`}><svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8 18q-.825 0-1.412-.587T6 16V4q0-.825.588-1.412T8 2h12q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-4 4q-.825 0-1.412-.587T2 20V7q0-.425.288-.712T3 6t.713.288T4 7v13h13q.425 0 .713.288T18 21t-.288.713T17 22zM8 6h12V4H8z"/></svg></div>
-                    <div className={`${pathname===`/quiz/${course.slug}`?`text-blue-700 font-bold`:``} `}> ធ្វើការប្រឡង</div>
+                    <div className={` rounded-2xl h-4 aspect-square ${pathname===`/quiz/${course.slug}`||(isCertificatePath)?`text-primary-green font-bold`:``}`}><svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M8 18q-.825 0-1.412-.587T6 16V4q0-.825.588-1.412T8 2h12q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm-4 4q-.825 0-1.412-.587T2 20V7q0-.425.288-.712T3 6t.713.288T4 7v13h13q.425 0 .713.288T18 21t-.288.713T17 22zM8 6h12V4H8z"/></svg></div>
+                    <div className={`${(pathname===`/quiz/${course.slug}`)||(isCertificatePath)?`text-primary-green font-bold`:``} `}> ធ្វើការប្រឡង</div>
                 </div>
             </Link>
-            <div className="w-full">
-                <div className="flex items-center justify-start  gap-4 py-4 border-b border-gray-200">
-                    <div className={`relative h-4 w-4 aspect-square`}><Certificate className={` h-[18px] w-[18px] ${isCertificatePath?"text-blue-700" : ""} absolute -left-0.5 -top-1`}/></div>
-                    <Link href={`/course/${course.slug}/certificate`} className={`${isCertificatePath ? "text-blue-700 font-semibold" : ""}`}>{course.title} - ទទួលយកសញ្ញាបត្រ</Link>
-                </div>
-            </div>
 
         </aside>
     </div>
