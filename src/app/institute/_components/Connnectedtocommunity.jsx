@@ -12,7 +12,7 @@ const Connnectedtocommunity = () => {
         {/* Left Image */}
         <div className=" h-auto w-full mt-2">
           <img decoding="async" width="100" height="655"
-            src="https://ourneighbourhood.ca/wp-content/uploads/2023/11/Community-Project.png"
+            src="https://cadt.edu.kh/wp-content/uploads/2022/12/DSC01206-scaled.jpg"
             alt="Community"
             className="shadow-md object-fit-contain h-full w-full"
           />

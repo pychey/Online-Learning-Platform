@@ -19,32 +19,44 @@ const prisma = new PrismaClient()
 
 const users = [
     {
+        firstName: 'Pychey',
+        lastName: 'Prak',
         email: 'pychey@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
     },
     {
+        firstName: 'Methy',
+        lastName: 'Muy',
         email: 'methy@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
     },
     {
+        firstName: 'Rithea',
+        lastName: 'Vong',
         email: 'rithea@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
         isAdmin: true
     },
     {
+        firstName: 'Deny',
+        lastName: 'Sokun',
         email: 'deny@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
     },
     {
+        firstName: 'Seyha',
+        lastName: 'Kruy',
         email: 'seyha@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
     },
     {
+        firstName: 'Bunleap',
+        lastName: 'Sok',
         email: 'bunleap@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
@@ -56,34 +68,41 @@ const enrollments = [
         userId: 1,
         courseId: 1,
     },
-    {
-        userId: 1,
-        courseId: 4,
-    },
-    {
-        userId: 4,
-        courseId: 3,
-    },
-    {
-        userId: 4,
-        courseId: 4,
-    },
-    {
-        userId: 4,
-        courseId: 5,
-    },
 ]
 
-const carts = [
-    {
-        userId: 1,
-        courseId: 1,
-    },
-    {
-        userId: 1,
-        courseId: 2,
-    },
-]
+// const enrollments = [
+//     {
+//         userId: 1,
+//         courseId: 1,
+//     },
+//     {
+//         userId: 1,
+//         courseId: 4,
+//     },
+//     {
+//         userId: 4,
+//         courseId: 3,
+//     },
+//     {
+//         userId: 4,
+//         courseId: 4,
+//     },
+//     {
+//         userId: 4,
+//         courseId: 5,
+//     },
+// ]
+
+// const carts = [
+//     {
+//         userId: 1,
+//         courseId: 1,
+//     },
+//     {
+//         userId: 1,
+//         courseId: 2,
+//     },
+// ]
 
 export async function main() {
     for (const program of programs) await prisma.program.create({ data: program })
@@ -100,7 +119,6 @@ export async function main() {
     for (const review of reviews) await prisma.reviews.create({ data: review })
     for (const user of users) await prisma.user.create({ data: user })
     for (const enrollment of enrollments) await prisma.enrollment.create({ data: enrollment })
-    for (const cart of carts) await prisma.cart.create({ data: cart })
     for (const quiz of quizzes) await prisma.quiz.create({ data: quiz })
     for (const answer of answers) await prisma.answer.create({ data: answer })
 }

@@ -21,7 +21,7 @@ const Footer = ({
       links: [
         { text: 'គេហទំព័រ', url: '/' },
         { text: 'វគ្គបណ្តុះបណ្តាល', url: '/courselist' },
-        { text: 'ស្ថាប័ន', url: '/institue' },
+        { text: 'ស្ថាប័ន', url: '/institute' },
       ],
     },
     {

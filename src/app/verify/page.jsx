@@ -11,7 +11,7 @@ const VerifyPage = () => {
   const [ validSearch, setValidSearch ] = useState(null);
   const [ invalidMessage, setInvalidMessage ] = useState("");
   const [ searchResult, setSearchResult ] = useState(null);
-  const [ imgSrc, setImgSrc ] = useState('/Certificate_Template_400PPI.jpg')
+  const [ imgSrc, setImgSrc ] = useState('https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf')
 
   const handleSearch = async () => {
     setImgSrc(null)
@@ -22,11 +22,11 @@ const VerifyPage = () => {
 
     if (trimmedSearch === "") {
       setValidSearch(false);
-      setImgSrc('/Certificate_Template.jpg')
+      setImgSrc('https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf')
       setInvalidMessage("សូមបញ្ចូលលេខសម្គាល់សញ្ញាប័ត្រ");
     } else if (certificate.message == 'Incorrect Code') {
       setValidSearch(false);
-      setImgSrc('/Certificate_Template.jpg')
+      setImgSrc('https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf')
       setInvalidMessage("ព័ត៌មានមិនត្រឹមត្រូវ");
     } else {
       setValidSearch(true);

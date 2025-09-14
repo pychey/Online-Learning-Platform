@@ -38,7 +38,7 @@ const Feedback = () => {
 
 
       <div className="mt-5">
-        <button className="bg-primary text-white font-semibold px-6 py-3  hover:bg-primary-hover rounded-full transition cursor-pointer" onClick={() => router.push('/my-account-settings')}>
+        <button className="bg-primary text-white font-semibold px-6 py-3  hover:bg-primary-hover rounded-full transition cursor-pointer" onClick={() => router.push('/login')}>
           ចូលរៀនឥឡូវនេះ
         </button>
       </div>

@@ -3,14 +3,14 @@ const homeMedia = [
         page: 'home',
         section: 'course_benefits',
         type: 'image',
-        url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756797829/AA001-IMG_-_4_x_2.5_g2tbkf.jpg',
+        url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751184/AA001-IMG_-_4_x_2.5_ybo6je.jpg',
         alt: 'course_benefit_image',
     },
     {
         page: 'global',
         section: 'certificate_image',
         type: 'image',
-        url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756798068/Certificate_Template_zoogqk.jpg',
+        url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751361/Certificate_Template_vpflzz.webp',
         alt: 'certificate_sample_image',
     },
 ]

@@ -41,7 +41,7 @@ const CourseBenefitOverview = () => {
       <div className="flex flex-col tablet:flex-row gap-8 mx-auto px-4 max-w-[1320px]">
         <div className="flex justify-center items-center flex-1">
           <VideoPreview 
-            thumbnail='https://res.cloudinary.com/dogwsyf81/image/upload/v1756783946/AA001-IMG_-_4_x_2.5_abvtx1.jpg'
+            thumbnail='https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751184/AA001-IMG_-_4_x_2.5_ybo6je.jpg'
             youtubeLink='https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1'
             className='max-w-[495px]'
             />

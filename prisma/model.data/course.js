@@ -1,6 +1,6 @@
 const courses = [
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783946/AA001-IMG_-_4_x_2.5_abvtx1.jpg',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751184/AA001-IMG_-_4_x_2.5_ybo6je.jpg',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -26,7 +26,7 @@ const courses = [
         programId: 1
     },
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783950/AA002-IMG_-_4_x_2.5_m9hi7f.png',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751186/AA002-IMG_-_4_x_2.5_xxelpn.png',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -52,7 +52,7 @@ const courses = [
         programId: 1
     },
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783958/AA003-IMG_-_4_x_2.5_brzlsw.png',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751191/AA003-IMG_-_4_x_2.5_e161ua.png',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -61,7 +61,7 @@ const courses = [
         english_title: 'Regression Analytics',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការវិភាគ Regression',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -78,7 +78,7 @@ const courses = [
         programId: 1
     },
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783962/AA004-IMG_-_4_x_2.5_btyi7j.jpg',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751192/AA004-IMG_-_4_x_2.5_hwbzwd.jpg',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -87,7 +87,7 @@ const courses = [
         english_title: 'Choose Sampling',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'វិធីសាស្ត្រជ្រើសរើសសំណាក',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -104,7 +104,7 @@ const courses = [
         programId: 1
     },
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783948/AA005-IMG_-_4_x_2.5_r63j6s.jpg',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751188/AA005-IMG_-_4_x_2.5_pjmvia.jpg',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -113,7 +113,7 @@ const courses = [
         english_title: 'Statistic SPSS',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការវិភាគស្ថិតិតាម SPSS',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -130,7 +130,7 @@ const courses = [
         programId: 2
     },
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783950/AA006-IMG_-_4_x_2.5_bbtwea.jpg',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751189/AA006-IMG_-_4_x_2.5_xijka8.jpg',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -139,7 +139,7 @@ const courses = [
         english_title: 'Statistic STATA',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការវិភាគស្ថិតិតាម STATA',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -156,7 +156,7 @@ const courses = [
         programId: 2
     },
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783947/AA007-IMG_-_4_x_2.5_hmxiij.jpg',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751184/AA007-IMG_-_4_x_2.5_wrjwhl.jpg',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -165,7 +165,7 @@ const courses = [
         english_title: 'Choose Sampling',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការវិភាគស្ថិតិតាម R',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -182,7 +182,7 @@ const courses = [
         programId: 2
     },
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783949/AA008-IMG_-_4_x_2.5_xb8ng4.jpg',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751184/AA008-IMG_-_4_x_2.5_xhkaxq.jpg',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -191,7 +191,7 @@ const courses = [
         english_title: 'Statistic Excel',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការវិភាគស្ថិតិតាម Excel',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -208,7 +208,7 @@ const courses = [
         programId: 2
     },
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783960/AA009-IMG_-_4_x_2.5_copc5i.jpg',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751193/AA009-IMG_-_4_x_2.5_jmtdzk.jpg',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -217,7 +217,7 @@ const courses = [
         english_title: 'Research Request',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការសរសេរសំណើរស្រាវជ្រាវ',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -234,7 +234,7 @@ const courses = [
         programId: 3
     },
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783974/AA010-IMG_-_4_x_2.5_genvgn.jpg',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751195/AA010-IMG_-_4_x_2.5_ind7gl.jpg',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -243,7 +243,7 @@ const courses = [
         english_title: 'Quantity Research',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការស្រាវជ្រាវបែបបរិមាណ',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -269,7 +269,7 @@ const courses = [
         english_title: 'Quality Research',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការស្រាវជ្រាវបែបគុណភាព',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -286,7 +286,7 @@ const courses = [
         programId: 3
     },
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783980/AA012-IMG_-_4_x_2.5_hbk0r5.jpg',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751188/AA012-IMG_-_4_x_2.5_ig12f5.jpg',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -295,7 +295,7 @@ const courses = [
         english_title: 'Mixed Research',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការស្រាវជ្រាវបែប Mixed Method',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -312,7 +312,7 @@ const courses = [
         programId: 3
     },
     {
-        img_url: 'https://res.cloudinary.com/dogwsyf81/image/upload/v1756783970/AA013-IMG_-_4_x_2.5_ydcaoy.jpg',
+        img_url: 'https://res.cloudinary.com/dhbuy0um9/image/upload/v1757751192/AA013-IMG_-_4_x_2.5_acl6ex.jpg',
         youtube_url: 'https://www.youtube.com/embed/zfMH_JTMVMs?si=dJOisdJbOXqBGwCY&autoplay=1',
         certificate_type: 'សញ្ញាបត្រវគ្គសិក្សា',
         duration: '២ ម៉ោង',
@@ -321,7 +321,7 @@ const courses = [
         english_title: 'Research Report',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'របាយការណ៍ស្រាវជ្រាវ',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -347,7 +347,7 @@ const courses = [
         english_title: 'Thesis Writing',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការសរសេរនិក្ខេបបទ',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -373,7 +373,7 @@ const courses = [
         english_title: 'Research Writing',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការសរសេរអត្ថបទស្រាវជ្រាវ',
         study_type: 'វគ្គសិក្សា អនឡាញ',
@@ -399,7 +399,7 @@ const courses = [
         english_title: 'Review Writing',
         rating: 5,
         original_price: '$៣០.០០',
-        discounted_price: '$១១.៩៩',
+        discounted_price: '$៤.៩៩',
         discount_percent: '៧០%',
         title: 'ការសរសេរ Review Paper',
         study_type: 'វគ្គសិក្សា អនឡាញ',

@@ -24,7 +24,7 @@ const EducationForGood = () => {
 			<div 
 				className="absolute inset-0 bg-center bg-no-repeat bg-cover" 
 				style={{ 
-					backgroundImage: `url("https://cambodia.un.org/sites/default/files/styles/featured_image/public/2021-08/50899730963_8d6f6a0de3_o.jpg?itok=z0KISPNN")`, 
+					backgroundImage: `url("https://ourneighbourhood.ca/wp-content/uploads/2023/11/Community-Project.png")`, 
 					opacity: 0.45, 
 					zIndex: 0 
 				}} 

@@ -179,7 +179,7 @@ const Quiz = () => {
             <button
               onClick={handleNext}
               disabled={selected === null}
-              className="mt-6 px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-lg shadow disabled:opacity-50"
+              className="mt-6 px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-lg shadow disabled:opacity-50 cursor-pointer"
             >
               {currentQ === quiz.length - 1 ? "បញ្ចប់" : "បន្ទាប់"}
             </button>
