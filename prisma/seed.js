@@ -32,6 +32,7 @@ const users = [
         email: 'rithea@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
+        isAdmin: true
     },
     {
         email: 'deny@gmail.com',
