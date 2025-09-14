@@ -4,19 +4,27 @@ import { useState, useEffect } from "react";
 import CourseLayout from "@/components/ui/CourseLayout";
 import { useSession } from "next-auth/react";
 import { getCourseContent } from "@/lib/course";
+import { fetchQuiz,completeCourse,checkExam } from "@/lib/quiz";
+import { useParams } from "next/navigation";
+import RightArrow from "@/components/icons/RightArrow"
+import Link from "next/link"
 
 const Quiz = () => {
+  const param=useParams();
+  const {slug}=param;
   const { data: session, status } = useSession();
 
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const [quiz,setQuiz]=useState(null)
   const [started, setStarted] = useState(false);
   const [currentQ, setCurrentQ] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [total,setTotal]=useState(0)
 
   const handleReExam = () => {
   setStarted(true);      
@@ -25,103 +33,6 @@ const Quiz = () => {
   setSelected(null);     
   setScore(0);          
   };
-
- const questions=[ {
-    id: 1,
-    question: "សេចក្តីណា មិនពិត សម្រាប់និយមន័យគម្រោង?",
-    options: [
-      "គម្រោងមានលក្ខណៈឯកត្តា។",
-      "គម្រោងមានពេលវេលាកំណត់ច្បាស់លាស់។",
-      "គម្រោងជាការប្រតិបត្តិចម្លងតែម្ដងៗ។",
-      "គម្រោងមានធនធានកំណត់។",
-    ],
-    answer: 2,
-  },
-  {
-    id: 2,
-    question: "ដំណាក់កាលដំបូងនៃវដ្តជីវិតគម្រោងគឺអ្វី?",
-    options: ["ការអនុវត្ត", "ការបិទ", "ការចាប់ផ្តើម", "ការត្រួតពិនិត្យ"],
-    answer: 2,
-  },
-  {
-    id: 3,
-    question: "ឧបករណ៍ណា ត្រូវបានប្រើជាញឹកញាប់សម្រាប់កាលវិភាគគម្រោង?",
-    options: ["ក្រុមប្រឹក្សា Kanban", "តារាង Gantt", "វិភាគ SWOT", "ការរួមគំនិត"],
-    answer: 1,
-  },
-  {
-    id: 4,
-    question: "អ្នកណាជាអ្នកទទួលខុសត្រូវចម្បងលើការសម្រេចបាននៃគម្រោង?",
-    options: [
-      "អ្នកឧបត្ថម្ភគម្រោង",
-      "អ្នកគ្រប់គ្រងគម្រោង",
-      "សមាជិកក្រុមគម្រោង",
-      "អតិថិជន",
-    ],
-    answer: 1,
-  },
-  {
-    id: 5,
-    question: "កាលវិភាគគម្រោងត្រូវបានប្រើសម្រាប់អ្វី?",
-    options: [
-      "បែងចែកថវិកា",
-      "កំណត់កាលបរិច្ឆេទនិងការងារ",
-      "វាយតម្លៃគុណភាព",
-      "កំណត់ទំហំគម្រោង",
-    ],
-    answer: 1,
-  },
-  {
-    id: 6,
-    question: "ក្នុងការគ្រប់គ្រងគម្រោង, 'Triple Constraint' រួមមានអ្វីខ្លះ?",
-    options: [
-      "ពេលវេលា, ថវិកា, ជំនាញ",
-      "គុណភាព, កម្លាំងពលកម្ម, ពេលវេលា",
-      "ពេលវេលា, ថវិកា, វិសាលភាព",
-      "សុវត្ថិភាព, អតិថិជន, ការទំនាក់ទំនង",
-    ],
-    answer: 2,
-  },
-  {
-    id: 7,
-    question: "ការវាយតម្លៃហានិភ័យគម្រោងធ្វើឡើងក្នុងដំណាក់កាលណា?",
-    options: [
-      "ដំណាក់កាលចាប់ផ្តើម",
-      "ដំណាក់កាលគម្រោង",
-      "ដំណាក់កាលអនុវត្ត",
-      "ដំណាក់កាលបិទ",
-    ],
-    answer: 1,
-  },
-  {
-    id: 8,
-    question: "ឯកសារណា បង្ហាញអំពីគោលដៅ និងសេចក្តីសង្ខេបគម្រោង?",
-    options: [
-      "Project Proposal",
-      "Project Charter",
-      "Project Plan",
-      "Risk Register",
-    ],
-    answer: 1,
-  },
-  {
-    id: 9,
-    question: "ការត្រួតពិនិត្យ និងវាយតម្លៃដំណើរការគម្រោង ជាផ្នែកមួយនៃដំណាក់កាលណា?",
-    options: ["ការចាប់ផ្តើម", "ការអនុវត្ត", "ការត្រួតពិនិត្យ", "ការបិទ"],
-    answer: 2,
-  },
-  {
-    id: 10,
-    question: "អ្វីជាគោលបំណងចម្បងនៃការបិទគម្រោង?",
-    options: [
-      "ដាក់ក្រុមចូលធ្វើការងារថ្មី",
-      "សន្និដ្ឋាននិងរាយការណ៍លទ្ធផល",
-      "កំណត់ថវិកាថ្មី",
-      "បង្កើតគម្រោងថ្មីភ្លាមៗ",
-    ],
-    answer: 1,
-  },
-];
 
 
 
@@ -134,14 +45,32 @@ const Quiz = () => {
       return;
     }
 
-    getContentOfCourse();
+    getQuiz();
   }, [status]);
 
-  const getContentOfCourse = async () => {
+
+  const getQuiz = async () => {
     try {
-      const slug = "statistic-description";
-      const data = await getCourseContent(slug, session.user.id);
-      setCourse(data);
+      const d =await checkExam(slug)
+      if(d.complete){
+        setScore(d.score)
+        setFinished(true)
+        setStarted(true)
+        setTotal(d.total)
+        const course_data = await getCourseContent(slug, session.user.id);
+        setCourse(course_data);
+      } else{
+        const data=await fetchQuiz(slug)
+        setQuiz(data)
+        if(!data||data.length===0){
+          setFinished(true)
+          setStarted(true)
+          setScore(100)
+        }
+        const course_data = await getCourseContent(slug, session.user.id);
+        setCourse(course_data);
+        setTotal(data.length)
+      }
     } catch (error) {
       setError(error.response?.data?.message || "Failed to load course");
     } finally {
@@ -149,25 +78,40 @@ const Quiz = () => {
     }
   };
 
-  const handleNext = () => {
-    if (selected === questions[currentQ].answer) {
-      setScore(score + 1);
+
+ const handleNext = async () => {
+  
+  const nextScore = selected?.isCorrect ? score + 1 : score;
+
+  if (currentQ + 1 < quiz.length) {
+    
+    setScore(nextScore);
+    setCurrentQ(currentQ + 1);
+    setSelected(null);
+  } else {
+    
+    setScore(nextScore);
+    setFinished(true);
+
+    if (nextScore / quiz.length >= 0.8) {
+      await completeCourse(slug,nextScore,quiz.length);
     }
 
-    if (currentQ + 1 < questions.length) {
-      setCurrentQ(currentQ + 1);
-      setSelected(null);
-    } else {
-      setFinished(true); 
-    }
-  };
+    console.log("Final Score:", nextScore);
+  }
+};
 
   if (loading) {
     return <h1 className="mt-20 text-center">Loading...</h1>;
   }
 
   if (error) {
-    return <h1 className="mt-20 text-center text-red-600">{error}</h1>;
+    return(
+      <h1 className="flex justify-center items-center relative mt-20 h-[50vh]">
+      <Link href={`/course/${slug}`} className="flex justify-center items-center absolute left-12 top-12 text-lg"><RightArrow className={`rotate-180 h-12 aspect-square `}/>​ទៅទំព័រមេរៀន</Link>
+       <p className="text-red-500 text-2xl">{error}</p>
+      </h1>
+    )
   }
 
   return (
@@ -208,11 +152,11 @@ const Quiz = () => {
         {started && !finished && (
           <div className="w-full rounded-2xl p-8">
             <h2 className="text-xl font-medium mb-4">
-              សំណួ​រ ​{currentQ + 1} នៃ {questions.length}
+              សំណួ​រ ​{currentQ + 1} នៃ {quiz.length}
             </h2>
-            <p className="mb-6 text-gray-800">{questions[currentQ].question}</p>
+            <p className="mb-6 text-gray-800">{quiz[currentQ].question}</p>
             <div className="space-y-4">
-              {questions[currentQ].options.map((opt, idx) => (
+              {quiz[currentQ].answers.map((opt, idx) => (
                 <label
                   key={idx}
                   className={`flex items-center p-3 border rounded-lg cursor-pointer ${
@@ -224,11 +168,11 @@ const Quiz = () => {
                   <input
                     type="radio"
                     name="option"
-                    checked={selected === idx}
-                    onChange={() => setSelected(idx)}
+                    checked={selected?.id === opt.id}
+                    onChange={() => setSelected(opt)}
                     className="mr-3"
                   />
-                  {opt}
+                  {opt.text}
                 </label>
               ))}
             </div>
@@ -237,7 +181,7 @@ const Quiz = () => {
               disabled={selected === null}
               className="mt-6 px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-lg shadow disabled:opacity-50"
             >
-              {currentQ === questions.length - 1 ? "Finish" : "Next"}
+              {currentQ === quiz.length - 1 ? "Finish" : "Next"}
             </button>
           </div>
         )}
@@ -265,17 +209,17 @@ const Quiz = () => {
                 </p>
             </div>
             <div className="bg-gray-100 p-4 rounded-lg text-gray-800 font-medium mb-8">
-            អ្នកទទួលបានពិន្ទុចំនួន {score} នៃ {questions.length} ពិន្ទុសរុប (
-            {Math.round((score / questions.length) * 100)}%)
+            អ្នកទទួលបានពិន្ទុចំនួន {score} នៃ {total} ពិន្ទុសរុប (
+            {Math.round((score / total) * 100)}%)
             </div>
 
-            {score / questions.length >= 0.8 && (
+            {score / total >= 0.8 && (
             <button className="px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-lg shadow mb-6">
                ទាញយកសញ្ញាបត្ររបស់អ្នក
             </button>
             )}
 
-           {score / questions.length >= 0.8 ? (
+           {score / total >= 0.8 ? (
         <p className="text-gray-700">
             សូមអមអរសាទរ អ្នកបានបញ្ចប់វគ្គសិក្សានេះ ហើយទទួលបានរបស់អ្នក។
             វិញ្ញាបនបត្រវគ្គសិក្សា. អ្នកអាចទាញយកវិញ្ញាបនបត្ររបស់អ្នកឥឡូវនេះ។ វានឹងផងដែរ។
