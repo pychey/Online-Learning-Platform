@@ -40,25 +40,27 @@ const CourseOverview = () => {
       <div className="max-w-[400px] tablet:max-w-[700px] laptop:max-w-[1280px] w-full px-10 mt-5">
         <Swiper
           modules={[Pagination, Navigation, Autoplay, Grid]} 
-          loop={true}
           breakpoints={{
             0: {
               slidesPerView: 1,
               grid:{ rows: 4, fill: 'row' },
               slidesPerGroup: 1,
-              spaceBetween: 30
+              spaceBetween: 30,
+              loop: false
             },
             548: {
               slidesPerView: 2,
               grid:{ rows: 2, fill: 'row' },
               slidesPerGroup: 2,
-              spaceBetween: 30
+              spaceBetween: 30,
+              loop: false
             },
             849: {
               slidesPerView: 4,
               grid: { rows: 1 },
               slidesPerGroup: 4,
-              spaceBetween: 40
+              spaceBetween: 40,
+              loop: true
             }
           }}
           pagination={{ clickable: true }}

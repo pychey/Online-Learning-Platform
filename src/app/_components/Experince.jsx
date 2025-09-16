@@ -36,7 +36,6 @@ const Experience = () => {
 
       <Swiper
       modules={[Autoplay, Pagination, Navigation, Grid]}
-        loop={true}
         pagination={{ clickable: true }}
         spaceBetween={30}
         navigation={true}
@@ -44,17 +43,20 @@ const Experience = () => {
           0: {
             slidesPerView: 1,
             grid:{ rows: 3, fill: 'row' },
-            slidesPerGroup: 1
+            slidesPerGroup: 1,
+            loop: false
           },
           548: {
             slidesPerView: 2,
             grid:{ rows: 1 },
-            slidesPerGroup: 2  
+            slidesPerGroup: 2,
+            loop: true
           },
           849: {
             slidesPerView: 3,
             grid:{ rows: 1 },
-            slidesPerGroup: 3  
+            slidesPerGroup: 3 ,
+            loop: true
           },
         }}
         autoplay={{
