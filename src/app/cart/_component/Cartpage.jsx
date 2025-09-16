@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCart } from "@/app/context/CartContext";
 import { khmerToEnglishNumber } from "@/lib/khmerToEnglishNumber";
 import { englishToKhmerNumber } from "@/lib/englishToKhmerNumber";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import RightArrow from "@/components/icons/RightArrow";
 import Remove from "@/components/icons/Remove";
 
@@ -17,7 +17,7 @@ function parsePrice(priceStr) {
   return parseFloat(clean) || 0;
 }
 
-export default function CartPage(isPaid = false) {
+function CartContent(isPaid = false) {
   const router = useRouter();
   const { cart, removeFromCart } = useCart();
   const searchParams = useSearchParams()
@@ -122,5 +122,21 @@ export default function CartPage(isPaid = false) {
         </button>
       </div>
     </div>
+  );
+}
+
+function CartLoading() {
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+    </div>
+  );
+}
+
+export default function CartPage() {
+  return (
+    <Suspense fallback={<CartLoading />}>
+      <CartContent />
+    </Suspense>
   );
 }

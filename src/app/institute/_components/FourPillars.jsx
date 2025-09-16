@@ -34,7 +34,7 @@ const FourPillars = () => {
 			<div className="mx-auto px-4 py-6 max-w-[1080px]">
 				<h1 className="w-full text-center mb-9 font-semibold text-2xl"
 				>
-					គោលការណ៍សិក្សាចម្បង ៤យ៉ាងរបស់យើង
+					គោលការណ៍សិក្សាចម្បង ៤ យ៉ាងរបស់យើង
 				</h1>
 				<div className="grid grid-cols-1 laptop:grid-cols-4 gap-2.5 px-2.5 pt-3 w-full">
 					{PILLARS.map((pillar, index) => (

@@ -35,7 +35,7 @@ export const authOptions = {
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id;
-        session.user.email = token.email ?? null
+        session.user.email = token.email ?? null;
         session.user.firstName = token.firstName ?? null;
         session.user.lastName = token.lastName ?? null;
         session.user.isAdmin = token.isAdmin ?? false;

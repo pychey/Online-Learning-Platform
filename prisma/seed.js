@@ -24,6 +24,7 @@ const users = [
         email: 'pychey@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
+        isAdmin: true
     },
     {
         firstName: 'Methy',
@@ -31,6 +32,7 @@ const users = [
         email: 'methy@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
+        isAdmin: true
     },
     {
         firstName: 'Rithea',
@@ -46,6 +48,7 @@ const users = [
         email: 'deny@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
+        isAdmin: true
     },
     {
         firstName: 'Seyha',
@@ -53,6 +56,7 @@ const users = [
         email: 'seyha@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
+        isAdmin: true
     },
     {
         firstName: 'Bunleap',
@@ -60,6 +64,7 @@ const users = [
         email: 'bunleap@gmail.com',
         password: '$2b$10$qka2M9QyvYM/8d.LH3BCqeSeTSsge1HHPoliEV6BW.6vNHS5w2SLa',
         emailVerified: true,
+        isAdmin: true
     },
 ]
 

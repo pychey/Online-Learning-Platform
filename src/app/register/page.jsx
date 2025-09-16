@@ -5,7 +5,7 @@ import EyeOn from "@/components/icons/EyeOn";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 // strong paswd cond
 const checkPasswordStrength = (pwd) => {
@@ -22,7 +22,7 @@ const checkPasswordStrength = (pwd) => {
   return "ពាក្យសម្ងាត់មានសុវត្ថិភាព";
 };
 
-const RegisterPage = () => {
+const RegisterContent = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
@@ -178,4 +178,18 @@ const RegisterPage = () => {
   )
 }
 
-export default RegisterPage
+function RegisterLoading() {
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+    </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={<RegisterLoading />}>
+      <RegisterContent />
+    </Suspense>
+  );
+}

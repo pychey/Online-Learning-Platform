@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { getCourseContent } from "@/lib/course";
 import CourseLayout from "@/components/ui/CourseLayout";
@@ -19,9 +19,6 @@ const Course = () => {
   const [error, setError] = useState("");
   const [data, setData] = useState(null);
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const score = searchParams.get('score')
-  const total = searchParams.get('total')
   const hasRun = useRef(false)
 
   useEffect(() => {

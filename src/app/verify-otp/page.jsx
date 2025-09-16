@@ -4,9 +4,9 @@ import axios from "axios";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-const VerifyOtpPage = () => {
+const VerifyOtpContent = () => {
   const [otp, setOtp] = useState('');
   const [userId, setUserId] = useState('');
   const [email, setEmail] = useState('')
@@ -119,4 +119,18 @@ const VerifyOtpPage = () => {
 	)
 }
 
-export default VerifyOtpPage
+function VerifyLoading() {
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+    </div>
+  );
+}
+
+export default function VerifyOtpPage() {
+  return (
+    <Suspense fallback={<VerifyLoading />}>
+      <VerifyOtpContent />
+    </Suspense>
+  );
+}

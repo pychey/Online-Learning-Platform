@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import QRCode from "qrcode";
 import { useCart } from "../context/CartContext";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 
-export default function PaymentPage() {
+function PaymentContent() {
   const router = useRouter();
   const { cart, clearCart } = useCart();
   const { data: session, status, update } = useSession();
@@ -198,5 +198,21 @@ export default function PaymentPage() {
           {checking && !paid ? "" : ""}
         </div> */}
     </div>
+  );
+}
+
+function PaymentLoading() {
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+    </div>
+  );
+}
+
+export default function PaymentPage() {
+  return (
+    <Suspense fallback={<PaymentLoading />}>
+      <PaymentContent />
+    </Suspense>
   );
 }

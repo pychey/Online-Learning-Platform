@@ -109,6 +109,7 @@ const PaymentPage = () => {
           <p className="text-sm text-primary">{message}</p>
           <div className="flex items-center justify-between gap-4 ">
               <button
+                type="button"
                 onClick={() => router.push('/my-courses')}
                 className="flex gap-1 tablet:gap-2 items-center justify-center bg-gray-500 text-white font-semibold px-2 tablet:px-6 py-3 rounded-sm hover:bg-gray-600 transition duration-300 min-w-28 cursor-pointer"
               >

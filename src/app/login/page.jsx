@@ -5,9 +5,9 @@ import EyeOn from "@/components/icons/EyeOn";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-const LoginPage = () => {
+const LoginContent = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [buttonMessage, setButtonMessage] = useState('ចូលគណនី')
@@ -150,4 +150,18 @@ const LoginPage = () => {
 	)
 }
 
-export default LoginPage
+function LoginLoading() {
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+    </div>
+  );
+}
+
+export default function CartPage() {
+  return (
+    <Suspense fallback={<LoginLoading />}>
+      <LoginContent />
+    </Suspense>
+  );
+}
