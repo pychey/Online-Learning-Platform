@@ -68,7 +68,7 @@ const DashboardHeader = () => {
     <div className="w-full">
       <nav className="w-full bg-[#898989]">
         <div className="flex items-center justify-center tablet:justify-between gap-4 mx-auto w-full max-w-[1080px]">
-          <div className="w-[200px] laptop:px-8 px-6 py-4 hidden tablet:grid grid-cols-[19px_1fr] gap-4 justify-between items-center">
+          <div className="w-[250px] laptop:px-8 px-6 py-4 hidden tablet:grid grid-cols-[19px_1fr] gap-4 justify-between items-center">
             <UserIcon/>
             <p className="w-full text-white">{session?.user.firstName ?? ''} {session?.user.lastName ?? ''}</p>
           </div>
