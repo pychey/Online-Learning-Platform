@@ -50,7 +50,7 @@ const VerifyPage = () => {
           {imgSrc ?
             <img
               className="my-9 aspect-[863/647] w-full"
-              src={imgSrc}
+              src={pdfToPng(imgSrc)}
               alt="Certificate Image"
             />
             :
