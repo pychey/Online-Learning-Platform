@@ -4,7 +4,7 @@ import { v2 as cloudinary } from "cloudinary";
 import { pdf } from '@react-pdf/renderer';
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "@/utils/authOptions";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
