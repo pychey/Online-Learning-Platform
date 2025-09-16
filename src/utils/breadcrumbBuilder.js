@@ -1,5 +1,5 @@
 export const buildQuizBreadCrumbs = (program, course) => ([
-  { label: "Admin", url: "/admin" },
+  { label: "Admin", url: "/adminprogram" },
   { label: "Program", url: "/admin/program" },
   { label: program.program_title, url: `/admin/program/${program.slug}` },
   { label: course.title, url: `/admin/program/${program.slug}/${course.slug}` },
@@ -7,7 +7,7 @@ export const buildQuizBreadCrumbs = (program, course) => ([
 ])
 
 export const buildLessonBreadcrumbs = (program, course, chapter, lesson) => ([
-  { label: "Admin", url: "/admin" },
+  { label: "Admin", url: "/admin/program" },
   { label: "Program", url: "/admin/program" },
   { label: program.program_title, url: `/admin/program/${program.slug}` },
   { label: course.title, url: `/admin/program/${program.slug}/${course.slug}` },
@@ -16,7 +16,7 @@ export const buildLessonBreadcrumbs = (program, course, chapter, lesson) => ([
 ])
 
 export const buildChapterBreadcrumbs = (program, course, chapter) => ([
-  { label: "Admin", url: "/admin" },
+  { label: "Admin", url: "/admin/program" },
   { label: "Program", url: "/admin/program" },
   { label: program.program_title, url: `/admin/program/${program.slug}` },
   { label: course.title, url: `/admin/program/${program.slug}/${course.slug}` },
@@ -24,14 +24,14 @@ export const buildChapterBreadcrumbs = (program, course, chapter) => ([
 ])
 
 export const buildCourseBreadcrumbs = (program, course) => ([
-  { label: "Admin", url: "/admin" },
+  { label: "Admin", url: "/admin/program" },
   { label: "Program", url: "/admin/program" },
   { label: program.program_title, url: `/admin/program/${program.slug}` },
   { label: course.title, url: `/admin/program/${program.slug}/${course.slug}` }
 ])
 
 export const buildProgramBreadcrumbs = (program) => ([
-  { label: "Admin", url: "/admin" },
+  { label: "Admin", url: "/admin/program" },
   { label: "Program", url: "/admin/program" },
   { label: program.program_title, url: `/admin/program/${program.slug}` }
 ])

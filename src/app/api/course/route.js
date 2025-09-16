@@ -29,7 +29,7 @@ export async function POST(req) {
                 programId,
                 title,
                 slug,
-                rating: 4
+                rating: 5
             }
         });
 

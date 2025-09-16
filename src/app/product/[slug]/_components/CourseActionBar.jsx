@@ -15,7 +15,7 @@ const COURSE_ACTION_CONTENT = {
   },
 };
 
-const CourseActionBar = ({ course }) => {
+const CourseActionBar = ({ course, isPaid }) => {
   const router = useRouter()
 
   return (
@@ -33,7 +33,7 @@ const CourseActionBar = ({ course }) => {
 
           <div className="flex-1 grid grid-cols-2 gap-x-2 gap-4 items-end w-full">
             <p className="text-center col-span-2 font-[450] text-lg">
-              បញ្ចុះតម្លៃ {course.discount_percent} សម្រាប់វគ្គនេះឥឡូវនេះ៖
+              បញ្ចុះតម្លៃ {course.discount_percent} សម្រាប់វគ្គនេះឥឡូវនេះ :
             </p>
             <p className="mr-2 text-end font-[450] text-lg text-[#999999] line-through">
               {course.original_price}
@@ -48,8 +48,8 @@ const CourseActionBar = ({ course }) => {
               text-white rounded-sm cursor-pointer transition duration-300"
               onClick={() => router.push('/cart')}
           >
-            <h1>បន្ថែមចូលកន្ត្រក</h1>
-            <ArrowUpIcon className="rotate-90" />
+            <h1>{isPaid ? 'វគ្គសិក្សាបានទិញរួច' : 'បន្ថែមចូលកន្ត្រក' }</h1>
+            {!isPaid && <ArrowUpIcon className="rotate-90" />}
           </button>
         </div>
       </div>

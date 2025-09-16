@@ -1,6 +1,7 @@
 import Certificate from "@/components/icons/Certificate";
 import MultipleCheck from "@/components/icons/MultipleCheck";
 import UserValue from "@/components/icons/UserValue";
+import pdfToPng from "@/utils/pdfToPng";
 
 const benefits = [
   {
@@ -29,7 +30,7 @@ const CertificateOverview = () => {
       <div className=" flex tablet:flex-row flex-col gap-8 mx-auto px-4 max-w-[1320px]">
         <div className="flex flex-1 items-center justify-center">
           <img
-            src="https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf"
+            src={pdfToPng("https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf")}
             className="w-full max-w-[495px] bg-slate-500"
           />
         </div>
@@ -43,8 +44,8 @@ const CertificateOverview = () => {
                 <benefit.icon size={40} />
               </div>
               <div>
-                <h2 className="text-xl font-semibold">{benefit.title}</h2>
-                <p className="mt-[3px]">{benefit.description}</p>
+                <h2 className="text-lg tablet:text-xl font-semibold">{benefit.title}</h2>
+                <p className="text-sm tablet:text-base mt-[3px]">{benefit.description}</p>
               </div>
             </div>
           ))}

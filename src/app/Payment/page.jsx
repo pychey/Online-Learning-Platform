@@ -77,7 +77,6 @@ export default function PaymentPage() {
             await handlePayment();
             clearCart();
             setPaid(true);
-            router.push("/my-courses");
           }
         } catch (err) {
           setError("មានបញ្ហាក្នុងការទិញវគ្គសិក្សា សូមព្យាយាមម្ដងទៀត។");
@@ -119,13 +118,17 @@ export default function PaymentPage() {
       <div className="flex flex-col items-center justify-center h-screen text-center">
         <h2 className="text-2xl font-bold text-green-600">សូមអរគុណ!</h2>
         <p className="mt-2 text-gray-600">
-          ការទូទាត់របស់អ្នក <span className="font-semibold">{total} ៛</span>{" "}
+          ការទូទាត់របស់អ្នក <span className="font-semibold">{total} $</span>{" "}
           ជោគជ័យ <br />
           Transaction ID: <span className="text-primary">{trxId}</span>
         </p>
+        <button className="mt-4 border-2 bg-primary text-white font-medium border-primary-hover px-4 py-2 rounded cursor-pointer"
+          onClick={() => router.push('my-courses')}
+        >យល់ព្រម</button>
       </div>
     );
   }
+
 
   if (expired) {
     return (

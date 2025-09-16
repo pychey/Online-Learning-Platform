@@ -20,7 +20,7 @@ const NAV_ITEMS = [
   },
   { 
     title: "មើលការបញ្ជាទិញ",
-    url: "/", 
+    url: "/cart", 
     icon: TagIcon },
   { 
     title: "ជំនួយ", 
@@ -95,12 +95,12 @@ const DashboardHeader = () => {
       </nav>
 
       <div className="mb-0.5 px-4 tablet:px-20 pt-6 w-full border-b border-b-[#CCCCCC] bg-[#F5F5F5]">
-        <div className="flex gap-3 items-center justify-center pb-4 tablet:hidden">
+        <div className="flex gap-3 items-center justify-center pb-6 tablet:hidden">
           <UserIcon color="#808080" />
           <p>{session?.user.firstName ?? ''} {session?.user.lastName ?? ''}</p>
         </div>
 
-        <div className="flex gap-8 laptop:gap-16 max-w-[800px] w-full h-full mx-auto">
+        <div className="flex gap-6 laptop:gap-16 max-w-[800px] w-full h-full mx-auto tablet:pt-6">
           {TABS.map(({ title, url, icon: Icon }, index) => {
             const isActive = pathname === url;
             return (

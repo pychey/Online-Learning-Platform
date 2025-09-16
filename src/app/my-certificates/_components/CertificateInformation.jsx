@@ -1,16 +1,19 @@
+import pdfToPng from "@/utils/pdfToPng";
 import Link from "next/link";
+
+const certificateSrc = pdfToPng("https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf");
 
 const certificates = [
   {
-    img: "https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf", 
+    img: certificateSrc, 
     title: "វិញ្ញាបនបត្រពាក់ព័ន្ធនឹងវគ្គសិក្សា",
     description:
       "អ្នកនឹងអាចទាញយកវិញ្ញាបនបត្រវគ្គសិក្សាផ្ទាល់ខ្លួនរបស់អ្នកសម្រាប់រាល់វគ្គសិក្សាដែលអ្នកបានបញ្ចប់។",
-    button: "វគ្គសិក្សាអាជីវកម្ម >",
+    button: "រកមើលវគ្គសិក្សា >",
     link: "/courselist",
   },
   {
-    img: "https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf", 
+    img: certificateSrc, 
     title: "វិញ្ញាបនបត្រពាក់ព័ន្ធនឹងកម្មវិធីសិក្សា",
     description:
       "អ្នកនឹងទទួលបានវិញ្ញាបនបត្រឥតគិតថ្លៃ ប្រសិនបើអ្នកបញ្ចប់វគ្គសិក្សាទាំងអស់ក្នុងជំនាញជាក់លាក់មួយ។",
@@ -18,11 +21,11 @@ const certificates = [
     link: "/courselist",
   },
   {
-   img: "https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf", 
-    title: "វិញ្ញាបនបត្រភាសា",
+   img: certificateSrc, 
+    title: "ក្រដាសប្រតិបត្តិពិន្ទុ",
     description:
-      "អ្នកនឹងទទួលបានវិញ្ញាបនបត្រផ្ទាល់ខ្លួនបន្ទាប់ពីចូលរួមប្រឡងភាសារបស់យើង ដែលមានរយៈពេល ៤៥ នាទី។",
-    button: "ការធ្វើតេស្តភាសា >",
+      "អ្នកនឹងទទួលបានប្រតិបត្តិពិន្ទុបន្ទាប់ពីចូលរួមប្រឡងវគ្គសិក្សារបស់យើង ដែលមានរយៈពេល ៤៥ នាទី។",
+    button: "ចូលមើលប្រតិបត្តិពិន្ទុ >",
     link: "/courselist",
   },
 ];

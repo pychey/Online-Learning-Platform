@@ -4,14 +4,16 @@ import { useState } from "react";
 import VerifyHeader from "@/app/verify/_components/VerifyHeader";
 import VerifyInstruction from "@/app/verify/_components/VerifyInstruction";
 import axios from "axios";
+import pdfToPng from "@/utils/pdfToPng";
 
 const VerifyPage = () => {
 
+  const certificateSrc = pdfToPng('https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf')
   const [ search, setSearch ] = useState("");
   const [ validSearch, setValidSearch ] = useState(null);
   const [ invalidMessage, setInvalidMessage ] = useState("");
   const [ searchResult, setSearchResult ] = useState(null);
-  const [ imgSrc, setImgSrc ] = useState('https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf')
+  const [ imgSrc, setImgSrc ] = useState(certificateSrc)
 
   const handleSearch = async () => {
     setImgSrc(null)
@@ -22,11 +24,11 @@ const VerifyPage = () => {
 
     if (trimmedSearch === "") {
       setValidSearch(false);
-      setImgSrc('https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf')
+      setImgSrc(certificateSrc)
       setInvalidMessage("សូមបញ្ចូលលេខសម្គាល់សញ្ញាប័ត្រ");
     } else if (certificate.message == 'Incorrect Code') {
       setValidSearch(false);
-      setImgSrc('https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf')
+      setImgSrc(certificateSrc)
       setInvalidMessage("ព័ត៌មានមិនត្រឹមត្រូវ");
     } else {
       setValidSearch(true);

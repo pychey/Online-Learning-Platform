@@ -58,8 +58,8 @@ const CourseBenefitOverview = () => {
                 <benefit.icon size={40}/>
               </div>
               <div>
-                <h2 className="text-xl font-semibold">{benefit.title}</h2>
-                <p className="mt-[3px]">{benefit.description}</p>
+                <h2 className="text-lg tablet:text-xl font-semibold">{benefit.title}</h2>
+                <p className="text-sm tablet:text-base mt-[3px]">{benefit.description}</p>
               </div>
             </div>
           ))}

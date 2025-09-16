@@ -57,7 +57,7 @@ const NavBar = () => {
 
   return (
     <nav className='w-full h-20 border-gray shadow-md fixed top-0 left-0 right-0 bg-white z-50'>
-      <div className='flex items-center justify-between max-w-[1100px] mx-auto px-6 tablet:px-2'>
+      <div className='flex gap-4 items-center justify-between max-w-[1100px] mx-auto px-6 tablet:px-2'>
         
         <div className="w-[45%] tablet:w-60 h-full pb-3">
           <Link className="w-full h-full" href="/">
@@ -125,7 +125,7 @@ const NavBar = () => {
 
           { session?.user?.isAdmin && (
             <div className="relative">
-              <Link className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg" href='/admin'>
+              <Link className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg" href='/admin/program'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" className="w-6 h-6 text-white">
                     <path fill="currentColor" d="M18 12h-2.18c-.17.7-.44 1.35-.81 1.93l1.54 1.54l-2.1 2.1l-1.54-1.54c-.58.36-1.23.63-1.91.79V19H8v-2.18c-.68-.16-1.33-.43-1.91-.79l-1.54 1.54l-2.12-2.12l1.54-1.54c-.36-.58-.63-1.23-.79-1.91H1V9.03h2.17c.16-.7.44-1.35.8-1.94L2.43 5.55l2.1-2.1l1.54 1.54c.58-.37 1.24-.64 1.93-.81V2h3v2.18c.68.16 1.33.43 1.91.79l1.54-1.54l2.12 2.12l-1.54 1.54c.36.59.64 1.24.8 1.94H18zm-8.5 1.5c1.66 0 3-1.34 3-3s-1.34-3-3-3s-3 1.34-3 3s1.34 3 3 3" />
                   </svg>
@@ -155,7 +155,7 @@ const NavBar = () => {
               </svg>
             </Link>
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-amber-300 text-primary text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
                 {englishToKhmerNumber(cartCount)}
               </span>
             )}
@@ -190,7 +190,7 @@ const NavBar = () => {
           </button>
           { session?.user?.isAdmin && (
             <div className="relative">
-              <Link className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg" href='/admin'>
+              <Link className="h-10 w-10 bg-primary flex items-center justify-center rounded-lg" href='/admin/program'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" className="w-6 h-6 text-white">
                     <path fill="currentColor" d="M18 12h-2.18c-.17.7-.44 1.35-.81 1.93l1.54 1.54l-2.1 2.1l-1.54-1.54c-.58.36-1.23.63-1.91.79V19H8v-2.18c-.68-.16-1.33-.43-1.91-.79l-1.54 1.54l-2.12-2.12l1.54-1.54c-.36-.58-.63-1.23-.79-1.91H1V9.03h2.17c.16-.7.44-1.35.8-1.94L2.43 5.55l2.1-2.1l1.54 1.54c.58-.37 1.24-.64 1.93-.81V2h3v2.18c.68.16 1.33.43 1.91.79l1.54-1.54l2.12 2.12l-1.54 1.54c.36.59.64 1.24.8 1.94H18zm-8.5 1.5c1.66 0 3-1.34 3-3s-1.34-3-3-3s-3 1.34-3 3s1.34 3 3 3" />
                   </svg>

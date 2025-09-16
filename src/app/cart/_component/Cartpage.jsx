@@ -43,10 +43,10 @@ export default function CartPage(isPaid = false) {
       {cart.length === 0 ? (
         <span className="block w-full text-center p-8">កន្ត្រករបស់អ្នកឥឡូវនេះគឺទទេ</span>
       ) : (
-        <div className="flex flex-col px-4">
+        <div className="flex flex-col px-0 tablet:px-4">
           {isExist === 1 && <p className="text-center pb-12">វគ្គសិក្សា <span className='text-primary'>{courseTitle}</span> បានបញ្ចូលកន្ត្រករួចហើយ</p>}
           <div className="flex flex-col laptop:flex-row w-full justify-between">
-            <div className="flex-grow-[1] w-full flex flex-col px-4 laptop:border-r border-gray-200">
+            <div className="flex-grow-[1] w-full flex flex-col px-4 aptop:border-r border-gray-200">
               <h2 className="text-lg font-semibold mb-4">វគ្គសិក្សា</h2>
               <hr className="hidden laptop:block h-[3px] w-full bg-gray-200 border-none"></hr>
                 {cart.map((course) => {
@@ -55,12 +55,12 @@ export default function CartPage(isPaid = false) {
                   return (
                     <div
                       key={course.id}
-                      className="flex items-center justify-between border-b border-gray-200 pr-8 py-4"
+                      className="flex gap-4 tablet:gap-0 items-center justify-between border-b border-gray-200 pr-0 tablet:pr-8 py-4"
                     >
-                      <div className="flex items-center gap-3">
+                      <div className="relative flex items-center gap-3">
                         <button
                           onClick={() => removeFromCart(course.id)}
-                          className="mr-4 flex items-center justify-center text-gray-600 cursor-pointer"
+                          className="absolute -top-1 -left-3 tablet:relative mr-4 flex items-center justify-center text-gray-600 cursor-pointer"
                         >
                           <Remove size={30}/>
                         </button>
@@ -75,9 +75,9 @@ export default function CartPage(isPaid = false) {
                         />
                         <span className="text-gray-800">{course.title}</span>
                       </div>
-                      <div className="text-right">
+                      <div className="flex flex-col tablet:flex-row text-right self-end">
                         {course.original_price && (
-                          <span className="line-through text-gray-400 mr-2">
+                          <span className="text-sm tablet:text-base line-through text-gray-400 mr-0 tablet:mr-2">
                             ${englishToKhmerNumber(original.toFixed(2))}
                           </span>
                         )}
@@ -107,16 +107,18 @@ export default function CartPage(isPaid = false) {
       <div className="max-w-[1080px] mx-auto mt-10 auto h-14 w-full flex justify-between gap-8">
         <button
           onClick={() => router.push("/courselist")}
-          className="w-60 py-4 cursor-pointer flex items-center justify-center gap-2 border-2 border-primary text-primary font-medium hover:bg-primary-hover hover:text-white transition duration-300 rounded"
+          className="w-60 py-4 cursor-pointer text-sm tablet:text-base flex items-center justify-center gap-2 border-2 border-primary text-primary font-medium hover:bg-primary-hover hover:text-white transition duration-300 rounded"
         >
-          <RightArrow className='rotate-180'/> បញ្ចូលវគ្គសិក្សា
+          <RightArrow className='rotate-180' size={20}/> បញ្ចូលវគ្គសិក្សា
         </button>
         <button
-          disabled={cart.length == 0}
-          onClick={() => router.push("/checkout-detail")}
-          className="w-60 py-4 cursor-pointer flex items-center justify-center gap-2 bg-primary text-white font-medium hover:bg-primary-hover transition duration-300 rounded"
+          onClick={() => {
+            if (cart.length === 0) alert('សូមបញ្ចូលវគ្គសិក្សាដើម្បីទៅកាន់កន្លែងបង់ប្រាក់')
+            else router.push("/checkout-detail")
+          }}
+          className="w-60 py-4 cursor-pointer text-sm tablet:text-base flex items-center justify-center gap-2 bg-primary text-white font-medium hover:bg-primary-hover transition duration-300 rounded"
         >
-          ទៅកន្លែងបង់ប្រាក់ <RightArrow />
+          ទៅកន្លែងបង់ប្រាក់ <RightArrow size={20}/>
         </button>
       </div>
     </div>

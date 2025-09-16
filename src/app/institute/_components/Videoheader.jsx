@@ -8,7 +8,7 @@ const VideoHeader = () => {
 
   return (
     <>
-      <div className="relative w-full h-[381px] bg-gray-300 flex flex-col items-center justify-center overflow-hidden">
+      <div className="relative w-full h-[300px] tablet:h-[381px] bg-gray-300 flex flex-col items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -20,7 +20,7 @@ const VideoHeader = () => {
 
         <div className="z-10 text-white text-center">
           <h1 className="text-xl tablet:text-3xl font-medium">
-            ការអប់រំមានគុណភាពខ្ពស់ សម្រាប់មនុស្សគ្រប់គ្នា <span className='hidden tablet:block'>នៅគ្រប់ទីកន្លែង</span>
+            ការអប់រំមានគុណភាពខ្ពស់ សម្រាប់មនុស្សគ្រប់គ្នា នៅគ្រប់ទីកន្លែង
           </h1>
           <p className="text-base tablet:text-xl mt-5">
             ចាប់ផ្តើមបទពិសោធន៍សិក្សាអនឡាញរបស់អ្នកថ្ងៃនេះ

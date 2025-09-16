@@ -4,8 +4,8 @@ const founders = [
   {
     img: "https://b2b-cambodia.com/storage/uploads/articles/large/iQd1RK691GrwCDgOlT7nm85490xZzEkGmSwqGPFi.jpg",
     quote:
-      "ការអប់រំ គឺជាឧបករណ៍សំខាន់បំផុតសម្រាប់ជំរុញការផ្លាស់ប្តូរ និងការច្នៃប្រឌិត",
-    name: "សុងលាង",
+      "ការអប់រំ គឺជាឧបករណ៍សំខាន់បំផុតសម្រាប់ជំរុញការផ្លាស់ប្តូរ",
+    name: "សុង",
     role: "អ្នកដឹកនាំ",
     linkedin: "https://www.facebook.com/CADT.Academy",
   },

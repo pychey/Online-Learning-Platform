@@ -30,7 +30,7 @@ const CourseManagement = ({ COURSE_MANAGEMENT_CONTENT }) => {
     return (
         <div className="flex flex-col items-center mb-4 p-4">
             {programs.map((program) => (
-                <div id={program.slug} key={program.id} className="scroll-mt-20 mt-8 laptop:mt-4 grid grid-rows-[40px__1px_90px_auto] laptop:grid-rows-[70px_1px_50px_auto] mx-auto w-full max-w-[1050px]">
+                <div id={program.slug} key={program.id} className="scroll-mt-25 tablet:scroll-mt-20 mt-8 laptop:mt-4 grid grid-rows-[40px__1px_90px_auto] laptop:grid-rows-[70px_1px_50px_auto] mx-auto w-full max-w-[1050px]">
                     <div className="row-span-1 flex flex-col laptop:flex-row justify-between items-center">
                         <h2 className="font-semibold text-xl">ផ្នែក{program.certificate_name}</h2>
                         <h4 className="hidden laptop:block font-light text-lg">{englishToKhmerNumber(program.courses.length)} វគ្គបណ្តុះបណ្តាល</h4>
@@ -41,7 +41,7 @@ const CourseManagement = ({ COURSE_MANAGEMENT_CONTENT }) => {
                         <p>បញ្ចប់គ្រប់វគ្កបណ្ដុះបណ្តាលចំនួន {englishToKhmerNumber(program.courses.length)} ដើម្បីទទួលបាន</p>
                         <a href={`/program/${program.slug}`} className="text-primary underline">សញ្ញាបត្រផ្នែក{program.certificate_name}</a>
                     </div>
-                    <div className={'row-span-1 grid gap-6 grid-cols-2 tablet:grid-cols-4'}>
+                    <div className={'row-span-1 grid gap-6 grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4'}>
                         {program.courses.map((course) => (
                             <div key={course.id} className="relative flex flex-col border border-gray-300 text-xs laptop:text-[13px] w-full">
                                 <Link href={`/product/${course.slug}`}>

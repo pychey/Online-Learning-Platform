@@ -55,7 +55,7 @@ const PaymentPage = () => {
   if (status === 'loading') return <p className="mt-20">Loading...</p>
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen py-1 mt-10 max-tablet:mx-10">
+    <div className="flex flex-col justify-center items-center min-h-screen py-1 mt-10 px-6 tablet:px-10">
       <div className="mb-6">
         <Link href="/" className="block">
           <img
@@ -70,7 +70,7 @@ const PaymentPage = () => {
           កែប្រូហ្វាល់សម្រាប់គេហទំព័រនេះ
         </p>
       </div>
-      <div className="px-10 py-8 border-gray-200 relative rounded border w-full max-w-md">
+      <div className="px-6 tablet:px-10 py-8 border-gray-200 relative rounded border w-full max-w-md">
         <form className="space-y-6 " onSubmit={handleChangeName}>
           <div className="relative">
             <label
@@ -107,17 +107,17 @@ const PaymentPage = () => {
             />
           </div>
           <p className="text-sm text-primary">{message}</p>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-4 ">
               <button
                 onClick={() => router.push('/my-courses')}
-                className="flex gap-2 items-center justify-center bg-gray-500 text-white font-semibold px-6 py-3 rounded-sm hover:bg-gray-600 transition duration-300 min-w-28 cursor-pointer"
+                className="flex gap-1 tablet:gap-2 items-center justify-center bg-gray-500 text-white font-semibold px-2 tablet:px-6 py-3 rounded-sm hover:bg-gray-600 transition duration-300 min-w-28 cursor-pointer"
               >
                 <RightArrow className='rotate-180' size={16}/>
                 ទៅគណនី
               </button>
               <button
                 type="submit"
-                className="bg-primary text-white font-semibold px-6 py-3 rounded-sm hover:bg-primary-hover transition duration-300 min-w-28 cursor-pointer"
+                className="bg-primary text-white font-semibold px-2 tablet:px-6 py-3 rounded-sm hover:bg-primary-hover transition duration-300 min-w-28 cursor-pointer"
               >
                 {buttonMessage}
               </button>

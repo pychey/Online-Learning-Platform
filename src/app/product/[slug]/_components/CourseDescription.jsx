@@ -63,37 +63,37 @@ const CourseDescription = ({ course, admin = false, isPaid = false }) => {
           <div className="flex items-start">
             <ComputerIcon className='text-primary w-[24px] laptop:w-[16px]'/>
             <span className="ml-6 font-semibold laptop:font-medium w-30">ប្រភេទ: </span>
-            <span>{course.study_type}</span>
+            <span>{course.study_type || 'វគ្គសិក្សា អនឡាញ'}</span>
           </div>
 
           <div className="flex items-start">
             <ClockIcon className='text-primary  w-[24px] laptop:w-[16px]' />
             <span className="ml-6 font-semibold laptop:font-medium w-30">រយៈពេល: </span>
-            <span>{course.duration}</span>
+            <span>{course.duration || '២ ម៉ោង'}</span>
           </div>
 
           <div className="flex items-start">
             <StarIcon className='text-primary  w-[24px] laptop:w-[16px]'/>
             <span className="ml-6 font-semibold laptop:font-medium w-30">ទទួលបាន: </span>
-            <span>{course.certificate_type}</span>
+            <span>{course.certificate_type || 'សញ្ញាបត្រវគ្គសិក្សា'}</span>
           </div>
 
           <div className="flex items-start">
             <GlobalIcon className='text-primary  w-[24px] laptop:w-[16px]'/>
             <span className="ml-6 font-semibold laptop:font-medium w-30">ភាសា: </span>
-            <span>{course.language}</span>
+            <span>{course.language || 'ភាសាខ្មែរ'}</span>
           </div>
 
           <div className="flex items-start">
             <LevelIcon className='text-primary  w-[24px] laptop:w-[16px]'/>
             <span className="ml-6 font-semibold laptop:font-medium w-30">កម្រិត: </span>
-            <span>{course.level}</span>
+            <span>{course.level || 'វគ្គណែនាំ'}</span>
           </div>
 
           <div className="flex items-start">
             <GroupIcon className='text-primary  w-[24px] laptop:w-[16px]'/>
             <span className="ml-6 font-semibold laptop:font-medium w-30">ការប្រើប្រាស់: </span>
-            <span>{course.access}</span>
+            <span>{course.access || 'ពេញមួយជីវិត'}</span>
           </div>
 
           <hr className='h-[1px] border-none bg-gray-300 mt-2 w-[90%] mx-auto'></hr>

@@ -18,7 +18,7 @@ const BENEFITS = [
   },
 ]
 
-const KeyBenefits = () => {
+const KeyBenefits = ({ programCertificateName = ''}) => {
 
   return(
     <section 
@@ -26,7 +26,7 @@ const KeyBenefits = () => {
       style={{ backgroundImage: "url('/background-cover-white.jpg')" }}
     >
       <div className="flex flex-col items-center mx-auto max-w-[1080px]">
-        <h1 className="font-medium text-xl tablet:text-3xl">អត្ថប្រយោជន៍សំខាន់ៗនៃកម្មវិធី Mini-MBA</h1>
+        <h1 className="font-medium text-xl tablet:text-3xl text-center">អត្ថប្រយោជន៍សំខាន់ៗនៃកម្មវិធី {programCertificateName}</h1>
         <div className="grid grid-cols-1 laptop:grid-cols-3 mt-12 w-full">
           {BENEFITS.map((benefit, index) => (
             <div
@@ -37,7 +37,7 @@ const KeyBenefits = () => {
                 size={70} 
                 className="text-primary" 
               />
-              <p className="w-full text-lg font-[450]">{benefit.benefit}</p>
+              <p className="w-full text-base tablet:text-lg font-[450]">{benefit.benefit}</p>
             </div>
           ))}
         </div>

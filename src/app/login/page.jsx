@@ -50,7 +50,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen py-1 mt-10 max-tablet:mx-10">
+    <div className="flex flex-col justify-center items-center min-h-screen py-1 mt-10 px-6 tablet:px-10">
       <div className="mb-6">
         <Link href="/" className="block">
           <img
@@ -65,7 +65,7 @@ const LoginPage = () => {
           ចូលគណនីសម្រាប់គេហទំព័រនេះ
         </p>
       </div>
-      <div className="px-10 py-8 border-gray-200 relative rounded border w-full max-w-md">
+      <div className="px-6 tablet:px-10 py-8 border-gray-200 relative rounded border w-full max-w-md">
           <form className="space-y-6 " onSubmit={handleLogin}>
             <div className="relative">
               <label

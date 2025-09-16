@@ -1,6 +1,7 @@
+import Certificate from "@/components/icons/Certificate";
 import Champion from "@/components/icons/Champion";
 
-const SkillCertificate = () => {
+const SkillCertificate = ({ programTitle = ''}) => {
   return (
     <div className="">
         
@@ -8,15 +9,15 @@ const SkillCertificate = () => {
             {/* Text Section */}
             <div className="flex flex-col gap-4 leading-relaxed flex-1">
                 <h2 className="text-xl tablet:text-3xl font-medium">
-                ទទួលបានជំនាញអាជីវកម្មដ៏សំខាន់បំផុត
+                ទទួលបានជំនាញ{programTitle}ដ៏សំខាន់បំផុត
                 </h2>
                 <p>
-                កម្មវិធីគ្រប់គ្រងនេះ នឹងផ្តល់ឲ្យអ្នកនូវជំនាញអាជីវកម្មស្នូលចម្បង 
+                កម្មវិធី{programTitle}នេះ នឹងផ្តល់ឲ្យអ្នកនូវជំនាញអាជីវកម្មស្នូលចម្បង 
                 ឧបករណ៍សំខាន់ៗ និងការយល់ដឹងជាមូលដ្ឋាន ៣៦០ដឺក្រេ 
                 អំពីគោលការណ៍គ្រប់គ្រង។
                 </p>
                 <p>
-                មាតិកា និងកម្មវិធីសិក្សានៃគ្រប់គ្រងត្រូវបានបង្កើតឡើងដោយអ្នកជំនាញខាងគ្រប់គ្រង 
+                មាតិកា និងកម្មវិធីសិក្សានៃ{programTitle}ត្រូវបានបង្កើតឡើងដោយអ្នកជំនាញខាង{programTitle}
                 ដែលដឹងច្បាស់ថា ជំនាញណាដែលពិតជាចាំបាច់ 
                 ដើម្បីឲ្យទទួលបានជោគជ័យក្នុងពិភពអាជីវកម្មស្មុគស្មាញសព្វថ្ងៃ។
                 </p>
@@ -36,10 +37,10 @@ const SkillCertificate = () => {
 
         <div className="flex flex-col items-center gap-4 py-10 max-w-[1080px] w-full mx-auto">
             <h3 className="text-center font-medium text-xl tablet:text-3xl">
-                របៀបទទួលបានវិញ្ញាបនបត្រផ្នែកគ្រប់គ្រងរបស់អ្នក
+                របៀបទទួលបានវិញ្ញាបនបត្រផ្នែក{programTitle}របស់អ្នក
             </h3>
             <div className="flex flex-col laptop:flex-row items-center mx-auto gap-6 px-5">
-                <Champion size={76} className='mt-6 text-primary flex-1 mb-6'/>
+                <Certificate size={76} className='mt-6 text-primary flex-1 mb-6'/>
                 <p className="leading-relaxed flex-4">
                     អ្នកគ្រាន់តែចុះឈ្មោះចូលរៀនវគ្គនីមួយៗដែលជាផ្នែកនៃកម្មវិធីនេះ។ 
                     នៅពេលដែលអ្នកបញ្ចប់វគ្គទាំងអស់ដែលត្រូវការ អ្នកនឹងអាចទាញយក 

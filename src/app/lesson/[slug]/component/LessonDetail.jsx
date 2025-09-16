@@ -8,8 +8,7 @@ const LessonDetail = ({lesson , markComplete, admin = false}) => {
   return (
       <div className={`w-full ${admin ? "p-8" : ""}`}>
 
-        <h1 className="text-center mx-auto text-3xl font-semibold">{lesson.order_number}. {lesson.title}</h1>
-        <p className="my-10 text-xl font-semibold">{lesson.key_takeaway_text}</p>
+        <h1 className="text-center mx-auto text-xl laptop:text-3xl font-semibold mb-10">{lesson.order_number}. {lesson.title}</h1>
 
         {lesson.lessonContents?.map((content, index) => {
           const safeContent = content.content || null;
@@ -46,16 +45,18 @@ const LessonDetail = ({lesson , markComplete, admin = false}) => {
           }
         })}
 
+        <p className="my-10 text-base laptop:text-xl font-medium">ចំណាំ ៖ {lesson.key_takeaway_text}</p>
+
         {!admin && (
           <div className="flex justify-between items-center flex-row-reverse my-10 w-full">
             <div
               onClick={markComplete}
-              className={`flex items-center justify-start px-12 py-2 bg-primary-green
+              className={`flex items-center justify-start  px-4 tablet:px-8 laptop:px-12 py-2 bg-primary-green
               text-white text-lg cursor-pointer`}
             >
-              បន្តមេរៀន <RightArrow className={` h-6 w-6`}/>
+              បន្តមេរៀន <RightArrow size={20} className={` h-6 w-6`}/>
             </div>
-            <Link href={`${lesson.prevSlug?`/lesson/${lesson.prevSlug}`:`/content/${lesson.courseContentSlug}`}`} className={`flex items-center justify-start px-12 py-2 bg-primary text-white text-lg cursor-pointer`}><RightArrow className={`rotate-180 h-6 w-6`}/>{lesson.prevSlug?"ចំណុចមុន":"ទៅមេរៀន"}</Link>
+            <Link href={`${lesson.prevSlug?`/lesson/${lesson.prevSlug}`:`/content/${lesson.courseContentSlug}`}`} className={`flex items-center justify-start  px-4 tablet:px-8 laptop:px-12 py-2 bg-primary text-white text-lg cursor-pointer`}><RightArrow size={20} className={`rotate-180 h-6 w-6`}/>{lesson.prevSlug?"ចំណុចមុន":"ទៅមេរៀន"}</Link>
           </div>
         )}
       </div>

@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation"
 
 const adminNavItems = [
-  { label: "Home", path: "/admin" },
+  // { label: "Home", path: "/admin" },
   { label: "Program", path: "/admin/program" },
   { label: "Course", path: "/admin/course" },
 ]

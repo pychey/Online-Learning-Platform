@@ -1,13 +1,14 @@
 "use client";
 
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getCourseContent } from "@/lib/course";
 import CourseLayout from "@/components/ui/CourseLayout";
 import { useSession } from "next-auth/react";
 import CertificateDownloader from "@/app/certificate/_components/CertificateDownloader";
 import axios from "axios";
 import RightArrow from "@/components/icons/RightArrow";
+import pdfToPng from "@/utils/pdfToPng";
 
 const Course = () => {
   const { data: session, status } = useSession();
@@ -21,6 +22,7 @@ const Course = () => {
   const searchParams = useSearchParams()
   const score = searchParams.get('score')
   const total = searchParams.get('total')
+  const hasRun = useRef(false)
 
   useEffect(() => {
     if (status === "loading") return;
@@ -57,6 +59,9 @@ const Course = () => {
         console.error("Certificate error:", err);
       }
     };
+
+    if (hasRun.current) return
+    hasRun.current = true
 
     generateCertificate();
   }, [course, session?.user]); 
@@ -116,7 +121,7 @@ const Course = () => {
           {/* Certificate Section */}
           {data ? (
             <div className="w-full py-4">
-              <img src={data.url} className="w-full h-full"/>
+              <img src={pdfToPng(data.url)} className="w-full h-full"/>
               <CertificateDownloader
                 code={data.code}
                 name={`${data.firstName} ${data.lastName}`}

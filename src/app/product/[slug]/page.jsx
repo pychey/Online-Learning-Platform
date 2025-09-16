@@ -62,7 +62,7 @@ const CourseDetail = () => {
 		<main className="mt-20">
 			<CourseDescription course={course} isPaid={isPaid}/>
 			<CourseBenefits />
-			<CourseActionBar course={course}/>
+			<CourseActionBar course={course} isPaid={isPaid}/>
 			<CourseRecommend slug={slug} programId={course.programId}/>
 		</main>
 	)

@@ -4,10 +4,12 @@ import LevelIcon from "@/components/icons/LevelIcon";
 import PriceTag from "@/components/icons/PriceTag";
 import Unlock from "@/components/icons/Unlock";
 import { englishToKhmerNumber } from "@/lib/englishToKhmerNumber";
+import pdfToPng from "@/utils/pdfToPng";
 
 const ProgramOverview = ({ program, admin = false }) => {
+  const certificateSrc = pdfToPng('https://res.cloudinary.com/dhbuy0um9/image/upload/v1757864722/Your_certificate_akbhnm.pdf')
 
-    if (program === null) return (<h1>Loading</h1>)
+  if (program === null) return (<h1>Loading</h1>)
   return (
         <div className={`${ admin ? "p-8 " : "mt-20 max-w-[1080px] py-5 tablet:py-10" } w-full mx-auto grid grid-cols-1 laptop:grid-cols-[2fr_1fr] gap-6 laptop:gap-8`}>        <main className="col-span-1 flex flex-col gap-6 tablet:gap-10 p-4">
             <figure className="flex flex-col laptop:flex-row gap-4 laptop:gap-8">
@@ -41,7 +43,7 @@ const ProgramOverview = ({ program, admin = false }) => {
             </section>
         </main>
         <aside>
-            <img src={ '/Certificate_Template_400PPI.jpg'} alt='Program Certificate' className="border-1 border-primary"/>
+            <img src={certificateSrc} alt='Program Certificate' className="border-1 border-primary"/>
             <div className='flex flex-col gap-5 laptop:gap-3 text-base p-6 laptop:px-8 border-1 border-gray-300'> 
                 <div className="flex items-start gap-4">
                     <BookIcon className='text-primary w-[18px] pr-[4px]'/>

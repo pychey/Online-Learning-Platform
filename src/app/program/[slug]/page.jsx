@@ -41,8 +41,8 @@ const ProgramDetailPage = () => {
     <main>
       <ProgramOverview program={program}/>
       <ProgramCourses courses={program.courses}/>
-      <KeyBenefits />
-      <SkillCertificate />
+      <KeyBenefits programCertificateName={program.certificate_name}/>
+      <SkillCertificate programTitle={program.program_title}/>
       <ProgramFaq />
       <OtherProgramCertificate slug={slug}/>
     </main>

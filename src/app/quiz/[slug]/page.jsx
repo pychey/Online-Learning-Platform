@@ -120,19 +120,19 @@ const Quiz = () => {
         
          {/* QUIZ START SCREEN */}
         {!started && (
-          <div className="w-full rounded-2xl p-8">
+          <div className="w-full rounded-2xl px-2 laptop:p-8">
             <h2 className="text-2xl font-semibold -mb-6 text-center">
              មូលដ្ឋានគ្រឹះនៃការគ្រប់គ្រងគម្រោង - ការប្រឡង
             </h2>
 
-            <div className="flex items-center justify-center w-full">
-              <div className="w-60 h-60 flex items-center justify-center mr-6">
+            <div className="flex flex-col laptop:flex-row items-center justify-center w-full">
+              <div className="w-30 h-30 mt-10 mb-8 laptop:my-0 laptop:w-60 laptop:h-60 flex items-center justify-center mr-0 laptop:mr-6">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/16815/16815634.png"
                   alt="quiz"
                 />
               </div>
-             <p className="text-gray-700 text-md text-start leading-relaxed max-w-full">
+             <p className="text-gray-700 text-md text-start leading-relaxed max-w-full mb-10 laptop:mb-0">
                 សូមស្វាគមន៍មកកាន់វគ្គសំនួរសាកល្បង! ឥឡូវនេះជាឱកាសសាកល្បងចំណេះដឹងរបស់អ្នក
                 និងទទួលបានវិញ្ញាបនបត្រវគ្គសិក្សា។ អ្នកអាចទាញយកវិញ្ញាបនបត្ររបស់អ្នកបន្ទាប់ពីសម្រេចបានពិន្ទុអប្បបរមា
                 <span className="font-semibold text-green-600"> 80%</span>។ <br />
@@ -141,7 +141,7 @@ const Quiz = () => {
             </div>
             <button
               onClick={() => setStarted(true)}
-              className="px-4 py-2 bg-primary hover:bg-primary-hover text-white shadow transition ml-4 -mt-24"
+              className="px-4 py-2 bg-primary hover:bg-primary-hover text-white shadow transition ml-0 laptop:ml-4 -mt-24"
             >
               ចាប់ផ្តើម
             </button>
@@ -150,7 +150,7 @@ const Quiz = () => {
 
           {/* QUIZ DURING QUESTIONS */}
         {started && !finished && (
-          <div className="w-full rounded-2xl p-8">
+          <div className="w-full rounded-2xl px-2 laptop:p-8">
             <h2 className="text-xl font-medium mb-4">
               សំណួ​រ ​{currentQ + 1} នៃ {quiz.length}
             </h2>
@@ -189,19 +189,19 @@ const Quiz = () => {
 
            {/* QUIZ END / RESULT */}
         {finished && (
-        <div className="w-full rounded-2xl p-8 text-center">
+        <div className="w-full rounded-2xl px-2 laptop:p-8 text-center">
             <h2 className="text-2xl font-semibold -mb-6 text-center">
              មូលដ្ឋានគ្រឹះនៃការគ្រប់គ្រងគម្រោង - ការប្រឡង
             </h2>
 
-            <div className="flex items-center justify-center w-full">
-              <div className="w-60 h-60 flex items-center justify-center mr-6">
+            <div className="flex flex-col laptop:flex-row items-center justify-center w-full">
+              <div className="w-30 h-30 mt-10 mb-8 laptop:my-0 laptop:w-60 laptop:h-60 flex items-center justify-center mr-0 laptop:mr-6">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/16815/16815634.png"
                   alt="quiz"
                 />
               </div>
-              <p className="text-gray-700 text-md text-start leading-relaxed max-w-full">
+              <p className="text-gray-700 text-md text-start leading-relaxed max-w-full mb-10 laptop:mb-0">
                 សូមស្វាគមន៍មកកាន់វគ្គសំនួរសាកល្បង! ឥឡូវនេះជាឱកាសសាកល្បងចំណេះដឹងរបស់អ្នក
                 និងទទួលបានវិញ្ញាបនបត្រវគ្គសិក្សា។ អ្នកអាចទាញយកវិញ្ញាបនបត្ររបស់អ្នកបន្ទាប់ពីសម្រេចបានពិន្ទុអប្បបរមា
                 <span className="font-semibold text-green-600"> 80%</span>។ <br />

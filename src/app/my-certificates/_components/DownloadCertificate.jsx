@@ -1,3 +1,4 @@
+import pdfToPng from "@/utils/pdfToPng";
 import Link from "next/link";
 
 const DownloadCertificate = ({certificates = []}) => {
@@ -11,7 +12,7 @@ const DownloadCertificate = ({certificates = []}) => {
 						certificates.map((certificate)=>(
 						<Link key={certificate.id} href={`/course/${certificate.courseSlug}/certificate`}>
 							<div className="relative flex flex-col border border-gray-300 text-sm w-full">
-								<img src={certificate.url} alt={certificate.courseTitle} className='w-full z-10 h-full object-cover' />
+								<img src={pdfToPng(certificate.url)} alt={certificate.courseTitle} className='w-full z-10 h-full object-cover' />
 								<span className="absolute z-10 top-2 -left-3 bg-primary text-white text-sm font-medium px-3 py-1">
 									ទទួលបាន
 								</span>
