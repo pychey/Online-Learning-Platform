@@ -24,7 +24,17 @@ export async function GET(req) {
       body: JSON.stringify({ md5 }),
     });
 
-    const data = await response.json();
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      const text = await response.text();
+      console.error("Bakong non-JSON response:", text);
+      return new Response(
+        JSON.stringify({ success: false, error: "Invalid JSON response from Bakong" }),
+        { status: 502, headers: { "Content-Type": "application/json" } }
+      );
+    }
 
     let paid = false;
     let transaction = null;
