@@ -1,3 +1,4 @@
+import { useCart } from "@/app/context/CartContext";
 import ArrowUpIcon from "@/components/icons/ArrowUpIcon";
 import { useRouter } from "next/navigation";
 
@@ -16,7 +17,13 @@ const COURSE_ACTION_CONTENT = {
 };
 
 const CourseActionBar = ({ course, isPaid }) => {
+  const { addToCart } = useCart()
   const router = useRouter()
+
+    const handleAddToCart = async () => {
+      const isExist = await addToCart(course)
+      router.push(`/cart?isExist=${Number(isExist)}&courseTitle=${course.title}`)
+    }
 
   return (
     <section className="mx-auto px-4 w-full max-w-[1080px]">
@@ -44,9 +51,10 @@ const CourseActionBar = ({ course, isPaid }) => {
           </div>
 
           <button
+            disabled={isPaid}
             className="flex gap-1 justify-center items-center w-full laptop:w-[33%] h-12 bg-primary hover:bg-primary-hover font-semibold text-xl 
               text-white rounded-sm cursor-pointer transition duration-300"
-              onClick={() => router.push('/cart')}
+              onClick={handleAddToCart}
           >
             <h1>{isPaid ? 'វគ្គសិក្សាបានទិញរួច' : 'បន្ថែមចូលកន្ត្រក' }</h1>
             {!isPaid && <ArrowUpIcon className="rotate-90" />}

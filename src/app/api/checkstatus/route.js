@@ -1,5 +1,4 @@
 import crypto from "crypto";
-import fetch from "node-fetch"; 
 
 export async function GET(req) {
   try {
