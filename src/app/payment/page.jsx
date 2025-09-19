@@ -69,10 +69,9 @@ function PaymentContent() {
       const interval = setInterval(async () => {
         setChecking(true);
         try {
-          const res = await fetch(
-            `/api/checkstatus?qrString=${encodeURIComponent(qr)}`
-          );
-          const data = await res.json();
+          const { data } = await axios.post('api/checkstatus', {
+            qrString: qr
+          })
           if (data.paid) {
             await handlePayment();
             clearCart();
