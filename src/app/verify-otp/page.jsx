@@ -44,7 +44,10 @@ const VerifyOtpContent = () => {
           password: tempPassword,
         });
         sessionStorage.removeItem('tempPassword');
-        if (response && !response.error) isFromPayment ? router.push('/checkout-detail') : router.push('/my-courses')
+        if (response && !response.error) {
+          router.refresh()
+          isFromPayment ? router.push('/checkout-detail') : router.push('/my-courses')
+        }
         else {
           console.log(response?.error)
           setMessage('បញ្ជាក់លេខសម្ងាត់ជោគជ័យ ប៉ុន្តែការចូលគណនីមានបញ្ហា សូមព្យាយាមចូលគណនីដោយខ្លួនឯង។')
