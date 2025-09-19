@@ -28,11 +28,6 @@ export async function POST(req) {
     let paid = false;
     let transaction = null;
 
-    if (data?.responseCode === 0 && data?.data) {
-      paid = true;
-      transaction = data.data;
-    }
-
     return new NextResponse(
       JSON.stringify({
         success: true,
