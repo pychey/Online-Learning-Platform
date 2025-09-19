@@ -1,10 +1,10 @@
 import { getServerSession } from "next-auth";
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
-import { authOptions } from "@/utils/authOptions";
+import { requireAuth } from "@/utils/auth";
 
 export async function DELETE(req) {
-  const session = await getServerSession(authOptions);
+  const session = await requireAuth()(req);
 
   if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
 
