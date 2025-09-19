@@ -15,6 +15,8 @@ export async function POST(req) {
     const md5 = crypto.createHash("md5").update(qrString).digest("hex");
     const apiUrl = "https://api-bakong.nbc.gov.kh/v1/check_transaction_by_md5";
 
+    console.log("JWT Token:", process.env.BAKONG_JWT_TOKEN);
+
     const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
