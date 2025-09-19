@@ -3,9 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
-    console.log('reached stage 1')
     const { qrString } = await req.json()
-    console.log('reached stage 2')
 
     if (!qrString) {
       return new Response(
@@ -13,11 +11,10 @@ export async function POST(req) {
         { status: 400 }
       );
     }
-    console.log('reached stage 3')
 
     const md5 = crypto.createHash("md5").update(qrString).digest("hex");
     const apiUrl = "https://api-bakong.nbc.gov.kh/v1/check_transaction_by_md5";
-    console.log('reached stage 4')
+    console.log('md5', md5)
 
     const response = await fetch(apiUrl, {
       method: "POST",
@@ -27,11 +24,6 @@ export async function POST(req) {
       },
       body: JSON.stringify({ md5 }),
     });
-    console.log('reached stage 5')
-
-    console.log(response)
-
-    const data = await response.json();
 
     let paid = false;
     let transaction = null;
@@ -40,7 +32,6 @@ export async function POST(req) {
       paid = true;
       transaction = data.data;
     }
-    console.log('reached stage 6')
 
     return new NextResponse(
       JSON.stringify({
