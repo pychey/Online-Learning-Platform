@@ -14,7 +14,6 @@ export async function POST(req) {
 
     const md5 = crypto.createHash("md5").update(qrString).digest("hex");
     const apiUrl = "https://api-bakong.nbc.gov.kh/v1/check_transaction_by_md5";
-    console.log('md5', md5)
 
     const response = await fetch(apiUrl, {
       method: "POST",
@@ -25,8 +24,19 @@ export async function POST(req) {
       body: JSON.stringify({ md5 }),
     });
 
+    console.log('response', response)
+
+    const data = await response.json();
+
+    console.log('data:', data)
+
     let paid = false;
     let transaction = null;
+
+    if (data?.responseCode === 0 && data?.data) {
+      paid = true;
+      transaction = data.data;
+    }
 
     return new NextResponse(
       JSON.stringify({
