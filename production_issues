@@ -1,0 +1,4 @@
+bakong api block the website url in production.
+
+login and after register doesn't directly redirect to my-courses because 
+    the token session isn't made in the localstorage yet unless we refresh the page.
